@@ -1,0 +1,10 @@
+# Tiny end-to-end smoke run: 1 claim, 1 round, stub data (no network).
+max_rounds: 1
+num_claims: 1
+retriever_k_hops: 2
+retriever_max_triples: 50
+merger_score_floor: 0.3
+use_stub_data: true
+merger: rule_based          # rule_based | naive_union | random
+mode: debate                # debate | single_expert
+random_merge_keep_prob: 0.5

@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/debate_kg"]
+
+[project]
+name = "debate-kg"
+version = "0.1.0"
+description = "Multi-agent debate with KG-grounded experts and rule-based merger (v1)"
+requires-python = ">=3.11"
+dependencies = [
+    "networkx>=3.0",
+    # PyTorch: install manually with the right CUDA index URL for your cluster.
+    # See: https://pytorch.org/get-started/locally/
+    "torch>=2.0",
+    # PyG (v2): plumbed in now; GNN merger uses it. Install after torch.
+    # See: https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
+    "torch-geometric>=2.4",
+    "sentence-transformers>=2.2",
+    "hydra-core>=1.3",
+    "omegaconf>=2.3",
+    "datasets>=2.14",
+    "SPARQLWrapper>=2.0",
+    "pydantic>=2.0",
+    "python-dotenv>=1.0",
+    "jinja2>=3.1",
+    "krippendorff>=0.6",
+    "numpy>=1.24",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "black>=23.0",
+    "ruff>=0.1",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "network: mark test as requiring live network access (skip with -m 'not network')",
+]

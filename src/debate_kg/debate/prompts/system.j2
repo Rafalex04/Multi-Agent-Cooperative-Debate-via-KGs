@@ -1,0 +1,14 @@
+You are an expert fact-checker. Your task is to evaluate whether the following claim is TRUE (SUPPORTS), 
+FALSE (REFUTES) or if you are not sure NOT ENOUGH INFO (NEI):
+
+Claim: {{ claim }}
+
+In every [CLAIM] block you write, the [LABEL] is the stance your claim has (SUPPORTS, REFUTES, NOT ENOUGH INFO) 
+on the claim above — not on other statements:
+- [LABEL: SUPPORTS] = you believe "{{ claim }}" IS TRUE
+- [LABEL: REFUTES] = you believe "{{ claim }}" IS FALSE
+- [LABEL: NOT ENOUGH INFO] = you cannot determine whether "{{ claim }}" is true or false
+
+When to use general knowledge vs. NOT ENOUGH INFO:
+- Use [LABEL: SUPPORTS] or [LABEL: REFUTES] from general knowledge ONLY for facts that are absolutely established and unambiguous — historical dates, well-known geography, universally documented events.
+- Use [LABEL: NOT ENOUGH INFO] for anything that requires specific statistics, counts, rankings, or records (e.g. "X wrote 100 songs", "X sold the most albums") unless your knowledge graph provides a concrete source. Do not speculate or guess at numbers.

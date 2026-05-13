@@ -1,0 +1,83 @@
+{% if triples %}
+Your knowledge graph context - if your current claim is based on any triple from this knowledge graph
+you should clearly identify in the specific part of your claim that comes from the triple with 
+the id (ex:[1]):
+{% for triple in triples %}
+[{{ loop.index }}] {{ triple.subject }} — {{ triple.predicate }} — {{ triple.object }}
+{% endfor %}
+{% else %}
+(No knowledge graph triples available. You may reason from general knowledge.)
+{% endif %}
+
+{% if history %}
+Debate history — if your current claim addresses any prior claim you should identify it as 
+specified below by its ID:
+{% for node in history %}
+[{{ node.short_id }}] {{ node.expert_id }}, round {{ node.round_idx }}: {{ node.text }} [{{ node.label or "?" }}]
+{% endfor %}
+{% endif %}
+
+--- BEFORE YOU WRITE ---
+Review ALL information available to you:
+1. Read every triple in your knowledge graph above — even ones that seem unrelated may be relevant.
+2. Consider what you know from general knowledge.
+3. Decide your verdict on the FEVER claim FIRST, then write your [CLAIM] blocks.
+Do NOT write a claim saying "I don't know" and then a second claim with the real answer.
+Commit to your best verdict immediately.
+
+--- FORMAT ---
+Write ONE or at most TWO [CLAIM] blocks. Put [LABEL] on its own line at the end of each block.
+
+[CLAIM] <your factual assertion, with [N] citations if available>
+[LABEL: SUPPORTS | REFUTES | NOT ENOUGH INFO]
+
+To respond to a prior claim, add [ADDRESSED:<ID>][AGREE] or [ADDRESSED:<ID>][DISAGREE] before the label:
+[CLAIM] <assertion>
+[ADDRESSED:c2][DISAGREE]
+[ADDRESSED:c1][AGREE]
+[LABEL: REFUTES]
+
+LABEL RULES — the label is the position your claim is taking on the investigated FEVER claim, 
+not on other statements:
+- SUPPORTS = your current claim supports the fever claim 
+- REFUTES = your current claim refutes the fever claim
+- NOT ENOUGH INFO = you genuinely don't have the information to tell whether the fever claim is 
+true or false
+
+Key: if you find evidence that contradicts the investigated fever claim → REFUTES.
+Key: if you find evidence that confirms the investigated fever claim → SUPPORTS.
+Do NOT use NOT ENOUGH INFO just because your knowledge graph is empty.
+
+--- EXAMPLES (illustrating the label logic — write about the actual claim above) ---
+
+Investigated FEVER claim: "Einstein was born in Berlin."
+Example A — triples available, claim is FALSE:
+Your knowledge graph context:
+[1] Einstein - born - Ulm
+[CLAIM] Einstein was born in Ulm, Germany [1]. This contradicts the claim that he was born in Berlin — the claim is FALSE.
+[LABEL: REFUTES]
+
+Investigated FEVER claim: "The Eiffel Tower is located in Paris."
+Example B — triples available, claim is TRUE:
+Your knowledge graph context:
+[1] Eiffel Tower - location - Paris
+[CLAIM] The Eiffel Tower is located in Paris, France [1]. This confirms the investigated claim.
+[LABEL: SUPPORTS]
+
+Investigated FEVER claim: "Einstein was born in Berlin."
+Example C — no triples, using general knowledge, claim is FALSE:
+(No knowledge graph triples available. You may reason from general knowledge.)
+[CLAIM] Einstein was born in Ulm in 1879, not Berlin. This is established historical fact — the investigated claim is FALSE.
+[LABEL: REFUTES]
+
+Investigated FEVER claim: "Einstein was born in Berlin."
+Example D — addressing a prior claim [c1] that said "Einstein was born in Ulm":
+Your knowledge graph context:
+[1] Einstein - born - Ulm
+[CLAIM] I agree that Einstein was born in Ulm [1], which confirms the investigated claim about Berlin is false.
+[ADDRESSED:c1][AGREE] Ulm and Berlin are different cities.
+[LABEL: REFUTES]
+
+--- END EXAMPLES ---
+
+Now write your [CLAIM] blocks about the actual investigated claim:

@@ -1,0 +1,57 @@
+You are an expert evaluator assessing one utterance in a fact-checking debate.
+
+Claim under debate: {{ claim }}
+
+Expert {{ node.expert_id }} said:
+{{ node.text }}
+
+{% if cited_triples %}
+Cited knowledge graph triples:
+{% for t in cited_triples %}
+[{{ loop.index }}] {{ t.subject }} — {{ t.predicate }} — {{ t.object }}
+{% endfor %}
+{% else %}
+No triples were cited.
+{% endif %}
+
+Score on two dimensions (0–100 each):
+GROUNDEDNESS: how well the utterance is supported by the cited triples (100 = every claim matches a cited triple exactly; 0 = no cited triple, or cited triple contradicts the claim)
+FACTUALITY: factual accuracy based on your own knowledge (100 = entirely correct; 0 = entirely false or fabricated)
+
+--- SCORING EXAMPLES ---
+
+Example 1 — triple cited, claim matches it perfectly:
+Claim under debate: "Einstein was born in Berlin."
+Expert said: "Einstein was born in Ulm, Germany [1]. This contradicts the claim."
+Cited triple: [1] Einstein — place_of_birth — Ulm
+GROUNDEDNESS: 95
+FACTUALITY: 95
+
+Example 2 — triple cited, but claim goes beyond what the triple says:
+Claim under debate: "Einstein won the Nobel Prize for the Theory of Relativity."
+Expert said: "Einstein won the Nobel Prize in Physics in 1921 for the Theory of Relativity [1]."
+Cited triple: [1] Einstein — award — Nobel Prize in Physics (1921)
+(The triple says Physics Nobel 1921 but not the reason — expert added "Theory of Relativity" which is factually wrong; it was for the photoelectric effect.)
+GROUNDEDNESS: 40
+FACTUALITY: 30
+
+Example 3 — no triple cited, correct general knowledge used:
+Claim under debate: "Einstein was born in Berlin."
+Expert said: "Einstein was born in Ulm in 1879, not Berlin. This is established historical fact."
+No triples were cited.
+GROUNDEDNESS: 10
+FACTUALITY: 90
+
+Example 4 — triple cited but irrelevant to the claim made:
+Claim under debate: "Einstein was born in Berlin."
+Expert said: "Einstein won the Nobel Prize in 1921 [1], which supports his scientific reputation."
+Cited triple: [1] Einstein — place_of_birth — Ulm
+(The triple is about birthplace but the expert cited it to support an unrelated point about awards.)
+GROUNDEDNESS: 5
+FACTUALITY: 80
+
+--- END EXAMPLES ---
+
+Now score the actual utterance above. Reply with exactly two lines:
+GROUNDEDNESS: <number>
+FACTUALITY: <number>

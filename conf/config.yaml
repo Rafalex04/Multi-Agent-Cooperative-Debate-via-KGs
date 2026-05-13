@@ -1,0 +1,19 @@
+# Primary Hydra config. Override groups with e.g. `run=fever_100`.
+defaults:
+  - _self_
+  - run: smoke
+  - judges: panel
+
+model:
+  expert_model: "llama3.1:8b"
+  expert_temperature: 0.7
+  judge_temperature: 0.0
+  retriever_model: "multi-qa-MiniLM-L6-cos-v1"
+
+data:
+  kg_split_overlap: 0.0        # ablation axes: 0.0, 0.1, 0.25 — see SPEC §Hyperparameters
+  seed: 42
+  max_triples_per_entity: 100  # SPARQL LIMIT per entity (hub-entity guard)
+  max_triples_per_kg: 500      # global cap across all entities before split
+  max_entity_mentions: 5       # max regex-extracted mention spans to link per claim
+  wikidata_cache_dir: "~/.cache/debate_kg/wikidata"
