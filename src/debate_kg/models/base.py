@@ -16,6 +16,19 @@ class LLMClient(ABC):
         self.base_url = base_url
 
     @abstractmethod
-    def complete(self, prompt: str, system: str = "", temperature: float = 0.7) -> str:
-        """Send a completion request and return the response text."""
+    def complete(
+        self,
+        prompt: str,
+        system: str = "",
+        temperature: float = 0.7,
+        image: str | None = None,
+    ) -> str:
+        """Send a completion request and return the response text.
+
+        Args:
+            prompt: User message content.
+            system: System prompt (empty string → no system message sent).
+            temperature: Sampling temperature.
+            image: Optional base64-encoded JPEG/PNG image string for vision models.
+        """
         ...

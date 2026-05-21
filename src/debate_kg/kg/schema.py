@@ -75,3 +75,21 @@ class MergeResult(BaseModel):
     kept: list[str]      # Triple UUIDs kept in the merged KG
     dropped: list[str]   # Triple UUIDs dropped
     resolved: list[str]  # Triple UUIDs resolved in favour of the higher-scoring side
+
+
+# ---------------------------------------------------------------------------
+# BreastMNIST-specific schemas
+# ---------------------------------------------------------------------------
+
+class SingleAgentResult(BaseModel):
+    """Parsed output of the single-agent classification call."""
+
+    label: Literal["BENIGN", "MALIGNANT"]
+    confidence: int  # 0–100, self-reported by the model
+
+
+class WinnerJudgment(BaseModel):
+    """MedGemma's verdict on which expert won the opinion-mode debate."""
+
+    winner: Literal["expert_a", "expert_b"]
+    reasoning: str

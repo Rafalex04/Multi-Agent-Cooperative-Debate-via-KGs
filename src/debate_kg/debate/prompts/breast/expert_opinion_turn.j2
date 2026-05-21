@@ -1,0 +1,15 @@
+{% if history %}
+=== CONVERSATION SO FAR ===
+{% for node in history %}
+{% if not loop.last %}
+Expert {{ 'A' if node.expert_id == 'expert_a' else 'B' }}: {{ node.text }}
+
+{% endif %}
+{% endfor %}
+=== EXPERT {{ 'A' if history[-1].expert_id == 'expert_a' else 'B' }}'S LAST STATEMENT — RESPOND TO THIS DIRECTLY ===
+{{ history[-1].text }}
+
+{% else %}
+You are opening the discussion. No prior statements have been made.
+{% endif %}
+Now give your response as Expert {{ expert_letter }}.

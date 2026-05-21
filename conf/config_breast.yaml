@@ -1,0 +1,19 @@
+# Root Hydra config for the BreastMNIST VLM ablation pipeline.
+# Override run group: run=breast_single, run=breast_debate_opinion, etc.
+defaults:
+  - _self_
+  - run: breast_single
+  - judges: medgemma
+
+model:
+  expert_model: "qwen2.5vl:7b"           # Qwen2.5-VL-7B-Instruct via Ollama
+  expert_temperature: 0.7
+  ollama_base_url: "http://localhost:11434"
+
+data:
+  num_samples: 50
+  image_size: 224
+  seed: 42
+  kg_path: "data/breast/knowledge_graph.json"
+  definitions_path: "data/breast/definitions.json"
+  indices_path: "data/breast/ablation_indices.json"

@@ -1,0 +1,9 @@
+# MedGemma-4B-IT judge.
+# backend: "ollama"  — local CPU inference via Ollama (slow, for testing)
+# backend: "vllm"   — cluster GPU inference via vLLM (fast, for real runs)
+model: "google/medgemma-4b-it"
+backend: "vllm"
+base_url: "http://localhost:8000"
+ollama_model: "medgemma:latest"
+ollama_base_url: "http://localhost:11434"
+temperature: 0.0

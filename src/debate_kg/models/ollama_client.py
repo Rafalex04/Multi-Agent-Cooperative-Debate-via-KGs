@@ -13,13 +13,21 @@ logger = logging.getLogger(__name__)
 class OllamaClient(LLMClient):
     """Wraps the Ollama /api/chat endpoint."""
 
-    def complete(self, prompt: str, system: str = "", temperature: float = 0.7) -> str:
+    def complete(
+        self,
+        prompt: str,
+        system: str = "",
+        temperature: float = 0.7,
+        image: str | None = None,
+    ) -> str:
         """Send a chat completion to Ollama and return the assistant text.
 
         Args:
             prompt: User message content.
             system: System prompt (empty string → no system message sent).
             temperature: Sampling temperature.
+            image: Optional base64-encoded image string. Passed in the Ollama
+                   ``images`` field for vision-capable models (e.g. Qwen2.5-VL).
 
         Returns:
             Response text from the model.
@@ -30,7 +38,10 @@ class OllamaClient(LLMClient):
         messages: list[dict] = []
         if system:
             messages.append({"role": "system", "content": system})
-        messages.append({"role": "user", "content": prompt})
+        user_msg: dict = {"role": "user", "content": prompt}
+        if image:
+            user_msg["images"] = [image]
+        messages.append(user_msg)
 
         payload = {
             "model": self.model,

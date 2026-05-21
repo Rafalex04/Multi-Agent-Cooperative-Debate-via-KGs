@@ -1,0 +1,16 @@
+{% if kg_text %}
+=== DOMAIN KNOWLEDGE ===
+{{ kg_text }}
+
+Each triple is addressable as [CITED:t_NNN] and each definition as [CITED:d_NNN].
+Use these citations in your [CLAIM] blocks to ground your reasoning in the lexicon.
+
+{% endif %}
+{% if history %}
+=== DEBATE HISTORY ===
+{% for node in history %}
+[{{ node.short_id }}] {{ node.expert_id }}: {{ node.text }}{% if node.label %} [LABEL: {{ node.label }}]{% endif %}{% if node.provenance %} [CITED: {{ node.provenance | join(', ') }}]{% endif %}
+
+{% endfor %}
+{% endif %}
+Analyze the breast ultrasound image above and produce your response.

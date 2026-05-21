@@ -1,0 +1,20 @@
+You are a senior radiologist reviewing a claim made during a breast ultrasound expert discussion.
+
+=== CLAIM TO EVALUATE ===
+Expert: {{ node.expert_id }}
+Claim ID: {{ node.short_id }}
+Claim: {{ node.text }}
+Verdict stated: {{ node.label or "none" }}
+{% if node.provenance %}
+KG citations: {{ node.provenance | join(', ') }}
+{% endif %}
+
+=== TASK ===
+Score this claim on two dimensions, each from 0 to 100:
+
+1. IMAGE_GROUNDING (0-100): How well is this claim grounded in directly observable features of the breast ultrasound image? (0 = pure speculation or generic statement, 100 = precisely describes a feature visible in this image)
+2. MEDICAL_ACCURACY (0-100): How medically accurate and consistent with ACR BI-RADS criteria is this claim? (0 = incorrect or contradicts guidelines, 100 = fully correct and precisely stated)
+
+Respond with ONLY these two lines:
+IMAGE_GROUNDING: <integer 0-100>
+MEDICAL_ACCURACY: <integer 0-100>

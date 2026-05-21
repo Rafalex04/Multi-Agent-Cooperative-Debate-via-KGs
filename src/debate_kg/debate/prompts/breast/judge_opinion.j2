@@ -1,0 +1,19 @@
+You are a senior radiologist evaluating a breast ultrasound case review.
+Two experts (expert_a and expert_b) have discussed the image below. Read their full debate transcript and decide which expert made the stronger medical argument.
+
+=== DEBATE TRANSCRIPT ===
+{% for turn in transcript %}
+{{ turn.expert_id }} (round {{ turn.round_idx }}): {{ turn.text }}
+{% endfor %}
+
+=== TASK ===
+Which expert (expert_a or expert_b) made the stronger, more evidence-based argument about this breast ultrasound image?
+
+Respond with ONLY the following two lines:
+WINNER: expert_a
+REASONING: <one sentence explaining why>
+
+or
+
+WINNER: expert_b
+REASONING: <one sentence explaining why>
