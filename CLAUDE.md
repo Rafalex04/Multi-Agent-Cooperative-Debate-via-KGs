@@ -13,100 +13,122 @@
 ├── pyproject.toml
 ├── .env.example                    # template for required secrets (committed)
 ├── .env                            # actual secrets (NEVER committed)
-├── conf/                           # Hydra configs (model.yaml, data.yaml, run/*.yaml, judges/*.yaml)
+├── conf/
+│   ├── config.yaml                 # FEVER pipeline root config
+│   ├── config_breast.yaml          # BreastMNIST pipeline root config
+│   ├── judges/medgemma.yaml        # MedGemma judge config (backend: ollama|vllm)
+│   └── run/                        # run group configs (breast_single, breast_debate_*, etc.)
+├── data/breast/                    # ACR BI-RADS KG + fixed ablation sample set
+│   ├── knowledge_graph.json        # 370 triples, IDs t_001–t_370
+│   ├── definitions.json            # 100 entities, IDs d_001–d_100
+│   └── ablation_indices.json       # 50 fixed test-set indices (seed=42, never regenerate)
 ├── src/
 │   └── debate_kg/
-│       ├── __init__.py
-│       ├── main.py                 # Hydra entrypoint, round loop, logging setup
-│       ├── kg/                     # Module 1: KG construction
-│       │   ├── graph.py            # NetworkX-backed KG class with stable triple UUIDs
-│       │   ├── wikidata.py         # SPARQL helpers, cached
-│       │   └── construct.py        # subgraph builder + split logic
-│       ├── retriever/              # Module 2: GraphRAG
-│       ├── debate/                 # Module 3: orchestrator
-│       │   └── prompts/            # prompt templates as .j2 / .txt files
-│       ├── judges/                 # Module 4: panel
-│       ├── consensus/              # Module 5: stop check
-│       ├── merger/                 # Module 6: rule-based merger
-│       ├── data/                   # FEVER loading
-│       ├── models/                 # Ollama / vLLM client wrappers
-│       └── eval/                   # metrics + baselines
-├── tests/                          # mirrors src/ layout
-└── scripts/                        # one-off / cluster-launch scripts
+│       ├── main.py                 # FEVER Hydra entrypoint
+│       ├── breast_main.py          # BreastMNIST Hydra entrypoint (6 modes)
+│       ├── kg/
+│       │   ├── graph.py            # NetworkX KG class, stable triple UUIDs
+│       │   ├── schema.py           # Pydantic models (DebateNode, JudgeScore, WinnerJudgment, …)
+│       │   ├── loader.py           # load_kg_from_json, load_definitions, serialize_kg_for_prompt
+│       │   ├── wikidata.py         # SPARQL helpers (FEVER only)
+│       │   └── construct.py        # subgraph builder (FEVER only)
+│       ├── retriever/              # GraphRAG (FEVER only)
+│       ├── debate/
+│       │   ├── breast_orchestrator.py  # all 6 breast modes
+│       │   └── prompts/breast/     # Jinja2 templates (system_*.j2, expert_*.j2, judge_*.j2)
+│       ├── judges/
+│       │   └── medgemma_judge.py   # MedGemmaJudge: score_utterance + pick_winner
+│       ├── consensus/              # stop check (shared)
+│       ├── merger/                 # rule-based KG merger (FEVER only)
+│       ├── data/
+│       │   └── breastmnist.py      # loads BreastMNIST as base64 JPEG samples
+│       ├── models/                 # OllamaClient, VLLMClient, StubClient
+│       └── eval/breast_metrics.py  # accuracy, AUC-ROC, sensitivity, specificity
+└── tests/
 ```
 
 ## Key data model
 
-- **Each `DebateNode` IS one factual claim** — one `[CLAIM]` block from the LLM response. A single expert turn (one LLM call) may produce N `DebateNode`s.
-- **Short IDs** (`c1`, `c2`, …) are globally sequential across all rounds of a debate. Assignment: `c{len(history) + i + 1}` where `i` is the 0-based position within the current turn.
-- **Edges come from parsing `[ADDRESSED:<ID>][AGREE|DISAGREE]` tags** — there is no edge-classifier LLM call.
-- **Labels** (`SUPPORTS` / `REFUTES` / `NOT ENOUGH INFO`) are the expert's verdict on the FEVER claim, not on their own statement.
-- **Verdict** is a deterministic weighted vote over all nodes: SUPPORTS=+1, NEI=0, REFUTES=−1, weighted by mean judge score. No LLM call.
+### Shared (both pipelines)
+- **Each `DebateNode` IS one factual claim** — one `[CLAIM]` block from the LLM response. A single expert turn may produce N nodes.
+- **Short IDs** (`c1`, `c2`, …) are globally sequential across all rounds. Assignment: `c{len(history) + i + 1}`.
+- **Edges** come from parsing `[ADDRESSED:cN][AGREE|DISAGREE]` tags — no edge-classifier LLM call.
 - **Opening expert alternates**: A opens even rounds, B opens odd rounds.
+
+### BreastMNIST differences
+- **Labels**: `BENIGN` / `MALIGNANT` (not SUPPORTS/REFUTES/NEI).
+- **Opinion mode** (mode 2): free-text, one `DebateNode` per expert turn, no `[CLAIM]` structure. Judge picks winner.
+- **Structured modes** (3–5): same `[CLAIM]` block structure. Verdict = weighted node-score vote.
+- **Expert identity**: every system prompt receives `expert_letter` (A or B) and `other_letter` — experts must know who they are.
+- **KG citations**: `[CITED:t_NNN]` for triples, `[CITED:d_NNN]` for definitions, parsed into `DebateNode.provenance`.
+- **[FINISH] tag**: opinion mode only — if any expert writes `[FINISH]`, the debate stops after that round.
+- **Fixed sample set**: `data/breast/ablation_indices.json` — 50 test-set indices. Never regenerate; all ablation stages must use the same samples.
+- **Verdict (opinion)**: judge's `pick_winner` → winner's last stated label.
+- **Verdict (structured)**: weighted vote — `score = Σ weight_i × vote_i`, `weight_i = (groundedness + factuality) / 200`, `vote_i = +1` (MALIGNANT) or `−1` (BENIGN).
 
 ## Standing rules
 
-- **KG class** lives in `src/debate_kg/kg/graph.py` and uses NetworkX. Triples have stable UUIDs. Don't re-implement this elsewhere.
-- **LLM access** goes through `src/debate_kg/models/`. Never call Ollama or vLLM HTTP directly from module code.
-- **Prompts** are separate files under `src/debate_kg/debate/prompts/`. No prompts as Python string literals in the orchestrator.
-- **Provenance is non-optional.** Every debate node must carry a list of KG triple IDs it cited. If a function loses provenance, that's a bug.
-- **Determinism:** all randomness through `numpy.random.default_rng(seed)` or `torch.Generator(seed)`. Seed comes from Hydra config.
+- **KG class** lives in `kg/graph.py`. Triples have stable UUIDs. Don't re-implement elsewhere.
+- **LLM access** goes through `models/`. Never call Ollama or vLLM HTTP directly from module code.
+- **Prompts** are separate `.j2` files under `debate/prompts/`. No prompts as Python string literals.
+- **Provenance is non-optional.** Every DebateNode must carry cited triple/definition IDs. Losing provenance is a bug.
+- **Determinism:** all randomness through `numpy.random.default_rng(seed)`. Seed comes from Hydra config.
 - **Paths** via `pathlib.Path`, never `os.path`.
-- **Type hints** on every public function. Public = anything not prefixed with `_`.
-- **Secrets** live in `.env` at project root, loaded via `python-dotenv` in `main.py`. Never commit `.env`. Maintain a `.env.example` (committed) listing required keys without values. Never paste tokens into prompts, configs, or code.
-- **TODO format:** `# TODO(<module>): <thing>` or `# TODO(<module>, ref=SPEC §X): <thing>`. Bare `# TODO` is forbidden — they become invisible after week one.
+- **Type hints** on every public function.
+- **Secrets** live in `.env`, loaded via `python-dotenv`. Never commit `.env`. Maintain `.env.example`.
+- **TODO format:** `# TODO(<module>): <thing>`. Bare `# TODO` is forbidden.
 
 ## Logging
 
-- Use Python's stdlib `logging`, not `print`. Configure once in `main.py`. Library code does `logger = logging.getLogger(__name__)` and never reconfigures.
-- Levels: DEBUG for per-turn detail, INFO for round/module milestones, WARNING for recoverable issues, ERROR for failures. No INFO inside tight loops.
-- Each Hydra run writes to `outputs/<timestamp>/` automatically. Don't fight this — debate transcripts, KG snapshots, and metrics go in there (see `SPEC.md` §Output artifacts).
+- Use `logging`, not `print`. Configure once in `main.py` / `breast_main.py`. Library code: `logger = logging.getLogger(__name__)`.
+- DEBUG: per-turn LLM responses. INFO: per-node labels/scores, round milestones, sample timing. WARNING: parse failures. ERROR: hard failures.
 
 ## Things to avoid
 
-- Don't add the GNN merger to v1. That's v2.
-- Don't try to enforce full logical consistency in the merger. The spec acknowledges this is unsolved; minimal type/symmetry/ontology-light checks only.
+- Don't add the GNN merger to v1.
 - Don't introduce closed-source or paid model dependencies. Strict $0 budget.
-- Don't hardcode dataset paths — use HuggingFace `datasets`.
+- Don't hardcode dataset paths.
 - Don't write a "let me also build X" feature without asking. Stay in scope.
 - Don't catch exceptions silently. If you catch, log and re-raise or handle visibly.
+- Don't regenerate `ablation_indices.json` — it must stay fixed across all ablation stages.
 
 ## Code style
 
 - Black (line length 100) + ruff. Run before committing.
-- Tests with pytest. Every module gets at least a smoke test that imports the module and exercises one happy path.
+- Tests with pytest. Every module gets at least a smoke test.
 - Docstrings: short. One-line summary; expand only when behavior is non-obvious.
-
-## Definition of done (per module)
-
-A module is done for v1 when all four hold:
-
-1. Public API matches what `SPEC.md` and dependent modules need.
-2. `pytest tests/<module>/` passes, including at least one smoke test.
-3. The end-to-end smoke run (`run=smoke`) exercises this module without a stub for it.
-4. The human has eyeballed real output for ≥10 examples and they look sane.
-
-Claude Code does not declare a module done. Only the human does, after step 4.
 
 ## Build, test, run
 
 ```bash
 # install
-uv sync                                  # or: pip install -e .
+uv sync
 
 # test
-pytest                                   # all
-pytest tests/kg                          # one module
-pytest -m "not network"                  # skip live Wikidata
+pytest
+pytest tests/kg
 
-# run
-python -m debate_kg.main run=smoke       # tiny end-to-end on 1 claim
-python -m debate_kg.main run=fever_100   # first 100 FEVER claims
+# FEVER pipeline
+python -m debate_kg.main run=smoke
+python -m debate_kg.main run=fever_100
+
+# BreastMNIST pipeline — 6 ablation modes
+python -m debate_kg.breast_main run=breast_single data.num_samples=2     # quick test
+python -m debate_kg.breast_main run=breast_single                         # 50 samples
+python -m debate_kg.breast_main run=breast_debate_opinion
+python -m debate_kg.breast_main run=breast_debate_graph
+python -m debate_kg.breast_main run=breast_debate_kg
+python -m debate_kg.breast_main run=breast_adversarial
+python -m debate_kg.breast_main run=breast_adaptive
+
+# Judge backend (edit conf/judges/medgemma.yaml)
+# backend: "ollama"  — local CPU via Ollama (testing)
+# backend: "vllm"   — cluster GPU via vLLM (real runs)
 ```
 
 ## Working preferences
 
 - Use plan mode for anything touching multiple modules or the round loop.
-- For single-module changes, normal mode is fine — but show me the diff before applying.
-- When stuck, read the relevant paper section listed in `SPEC.md` rather than guessing.
-- Update this file when you discover a convention that prevented a class of mistakes. Keep it under ~200 lines.
+- For single-module changes, normal mode is fine.
+- When stuck, read the relevant paper section in `SPEC.md` rather than guessing.
+- Update this file when you discover a convention that prevented a class of mistakes. Keep it under ~250 lines.

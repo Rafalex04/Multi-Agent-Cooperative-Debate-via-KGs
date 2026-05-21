@@ -2,6 +2,8 @@
 
 This document is the source of truth for what to build. Reading list and learning roadmap live in `READING.md`.
 
+Two use cases are implemented: **FEVER** (text-claim verification, original pipeline) and **BreastMNIST** (breast ultrasound binary classification, ablation study). Both share the core data model and LLM client layer. The BreastMNIST spec is in the section below; the FEVER spec follows.
+
 ## Glossary
 
 - **Claim** — input to the system; one FEVER claim text.
@@ -196,3 +198,120 @@ Anything in this section is **forbidden in v1**. Don't sketch it, don't scaffold
 - **Debate quality is the biggest risk.** Vacuous, repetitive, or hallucinated debates kill the merger signal. Plan to iterate on prompts ≥10 times.
 - **Judge reliability.** LLM judges are noisy. If three judges disagree wildly, the merger gets garbage signal. Compute inter-judge agreement before trusting any other number.
 - **Wikidata coverage.** FEVER claims may reference entities with sparse Wikidata neighborhoods. Have a fallback (drop the claim, or expand to Wikipedia text → REBEL).
+
+---
+
+# BreastMNIST Ablation Study — Spec
+
+## Goal
+
+Isolate the contribution of each pipeline component — debate, graph-based verdict, domain KG, adversarial stances, adaptive escalation — on binary classification of breast ultrasound images (BENIGN / MALIGNANT) from the BreastMNIST dataset (MedMNIST v2).
+
+## Dataset
+
+- **BreastMNIST** from MedMNIST v2. Test split. Images resized to 224×224 and converted to RGB JPEG (base64-encoded for prompt injection).
+- **Label convention**: `0 → MALIGNANT`, `1 → BENIGN` (confirmed from MedMNIST v2 source).
+- **Fixed sample set**: `data/breast/ablation_indices.json` — 50 test-set indices generated once from `np.random.default_rng(42)`. All six ablation stages must use exactly these indices. Never regenerate.
+
+## Domain Knowledge Graph
+
+Pre-built ACR BI-RADS ultrasound lexicon. Not retrieved — full KG is serialized into every prompt in modes 4–6.
+
+- `data/breast/knowledge_graph.json` — 370 triples, IDs `t_001`–`t_370`.
+- `data/breast/definitions.json` — 100 entity definitions, IDs `d_001`–`d_100`.
+- Experts cite KG nodes with `[CITED:t_NNN]` and definitions with `[CITED:d_NNN]`. Citations are parsed into `DebateNode.provenance`.
+
+## Stack
+
+| Component | Choice |
+|---|---|
+| Expert model | Qwen2.5-VL-7B-Instruct via Ollama (CPU dev) / vLLM (cluster GPU) |
+| Judge model | MedGemma-4B-IT — single judge, two scoring dimensions |
+| Judge backend | `ollama` (local, CPU) or `vllm` (cluster, GPU) — set in `conf/judges/medgemma.yaml` |
+| Input | 224×224 breast ultrasound image (base64 JPEG) + optional text |
+| KG retrieval | None — full KG injected into prompt (KG is small, ~370 triples) |
+| Labels | BENIGN / MALIGNANT |
+
+## Six Ablation Modes
+
+| Mode | Config | Debate | KG | Verdict mechanism |
+|---|---|---|---|---|
+| `single_agent` | `breast_single` | No | No | Parse `[LABEL][CONFIDENCE]` from single VLM call |
+| `debate_opinion` | `breast_debate_opinion` | Free-text, multi-round | No | MedGemma `pick_winner` → winner's last label |
+| `debate_graph` | `breast_debate_graph` | Structured `[CLAIM]` | No | Weighted node-score vote |
+| `debate_kg` | `breast_debate_kg` | Structured `[CLAIM]` | Yes | Weighted node-score vote |
+| `debate_kg_adversarial` | `breast_adversarial` | Structured `[CLAIM]` | Yes | Weighted node-score vote |
+| `adaptive_adversarial` | `breast_adaptive` | Conditional | Yes | Confidence ≥ threshold → single-agent; else → adversarial weighted vote |
+
+In `debate_kg_adversarial` and `adaptive_adversarial`: Expert A is locked to BENIGN, Expert B to MALIGNANT throughout all rounds.
+
+## Verdict Mechanisms
+
+**Weighted vote (modes 3–5)**:
+```
+score = Σ weight_i × vote_i
+weight_i = (groundedness + factuality) / 200   # MedGemma judge scores, 0–100 each
+vote_i   = +1 (MALIGNANT) | −1 (BENIGN)
+score > 0 → MALIGNANT, score < 0 → BENIGN, tie → majority vote
+```
+`malignant_score` for AUC-ROC = `clip((score + 1) / 2, 0, 1)`.
+
+**Opinion verdict (mode 2)**: MedGemma given full transcript + image; outputs `WINNER: expert_a|expert_b`. Winner's most recent stated `VERDICT: BENIGN|MALIGNANT` is the system verdict. `malignant_score` = 1.0 or 0.0 (no confidence in this mode).
+
+**Adaptive verdict (mode 6)**: Run single agent first. If `confidence >= confidence_threshold` (default 70), use single-agent label. Else escalate to full adversarial KG debate and use the weighted vote.
+
+## Debate Format (opinion mode)
+
+Free-text — no `[CLAIM]` blocks. One `DebateNode` per expert turn. Each expert knows their identity (A or B) and must:
+1. Directly address the other expert's last statement by name.
+2. State whether they agree or disagree with specific points.
+3. Add only NEW observations not already in the transcript.
+4. Write `[FINISH]` if they agree on everything and have nothing to add → debate stops early.
+5. End with `VERDICT: BENIGN` or `VERDICT: MALIGNANT`.
+
+## Debate Format (structured modes 3–5)
+
+Same `[CLAIM]` block structure as FEVER pipeline. Each expert knows their identity (A or B). 2–4 `[CLAIM]` blocks per turn. Example:
+```
+[CLAIM] <observation> [CITED:t_042] [LABEL: BENIGN]
+[CLAIM] <response to prior claim> [ADDRESSED:c3][DISAGREE] [CITED:d_007] [LABEL: BENIGN]
+```
+
+## Judge — MedGemma-4B-IT
+
+Single judge. `JudgeScore` fields repurposed:
+- `groundedness` → **IMAGE_GROUNDING** (0–100): how well the claim cites observable image features.
+- `factuality` → **MEDICAL_ACCURACY** (0–100): how ACR BI-RADS correct the claim is.
+
+`score_utterance(node, kg, image_b64)` → `JudgeScore` (structured modes).
+`pick_winner(all_nodes, image_b64)` → `WinnerJudgment` (opinion mode).
+
+## Metrics
+
+- **Accuracy** — primary metric.
+- **Sensitivity** (recall for MALIGNANT) — clinically critical; false negatives are dangerous.
+- **Specificity** (recall for BENIGN).
+- **AUC-ROC** — computed from per-sample `malignant_score`.
+- **Convergence rate** — % of samples reaching early stop within `max_rounds`.
+- **Mean rounds** — average debate length.
+- **Mean time per sample** — wall-clock seconds.
+
+All metrics written to `outputs/<timestamp>/metrics.json`.
+
+## Output Artifacts (per run)
+
+- `metrics.json` — aggregated metrics + per-sample records.
+- `debate_sample-<id>.json` — debate nodes, edges, scores, verdict for each sample.
+
+## Early Stopping
+
+- **Structured modes**: consensus check stops when all debate edges are positive (existing logic from FEVER pipeline).
+- **Opinion mode only**: if any expert writes `[FINISH]`, the round loop breaks immediately after that round.
+
+## Key Design Decisions
+
+1. **No KG retrieval.** The domain KG (~370 triples) fits in context; full injection is simpler and more reproducible than GraphRAG for this domain.
+2. **No KG merger.** The domain KG is static. Expert responses are stored as DebateNodes for provenance but no triple-level merge occurs.
+3. **Single judge.** MedGemma-4B-IT is a medically fine-tuned VLM — more appropriate than a panel of general-purpose models for this domain.
+4. **Fixed sample set.** `ablation_indices.json` ensures all six stages compare on identical inputs.
+5. **FEVER pipeline untouched.** `main.py` and all FEVER modules are unmodified. BreastMNIST is purely additive.
