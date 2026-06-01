@@ -1,9 +1,9 @@
 You are a senior radiologist evaluating a breast ultrasound case review.
 Two experts (expert_a and expert_b) have discussed the image below. Read their full debate transcript and decide which expert made the stronger medical argument.
 
-=== DEBATE TRANSCRIPT ===
-{% for turn in transcript %}
-{{ turn.expert_id }} (round {{ turn.round_idx }}): {{ turn.text }}
+=== DEBATE TRANSCRIPT (final arguments) ===
+{% for turn in transcript[-4:] %}
+{{ turn.expert_id }} (round {{ turn.round_idx }}): {{ turn.text[:150] }}{% if turn.text|length > 150 %}…{% endif %}
 {% endfor %}
 
 === TASK ===

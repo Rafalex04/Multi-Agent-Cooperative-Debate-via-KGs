@@ -292,28 +292,34 @@ def run_opinion_debate(
     history = list(history or [])
     client = _make_expert_client(cfg)
 
-    if round_idx % 2 == 0:
-        first_id, second_id = "expert_a", "expert_b"
-        first_letter, second_letter = "A", "B"
-    else:
-        first_id, second_id = "expert_b", "expert_a"
-        first_letter, second_letter = "B", "A"
+    first_id, second_id = "expert_a", "expert_b"
+    first_letter, second_letter = "A", "B"
 
-    system_first = _render("system_opinion.j2", expert_letter=first_letter, other_letter=second_letter)
-    system_second = _render("system_opinion.j2", expert_letter=second_letter, other_letter=first_letter)
+    system_first = _render("system_opinion.j2", expert_letter="A", other_letter="B")
+    system_second = _render("system_opinion.j2", expert_letter="B", other_letter="A")
 
     node_first = _free_text_turn(first_id, first_letter, round_idx, image_b64, history, system_first, client, cfg)
     node_second = _free_text_turn(second_id, second_letter, round_idx, image_b64, history + [node_first], system_second, client, cfg)
 
     all_new = [node_first, node_second]
-    finished = any("[FINISH]" in n.text.upper() for n in all_new)
+
+    # Accept [FINISH] or bare FINISH (model sometimes omits brackets).
+    # Ignore if the same response also has NEW FINDING: (mixed format).
+    # Not valid on round 0 — both experts must have spoken at least once first.
+    def _signals_finish(node: DebateNode) -> bool:
+        t = node.text.upper()
+        if "NEW FINDING:" in t:
+            return False
+        return "[FINISH]" in t or re.search(r'(?<!\w)FINISH(?!\w)', t) is not None
+
+    finished = round_idx >= 1 and all(_signals_finish(n) for n in all_new)
 
     logger.info(
         "opinion_debate round %d: Expert A=%s Expert B=%s%s",
         round_idx,
-        node_first.label or "?" if first_id == "expert_a" else node_second.label or "?",
-        node_second.label or "?" if second_id == "expert_b" else node_first.label or "?",
-        " [FINISH signaled — stopping debate]" if finished else "",
+        node_first.label or "?",
+        node_second.label or "?",
+        " [FINISH — debate closed]" if finished else "",
     )
     return all_new, [], finished
 

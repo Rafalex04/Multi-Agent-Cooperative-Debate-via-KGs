@@ -59,6 +59,36 @@ def _sample_prefix(sample_id: str) -> str:
     return re.sub(r'[^a-z0-9]+', '-', f"sample-{sample_id}".lower()).strip('-')
 
 
+def _ollama_unload(model: str, base_url: str) -> None:
+    """Evict a model from Ollama GPU memory (keep_alive=0)."""
+    try:
+        import requests as _req
+        _req.post(f"{base_url}/api/generate", json={"model": model, "keep_alive": 0}, timeout=10)
+        logger.debug("Unloaded %s from GPU", model)
+    except Exception as exc:
+        logger.warning("Could not unload %s: %s", model, exc)
+
+
+def _unload_expert_model(cfg: DictConfig) -> None:
+    """Evict the expert model before the judge call to free VRAM."""
+    if getattr(cfg.run, "use_stub_data", False):
+        return
+    base_url: str = getattr(cfg.model, "ollama_base_url", "http://localhost:11434")
+    _ollama_unload(cfg.model.expert_model, base_url)
+
+
+def _unload_judge_model(cfg: DictConfig) -> None:
+    """Evict the judge model after its call so the expert model can reload."""
+    if getattr(cfg.run, "use_stub_data", False):
+        return
+    backend: str = getattr(cfg.judges, "backend", "vllm")
+    if backend != "ollama":
+        return
+    base_url: str = getattr(cfg.judges, "ollama_base_url", "http://localhost:11434")
+    judge_model: str = getattr(cfg.judges, "ollama_model", "medgemma:4b")
+    _ollama_unload(judge_model, base_url)
+
+
 # ---------------------------------------------------------------------------
 # Verdict helpers
 # ---------------------------------------------------------------------------
@@ -155,18 +185,36 @@ def _run_mode_opinion(
     output_dir: Path,
     judge,
 ) -> tuple[str, float, int]:
-    """Run multi-round free-text debate; judge picks winner."""
+    """Run multi-round free-text debate; judge picks winner.
+
+    Early stop when: both experts write [FINISH], or both agree on the same
+    verdict for 2 consecutive rounds (consensus stop).
+    """
     image_b64 = sample["image_b64"]
     all_nodes: list[DebateNode] = []
+    rounds_used = cfg.run.max_rounds
+    consecutive_agreement = 0
 
     for round_idx in range(cfg.run.max_rounds):
         new_nodes, _, finished = run_opinion_debate(image_b64, cfg, round_idx, history=all_nodes)
         all_nodes.extend(new_nodes)
+
+        round_labels = [n.label for n in new_nodes if n.label]
+        both_agree = len(set(round_labels)) == 1 and len(round_labels) == 2
+        consecutive_agreement = consecutive_agreement + 1 if both_agree else 0
+
         if finished:
+            rounds_used = round_idx + 1
             logger.info("opinion_debate: [FINISH] at round %d — stopping early for sample %s", round_idx, sample["id"])
             break
+        if consecutive_agreement >= 2:
+            rounds_used = round_idx + 1
+            logger.info("opinion_debate: consensus for 2 rounds — stopping at round %d for sample %s", round_idx, sample["id"])
+            break
 
+    _unload_expert_model(cfg)
     judgment: object = judge.pick_winner(all_nodes, image_b64=image_b64)
+    _unload_judge_model(cfg)
     winner_id = judgment.winner  # type: ignore[union-attr]
 
     # The winner's most recent stated label is the verdict.
@@ -182,7 +230,7 @@ def _run_mode_opinion(
     })
     # Opinion mode has no confidence score — binary 0/1 malignant score.
     malignant_score = 1.0 if verdict == "MALIGNANT" else 0.0
-    return verdict, malignant_score, cfg.run.max_rounds
+    return verdict, malignant_score, rounds_used
 
 
 def _run_mode_structured(
