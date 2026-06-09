@@ -1,0 +1,2367 @@
+{
+  "triples": [
+    {
+      "id": "t_001",
+      "subject": "homogeneous_background_echotexture_fat",
+      "relation": "is_a",
+      "object": "tissue_pattern"
+    },
+    {
+      "id": "t_002",
+      "subject": "homogeneous_background_echotexture_fibroglandular",
+      "relation": "is_a",
+      "object": "tissue_pattern"
+    },
+    {
+      "id": "t_003",
+      "subject": "heterogeneous_background_echotexture",
+      "relation": "is_a",
+      "object": "tissue_pattern"
+    },
+    {
+      "id": "t_004",
+      "subject": "tissue_pattern",
+      "relation": "category_descriptor",
+      "object": "breast_tissue_composition"
+    },
+    {
+      "id": "t_005",
+      "subject": "minimal_gtc",
+      "relation": "is_a",
+      "object": "glandular_tissue_component",
+      "notes": "<25% of overall FGT"
+    },
+    {
+      "id": "t_006",
+      "subject": "mild_gtc",
+      "relation": "is_a",
+      "object": "glandular_tissue_component",
+      "notes": "25-49% of overall FGT"
+    },
+    {
+      "id": "t_007",
+      "subject": "moderate_gtc",
+      "relation": "is_a",
+      "object": "glandular_tissue_component",
+      "notes": "50-74% of overall FGT"
+    },
+    {
+      "id": "t_008",
+      "subject": "marked_gtc",
+      "relation": "is_a",
+      "object": "glandular_tissue_component",
+      "notes": ">=75% of overall FGT"
+    },
+    {
+      "id": "t_009",
+      "subject": "oval",
+      "relation": "is_a",
+      "object": "shape_descriptor"
+    },
+    {
+      "id": "t_010",
+      "subject": "lobulated",
+      "relation": "is_a",
+      "object": "shape_descriptor",
+      "notes": "Generally oval with one or more indentations producing undulating contour"
+    },
+    {
+      "id": "t_011",
+      "subject": "round",
+      "relation": "is_a",
+      "object": "shape_descriptor"
+    },
+    {
+      "id": "t_012",
+      "subject": "irregular",
+      "relation": "is_a",
+      "object": "shape_descriptor",
+      "notes": "Neither oval, lobulated, nor round; acute angle protrusions"
+    },
+    {
+      "id": "t_013",
+      "subject": "shape_descriptor",
+      "relation": "category_descriptor",
+      "object": "mass_finding"
+    },
+    {
+      "id": "t_014",
+      "subject": "parallel",
+      "relation": "is_a",
+      "object": "orientation_descriptor",
+      "notes": "Horizontal dimension > anteroposterior dimension in all US orientations"
+    },
+    {
+      "id": "t_015",
+      "subject": "non_parallel",
+      "relation": "is_a",
+      "object": "orientation_descriptor",
+      "notes": "Anteroposterior dimension >= horizontal dimension in any US orientation"
+    },
+    {
+      "id": "t_016",
+      "subject": "orientation_descriptor",
+      "relation": "category_descriptor",
+      "object": "mass_finding"
+    },
+    {
+      "id": "t_017",
+      "subject": "circumscribed",
+      "relation": "is_a",
+      "object": "margin_descriptor",
+      "notes": "Entire margin must be sharply defined"
+    },
+    {
+      "id": "t_018",
+      "subject": "non_circumscribed",
+      "relation": "is_a",
+      "object": "margin_descriptor"
+    },
+    {
+      "id": "t_019",
+      "subject": "indistinct",
+      "relation": "subtype_of",
+      "object": "non_circumscribed",
+      "notes": "Poorly defined/fuzzy with no sharp demarcation"
+    },
+    {
+      "id": "t_020",
+      "subject": "angular",
+      "relation": "subtype_of",
+      "object": "non_circumscribed",
+      "notes": "Sharp corners forming acute angles"
+    },
+    {
+      "id": "t_021",
+      "subject": "microlobulated",
+      "relation": "subtype_of",
+      "object": "non_circumscribed",
+      "notes": "Short-cycle 2-3 mm undulations/ripples"
+    },
+    {
+      "id": "t_022",
+      "subject": "spiculated",
+      "relation": "subtype_of",
+      "object": "non_circumscribed"
+    },
+    {
+      "id": "t_023",
+      "subject": "spiculated",
+      "relation": "suggests_malignancy",
+      "object": "true",
+      "specificity": "high",
+      "notes": "Lexicon: 'often a sign of malignancy'"
+    },
+    {
+      "id": "t_024",
+      "subject": "margin_descriptor",
+      "relation": "category_descriptor",
+      "object": "mass_finding"
+    },
+    {
+      "id": "t_025",
+      "subject": "anechoic",
+      "relation": "is_a",
+      "object": "echo_pattern_descriptor",
+      "notes": "Without internal echoes"
+    },
+    {
+      "id": "t_026",
+      "subject": "hyperechoic",
+      "relation": "is_a",
+      "object": "echo_pattern_descriptor",
+      "notes": "Increased echogenicity relative to fat or equal to fibroglandular tissue"
+    },
+    {
+      "id": "t_027",
+      "subject": "isoechoic",
+      "relation": "is_a",
+      "object": "echo_pattern_descriptor",
+      "notes": "Same echogenicity as subcutaneous fat"
+    },
+    {
+      "id": "t_028",
+      "subject": "hypoechoic",
+      "relation": "is_a",
+      "object": "echo_pattern_descriptor",
+      "notes": "Less echogenic than fat, not anechoic"
+    },
+    {
+      "id": "t_029",
+      "subject": "heterogeneous_echo_pattern",
+      "relation": "is_a",
+      "object": "echo_pattern_descriptor",
+      "notes": "Mix of echo patterns"
+    },
+    {
+      "id": "t_030",
+      "subject": "mixed_solid_and_cystic",
+      "relation": "is_a",
+      "object": "echo_pattern_descriptor",
+      "notes": "Contains both solid and cystic/fluid components"
+    },
+    {
+      "id": "t_031",
+      "subject": "echo_pattern_descriptor",
+      "relation": "category_descriptor",
+      "object": "mass_finding"
+    },
+    {
+      "id": "t_032",
+      "subject": "no_posterior_features",
+      "relation": "is_a",
+      "object": "posterior_feature_descriptor"
+    },
+    {
+      "id": "t_033",
+      "subject": "posterior_enhancement",
+      "relation": "is_a",
+      "object": "posterior_feature_descriptor",
+      "notes": "Echogenic column deep to mass brighter than adjacent tissue"
+    },
+    {
+      "id": "t_034",
+      "subject": "posterior_shadowing",
+      "relation": "is_a",
+      "object": "posterior_feature_descriptor",
+      "notes": "Area posterior to mass darker than tissue at same depth"
+    },
+    {
+      "id": "t_035",
+      "subject": "posterior_feature_descriptor",
+      "relation": "category_descriptor",
+      "object": "mass_finding"
+    },
+    {
+      "id": "t_036",
+      "subject": "regional",
+      "relation": "is_a",
+      "object": "non_mass_distribution_descriptor",
+      "notes": "Large geographic area, not linear or segmental"
+    },
+    {
+      "id": "t_037",
+      "subject": "focal",
+      "relation": "is_a",
+      "object": "non_mass_distribution_descriptor",
+      "notes": "Small, confined area"
+    },
+    {
+      "id": "t_038",
+      "subject": "linear",
+      "relation": "is_a",
+      "object": "non_mass_distribution_descriptor",
+      "notes": "May conform to ductal distribution"
+    },
+    {
+      "id": "t_039",
+      "subject": "segmental",
+      "relation": "is_a",
+      "object": "non_mass_distribution_descriptor",
+      "notes": "Triangular, base at pectoralis, apex at nipple"
+    },
+    {
+      "id": "t_040",
+      "subject": "non_mass_hyperechoic",
+      "relation": "is_a",
+      "object": "non_mass_echo_pattern_descriptor"
+    },
+    {
+      "id": "t_041",
+      "subject": "non_mass_heterogeneous",
+      "relation": "is_a",
+      "object": "non_mass_echo_pattern_descriptor"
+    },
+    {
+      "id": "t_042",
+      "subject": "non_mass_hypoechoic",
+      "relation": "is_a",
+      "object": "non_mass_echo_pattern_descriptor"
+    },
+    {
+      "id": "t_043",
+      "subject": "non_mass_no_posterior_features",
+      "relation": "is_a",
+      "object": "non_mass_posterior_feature_descriptor"
+    },
+    {
+      "id": "t_044",
+      "subject": "non_mass_posterior_enhancement",
+      "relation": "is_a",
+      "object": "non_mass_posterior_feature_descriptor"
+    },
+    {
+      "id": "t_045",
+      "subject": "non_mass_posterior_shadowing",
+      "relation": "is_a",
+      "object": "non_mass_posterior_feature_descriptor"
+    },
+    {
+      "id": "t_046",
+      "subject": "macrocalcifications",
+      "relation": "is_a",
+      "object": "calcification_type"
+    },
+    {
+      "id": "t_047",
+      "subject": "macrocalcifications",
+      "relation": "associated_with",
+      "object": "posterior_shadowing",
+      "notes": "Large enough to attenuate the US beam"
+    },
+    {
+      "id": "t_048",
+      "subject": "microcalcifications",
+      "relation": "is_a",
+      "object": "calcification_type",
+      "notes": "Most conspicuous when within hypoechoic mass, non-mass lesion, or duct"
+    },
+    {
+      "id": "t_049",
+      "subject": "calcifications_in_mass_or_non_mass_lesion",
+      "relation": "is_a",
+      "object": "calcification_type"
+    },
+    {
+      "id": "t_050",
+      "subject": "calcifications_outside_of_mass_or_non_mass_lesion",
+      "relation": "is_a",
+      "object": "calcification_type",
+      "notes": "Often less conspicuous"
+    },
+    {
+      "id": "t_051",
+      "subject": "intraductal_calcifications_outside_of_mass",
+      "relation": "is_a",
+      "object": "calcification_type"
+    },
+    {
+      "id": "t_052",
+      "subject": "echogenic_pseudocapsule",
+      "relation": "is_a",
+      "object": "associated_feature",
+      "notes": "Thin white line; must be uniformly thin and visible around entire margin"
+    },
+    {
+      "id": "t_053",
+      "subject": "echogenic_pseudocapsule",
+      "relation": "present_in_benign",
+      "object": "true",
+      "specificity": "medium",
+      "notes": "Inferred: lexicon describes it surrounding 'otherwise circumscribed' margins; commonly seen in fibroadenomas",
+      "confidence": "medium"
+    },
+    {
+      "id": "t_054",
+      "subject": "echogenic_rind",
+      "relation": "is_a",
+      "object": "associated_feature",
+      "notes": "Thick echogenic band that disrupts texture of normal surrounding tissue"
+    },
+    {
+      "id": "t_055",
+      "subject": "architectural_distortion",
+      "relation": "is_a",
+      "object": "associated_feature",
+      "notes": "Thin lines radiating from a point and/or focal retraction or straightening"
+    },
+    {
+      "id": "t_056",
+      "subject": "duct_changes",
+      "relation": "is_a",
+      "object": "associated_feature"
+    },
+    {
+      "id": "t_057",
+      "subject": "skin_thickening",
+      "relation": "is_a",
+      "object": "skin_change",
+      "notes": ">2 mm thickness (up to 4 mm periareolar and inframammary fold)"
+    },
+    {
+      "id": "t_058",
+      "subject": "skin_retraction",
+      "relation": "is_a",
+      "object": "skin_change",
+      "notes": "Skin surface concave, indented, appears fixed"
+    },
+    {
+      "id": "t_059",
+      "subject": "skin_change",
+      "relation": "is_a",
+      "object": "associated_feature"
+    },
+    {
+      "id": "t_060",
+      "subject": "edema",
+      "relation": "is_a",
+      "object": "associated_feature",
+      "notes": "Interconnected, arborizing hypoechoic/anechoic lines"
+    },
+    {
+      "id": "t_061",
+      "subject": "avascular",
+      "relation": "is_a",
+      "object": "vascularity_descriptor"
+    },
+    {
+      "id": "t_062",
+      "subject": "internal_vascularity",
+      "relation": "is_a",
+      "object": "vascularity_descriptor"
+    },
+    {
+      "id": "t_063",
+      "subject": "peripheral_hypervascularity",
+      "relation": "is_a",
+      "object": "vascularity_descriptor"
+    },
+    {
+      "id": "t_064",
+      "subject": "soft_elasticity",
+      "relation": "is_a",
+      "object": "elasticity_descriptor"
+    },
+    {
+      "id": "t_065",
+      "subject": "soft_elasticity",
+      "relation": "suggests_benign",
+      "object": "true",
+      "specificity": "low",
+      "notes": "Lexicon: 'tend to be benign, though there are exceptions'"
+    },
+    {
+      "id": "t_066",
+      "subject": "intermediate_elasticity",
+      "relation": "is_a",
+      "object": "elasticity_descriptor"
+    },
+    {
+      "id": "t_067",
+      "subject": "hard_elasticity",
+      "relation": "is_a",
+      "object": "elasticity_descriptor"
+    },
+    {
+      "id": "t_068",
+      "subject": "hard_elasticity",
+      "relation": "suggests_malignancy",
+      "object": "true",
+      "specificity": "low",
+      "notes": "Lexicon: 'tend to be malignant, though there are exceptions'"
+    },
+    {
+      "id": "t_069",
+      "subject": "simple_cyst",
+      "relation": "is_a",
+      "object": "special_case"
+    },
+    {
+      "id": "t_070",
+      "subject": "simple_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "circumscribed"
+    },
+    {
+      "id": "t_071",
+      "subject": "simple_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "round_or_oval"
+    },
+    {
+      "id": "t_072",
+      "subject": "simple_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "anechoic"
+    },
+    {
+      "id": "t_073",
+      "subject": "simple_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "thin_wall"
+    },
+    {
+      "id": "t_074",
+      "subject": "simple_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "posterior_enhancement"
+    },
+    {
+      "id": "t_075",
+      "subject": "clustered_microcysts",
+      "relation": "is_a",
+      "object": "special_case"
+    },
+    {
+      "id": "t_076",
+      "subject": "clustered_microcysts",
+      "relation": "ultrasound_appearance_includes",
+      "object": "cluster_of_anechoic_masses"
+    },
+    {
+      "id": "t_077",
+      "subject": "clustered_microcysts",
+      "relation": "ultrasound_appearance_includes",
+      "object": "thin_intervening_septations_under_0_5mm"
+    },
+    {
+      "id": "t_078",
+      "subject": "clustered_microcysts",
+      "relation": "ultrasound_appearance_includes",
+      "object": "no_discrete_solid_component"
+    },
+    {
+      "id": "t_079",
+      "subject": "complicated_cyst",
+      "relation": "is_a",
+      "object": "special_case"
+    },
+    {
+      "id": "t_080",
+      "subject": "complicated_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "homogeneous_low_level_internal_echoes"
+    },
+    {
+      "id": "t_081",
+      "subject": "complicated_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "layered_appearance_shifting_with_position"
+    },
+    {
+      "id": "t_082",
+      "subject": "complicated_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "scintillating_echogenic_foci"
+    },
+    {
+      "id": "t_083",
+      "subject": "mass_in_or_on_skin",
+      "relation": "is_a",
+      "object": "special_case",
+      "notes": "Includes sebaceous cysts, epidermal inclusion cysts, keloids, moles, pimples, neurofibromas, accessory nipples"
+    },
+    {
+      "id": "t_084",
+      "subject": "foreign_body",
+      "relation": "is_a",
+      "object": "special_case",
+      "notes": "Biopsy marker clips, localization seeds, surgical clips, wires, silicone, etc."
+    },
+    {
+      "id": "t_085",
+      "subject": "implants",
+      "relation": "is_a",
+      "object": "special_case"
+    },
+    {
+      "id": "t_086",
+      "subject": "implants",
+      "relation": "ultrasound_appearance_includes",
+      "object": "anechoic"
+    },
+    {
+      "id": "t_087",
+      "subject": "implants",
+      "relation": "ultrasound_appearance_includes",
+      "object": "curvilinear_echogenic_capsule"
+    },
+    {
+      "id": "t_088",
+      "subject": "postsurgical_changes",
+      "relation": "is_a",
+      "object": "special_case"
+    },
+    {
+      "id": "t_089",
+      "subject": "postsurgical_seroma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "cystic_appearance"
+    },
+    {
+      "id": "t_090",
+      "subject": "postsurgical_seroma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "septations_possible"
+    },
+    {
+      "id": "t_091",
+      "subject": "postsurgical_seroma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "internal_debris_possible"
+    },
+    {
+      "id": "t_092",
+      "subject": "postsurgical_seroma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "avascular"
+    },
+    {
+      "id": "t_093",
+      "subject": "postsurgical_scar_tissue",
+      "relation": "ultrasound_appearance_includes",
+      "object": "posterior_shadowing"
+    },
+    {
+      "id": "t_094",
+      "subject": "postsurgical_scar_tissue",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hypoechoic"
+    },
+    {
+      "id": "t_095",
+      "subject": "postsurgical_scar_tissue",
+      "relation": "ultrasound_appearance_includes",
+      "object": "irregular_shape"
+    },
+    {
+      "id": "t_096",
+      "subject": "postsurgical_scar_tissue",
+      "relation": "ultrasound_appearance_includes",
+      "object": "spiculated_margin_possible"
+    },
+    {
+      "id": "t_097",
+      "subject": "postsurgical_scar_tissue",
+      "relation": "ultrasound_appearance_includes",
+      "object": "architectural_distortion"
+    },
+    {
+      "id": "t_098",
+      "subject": "postsurgical_scar_tissue",
+      "relation": "mimics",
+      "object": "malignancy",
+      "notes": "May display suspicious findings"
+    },
+    {
+      "id": "t_099",
+      "subject": "fat_necrosis",
+      "relation": "is_a",
+      "object": "special_case"
+    },
+    {
+      "id": "t_100",
+      "subject": "post_traumatic_changes",
+      "relation": "is_a",
+      "object": "special_case"
+    },
+    {
+      "id": "t_101",
+      "subject": "abscess",
+      "relation": "is_a",
+      "object": "special_case"
+    },
+    {
+      "id": "t_102",
+      "subject": "abscess",
+      "relation": "associated_with",
+      "object": "palpable_lump_with_pain_swelling_erythema"
+    },
+    {
+      "id": "t_103",
+      "subject": "vascular_abnormalities",
+      "relation": "is_a",
+      "object": "special_case"
+    },
+    {
+      "id": "t_104",
+      "subject": "arteriovenous_malformation",
+      "relation": "subtype_of",
+      "object": "vascular_abnormalities"
+    },
+    {
+      "id": "t_105",
+      "subject": "mondors_disease",
+      "relation": "subtype_of",
+      "object": "vascular_abnormalities",
+      "notes": "Superficial thrombophlebitis; palpable cord"
+    },
+    {
+      "id": "t_106",
+      "subject": "intramammary_lymph_node",
+      "relation": "is_a",
+      "object": "lymph_node"
+    },
+    {
+      "id": "t_107",
+      "subject": "intramammary_lymph_node",
+      "relation": "often_located_in",
+      "object": "upper_outer_quadrant",
+      "notes": "Especially axillary tail"
+    },
+    {
+      "id": "t_108",
+      "subject": "intramammary_lymph_node",
+      "relation": "typical_size",
+      "object": "3mm_to_1cm"
+    },
+    {
+      "id": "t_109",
+      "subject": "axillary_lymph_node_level_i",
+      "relation": "subtype_of",
+      "object": "axillary_lymph_node",
+      "notes": "Lateral to lateral margin of pectoralis minor"
+    },
+    {
+      "id": "t_110",
+      "subject": "axillary_lymph_node_level_ii",
+      "relation": "subtype_of",
+      "object": "axillary_lymph_node",
+      "notes": "Posterior to or between pectoralis muscles"
+    },
+    {
+      "id": "t_111",
+      "subject": "axillary_lymph_node_level_iii",
+      "relation": "subtype_of",
+      "object": "axillary_lymph_node",
+      "notes": "Medial to medial margin of pectoralis minor"
+    },
+    {
+      "id": "t_112",
+      "subject": "internal_mammary_lymph_node",
+      "relation": "is_a",
+      "object": "lymph_node"
+    },
+    {
+      "id": "t_113",
+      "subject": "supraclavicular_lymph_node",
+      "relation": "is_a",
+      "object": "lymph_node",
+      "notes": "Ipsilateral supraclavicular involvement is highest N stage confined to regional disease (N3c)"
+    },
+    {
+      "id": "t_114",
+      "subject": "birads_0",
+      "relation": "definition",
+      "object": "incomplete_assessment"
+    },
+    {
+      "id": "t_115",
+      "subject": "birads_0",
+      "relation": "management",
+      "object": "recall_for_additional_imaging_or_comparison_to_priors"
+    },
+    {
+      "id": "t_116",
+      "subject": "birads_1",
+      "relation": "definition",
+      "object": "negative"
+    },
+    {
+      "id": "t_117",
+      "subject": "birads_1",
+      "relation": "likelihood_of_malignancy",
+      "object": "essentially_0_percent"
+    },
+    {
+      "id": "t_118",
+      "subject": "birads_2",
+      "relation": "definition",
+      "object": "benign"
+    },
+    {
+      "id": "t_119",
+      "subject": "birads_2",
+      "relation": "likelihood_of_malignancy",
+      "object": "essentially_0_percent"
+    },
+    {
+      "id": "t_120",
+      "subject": "birads_3",
+      "relation": "definition",
+      "object": "probably_benign"
+    },
+    {
+      "id": "t_121",
+      "subject": "birads_3",
+      "relation": "likelihood_of_malignancy_range",
+      "object": ">0_to_<=2_percent"
+    },
+    {
+      "id": "t_122",
+      "subject": "birads_4",
+      "relation": "definition",
+      "object": "suspicious"
+    },
+    {
+      "id": "t_123",
+      "subject": "birads_4",
+      "relation": "likelihood_of_malignancy_range",
+      "object": ">2_to_<95_percent"
+    },
+    {
+      "id": "t_124",
+      "subject": "birads_4a",
+      "relation": "birads_subcategory_of",
+      "object": "birads_4"
+    },
+    {
+      "id": "t_125",
+      "subject": "birads_4a",
+      "relation": "likelihood_of_malignancy_range",
+      "object": ">2_to_<=10_percent",
+      "notes": "Low level of suspicion"
+    },
+    {
+      "id": "t_126",
+      "subject": "birads_4b",
+      "relation": "birads_subcategory_of",
+      "object": "birads_4"
+    },
+    {
+      "id": "t_127",
+      "subject": "birads_4b",
+      "relation": "likelihood_of_malignancy_range",
+      "object": ">10_to_<=50_percent",
+      "notes": "Moderate level of suspicion"
+    },
+    {
+      "id": "t_128",
+      "subject": "birads_4c",
+      "relation": "birads_subcategory_of",
+      "object": "birads_4"
+    },
+    {
+      "id": "t_129",
+      "subject": "birads_4c",
+      "relation": "likelihood_of_malignancy_range",
+      "object": ">50_to_<95_percent",
+      "notes": "High level of suspicion"
+    },
+    {
+      "id": "t_130",
+      "subject": "birads_5",
+      "relation": "definition",
+      "object": "highly_suggestive_of_malignancy"
+    },
+    {
+      "id": "t_131",
+      "subject": "birads_5",
+      "relation": "likelihood_of_malignancy_minimum",
+      "object": ">=95_percent"
+    },
+    {
+      "id": "t_132",
+      "subject": "birads_6",
+      "relation": "definition",
+      "object": "known_biopsy_proven_malignancy"
+    },
+    {
+      "id": "t_133",
+      "subject": "birads_1",
+      "relation": "indicates",
+      "object": "no_finding_present"
+    },
+    {
+      "id": "t_134",
+      "subject": "birads_1",
+      "relation": "indicates",
+      "object": "normal_examination"
+    },
+    {
+      "id": "t_135",
+      "subject": "calcified_fibroadenoma",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_136",
+      "subject": "secretory_calcifications",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_137",
+      "subject": "oil_cyst",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_138",
+      "subject": "breast_lipoma",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_139",
+      "subject": "galactocele",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_140",
+      "subject": "mixed_density_hamartoma",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_141",
+      "subject": "intramammary_lymph_node",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_142",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_143",
+      "subject": "simple_breast_cyst",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_144",
+      "subject": "breast_implants",
+      "relation": "typically_classified_as",
+      "object": "birads_2"
+    },
+    {
+      "id": "t_145",
+      "subject": "complicated_cyst_with_uniform_low_level_echoes",
+      "relation": "typically_classified_as",
+      "object": "birads_3"
+    },
+    {
+      "id": "t_146",
+      "subject": "microlobulated_or_oval_clustered_microcysts_mass",
+      "relation": "typically_classified_as",
+      "object": "birads_3",
+      "notes": "BI-RADS 2 may also be appropriate if appearance is classic"
+    },
+    {
+      "id": "t_147",
+      "subject": "hypoechoic_circumscribed_oval_parallel_mass",
+      "relation": "typically_classified_as",
+      "object": "birads_3",
+      "notes": "Without posterior features or with minimal posterior enhancement"
+    },
+    {
+      "id": "t_148",
+      "subject": "hyperechoic_mass_with_central_hypoechoic_anechoic_components_and_surrounding_oedema",
+      "relation": "typically_classified_as",
+      "object": "birads_3",
+      "notes": "Consistent with but not diagnostic of fat necrosis"
+    },
+    {
+      "id": "t_149",
+      "subject": "refraction_shadowing_without_associated_mass",
+      "relation": "typically_classified_as",
+      "object": "birads_3"
+    },
+    {
+      "id": "t_150",
+      "subject": "architectural_distortion_due_to_postsurgical_scar",
+      "relation": "typically_classified_as",
+      "object": "birads_3",
+      "confidence": "low",
+      "notes": "Lexicon notes sparse data supporting this approach"
+    },
+    {
+      "id": "t_151",
+      "subject": "fibroadenoma",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_152",
+      "subject": "fibroadenoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "well_circumscribed"
+    },
+    {
+      "id": "t_153",
+      "subject": "fibroadenoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "round_or_ovoid_or_macrolobulated"
+    },
+    {
+      "id": "t_154",
+      "subject": "fibroadenoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "uniform_hypoechogenicity"
+    },
+    {
+      "id": "t_155",
+      "subject": "fibroadenoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "intralesional_calcification_possible",
+      "notes": "Sonographically detectable calcification in ~10% of cases"
+    },
+    {
+      "id": "t_156",
+      "subject": "fibroadenoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "thin_echogenic_pseudocapsule_possible"
+    },
+    {
+      "id": "t_157",
+      "subject": "fibroadenoma",
+      "relation": "mimics",
+      "object": "phyllodes_tumour",
+      "notes": "May be indistinguishable on ultrasound"
+    },
+    {
+      "id": "t_158",
+      "subject": "fibroadenoma",
+      "relation": "differential_for",
+      "object": "galactocele"
+    },
+    {
+      "id": "t_159",
+      "subject": "simple_breast_cyst",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_160",
+      "subject": "simple_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "oval_or_round"
+    },
+    {
+      "id": "t_161",
+      "subject": "simple_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "anechoic"
+    },
+    {
+      "id": "t_162",
+      "subject": "simple_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "circumscribed_margins"
+    },
+    {
+      "id": "t_163",
+      "subject": "simple_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "posterior_acoustic_enhancement"
+    },
+    {
+      "id": "t_164",
+      "subject": "simple_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "reverberation_artifact"
+    },
+    {
+      "id": "t_165",
+      "subject": "simple_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "smooth_walls"
+    },
+    {
+      "id": "t_166",
+      "subject": "simple_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "peripheral_calcifications_possible"
+    },
+    {
+      "id": "t_167",
+      "subject": "simple_breast_cyst",
+      "relation": "differential_for",
+      "object": "complicated_breast_cyst"
+    },
+    {
+      "id": "t_168",
+      "subject": "simple_breast_cyst",
+      "relation": "differential_for",
+      "object": "complex_cystic_and_solid_breast_mass"
+    },
+    {
+      "id": "t_169",
+      "subject": "simple_breast_cyst",
+      "relation": "differential_for",
+      "object": "clustered_microcysts"
+    },
+    {
+      "id": "t_170",
+      "subject": "complicated_breast_cyst",
+      "relation": "is_a",
+      "object": "cystic_breast_lesion"
+    },
+    {
+      "id": "t_171",
+      "subject": "complicated_breast_cyst",
+      "relation": "likelihood_of_malignancy_range",
+      "object": "less_than_2_percent"
+    },
+    {
+      "id": "t_172",
+      "subject": "complicated_breast_cyst",
+      "relation": "typically_classified_as",
+      "object": "birads_3",
+      "notes": "'reported as probably benign'"
+    },
+    {
+      "id": "t_173",
+      "subject": "complicated_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "thin_wall"
+    },
+    {
+      "id": "t_174",
+      "subject": "complicated_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "posterior_acoustic_enhancement_possible"
+    },
+    {
+      "id": "t_175",
+      "subject": "complicated_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "homogeneous_hypoechoic_content"
+    },
+    {
+      "id": "t_176",
+      "subject": "complicated_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "low_level_internal_echoes"
+    },
+    {
+      "id": "t_177",
+      "subject": "complicated_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "internal_echoes_shape_change_with_patient_position"
+    },
+    {
+      "id": "t_178",
+      "subject": "complicated_breast_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "sloping_fluid_fluid_levels"
+    },
+    {
+      "id": "t_179",
+      "subject": "complicated_breast_cyst",
+      "relation": "mimics",
+      "object": "solid_mass",
+      "notes": "Low internal echoes may appear as homogeneous hypoechoic mass"
+    },
+    {
+      "id": "t_180",
+      "subject": "complicated_breast_cyst",
+      "relation": "differential_for",
+      "object": "complex_cystic_and_solid_breast_mass"
+    },
+    {
+      "id": "t_181",
+      "subject": "internal_vascularity",
+      "relation": "suggests_solid_mass",
+      "object": "true",
+      "notes": "Power Doppler detection of internal vascularity positively proves solid mass; absence does not exclude"
+    },
+    {
+      "id": "t_182",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "also_known_as",
+      "object": "complex_breast_cyst"
+    },
+    {
+      "id": "t_183",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "ultrasound_appearance_includes",
+      "object": "thick_wall"
+    },
+    {
+      "id": "t_184",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "ultrasound_appearance_includes",
+      "object": "thick_septa"
+    },
+    {
+      "id": "t_185",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "ultrasound_appearance_includes",
+      "object": "intracystic_mass"
+    },
+    {
+      "id": "t_186",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "ultrasound_appearance_includes",
+      "object": "solid_components"
+    },
+    {
+      "id": "t_187",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "ultrasound_appearance_includes",
+      "object": "posterior_acoustic_enhancement",
+      "notes": "Majority show enhancement due to cystic component"
+    },
+    {
+      "id": "t_188",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "ultrasound_appearance_includes",
+      "object": "macrolobulated_or_microlobulated_or_indistinct_or_irregular_margins"
+    },
+    {
+      "id": "t_189",
+      "subject": "complex_cyst_type_i",
+      "relation": "definition",
+      "object": "thick_wall_or_thick_septa_over_0_5mm"
+    },
+    {
+      "id": "t_190",
+      "subject": "complex_cyst_type_i",
+      "relation": "likelihood_of_malignancy",
+      "object": "7.1_percent_ppv"
+    },
+    {
+      "id": "t_191",
+      "subject": "complex_cyst_type_ii",
+      "relation": "definition",
+      "object": "intracystic_with_discrete_solid_mural_lesions"
+    },
+    {
+      "id": "t_192",
+      "subject": "complex_cyst_type_ii",
+      "relation": "likelihood_of_malignancy",
+      "object": "16.7_percent_ppv"
+    },
+    {
+      "id": "t_193",
+      "subject": "complex_cyst_type_iii",
+      "relation": "definition",
+      "object": "mixed_cystic_solid_at_least_50_percent_cystic"
+    },
+    {
+      "id": "t_194",
+      "subject": "complex_cyst_type_iii",
+      "relation": "likelihood_of_malignancy",
+      "object": "61.1_percent_ppv"
+    },
+    {
+      "id": "t_195",
+      "subject": "complex_cyst_type_iv",
+      "relation": "definition",
+      "object": "predominantly_solid_at_least_50_percent_with_cystic_foci"
+    },
+    {
+      "id": "t_196",
+      "subject": "complex_cyst_type_iv",
+      "relation": "likelihood_of_malignancy",
+      "object": "44.8_percent_ppv"
+    },
+    {
+      "id": "t_197",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "associated_with_malignancy_predictor",
+      "object": "lesion_size_greater_than_or_equal_2cm"
+    },
+    {
+      "id": "t_198",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "associated_with_malignancy_predictor",
+      "object": "absence_of_circumscribed_margins"
+    },
+    {
+      "id": "t_199",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "associated_with_malignancy_predictor",
+      "object": "resistive_indices_greater_than_or_equal_0_7"
+    },
+    {
+      "id": "t_200",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "associated_with_malignancy_predictor",
+      "object": "axillary_abnormal_nodes"
+    },
+    {
+      "id": "t_201",
+      "subject": "mobile_echogenic_component_in_cyst",
+      "relation": "indicates",
+      "object": "debris_or_pus_or_clot"
+    },
+    {
+      "id": "t_202",
+      "subject": "immobile_echogenic_component_in_cyst",
+      "relation": "indicates",
+      "object": "true_intracystic_mass_or_adherent_debris"
+    },
+    {
+      "id": "t_203",
+      "subject": "oil_cyst",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_204",
+      "subject": "oil_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hypoechoic",
+      "notes": "Most oil cysts"
+    },
+    {
+      "id": "t_205",
+      "subject": "oil_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "smooth_walls"
+    },
+    {
+      "id": "t_206",
+      "subject": "oil_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "variable_echogenicity"
+    },
+    {
+      "id": "t_207",
+      "subject": "oil_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "no_posterior_features_typical",
+      "notes": "Neither posterior acoustic enhancement nor shadowing typically"
+    },
+    {
+      "id": "t_208",
+      "subject": "oil_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "fat_fluid_levels_possible"
+    },
+    {
+      "id": "t_209",
+      "subject": "oil_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "rim_calcifications_with_posterior_shadowing_possible"
+    },
+    {
+      "id": "t_210",
+      "subject": "oil_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "thick_walls_possible",
+      "notes": "Complex features"
+    },
+    {
+      "id": "t_211",
+      "subject": "oil_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "mural_nodularity_possible",
+      "notes": "Complex features"
+    },
+    {
+      "id": "t_212",
+      "subject": "oil_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "internal_echoic_bands_possible",
+      "notes": "Complex features"
+    },
+    {
+      "id": "t_213",
+      "subject": "oil_cyst",
+      "relation": "differential_for",
+      "object": "fat_necrosis"
+    },
+    {
+      "id": "t_214",
+      "subject": "oil_cyst",
+      "relation": "differential_for",
+      "object": "intramammary_lipoma"
+    },
+    {
+      "id": "t_215",
+      "subject": "oil_cyst",
+      "relation": "mimics",
+      "object": "seroma",
+      "notes": "Often indistinguishable on ultrasound"
+    },
+    {
+      "id": "t_216",
+      "subject": "oil_cyst",
+      "relation": "differential_for",
+      "object": "galactocele"
+    },
+    {
+      "id": "t_217",
+      "subject": "oil_cyst",
+      "relation": "mimics",
+      "object": "intracystic_mass",
+      "notes": "A very small proportion can represent intracystic mass"
+    },
+    {
+      "id": "t_218",
+      "subject": "intramammary_lymph_node",
+      "relation": "is_a",
+      "object": "benign_breast_lesion",
+      "notes": "Normal/physiological IMLN"
+    },
+    {
+      "id": "t_219",
+      "subject": "intramammary_lymph_node",
+      "relation": "ultrasound_appearance_includes",
+      "object": "solid_reniform"
+    },
+    {
+      "id": "t_220",
+      "subject": "intramammary_lymph_node",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hypoechoic"
+    },
+    {
+      "id": "t_221",
+      "subject": "intramammary_lymph_node",
+      "relation": "ultrasound_appearance_includes",
+      "object": "well_defined_outer_margin"
+    },
+    {
+      "id": "t_222",
+      "subject": "intramammary_lymph_node",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hyperechoic_central_hilar_fat"
+    },
+    {
+      "id": "t_223",
+      "subject": "intramammary_lymph_node",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hilar_blood_flow_on_doppler"
+    },
+    {
+      "id": "t_224",
+      "subject": "intramammary_lymph_node_loss_of_circumscription",
+      "relation": "suggests_malignancy",
+      "object": "true",
+      "specificity": "medium",
+      "notes": "If lesion loses well-defined feature on follow-up, not a simple node"
+    },
+    {
+      "id": "t_225",
+      "subject": "metastatic_intramammary_lymph_node",
+      "relation": "ultrasound_appearance_includes",
+      "object": "round_well_defined_homogeneous_high_density_mass_over_1cm"
+    },
+    {
+      "id": "t_226",
+      "subject": "intramammary_lymph_node",
+      "relation": "mimics",
+      "object": "early_breast_cancer_rarely"
+    },
+    {
+      "id": "t_227",
+      "subject": "breast_lipoma",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_228",
+      "subject": "breast_lipoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "rounded"
+    },
+    {
+      "id": "t_229",
+      "subject": "breast_lipoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "isoechoic_or_slightly_hyperechoic_to_surrounding_fat"
+    },
+    {
+      "id": "t_230",
+      "subject": "breast_lipoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "occasionally_hypoechoic"
+    },
+    {
+      "id": "t_231",
+      "subject": "breast_lipoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "thin_echogenic_septations_parallel_to_skin"
+    },
+    {
+      "id": "t_232",
+      "subject": "breast_lipoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "compressible"
+    },
+    {
+      "id": "t_233",
+      "subject": "breast_lipoma",
+      "relation": "differential_for",
+      "object": "breast_hamartoma",
+      "notes": "Lipoma readily distinguished from hamartoma by US and mammogram"
+    },
+    {
+      "id": "t_234",
+      "subject": "breast_lipoma",
+      "relation": "often_located_in",
+      "object": "subcutaneous_plane"
+    },
+    {
+      "id": "t_235",
+      "subject": "breast_lipoma",
+      "relation": "typical_size",
+      "object": "up_to_2cm"
+    },
+    {
+      "id": "t_236",
+      "subject": "galactocele",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_237",
+      "subject": "galactocele",
+      "relation": "ultrasound_appearance_includes",
+      "object": "cystic_or_multicystic",
+      "notes": "~50% of cases"
+    },
+    {
+      "id": "t_238",
+      "subject": "galactocele",
+      "relation": "ultrasound_appearance_includes",
+      "object": "mixed_cystic_and_solid",
+      "notes": "~37% of cases"
+    },
+    {
+      "id": "t_239",
+      "subject": "galactocele",
+      "relation": "ultrasound_appearance_includes",
+      "object": "solid_appearance",
+      "notes": "~13% of cases"
+    },
+    {
+      "id": "t_240",
+      "subject": "galactocele",
+      "relation": "ultrasound_appearance_includes",
+      "object": "lack_of_blood_flow_on_color_doppler"
+    },
+    {
+      "id": "t_241",
+      "subject": "galactocele",
+      "relation": "often_located_in",
+      "object": "subareolar_region"
+    },
+    {
+      "id": "t_242",
+      "subject": "galactocele",
+      "relation": "differential_for",
+      "object": "lactating_adenoma",
+      "notes": "Solid lesion that may show colour flow"
+    },
+    {
+      "id": "t_243",
+      "subject": "galactocele",
+      "relation": "differential_for",
+      "object": "breast_abscess"
+    },
+    {
+      "id": "t_244",
+      "subject": "galactocele",
+      "relation": "differential_for",
+      "object": "fibroadenoma",
+      "notes": "Fibroadenoma classically ovoid/almond-shaped with smooth border, internal homogeneous echogenicity, and acoustic enhancement"
+    },
+    {
+      "id": "t_245",
+      "subject": "galactocele",
+      "relation": "differential_for",
+      "object": "breast_carcinoma",
+      "notes": "Especially for certain solid-appearing galactoceles"
+    },
+    {
+      "id": "t_246",
+      "subject": "fat_necrosis",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_247",
+      "subject": "fat_necrosis_acute_phase",
+      "relation": "ultrasound_appearance_includes",
+      "object": "increased_echogenicity",
+      "notes": "Within days; due to oedema of fatty tissue"
+    },
+    {
+      "id": "t_248",
+      "subject": "fat_necrosis_subacute_phase",
+      "relation": "ultrasound_appearance_includes",
+      "object": "ill_defined_complex_cystic_lesion",
+      "notes": "Days to months"
+    },
+    {
+      "id": "t_249",
+      "subject": "fat_necrosis_subacute_phase",
+      "relation": "ultrasound_appearance_includes",
+      "object": "uni_or_multiloculated_with_low_level_echoes"
+    },
+    {
+      "id": "t_250",
+      "subject": "fat_necrosis_subacute_phase",
+      "relation": "ultrasound_appearance_includes",
+      "object": "surrounding_oedematous_fat"
+    },
+    {
+      "id": "t_251",
+      "subject": "fat_necrosis_late_phase",
+      "relation": "ultrasound_appearance_includes",
+      "object": "calcified_walls",
+      "notes": "1.5 years or more"
+    },
+    {
+      "id": "t_252",
+      "subject": "fat_necrosis_late_phase",
+      "relation": "ultrasound_appearance_includes",
+      "object": "posterior_shadowing"
+    },
+    {
+      "id": "t_253",
+      "subject": "fat_necrosis_late_phase",
+      "relation": "ultrasound_appearance_includes",
+      "object": "angular_margin_possible"
+    },
+    {
+      "id": "t_254",
+      "subject": "fat_necrosis_late_phase",
+      "relation": "ultrasound_appearance_includes",
+      "object": "spiculated_mass_possible"
+    },
+    {
+      "id": "t_255",
+      "subject": "fat_necrosis_late_phase",
+      "relation": "ultrasound_appearance_includes",
+      "object": "echogenic_rim_possible"
+    },
+    {
+      "id": "t_256",
+      "subject": "fat_necrosis",
+      "relation": "mimics",
+      "object": "intracystic_carcinoma"
+    },
+    {
+      "id": "t_257",
+      "subject": "fat_necrosis",
+      "relation": "differential_for",
+      "object": "lipoma"
+    },
+    {
+      "id": "t_258",
+      "subject": "fat_necrosis",
+      "relation": "differential_for",
+      "object": "fibroadenolipoma"
+    },
+    {
+      "id": "t_259",
+      "subject": "fat_necrosis",
+      "relation": "differential_for",
+      "object": "galactocele"
+    },
+    {
+      "id": "t_260",
+      "subject": "fat_necrosis",
+      "relation": "often_located_in",
+      "object": "subareolar_region"
+    },
+    {
+      "id": "t_261",
+      "subject": "fat_necrosis",
+      "relation": "often_located_in",
+      "object": "periareolar_region"
+    },
+    {
+      "id": "t_262",
+      "subject": "fat_necrosis",
+      "relation": "often_located_in",
+      "object": "edges_of_tram_flap_reconstruction"
+    },
+    {
+      "id": "t_263",
+      "subject": "oil_cyst_subtle_wall_nodularity",
+      "relation": "indicates",
+      "object": "fat_necrosis",
+      "notes": "'a dead giveaway'"
+    },
+    {
+      "id": "t_264",
+      "subject": "breast_hamartoma",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_265",
+      "subject": "breast_hamartoma",
+      "relation": "also_known_as",
+      "object": "fibroadenolipoma"
+    },
+    {
+      "id": "t_266",
+      "subject": "breast_hamartoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "well_circumscribed"
+    },
+    {
+      "id": "t_267",
+      "subject": "breast_hamartoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "solid_lesion"
+    },
+    {
+      "id": "t_268",
+      "subject": "breast_hamartoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "mixed_hyperechoic_and_hypoechoic_components"
+    },
+    {
+      "id": "t_269",
+      "subject": "breast_hamartoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "no_intralesional_microcalcification"
+    },
+    {
+      "id": "t_270",
+      "subject": "breast_hamartoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "compressible",
+      "notes": "Soft and easy to compress"
+    },
+    {
+      "id": "t_271",
+      "subject": "breast_hamartoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "margins_often_difficult_to_delineate",
+      "notes": "Because it resembles normal breast tissue"
+    },
+    {
+      "id": "t_272",
+      "subject": "breast_hamartoma",
+      "relation": "differential_for",
+      "object": "fibroadenoma",
+      "notes": "Fibroadenoma should not contain internal fat"
+    },
+    {
+      "id": "t_273",
+      "subject": "breast_hamartoma",
+      "relation": "differential_for",
+      "object": "phyllodes_tumour"
+    },
+    {
+      "id": "t_274",
+      "subject": "breast_hamartoma",
+      "relation": "differential_for",
+      "object": "lipoma",
+      "notes": "Lipoma should contain homogenous fat with minimal soft tissue"
+    },
+    {
+      "id": "t_275",
+      "subject": "lipoma_of_breast",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hyperechoic"
+    },
+    {
+      "id": "t_276",
+      "subject": "lipoma_of_breast",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_277",
+      "subject": "fibroadenolipoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hyperechoic"
+    },
+    {
+      "id": "t_278",
+      "subject": "fibroadenolipoma",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_279",
+      "subject": "focal_mammary_fat_necrosis",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hyperechoic"
+    },
+    {
+      "id": "t_280",
+      "subject": "angiomyolipoma_of_breast",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hyperechoic"
+    },
+    {
+      "id": "t_281",
+      "subject": "angiomyolipoma_of_breast",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_282",
+      "subject": "intramammary_lymph_node_with_fat_hilum",
+      "relation": "ultrasound_appearance_includes",
+      "object": "partly_hyperechoic"
+    },
+    {
+      "id": "t_283",
+      "subject": "acute_breast_haematoma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hyperechoic",
+      "notes": "From acute haemorrhage"
+    },
+    {
+      "id": "t_284",
+      "subject": "acute_breast_haematoma",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_285",
+      "subject": "breast_haemangioma",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hyperechoic_components_possible"
+    },
+    {
+      "id": "t_286",
+      "subject": "breast_haemangioma",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_287",
+      "subject": "capillary_angioma_of_breast",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_288",
+      "subject": "focal_breast_fibrosis",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hyperechoic"
+    },
+    {
+      "id": "t_289",
+      "subject": "focal_breast_fibrosis",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_290",
+      "subject": "breast_cancer",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hyperechoic_rarely",
+      "notes": "Related to tumour heterogeneity in cellularity: cribriform pattern, tubular structure, solid nests, scirrhous pattern"
+    },
+    {
+      "id": "t_291",
+      "subject": "hyperechoic_mass",
+      "relation": "suggests_benign",
+      "object": "true",
+      "specificity": "low",
+      "confidence": "medium",
+      "notes": "Most hyperechoic lesions are benign but breast cancer can rarely appear hyperechoic"
+    },
+    {
+      "id": "t_292",
+      "subject": "architectural_distortion",
+      "relation": "suggests_malignancy",
+      "object": "true",
+      "specificity": "high",
+      "notes": "Most cases categorised as BI-RADS 4; third most common appearance of breast cancer"
+    },
+    {
+      "id": "t_293",
+      "subject": "architectural_distortion",
+      "relation": "typically_classified_as",
+      "object": "birads_4"
+    },
+    {
+      "id": "t_294",
+      "subject": "architectural_distortion",
+      "relation": "ultrasound_appearance_includes",
+      "object": "radiating_thin_straight_lines_or_spiculations"
+    },
+    {
+      "id": "t_295",
+      "subject": "architectural_distortion",
+      "relation": "ultrasound_appearance_includes",
+      "object": "focal_retraction_or_distortion_at_edge_of_parenchyma"
+    },
+    {
+      "id": "t_296",
+      "subject": "architectural_distortion",
+      "relation": "ultrasound_appearance_includes",
+      "object": "blurring_of_normal_tissue_planes",
+      "notes": "Fat-fibroglandular junction"
+    },
+    {
+      "id": "t_297",
+      "subject": "architectural_distortion",
+      "relation": "ultrasound_appearance_includes",
+      "object": "straightening_or_thickening_of_cooper_ligaments"
+    },
+    {
+      "id": "t_298",
+      "subject": "architectural_distortion",
+      "relation": "ultrasound_appearance_includes",
+      "object": "compression_of_tissue_around_mass"
+    },
+    {
+      "id": "t_299",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "invasive_breast_cancer",
+      "notes": "Both invasive lobular and ductal carcinoma"
+    },
+    {
+      "id": "t_300",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "ductal_carcinoma_in_situ"
+    },
+    {
+      "id": "t_301",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "radial_scar"
+    },
+    {
+      "id": "t_302",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "complex_sclerosing_lesion"
+    },
+    {
+      "id": "t_303",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "fat_necrosis"
+    },
+    {
+      "id": "t_304",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "sclerosing_adenosis"
+    },
+    {
+      "id": "t_305",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "fibromatosis"
+    },
+    {
+      "id": "t_306",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "postsurgical_scar",
+      "notes": "Most common secondary cause"
+    },
+    {
+      "id": "t_307",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "trauma"
+    },
+    {
+      "id": "t_308",
+      "subject": "architectural_distortion",
+      "relation": "caused_by",
+      "object": "infection"
+    },
+    {
+      "id": "t_309",
+      "subject": "clustered_microcysts",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_310",
+      "subject": "clustered_microcysts",
+      "relation": "has_no_malignant_potential",
+      "object": "true"
+    },
+    {
+      "id": "t_311",
+      "subject": "clustered_microcysts",
+      "relation": "ultrasound_appearance_includes",
+      "object": "cluster_of_anechoic_foci"
+    },
+    {
+      "id": "t_312",
+      "subject": "clustered_microcysts",
+      "relation": "ultrasound_appearance_includes",
+      "object": "individual_foci_less_than_2_to_3mm"
+    },
+    {
+      "id": "t_313",
+      "subject": "clustered_microcysts",
+      "relation": "ultrasound_appearance_includes",
+      "object": "thin_intervening_septations_under_0_5mm"
+    },
+    {
+      "id": "t_314",
+      "subject": "clustered_microcysts",
+      "relation": "ultrasound_appearance_includes",
+      "object": "no_discrete_solid_components"
+    },
+    {
+      "id": "t_315",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "is_a",
+      "object": "benign_breast_lesion"
+    },
+    {
+      "id": "t_316",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "also_known_as",
+      "object": "epidermal_inclusion_cyst"
+    },
+    {
+      "id": "t_317",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "small"
+    },
+    {
+      "id": "t_318",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "hypoechoic"
+    },
+    {
+      "id": "t_319",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "located_close_to_skin_surface"
+    },
+    {
+      "id": "t_320",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "through_transmission"
+    },
+    {
+      "id": "t_321",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "no_detectable_vascular_flow"
+    },
+    {
+      "id": "t_322",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "alternating_hypo_and_hyperechoic_rings"
+    },
+    {
+      "id": "t_323",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "skin_track_possible"
+    },
+    {
+      "id": "t_324",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "ultrasound_appearance_includes",
+      "object": "doppler_flow_with_infection",
+      "notes": "May occasionally show remarkable flow on Doppler; possible low-grade infection"
+    },
+    {
+      "id": "t_325",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "often_located_in",
+      "object": "inframammary_fold"
+    },
+    {
+      "id": "t_326",
+      "subject": "breast_sebaceous_cyst",
+      "relation": "differential_for",
+      "object": "montgomery_tubercle",
+      "notes": "Particularly at nipple-areolar region"
+    },
+    {
+      "id": "t_327",
+      "subject": "breast_neoplasms",
+      "relation": "ultrasound_appearance_includes",
+      "object": "masses_or_architectural_distortion"
+    },
+    {
+      "id": "t_328",
+      "subject": "breast_neoplasms",
+      "relation": "ultrasound_appearance_includes",
+      "object": "calcifications_sometimes"
+    },
+    {
+      "id": "t_329",
+      "subject": "axillary_adenopathy",
+      "relation": "suggests_malignancy",
+      "object": "regional_metastasis"
+    },
+    {
+      "id": "t_330",
+      "subject": "invasive_carcinoma_no_special_type",
+      "relation": "subtype_of",
+      "object": "breast_cancer",
+      "notes": "40-75% of breast cancers"
+    },
+    {
+      "id": "t_331",
+      "subject": "ductal_carcinoma_in_situ",
+      "relation": "subtype_of",
+      "object": "breast_cancer",
+      "notes": "20-25% of breast cancers"
+    },
+    {
+      "id": "t_332",
+      "subject": "invasive_lobular_carcinoma",
+      "relation": "subtype_of",
+      "object": "breast_cancer",
+      "notes": "5-15% of breast cancers"
+    },
+    {
+      "id": "t_333",
+      "subject": "spiculated_or_irregular_mass",
+      "relation": "suggests_birads_5",
+      "object": "true",
+      "notes": "Listed for mammography but morphology applies to US"
+    },
+    {
+      "id": "t_334",
+      "subject": "nipple_retraction",
+      "relation": "supports_malignancy_diagnosis",
+      "object": "true"
+    },
+    {
+      "id": "t_335",
+      "subject": "skin_thickening",
+      "relation": "supports_malignancy_diagnosis",
+      "object": "true"
+    },
+    {
+      "id": "t_336",
+      "subject": "evidence_of_interval_growth",
+      "relation": "supports_malignancy_diagnosis",
+      "object": "true"
+    },
+    {
+      "id": "t_337",
+      "subject": "anechoic_with_posterior_enhancement_thin_wall_circumscribed",
+      "relation": "combination_indicates",
+      "object": "simple_cyst"
+    },
+    {
+      "id": "t_338",
+      "subject": "well_circumscribed_oval_hypoechoic_uniform",
+      "relation": "combination_indicates",
+      "object": "fibroadenoma_likely",
+      "specificity": "medium"
+    },
+    {
+      "id": "t_339",
+      "subject": "thick_wall_or_thick_septa_or_intracystic_mass_or_solid_components",
+      "relation": "combination_indicates",
+      "object": "complex_cystic_and_solid_breast_mass"
+    },
+    {
+      "id": "t_340",
+      "subject": "cluster_of_anechoic_foci_under_3mm_thin_septations_no_solid",
+      "relation": "combination_indicates",
+      "object": "clustered_microcysts"
+    },
+    {
+      "id": "t_341",
+      "subject": "reniform_hypoechoic_well_defined_with_hyperechoic_central_hilum",
+      "relation": "combination_indicates",
+      "object": "intramammary_lymph_node"
+    },
+    {
+      "id": "t_342",
+      "subject": "fat_density_with_thin_septations_compressible_subcutaneous",
+      "relation": "combination_indicates",
+      "object": "breast_lipoma"
+    },
+    {
+      "id": "t_343",
+      "subject": "small_hypoechoic_skin_adjacent_alternating_rings",
+      "relation": "combination_indicates",
+      "object": "breast_sebaceous_cyst"
+    },
+    {
+      "id": "t_344",
+      "subject": "anechoic_with_curvilinear_echogenic_capsule",
+      "relation": "combination_indicates",
+      "object": "breast_implant"
+    },
+    {
+      "id": "t_345",
+      "subject": "complicated_breast_cyst",
+      "relation": "differs_from",
+      "object": "simple_breast_cyst",
+      "notes": "Has internal low level echoes"
+    },
+    {
+      "id": "t_346",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "differs_from",
+      "object": "complicated_breast_cyst",
+      "notes": "Complex has thick walls/septa/intracystic mass/solid components"
+    },
+    {
+      "id": "t_347",
+      "subject": "complex_cystic_and_solid_breast_mass",
+      "relation": "differs_from",
+      "object": "simple_breast_cyst",
+      "notes": "Simple has no anechoic/solid mix"
+    },
+    {
+      "id": "t_348",
+      "subject": "clustered_microcysts",
+      "relation": "differs_from",
+      "object": "simple_breast_cyst",
+      "notes": "Microcysts are small and multiple"
+    },
+    {
+      "id": "t_349",
+      "subject": "posterior_acoustic_enhancement",
+      "relation": "associated_with",
+      "object": "cystic_lesions",
+      "specificity": "medium"
+    },
+    {
+      "id": "t_350",
+      "subject": "posterior_shadowing",
+      "relation": "associated_with",
+      "object": "macrocalcifications"
+    },
+    {
+      "id": "t_351",
+      "subject": "posterior_shadowing",
+      "relation": "associated_with",
+      "object": "fat_necrosis_late_phase"
+    },
+    {
+      "id": "t_352",
+      "subject": "posterior_shadowing",
+      "relation": "associated_with",
+      "object": "postsurgical_scar"
+    },
+    {
+      "id": "t_353",
+      "subject": "posterior_shadowing_with_solid_irregular_mass",
+      "relation": "suggests_malignancy",
+      "object": "true",
+      "specificity": "medium"
+    },
+    {
+      "id": "t_354",
+      "subject": "spiculated_margin",
+      "relation": "suggests_malignancy",
+      "object": "true",
+      "specificity": "high"
+    },
+    {
+      "id": "t_355",
+      "subject": "irregular_shape",
+      "relation": "suggests_malignancy",
+      "object": "true",
+      "specificity": "medium",
+      "confidence": "medium",
+      "notes": "Lexicon defines but does not explicitly call malignant; inferred from acute-angle protrusions definition and BI-RADS 5 mammography list"
+    },
+    {
+      "id": "t_356",
+      "subject": "non_parallel_orientation",
+      "relation": "suggests_malignancy",
+      "object": "true",
+      "specificity": "medium",
+      "confidence": "medium",
+      "notes": "Inferred; lexicon defines but does not explicitly label"
+    },
+    {
+      "id": "t_357",
+      "subject": "microcalcifications_in_hypoechoic_mass",
+      "relation": "suggests_malignancy",
+      "object": "possible",
+      "specificity": "medium",
+      "notes": "Most conspicuous in hypoechoic mass; correlation with mammography required"
+    },
+    {
+      "id": "t_358",
+      "subject": "skin_retraction",
+      "relation": "suggests_malignancy",
+      "object": "true",
+      "specificity": "medium",
+      "notes": "Skin appears concave, indented, fixed"
+    },
+    {
+      "id": "t_359",
+      "subject": "skin_thickening",
+      "relation": "suggests_malignancy",
+      "object": "possible",
+      "specificity": "low",
+      "notes": "Can be inflammatory or malignant"
+    },
+    {
+      "id": "t_360",
+      "subject": "edema_arborizing_pattern",
+      "relation": "associated_with",
+      "object": "inflammatory_or_malignant_processes"
+    },
+    {
+      "id": "t_361",
+      "subject": "duct_changes_with_intraductal_mass",
+      "relation": "suggests_malignancy",
+      "object": "possible",
+      "specificity": "medium"
+    },
+    {
+      "id": "t_362",
+      "subject": "echogenic_rind",
+      "relation": "suggests_malignancy",
+      "object": "possible",
+      "specificity": "medium",
+      "notes": "Disrupts texture of normal surrounding tissue"
+    },
+    {
+      "id": "t_363",
+      "subject": "peripheral_hypervascularity",
+      "relation": "associated_with",
+      "object": "breast_abnormality"
+    },
+    {
+      "id": "t_364",
+      "subject": "circumscribed_margin",
+      "relation": "suggests_benign",
+      "object": "true",
+      "specificity": "medium",
+      "confidence": "medium",
+      "notes": "Inferred from benign lesion features"
+    },
+    {
+      "id": "t_365",
+      "subject": "oval_shape",
+      "relation": "suggests_benign",
+      "object": "true",
+      "specificity": "low",
+      "confidence": "medium"
+    },
+    {
+      "id": "t_366",
+      "subject": "parallel_orientation",
+      "relation": "suggests_benign",
+      "object": "true",
+      "specificity": "medium",
+      "confidence": "medium"
+    },
+    {
+      "id": "t_367",
+      "subject": "anechoic_content",
+      "relation": "suggests_benign_simple_cyst",
+      "object": "true",
+      "specificity": "high"
+    },
+    {
+      "id": "t_368",
+      "subject": "thin_uniform_pseudocapsule",
+      "relation": "suggests_benign",
+      "object": "true",
+      "specificity": "medium",
+      "notes": "Must be uniformly thin and visible around entire margin"
+    },
+    {
+      "id": "t_369",
+      "subject": "fat_containing_lesion",
+      "relation": "suggests_benign",
+      "object": "true",
+      "specificity": "high",
+      "notes": "Lipoma, hamartoma, fat necrosis, IMLN"
+    },
+    {
+      "id": "t_370",
+      "subject": "compressibility",
+      "relation": "suggests_benign",
+      "object": "true",
+      "specificity": "low",
+      "confidence": "medium"
+    }
+  ]
+}
