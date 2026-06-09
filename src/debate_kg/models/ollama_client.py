@@ -47,13 +47,13 @@ class OllamaClient(LLMClient):
             "model": self.model,
             "messages": messages,
             "stream": False,
-            "options": {"temperature": temperature},
+            "options": {"temperature": temperature, "num_ctx": 32768},
         }
         logger.debug("OllamaClient → %s (temp=%.2f, system=%s)", self.model, temperature, bool(system))
         response = requests.post(
             f"{self.base_url}/api/chat",
             json=payload,
-            timeout=300,
+            timeout=1800,
         )
         response.raise_for_status()
         return response.json()["message"]["content"]
