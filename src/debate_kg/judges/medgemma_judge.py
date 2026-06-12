@@ -161,7 +161,10 @@ def build_medgemma_judge(cfg: DictConfig) -> MedGemmaJudge:
         from debate_kg.models.ollama_client import OllamaClient
         ollama_model: str = getattr(cfg.judges, "ollama_model", "medgemma:latest")
         ollama_url: str = getattr(cfg.judges, "ollama_base_url", "http://localhost:11434")
-        client: LLMClient = OllamaClient(model=ollama_model, base_url=ollama_url)
+        # Judge prompts are single claims or short transcripts (a few hundred
+        # tokens) — a small num_ctx avoids the huge compute-graph buffer that
+        # 32k forces, which can crowd the expert model off the GPU.
+        client: LLMClient = OllamaClient(model=ollama_model, base_url=ollama_url, num_ctx=4096)
         logger.info("Built MedGemmaJudge: backend=ollama model=%s", ollama_model)
     else:
         client = VLLMClient(model=cfg.judges.model, base_url=cfg.judges.base_url)

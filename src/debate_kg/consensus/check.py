@@ -31,7 +31,7 @@ def is_consensus(edges: list[DebateEdge], round_idx: int, cfg: DictConfig) -> bo
     if round_idx >= cfg.run.max_rounds - 1:
         logger.info("is_consensus: hard cap reached (round=%d, max_rounds=%d)", round_idx, cfg.run.max_rounds)
         return True
-    if edges and all(e.sign != "-" for e in edges):
+    if round_idx >= 1 and edges and all(e.sign != "-" for e in edges):
         logger.info("is_consensus: no disagreement edges at round %d (%d edge(s))", round_idx, len(edges))
         return True
     logger.debug("is_consensus: continuing (round=%d, edges=%d)", round_idx, len(edges))

@@ -59,6 +59,11 @@ def _sample_prefix(sample_id: str) -> str:
     return re.sub(r'[^a-z0-9]+', '-', f"sample-{sample_id}".lower()).strip('-')
 
 
+def _resume_path(cfg: DictConfig) -> Path:
+    """Path for incremental per-sample results, used to resume after a crash."""
+    return Path("outputs/resume") / f"{cfg.run.mode}_{cfg.data.num_samples}_{cfg.data.seed}.jsonl"
+
+
 def _ollama_unload(model: str, base_url: str) -> None:
     """Evict a model from Ollama GPU memory (keep_alive=0)."""
     try:
@@ -254,10 +259,13 @@ def _run_mode_structured(
             image_b64, cfg, round_idx, history=all_nodes,
             kg_text=kg_text, adversarial=adversarial,
         )
+        # Unload expert model before judge to avoid GPU OOM on shared hardware.
+        _unload_expert_model(cfg)
         # Score each new node.
         for node in new_nodes:
             js = judge.score_utterance(node, KnowledgeGraph(), image_b64=image_b64)
             all_scores.setdefault(node.id, []).append(js)
+        _unload_judge_model(cfg)
 
         all_nodes.extend(new_nodes)
         all_edges.extend(new_edges)
@@ -361,7 +369,28 @@ def main(cfg: DictConfig) -> None:
 
     sample_times: list[float] = []
 
+    # Resume support: reload any per-sample results from a prior crashed run
+    # of this exact (mode, num_samples, seed) combination and skip them.
+    resume_path = _resume_path(cfg)
+    done_ids: set[str] = set()
+    if resume_path.exists():
+        for line in resume_path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            record = json.loads(line)
+            done_ids.add(record["id"])
+            predictions.append(record["verdict"])
+            gold_labels.append(record["label"])
+            auc_scores.append(record["malignant_score"])
+            rounds_list.append(record["rounds"])
+            sample_times.append(record["time_s"])
+            per_sample_records.append(record)
+        logger.info("Resuming %s: %d sample(s) already completed, skipping", cfg.run.mode, len(done_ids))
+
     for sample in samples:
+        if sample["id"] in done_ids:
+            logger.info("Sample %s — already completed, skipping", sample["id"])
+            continue
         logger.info("Sample %s — gold=%s", sample["id"], sample["label"])
         t0 = time.perf_counter()
 
@@ -397,14 +426,18 @@ def main(cfg: DictConfig) -> None:
         auc_scores.append(malignant_score)
         rounds_list.append(rounds)
         sample_times.append(elapsed)
-        per_sample_records.append({
+        record = {
             "id": sample["id"],
             "verdict": verdict,
             "label": sample["label"],
             "malignant_score": malignant_score,
             "rounds": rounds,
             "time_s": round(elapsed, 2),
-        })
+        }
+        per_sample_records.append(record)
+        resume_path.parent.mkdir(parents=True, exist_ok=True)
+        with resume_path.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(record, default=str) + "\n")
 
     # Aggregate metrics.
     acc = accuracy(predictions, gold_labels)
@@ -430,6 +463,7 @@ def main(cfg: DictConfig) -> None:
         "per_sample": per_sample_records,
     }
     _write_json(output_dir / "metrics.json", metrics)
+    resume_path.unlink(missing_ok=True)
 
     logger.info(
         "Done. acc=%.4f sens=%.4f spec=%.4f auc=%.4f conv=%.4f mean_rounds=%.2f mean_time=%.1fs total=%.0fs",

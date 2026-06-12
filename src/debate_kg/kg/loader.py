@@ -82,21 +82,25 @@ def load_definitions(definitions_path: str | Path) -> dict[str, tuple[str, str]]
     return result
 
 
-def serialize_kg_for_prompt(kg: KnowledgeGraph, definitions: dict[str, tuple[str, str]]) -> str:
+def serialize_kg_for_prompt(
+    kg: KnowledgeGraph,
+    definitions: dict[str, tuple[str, str]],
+    include_definitions: bool = False,
+) -> str:
     """Serialize the full KG into a compact text block for prompt injection.
 
     Format:
         KNOWLEDGE GRAPH (ACR BI-RADS Ultrasound Lexicon)
         ------------------------------------------------
         [t_001] homogeneous background echotexture fat  IS A  tissue pattern
-          Def [d_001]: Fat lobules and uniformly echogenic bands ...
-        ...
 
     Experts can cite triples with [CITED:t_NNN] and definitions with [CITED:d_NNN].
 
     Args:
         kg: The domain KG to serialize.
         definitions: Term → (def_id, definition_text) from load_definitions().
+        include_definitions: If True, append Def lines under each triple (~25K tokens).
+            Defaults to False (triples-only, ~6.5K tokens) to stay within model context.
 
     Returns:
         Multi-line string ready to be embedded in a prompt.
@@ -110,9 +114,10 @@ def serialize_kg_for_prompt(kg: KnowledgeGraph, definitions: dict[str, tuple[str
         pred = triple.predicate.replace("_", " ").upper()
         obj = triple.object.replace("_", " ")
         lines.append(f"[{triple.uuid}] {subj}  {pred}  {obj}")
-        defn_entry = definitions.get(triple.subject)
-        if defn_entry:
-            def_id, def_text = defn_entry
-            lines.append(f"  Def [{def_id}]: {def_text}")
+        if include_definitions:
+            defn_entry = definitions.get(triple.subject)
+            if defn_entry:
+                def_id, def_text = defn_entry
+                lines.append(f"  Def [{def_id}]: {def_text}")
 
     return "\n".join(lines)
