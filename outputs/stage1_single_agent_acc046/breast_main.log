@@ -1,0 +1,128 @@
+[2026-05-21 17:46:01,202][__main__][INFO] - Config:
+model:
+  expert_model: qwen2.5vl:7b
+  expert_temperature: 0.7
+  ollama_base_url: http://localhost:11434
+data:
+  num_samples: 50
+  image_size: 224
+  seed: 42
+  kg_path: data/breast/knowledge_graph.json
+  definitions_path: data/breast/definitions.json
+  indices_path: data/breast/ablation_indices.json
+run:
+  mode: single_agent
+  max_rounds: 1
+  use_stub_data: false
+judges:
+  model: google/medgemma-4b-it
+  backend: vllm
+  base_url: http://localhost:8000
+  ollama_model: medgemma:latest
+  ollama_base_url: http://localhost:11434
+  temperature: 0.0
+
+[2026-05-21 17:46:01,202][__main__][INFO] - Starting BreastMNIST run: mode=single_agent samples=50
+[2026-05-21 17:46:02,850][debate_kg.data.breastmnist][INFO] - Loading 50 BreastMNIST test samples (indices: [9, 10, 12, 15, 23] ...)
+[2026-05-21 17:46:03,765][debate_kg.data.breastmnist][INFO] - Loaded 50 samples
+[2026-05-21 17:46:03,766][__main__][INFO] - Sample 009 — gold=BENIGN
+[2026-05-21 17:46:07,827][__main__][INFO] - Sample 009 → BENIGN (gold=BENIGN, rounds=1, time=4.1s)
+[2026-05-21 17:46:07,827][__main__][INFO] - Sample 010 — gold=MALIGNANT
+[2026-05-21 17:46:08,093][__main__][INFO] - Sample 010 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:08,093][__main__][INFO] - Sample 012 — gold=BENIGN
+[2026-05-21 17:46:08,348][__main__][INFO] - Sample 012 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:08,348][__main__][INFO] - Sample 015 — gold=MALIGNANT
+[2026-05-21 17:46:08,606][__main__][INFO] - Sample 015 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:08,607][__main__][INFO] - Sample 023 — gold=MALIGNANT
+[2026-05-21 17:46:08,859][__main__][INFO] - Sample 023 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:08,859][__main__][INFO] - Sample 024 — gold=MALIGNANT
+[2026-05-21 17:46:09,105][__main__][INFO] - Sample 024 → BENIGN (gold=MALIGNANT, rounds=1, time=0.2s)
+[2026-05-21 17:46:09,105][__main__][INFO] - Sample 031 — gold=BENIGN
+[2026-05-21 17:46:09,359][__main__][INFO] - Sample 031 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:09,360][__main__][INFO] - Sample 040 — gold=MALIGNANT
+[2026-05-21 17:46:09,604][__main__][INFO] - Sample 040 → BENIGN (gold=MALIGNANT, rounds=1, time=0.2s)
+[2026-05-21 17:46:09,604][__main__][INFO] - Sample 047 — gold=BENIGN
+[2026-05-21 17:46:09,857][__main__][INFO] - Sample 047 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:09,857][__main__][INFO] - Sample 048 — gold=MALIGNANT
+[2026-05-21 17:46:10,110][__main__][INFO] - Sample 048 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:10,110][__main__][INFO] - Sample 053 — gold=BENIGN
+[2026-05-21 17:46:10,354][__main__][INFO] - Sample 053 → BENIGN (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:10,354][__main__][INFO] - Sample 056 — gold=BENIGN
+[2026-05-21 17:46:10,595][__main__][INFO] - Sample 056 → BENIGN (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:10,595][__main__][INFO] - Sample 060 — gold=BENIGN
+[2026-05-21 17:46:10,848][__main__][INFO] - Sample 060 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:10,848][__main__][INFO] - Sample 061 — gold=BENIGN
+[2026-05-21 17:46:11,103][__main__][INFO] - Sample 061 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:11,104][__main__][INFO] - Sample 063 — gold=BENIGN
+[2026-05-21 17:46:11,357][__main__][INFO] - Sample 063 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:11,357][__main__][INFO] - Sample 068 — gold=MALIGNANT
+[2026-05-21 17:46:11,611][__main__][INFO] - Sample 068 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:11,611][__main__][INFO] - Sample 071 — gold=BENIGN
+[2026-05-21 17:46:11,857][__main__][INFO] - Sample 071 → BENIGN (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:11,857][__main__][INFO] - Sample 073 — gold=BENIGN
+[2026-05-21 17:46:12,112][__main__][INFO] - Sample 073 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:12,112][__main__][INFO] - Sample 077 — gold=MALIGNANT
+[2026-05-21 17:46:12,366][__main__][INFO] - Sample 077 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:12,366][__main__][INFO] - Sample 079 — gold=BENIGN
+[2026-05-21 17:46:12,616][__main__][INFO] - Sample 079 → MALIGNANT (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:12,616][__main__][INFO] - Sample 083 — gold=BENIGN
+[2026-05-21 17:46:12,876][__main__][INFO] - Sample 083 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:12,876][__main__][INFO] - Sample 084 — gold=BENIGN
+[2026-05-21 17:46:13,129][__main__][INFO] - Sample 084 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:13,129][__main__][INFO] - Sample 086 — gold=BENIGN
+[2026-05-21 17:46:13,375][__main__][INFO] - Sample 086 → BENIGN (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:13,375][__main__][INFO] - Sample 087 — gold=BENIGN
+[2026-05-21 17:46:13,622][__main__][INFO] - Sample 087 → BENIGN (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:13,622][__main__][INFO] - Sample 091 — gold=BENIGN
+[2026-05-21 17:46:13,880][__main__][INFO] - Sample 091 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:13,880][__main__][INFO] - Sample 092 — gold=BENIGN
+[2026-05-21 17:46:14,132][__main__][INFO] - Sample 092 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:14,132][__main__][INFO] - Sample 095 — gold=MALIGNANT
+[2026-05-21 17:46:14,386][__main__][INFO] - Sample 095 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:14,386][__main__][INFO] - Sample 096 — gold=BENIGN
+[2026-05-21 17:46:14,641][__main__][INFO] - Sample 096 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:14,641][__main__][INFO] - Sample 102 — gold=BENIGN
+[2026-05-21 17:46:14,895][__main__][INFO] - Sample 102 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:14,895][__main__][INFO] - Sample 104 — gold=MALIGNANT
+[2026-05-21 17:46:15,147][__main__][INFO] - Sample 104 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:15,148][__main__][INFO] - Sample 105 — gold=BENIGN
+[2026-05-21 17:46:15,404][__main__][INFO] - Sample 105 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:15,404][__main__][INFO] - Sample 110 — gold=MALIGNANT
+[2026-05-21 17:46:15,649][__main__][INFO] - Sample 110 → BENIGN (gold=MALIGNANT, rounds=1, time=0.2s)
+[2026-05-21 17:46:15,649][__main__][INFO] - Sample 112 — gold=MALIGNANT
+[2026-05-21 17:46:15,900][__main__][INFO] - Sample 112 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.2s)
+[2026-05-21 17:46:15,900][__main__][INFO] - Sample 115 — gold=BENIGN
+[2026-05-21 17:46:16,149][__main__][INFO] - Sample 115 → BENIGN (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:16,149][__main__][INFO] - Sample 119 — gold=MALIGNANT
+[2026-05-21 17:46:16,403][__main__][INFO] - Sample 119 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:16,403][__main__][INFO] - Sample 120 — gold=MALIGNANT
+[2026-05-21 17:46:16,654][__main__][INFO] - Sample 120 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.2s)
+[2026-05-21 17:46:16,654][__main__][INFO] - Sample 121 — gold=BENIGN
+[2026-05-21 17:46:16,910][__main__][INFO] - Sample 121 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:16,910][__main__][INFO] - Sample 122 — gold=BENIGN
+[2026-05-21 17:46:17,162][__main__][INFO] - Sample 122 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:17,162][__main__][INFO] - Sample 125 — gold=BENIGN
+[2026-05-21 17:46:17,414][__main__][INFO] - Sample 125 → MALIGNANT (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:17,414][__main__][INFO] - Sample 126 — gold=MALIGNANT
+[2026-05-21 17:46:17,660][__main__][INFO] - Sample 126 → BENIGN (gold=MALIGNANT, rounds=1, time=0.2s)
+[2026-05-21 17:46:17,660][__main__][INFO] - Sample 128 — gold=MALIGNANT
+[2026-05-21 17:46:17,914][__main__][INFO] - Sample 128 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:17,914][__main__][INFO] - Sample 133 — gold=BENIGN
+[2026-05-21 17:46:18,154][__main__][INFO] - Sample 133 → BENIGN (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:18,154][__main__][INFO] - Sample 136 — gold=BENIGN
+[2026-05-21 17:46:18,413][__main__][INFO] - Sample 136 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:18,413][__main__][INFO] - Sample 137 — gold=BENIGN
+[2026-05-21 17:46:18,671][__main__][INFO] - Sample 137 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:18,671][__main__][INFO] - Sample 141 — gold=MALIGNANT
+[2026-05-21 17:46:18,923][__main__][INFO] - Sample 141 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.3s)
+[2026-05-21 17:46:18,923][__main__][INFO] - Sample 147 — gold=BENIGN
+[2026-05-21 17:46:19,179][__main__][INFO] - Sample 147 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:19,179][__main__][INFO] - Sample 148 — gold=BENIGN
+[2026-05-21 17:46:19,422][__main__][INFO] - Sample 148 → BENIGN (gold=BENIGN, rounds=1, time=0.2s)
+[2026-05-21 17:46:19,422][__main__][INFO] - Sample 149 — gold=BENIGN
+[2026-05-21 17:46:19,682][__main__][INFO] - Sample 149 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:19,682][__main__][INFO] - Sample 150 — gold=MALIGNANT
+[2026-05-21 17:46:19,930][__main__][INFO] - Sample 150 → MALIGNANT (gold=MALIGNANT, rounds=1, time=0.2s)
+[2026-05-21 17:46:19,931][__main__][INFO] - Sample 151 — gold=BENIGN
+[2026-05-21 17:46:20,182][__main__][INFO] - Sample 151 → MALIGNANT (gold=BENIGN, rounds=1, time=0.3s)
+[2026-05-21 17:46:20,189][__main__][INFO] - Done. acc=0.4600 sens=0.7778 spec=0.2812 auc=0.4609 conv=0.0000 mean_rounds=1.00 mean_time=0.3s total=16s

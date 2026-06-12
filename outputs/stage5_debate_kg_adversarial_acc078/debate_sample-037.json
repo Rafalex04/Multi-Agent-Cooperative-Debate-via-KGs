@@ -1,0 +1,761 @@
+{
+  "mode": "debate_kg_adversarial",
+  "nodes": [
+    {
+      "id": "606dd408-eea2-4f2f-aba0-326f04f808ba",
+      "short_id": "c1",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass has a homogeneous echo pattern, which is consistent with benign findings such as fibroadenomas",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_010",
+        "d_007",
+        "t_022",
+        "t_030"
+      ]
+    },
+    {
+      "id": "f909ad38-abb9-42f4-b014-f234c23d20a2",
+      "short_id": "c2",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass exhibits circumscribed margins, which is a characteristic of benign lesions like fibroadenomas",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_037",
+        "d_007"
+      ]
+    },
+    {
+      "id": "43d6618a-53b6-4e27-8f3a-eaeabcc2305f",
+      "short_id": "c3",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass has an oval shape, which is often seen in benign breast lesions such as fibroadenomas and simple cysts",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_028",
+        "t_041"
+      ]
+    },
+    {
+      "id": "80dd2a47-dce2-4bcb-9fdb-2f63ba7d4cae",
+      "short_id": "c4",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass is oriented parallel to the underlying tissue, which is typical for benign lesions like fibroadenomas and simple cysts",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_042",
+        "d_007"
+      ]
+    },
+    {
+      "id": "2c7bff61-7bbc-44d4-b528-0ed92432b6b4",
+      "short_id": "c5",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The absence of any architectural distortion, skin changes, or vascularity abnormalities supports a benign interpretation, as these features are more commonly associated with malignant findings",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_050",
+        "t_056",
+        "t_057",
+        "t_060",
+        "t_062"
+      ]
+    },
+    {
+      "id": "6c46e2d7-3e32-47dc-98e0-44c85c0c0ed8",
+      "short_id": "c6",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The mass shows non-parallel orientation, which is a feature suggestive of malignancy and inconsistent with benign findings like fibroadenomas",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "80dd2a47-dce2-4bcb-9fdb-2f63ba7d4cae",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_036"
+      ]
+    },
+    {
+      "id": "ffba0b61-a135-4835-88b3-56e366ad7ce8",
+      "short_id": "c7",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The presence of posterior shadowing is indicative of fat necrosis, which is a benign condition but can mimic malignancy, especially in the late phase",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "2c7bff61-7bbc-44d4-b528-0ed92432b6b4",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_050, t_314"
+      ]
+    },
+    {
+      "id": "cf6c5d57-759f-4db0-9086-9f79da07238d",
+      "short_id": "c8",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The heterogeneous echo pattern of the mass is more indicative of malignancy, as it is not typical of benign lesions such as fibroadenomas and simple cysts",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "606dd408-eea2-4f2f-aba0-326f04f808ba",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    },
+    {
+      "id": "b20cf5af-f728-425f-9586-0a22a75d65cc",
+      "short_id": "c9",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The heterogeneous echo pattern of the mass is a key indicator of malignancy, inconsistent with the homogeneous echo pattern typically seen in benign lesions like fibroadenomas and simple cysts",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "cf6c5d57-759f-4db0-9086-9f79da07238d",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    },
+    {
+      "id": "6ab9b2a8-8e0c-4d9f-9c6d-6c7ef4b7104c",
+      "short_id": "c10",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The non-parallel orientation of the mass is a strong indicator of malignancy, contradicting the parallel orientation typically seen in benign lesions like fibroadenomas",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "80dd2a47-dce2-4bcb-9fdb-2f63ba7d4cae",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_036"
+      ]
+    },
+    {
+      "id": "b8d60666-3bef-4c6f-b74b-606063376f3a",
+      "short_id": "c11",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The presence of posterior shadowing is indicative of fat necrosis, a benign condition, but it can also suggest malignancy, especially in the late phase",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "ffba0b61-a135-4835-88b3-56e366ad7ce8",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_050, t_314"
+      ]
+    },
+    {
+      "id": "980083e2-9f07-4e97-a760-5bbcfd74d8a0",
+      "short_id": "c12",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The architectural distortion observed in the image is a strong indicator of malignancy, consistent with findings in invasive breast cancer and ductal carcinoma in situ",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "2c7bff61-7bbc-44d4-b528-0ed92432b6b4",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_030, t_050"
+      ]
+    },
+    {
+      "id": "09f7ca0a-66b5-46ea-b259-ff158e1cfe76",
+      "short_id": "c13",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass has a homogeneous echo pattern, which is consistent with benign findings such as fibroadenomas",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "cf6c5d57-759f-4db0-9086-9f79da07238d",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_010, d_007, t_022, t_030"
+      ]
+    },
+    {
+      "id": "4cbdd094-969b-4d86-b12d-209d643ca2bb",
+      "short_id": "c14",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass exhibits circumscribed margins, which is a characteristic of benign lesions like fibroadenomas",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "2c7bff61-7bbc-44d4-b528-0ed92432b6b4",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_037, d_007"
+      ]
+    },
+    {
+      "id": "524365f7-0dc7-4f41-a65e-460626edb0cf",
+      "short_id": "c15",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass has an oval shape, which is often seen in benign breast lesions such as fibroadenomas and simple cysts",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "43d6618a-53b6-4e27-8f3a-eaeabcc2305f",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_028, t_041"
+      ]
+    },
+    {
+      "id": "c52cbfee-8785-4ce1-9a58-53ad22fa810e",
+      "short_id": "c16",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass is oriented parallel to the underlying tissue, which is typical for benign lesions like fibroadenomas and simple cysts",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "6ab9b2a8-8e0c-4d9f-9c6d-6c7ef4b7104c",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_042, d_007"
+      ]
+    },
+    {
+      "id": "6e909c75-7721-44a6-bbec-8c56e028c0c7",
+      "short_id": "c17",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The absence of any architectural distortion, skin changes, or vascularity abnormalities supports a benign interpretation, as these features are more commonly associated with malignant findings",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "980083e2-9f07-4e97-a760-5bbcfd74d8a0",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_050, t_056, t_057, t_060, t_062"
+      ]
+    },
+    {
+      "id": "2e767eab-b941-4c1c-b766-9a843a0b135c",
+      "short_id": "c18",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The absence of posterior shadowing is supportive of a benign interpretation, as posterior enhancement is typical for simple cysts and fibroadenomas",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "ffba0b61-a135-4835-88b3-56e366ad7ce8",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_033"
+      ]
+    },
+    {
+      "id": "361a715b-2bb4-4897-b962-65b989615cb8",
+      "short_id": "c19",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass has a homogeneous echo pattern, which is consistent with benign findings such as fibroadenomas and simple cysts",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "4cbdd094-969b-4d86-b12d-209d643ca2bb",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_010, d_007, t_022, t_030",
+        "t_010"
+      ]
+    },
+    {
+      "id": "34ce368c-e629-48f6-882c-7e6b74455520",
+      "short_id": "c20",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass exhibits circumscribed margins, which is a characteristic of benign lesions like fibroadenomas and simple cysts",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "524365f7-0dc7-4f41-a65e-460626edb0cf",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_037, d_007",
+        "t_037"
+      ]
+    },
+    {
+      "id": "d6adf9ed-2fe0-43c4-ba04-ee41c8aaf09b",
+      "short_id": "c21",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass has an oval shape, which is often seen in benign breast lesions such as fibroadenomas and simple cysts",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "524365f7-0dc7-4f41-a65e-460626edb0cf",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_028, t_041",
+        "t_028"
+      ]
+    },
+    {
+      "id": "cf4d4b99-fe7c-44fd-9270-e60c64b33e94",
+      "short_id": "c22",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass is oriented parallel to the underlying tissue, which is typical for benign lesions like fibroadenomas and simple cysts",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "c52cbfee-8785-4ce1-9a58-53ad22fa810e",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042, d_007",
+        "t_042"
+      ]
+    },
+    {
+      "id": "cc743c73-fd5a-40b0-9c8b-c770fba5a6a7",
+      "short_id": "c23",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The absence of any architectural distortion, skin changes, or vascularity abnormalities supports a benign interpretation, as these features are more commonly associated with malignant findings",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "6e909c75-7721-44a6-bbec-8c56e028c0c7",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_050, t_056, t_057, t_060, t_062",
+        "t_050"
+      ]
+    },
+    {
+      "id": "ca67f8ea-d075-4f0d-9b2a-00a141c92b0d",
+      "short_id": "c24",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The absence of posterior shadowing is supportive of a benign interpretation, as posterior enhancement is typical for simple cysts and fibroadenomas",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "2e767eab-b941-4c1c-b766-9a843a0b135c",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_033",
+        "t_033"
+      ]
+    },
+    {
+      "id": "49b550e4-f87f-40b1-8887-666c21b878d0",
+      "short_id": "c25",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The non-parallel orientation of the mass is a strong indicator of malignancy, as it is inconsistent with benign lesions like fibroadenomas and simple cysts, supporting the earlier claim c10",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "6ab9b2a8-8e0c-4d9f-9c6d-6c7ef4b7104c",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_036"
+      ]
+    },
+    {
+      "id": "b3babdff-9478-4f93-9133-ab6878428571",
+      "short_id": "c26",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The heterogeneous echo pattern of the mass is a key indicator of malignancy, inconsistent with the homogeneous echo pattern typically seen in benign lesions such as fibroadenomas and simple cysts, contradicting the claim c8",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "cf6c5d57-759f-4db0-9086-9f79da07238d",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    },
+    {
+      "id": "7b38e73e-5d8b-462f-9052-c036421cd449",
+      "short_id": "c27",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The presence of posterior shadowing is indicative of fat necrosis, a benign condition, but it can also suggest malignancy, especially in the late phase, supporting the claim c11",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "b8d60666-3bef-4c6f-b74b-606063376f3a",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_050, t_314"
+      ]
+    },
+    {
+      "id": "3af27b1a-a5d9-4711-aa83-269e886fbdbc",
+      "short_id": "c28",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The architectural distortion observed in the image is a strong indicator of malignancy, consistent with findings in invasive breast cancer and ductal carcinoma in situ, contradicting the claim c17",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "6e909c75-7721-44a6-bbec-8c56e028c0c7",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_030, t_050"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "6c46e2d7-3e32-47dc-98e0-44c85c0c0ed8",
+      "target_id": "80dd2a47-dce2-4bcb-9fdb-2f63ba7d4cae",
+      "sign": "-"
+    },
+    {
+      "source_id": "ffba0b61-a135-4835-88b3-56e366ad7ce8",
+      "target_id": "2c7bff61-7bbc-44d4-b528-0ed92432b6b4",
+      "sign": "-"
+    },
+    {
+      "source_id": "cf6c5d57-759f-4db0-9086-9f79da07238d",
+      "target_id": "606dd408-eea2-4f2f-aba0-326f04f808ba",
+      "sign": "-"
+    },
+    {
+      "source_id": "b20cf5af-f728-425f-9586-0a22a75d65cc",
+      "target_id": "cf6c5d57-759f-4db0-9086-9f79da07238d",
+      "sign": "-"
+    },
+    {
+      "source_id": "6ab9b2a8-8e0c-4d9f-9c6d-6c7ef4b7104c",
+      "target_id": "80dd2a47-dce2-4bcb-9fdb-2f63ba7d4cae",
+      "sign": "-"
+    },
+    {
+      "source_id": "b8d60666-3bef-4c6f-b74b-606063376f3a",
+      "target_id": "ffba0b61-a135-4835-88b3-56e366ad7ce8",
+      "sign": "+"
+    },
+    {
+      "source_id": "980083e2-9f07-4e97-a760-5bbcfd74d8a0",
+      "target_id": "2c7bff61-7bbc-44d4-b528-0ed92432b6b4",
+      "sign": "-"
+    },
+    {
+      "source_id": "09f7ca0a-66b5-46ea-b259-ff158e1cfe76",
+      "target_id": "cf6c5d57-759f-4db0-9086-9f79da07238d",
+      "sign": "-"
+    },
+    {
+      "source_id": "4cbdd094-969b-4d86-b12d-209d643ca2bb",
+      "target_id": "2c7bff61-7bbc-44d4-b528-0ed92432b6b4",
+      "sign": "+"
+    },
+    {
+      "source_id": "524365f7-0dc7-4f41-a65e-460626edb0cf",
+      "target_id": "43d6618a-53b6-4e27-8f3a-eaeabcc2305f",
+      "sign": "+"
+    },
+    {
+      "source_id": "c52cbfee-8785-4ce1-9a58-53ad22fa810e",
+      "target_id": "6ab9b2a8-8e0c-4d9f-9c6d-6c7ef4b7104c",
+      "sign": "-"
+    },
+    {
+      "source_id": "6e909c75-7721-44a6-bbec-8c56e028c0c7",
+      "target_id": "980083e2-9f07-4e97-a760-5bbcfd74d8a0",
+      "sign": "-"
+    },
+    {
+      "source_id": "2e767eab-b941-4c1c-b766-9a843a0b135c",
+      "target_id": "ffba0b61-a135-4835-88b3-56e366ad7ce8",
+      "sign": "-"
+    },
+    {
+      "source_id": "361a715b-2bb4-4897-b962-65b989615cb8",
+      "target_id": "4cbdd094-969b-4d86-b12d-209d643ca2bb",
+      "sign": "+"
+    },
+    {
+      "source_id": "34ce368c-e629-48f6-882c-7e6b74455520",
+      "target_id": "524365f7-0dc7-4f41-a65e-460626edb0cf",
+      "sign": "+"
+    },
+    {
+      "source_id": "d6adf9ed-2fe0-43c4-ba04-ee41c8aaf09b",
+      "target_id": "524365f7-0dc7-4f41-a65e-460626edb0cf",
+      "sign": "+"
+    },
+    {
+      "source_id": "cf4d4b99-fe7c-44fd-9270-e60c64b33e94",
+      "target_id": "c52cbfee-8785-4ce1-9a58-53ad22fa810e",
+      "sign": "+"
+    },
+    {
+      "source_id": "cc743c73-fd5a-40b0-9c8b-c770fba5a6a7",
+      "target_id": "6e909c75-7721-44a6-bbec-8c56e028c0c7",
+      "sign": "+"
+    },
+    {
+      "source_id": "ca67f8ea-d075-4f0d-9b2a-00a141c92b0d",
+      "target_id": "2e767eab-b941-4c1c-b766-9a843a0b135c",
+      "sign": "+"
+    },
+    {
+      "source_id": "49b550e4-f87f-40b1-8887-666c21b878d0",
+      "target_id": "6ab9b2a8-8e0c-4d9f-9c6d-6c7ef4b7104c",
+      "sign": "+"
+    },
+    {
+      "source_id": "b3babdff-9478-4f93-9133-ab6878428571",
+      "target_id": "cf6c5d57-759f-4db0-9086-9f79da07238d",
+      "sign": "-"
+    },
+    {
+      "source_id": "7b38e73e-5d8b-462f-9052-c036421cd449",
+      "target_id": "b8d60666-3bef-4c6f-b74b-606063376f3a",
+      "sign": "+"
+    },
+    {
+      "source_id": "3af27b1a-a5d9-4711-aa83-269e886fbdbc",
+      "target_id": "6e909c75-7721-44a6-bbec-8c56e028c0c7",
+      "sign": "-"
+    }
+  ],
+  "scores": {
+    "606dd408-eea2-4f2f-aba0-326f04f808ba": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "f909ad38-abb9-42f4-b014-f234c23d20a2": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "43d6618a-53b6-4e27-8f3a-eaeabcc2305f": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "80dd2a47-dce2-4bcb-9fdb-2f63ba7d4cae": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "2c7bff61-7bbc-44d4-b528-0ed92432b6b4": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "6c46e2d7-3e32-47dc-98e0-44c85c0c0ed8": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "ffba0b61-a135-4835-88b3-56e366ad7ce8": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "cf6c5d57-759f-4db0-9086-9f79da07238d": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "b20cf5af-f728-425f-9586-0a22a75d65cc": [
+      {
+        "groundedness": 95.0,
+        "factuality": 95.0
+      }
+    ],
+    "6ab9b2a8-8e0c-4d9f-9c6d-6c7ef4b7104c": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "b8d60666-3bef-4c6f-b74b-606063376f3a": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "980083e2-9f07-4e97-a760-5bbcfd74d8a0": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "09f7ca0a-66b5-46ea-b259-ff158e1cfe76": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "4cbdd094-969b-4d86-b12d-209d643ca2bb": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "524365f7-0dc7-4f41-a65e-460626edb0cf": [
+      {
+        "groundedness": 70.0,
+        "factuality": 85.0
+      }
+    ],
+    "c52cbfee-8785-4ce1-9a58-53ad22fa810e": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "6e909c75-7721-44a6-bbec-8c56e028c0c7": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "2e767eab-b941-4c1c-b766-9a843a0b135c": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "361a715b-2bb4-4897-b962-65b989615cb8": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "34ce368c-e629-48f6-882c-7e6b74455520": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "d6adf9ed-2fe0-43c4-ba04-ee41c8aaf09b": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "cf4d4b99-fe7c-44fd-9270-e60c64b33e94": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "cc743c73-fd5a-40b0-9c8b-c770fba5a6a7": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "ca67f8ea-d075-4f0d-9b2a-00a141c92b0d": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "49b550e4-f87f-40b1-8887-666c21b878d0": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "b3babdff-9478-4f93-9133-ab6878428571": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "7b38e73e-5d8b-462f-9052-c036421cd449": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "3af27b1a-a5d9-4711-aa83-269e886fbdbc": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ]
+  },
+  "verdict": "BENIGN",
+  "raw_score": -0.23000987166831194
+}

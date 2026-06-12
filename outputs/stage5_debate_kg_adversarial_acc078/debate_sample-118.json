@@ -1,0 +1,531 @@
+{
+  "mode": "debate_kg_adversarial",
+  "nodes": [
+    {
+      "id": "686c60ed-9355-4515-a6bc-67486980bb23",
+      "short_id": "c1",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass in the image is oval in shape, which is a characteristic of benign lesions",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "5436d704-7bd8-4b2d-b231-80b4c70b5971",
+      "short_id": "c2",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The margins of the mass appear circumscribed",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_017"
+      ]
+    },
+    {
+      "id": "09b37f86-1af1-45e7-810b-bc8406dad909",
+      "short_id": "c3",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The internal echo pattern is hypoechoic, consistent with benign findings",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_028"
+      ]
+    },
+    {
+      "id": "2bbb5536-7041-42ca-a539-22a7ec0f7c99",
+      "short_id": "c4",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass is anechoic with posterior enhancement, a typical ultrasound appearance for simple cysts",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "a63b98c1-7502-4d97-8602-b965c378ba90",
+      "short_id": "c5",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The irregular margin of the mass suggests malignancy, contradicting expert_a's claim",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "5436d704-7bd8-4b2d-b231-80b4c70b5971",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "064bcd5f-0700-4503-bd5f-7c26dd7d7fa7",
+      "short_id": "c6",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The hypoechoic internal echo pattern, while consistent with benign findings, does not necessarily preclude malignancy, as malignancies can also exhibit hypoechoic features",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "09b37f86-1af1-45e7-810b-bc8406dad909",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "30ca49ac-049a-43bc-9e93-5b0b28d55ad8",
+      "short_id": "c7",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The anechoic content with posterior enhancement is not specific to simple cysts, as this appearance can also be observed in malignant lesions, particularly in cases of fat necrosis or postsurgical changes",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "2bbb5536-7041-42ca-a539-22a7ec0f7c99",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_093"
+      ]
+    },
+    {
+      "id": "8e77c80d-a99c-43b1-b2df-22ef6d55067a",
+      "short_id": "c8",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The mass exhibits an irregular margin, indicative of malignancy",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "a63b98c1-7502-4d97-8602-b965c378ba90",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "012e8ca8-09dc-4d74-b8fc-380cdd326e3c",
+      "short_id": "c9",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The hypoechoic internal echo pattern, while consistent with benign findings, does not preclude malignancy, as malignancies can exhibit similar features",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "064bcd5f-0700-4503-bd5f-7c26dd7d7fa7",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "0760c629-3420-4fb1-bf68-05ca6b493ff1",
+      "short_id": "c10",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The anechoic content with posterior enhancement is not limited to simple cysts, as this appearance can also be observed in malignant lesions, such as fat necrosis or postsurgical changes",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "30ca49ac-049a-43bc-9e93-5b0b28d55ad8",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_093"
+      ]
+    },
+    {
+      "id": "9e018e12-9136-4759-bdf0-fb6271303a17",
+      "short_id": "c11",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass is oval in shape, which is characteristic of benign lesions",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "686c60ed-9355-4515-a6bc-67486980bb23",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_012"
+      ]
+    },
+    {
+      "id": "f9a2a24c-3ed0-40df-8f76-fcdebbc3c8bf",
+      "short_id": "c12",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The margins of the mass appear circumscribed, supporting a benign interpretation",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "5436d704-7bd8-4b2d-b231-80b4c70b5971",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_017"
+      ]
+    },
+    {
+      "id": "53a1740c-74e2-435a-abae-6162863e7ee0",
+      "short_id": "c13",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The internal echo pattern is hypoechoic, consistent with benign findings",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "09b37f86-1af1-45e7-810b-bc8406dad909",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_028"
+      ]
+    },
+    {
+      "id": "7f745c86-ca06-4396-9b09-44269ddb5196",
+      "short_id": "c14",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The anechoic content with posterior enhancement is typical of simple cysts, which are benign lesions",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "2bbb5536-7041-42ca-a539-22a7ec0f7c99",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "f7b349db-9868-47c6-9b53-5668a0f5b06b",
+      "short_id": "c15",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass is oval in shape, consistent with benign lesions",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "9e018e12-9136-4759-bdf0-fb6271303a17",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_012"
+      ]
+    },
+    {
+      "id": "acdc8671-eb4f-4c30-8eda-1440170fa080",
+      "short_id": "c16",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The internal echo pattern is hypoechoic, which is a characteristic of benign findings",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "09b37f86-1af1-45e7-810b-bc8406dad909",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_028"
+      ]
+    },
+    {
+      "id": "7e900257-6bca-41d3-bc29-f20fdc3e1f35",
+      "short_id": "c17",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass is anechoic with posterior enhancement, typical of simple cysts, which are benign lesions",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "2bbb5536-7041-42ca-a539-22a7ec0f7c99",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "f190c721-4d39-425f-b7de-b615aac6385d",
+      "short_id": "c18",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The mass exhibits an irregular margin, indicative of malignancy, contradicting expert_a's claim of circumscribed margins",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "5436d704-7bd8-4b2d-b231-80b4c70b5971",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "9d36d64c-f718-4c6c-b3d3-93189e52cb45",
+      "short_id": "c19",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The hypoechoic internal echo pattern, while consistent with benign findings, does not preclude malignancy, as malignancies can also exhibit hypoechoic features",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "064bcd5f-0700-4503-bd5f-7c26dd7d7fa7",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "037df203-6cda-4456-8fca-6b87dc386467",
+      "short_id": "c20",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The anechoic content with posterior enhancement is not specific to simple cysts, as this appearance can also be observed in malignant lesions, such as fat necrosis or postsurgical changes",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "30ca49ac-049a-43bc-9e93-5b0b28d55ad8",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_093"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "a63b98c1-7502-4d97-8602-b965c378ba90",
+      "target_id": "5436d704-7bd8-4b2d-b231-80b4c70b5971",
+      "sign": "-"
+    },
+    {
+      "source_id": "064bcd5f-0700-4503-bd5f-7c26dd7d7fa7",
+      "target_id": "09b37f86-1af1-45e7-810b-bc8406dad909",
+      "sign": "+"
+    },
+    {
+      "source_id": "30ca49ac-049a-43bc-9e93-5b0b28d55ad8",
+      "target_id": "2bbb5536-7041-42ca-a539-22a7ec0f7c99",
+      "sign": "-"
+    },
+    {
+      "source_id": "8e77c80d-a99c-43b1-b2df-22ef6d55067a",
+      "target_id": "a63b98c1-7502-4d97-8602-b965c378ba90",
+      "sign": "+"
+    },
+    {
+      "source_id": "012e8ca8-09dc-4d74-b8fc-380cdd326e3c",
+      "target_id": "064bcd5f-0700-4503-bd5f-7c26dd7d7fa7",
+      "sign": "-"
+    },
+    {
+      "source_id": "0760c629-3420-4fb1-bf68-05ca6b493ff1",
+      "target_id": "30ca49ac-049a-43bc-9e93-5b0b28d55ad8",
+      "sign": "+"
+    },
+    {
+      "source_id": "9e018e12-9136-4759-bdf0-fb6271303a17",
+      "target_id": "686c60ed-9355-4515-a6bc-67486980bb23",
+      "sign": "+"
+    },
+    {
+      "source_id": "f9a2a24c-3ed0-40df-8f76-fcdebbc3c8bf",
+      "target_id": "5436d704-7bd8-4b2d-b231-80b4c70b5971",
+      "sign": "+"
+    },
+    {
+      "source_id": "53a1740c-74e2-435a-abae-6162863e7ee0",
+      "target_id": "09b37f86-1af1-45e7-810b-bc8406dad909",
+      "sign": "+"
+    },
+    {
+      "source_id": "7f745c86-ca06-4396-9b09-44269ddb5196",
+      "target_id": "2bbb5536-7041-42ca-a539-22a7ec0f7c99",
+      "sign": "+"
+    },
+    {
+      "source_id": "f7b349db-9868-47c6-9b53-5668a0f5b06b",
+      "target_id": "9e018e12-9136-4759-bdf0-fb6271303a17",
+      "sign": "+"
+    },
+    {
+      "source_id": "acdc8671-eb4f-4c30-8eda-1440170fa080",
+      "target_id": "09b37f86-1af1-45e7-810b-bc8406dad909",
+      "sign": "+"
+    },
+    {
+      "source_id": "7e900257-6bca-41d3-bc29-f20fdc3e1f35",
+      "target_id": "2bbb5536-7041-42ca-a539-22a7ec0f7c99",
+      "sign": "+"
+    },
+    {
+      "source_id": "f190c721-4d39-425f-b7de-b615aac6385d",
+      "target_id": "5436d704-7bd8-4b2d-b231-80b4c70b5971",
+      "sign": "-"
+    },
+    {
+      "source_id": "9d36d64c-f718-4c6c-b3d3-93189e52cb45",
+      "target_id": "064bcd5f-0700-4503-bd5f-7c26dd7d7fa7",
+      "sign": "+"
+    },
+    {
+      "source_id": "037df203-6cda-4456-8fca-6b87dc386467",
+      "target_id": "30ca49ac-049a-43bc-9e93-5b0b28d55ad8",
+      "sign": "+"
+    }
+  ],
+  "scores": {
+    "686c60ed-9355-4515-a6bc-67486980bb23": [
+      {
+        "groundedness": 20.0,
+        "factuality": 40.0
+      }
+    ],
+    "5436d704-7bd8-4b2d-b231-80b4c70b5971": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "09b37f86-1af1-45e7-810b-bc8406dad909": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "2bbb5536-7041-42ca-a539-22a7ec0f7c99": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "a63b98c1-7502-4d97-8602-b965c378ba90": [
+      {
+        "groundedness": 40.0,
+        "factuality": 40.0
+      }
+    ],
+    "064bcd5f-0700-4503-bd5f-7c26dd7d7fa7": [
+      {
+        "groundedness": 40.0,
+        "factuality": 60.0
+      }
+    ],
+    "30ca49ac-049a-43bc-9e93-5b0b28d55ad8": [
+      {
+        "groundedness": 20.0,
+        "factuality": 40.0
+      }
+    ],
+    "8e77c80d-a99c-43b1-b2df-22ef6d55067a": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "012e8ca8-09dc-4d74-b8fc-380cdd326e3c": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "0760c629-3420-4fb1-bf68-05ca6b493ff1": [
+      {
+        "groundedness": 40.0,
+        "factuality": 60.0
+      }
+    ],
+    "9e018e12-9136-4759-bdf0-fb6271303a17": [
+      {
+        "groundedness": 40.0,
+        "factuality": 60.0
+      }
+    ],
+    "f9a2a24c-3ed0-40df-8f76-fcdebbc3c8bf": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "53a1740c-74e2-435a-abae-6162863e7ee0": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "7f745c86-ca06-4396-9b09-44269ddb5196": [
+      {
+        "groundedness": 70.0,
+        "factuality": 80.0
+      }
+    ],
+    "f7b349db-9868-47c6-9b53-5668a0f5b06b": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "acdc8671-eb4f-4c30-8eda-1440170fa080": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "7e900257-6bca-41d3-bc29-f20fdc3e1f35": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "f190c721-4d39-425f-b7de-b615aac6385d": [
+      {
+        "groundedness": 40.0,
+        "factuality": 60.0
+      }
+    ],
+    "9d36d64c-f718-4c6c-b3d3-93189e52cb45": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "037df203-6cda-4456-8fca-6b87dc386467": [
+      {
+        "groundedness": 20.0,
+        "factuality": 40.0
+      }
+    ]
+  },
+  "verdict": "BENIGN",
+  "raw_score": -0.20535714285714285
+}

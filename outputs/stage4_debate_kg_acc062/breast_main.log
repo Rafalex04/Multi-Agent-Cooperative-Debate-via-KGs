@@ -1,0 +1,1314 @@
+[2026-06-10 11:12:56,518][__main__][INFO] - Config:
+model:
+  expert_model: qwen2.5vl:7b
+  expert_temperature: 0.7
+  ollama_base_url: http://localhost:11434
+data:
+  num_samples: 50
+  image_size: 224
+  seed: 42
+  kg_path: data/breast/knowledge_graph.json
+  definitions_path: data/breast/definitions.json
+  indices_path: data/breast/ablation_indices.json
+run:
+  mode: debate_kg
+  max_rounds: 3
+  use_stub_data: false
+judges:
+  model: google/medgemma-4b-it
+  backend: ollama
+  base_url: http://localhost:8000
+  ollama_model: medgemma:4b
+  ollama_base_url: http://localhost:11434
+  temperature: 0.0
+
+[2026-06-10 11:12:56,518][__main__][INFO] - Starting BreastMNIST run: mode=debate_kg samples=50
+[2026-06-10 11:12:56,529][debate_kg.kg.loader][INFO] - Loaded KG from data/breast/knowledge_graph.json: 370 triples
+[2026-06-10 11:12:56,533][debate_kg.kg.loader][INFO] - Loaded 99 entity definitions from data/breast/definitions.json
+[2026-06-10 11:12:56,533][__main__][INFO] - Loaded KG (370 triples) for mode debate_kg
+[2026-06-10 11:12:56,641][debate_kg.judges.medgemma_judge][INFO] - Built MedGemmaJudge: backend=ollama model=medgemma:4b
+[2026-06-10 11:12:58,228][debate_kg.data.breastmnist][INFO] - Loading 50 BreastMNIST test samples (indices: [52, 124, 33, 50, 7] ...)
+[2026-06-10 11:12:59,124][debate_kg.data.breastmnist][INFO] - Loaded 50 samples
+[2026-06-10 11:12:59,131][__main__][INFO] - Resuming debate_kg: 27 sample(s) already completed, skipping
+[2026-06-10 11:12:59,131][__main__][INFO] - Sample 052 — already completed, skipping
+[2026-06-10 11:12:59,132][__main__][INFO] - Sample 124 — already completed, skipping
+[2026-06-10 11:12:59,134][__main__][INFO] - Sample 033 — already completed, skipping
+[2026-06-10 11:12:59,136][__main__][INFO] - Sample 050 — already completed, skipping
+[2026-06-10 11:12:59,137][__main__][INFO] - Sample 007 — already completed, skipping
+[2026-06-10 11:12:59,139][__main__][INFO] - Sample 108 — already completed, skipping
+[2026-06-10 11:12:59,141][__main__][INFO] - Sample 115 — already completed, skipping
+[2026-06-10 11:12:59,142][__main__][INFO] - Sample 152 — already completed, skipping
+[2026-06-10 11:12:59,144][__main__][INFO] - Sample 148 — already completed, skipping
+[2026-06-10 11:12:59,145][__main__][INFO] - Sample 147 — already completed, skipping
+[2026-06-10 11:12:59,147][__main__][INFO] - Sample 008 — already completed, skipping
+[2026-06-10 11:12:59,148][__main__][INFO] - Sample 122 — already completed, skipping
+[2026-06-10 11:12:59,150][__main__][INFO] - Sample 114 — already completed, skipping
+[2026-06-10 11:12:59,151][__main__][INFO] - Sample 024 — already completed, skipping
+[2026-06-10 11:12:59,153][__main__][INFO] - Sample 081 — already completed, skipping
+[2026-06-10 11:12:59,155][__main__][INFO] - Sample 150 — already completed, skipping
+[2026-06-10 11:12:59,156][__main__][INFO] - Sample 107 — already completed, skipping
+[2026-06-10 11:12:59,158][__main__][INFO] - Sample 101 — already completed, skipping
+[2026-06-10 11:12:59,160][__main__][INFO] - Sample 134 — already completed, skipping
+[2026-06-10 11:12:59,161][__main__][INFO] - Sample 003 — already completed, skipping
+[2026-06-10 11:12:59,163][__main__][INFO] - Sample 025 — already completed, skipping
+[2026-06-10 11:12:59,164][__main__][INFO] - Sample 117 — already completed, skipping
+[2026-06-10 11:12:59,166][__main__][INFO] - Sample 038 — already completed, skipping
+[2026-06-10 11:12:59,168][__main__][INFO] - Sample 068 — already completed, skipping
+[2026-06-10 11:12:59,169][__main__][INFO] - Sample 004 — already completed, skipping
+[2026-06-10 11:12:59,171][__main__][INFO] - Sample 037 — already completed, skipping
+[2026-06-10 11:12:59,173][__main__][INFO] - Sample 056 — already completed, skipping
+[2026-06-10 11:12:59,174][__main__][INFO] - Sample 020 — gold=MALIGNANT
+[2026-06-10 11:13:30,910][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=MALIGNANT
+[2026-06-10 11:13:30,912][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=MALIGNANT
+[2026-06-10 11:13:30,912][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=MALIGNANT
+[2026-06-10 11:14:09,066][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c4: LABEL=MALIGNANT
+[2026-06-10 11:14:09,067][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=MALIGNANT
+[2026-06-10 11:14:09,068][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=MALIGNANT
+[2026-06-10 11:14:09,068][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=BENIGN
+[2026-06-10 11:14:09,068][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 7 node(s), 3 edge(s)
+[2026-06-10 11:14:14,988][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 11:14:15,408][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:14:15,812][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 11:14:16,215][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 11:14:16,629][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 11:14:17,043][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:14:17,450][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:15:02,676][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c8: LABEL=MALIGNANT
+[2026-06-10 11:15:02,678][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=MALIGNANT
+[2026-06-10 11:15:02,678][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=MALIGNANT
+[2026-06-10 11:15:02,678][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c11: LABEL=BENIGN
+[2026-06-10 11:15:46,735][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=MALIGNANT
+[2026-06-10 11:15:46,737][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c13: LABEL=MALIGNANT
+[2026-06-10 11:15:46,737][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c14: LABEL=MALIGNANT
+[2026-06-10 11:15:46,737][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c15: LABEL=MALIGNANT
+[2026-06-10 11:15:46,738][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 8 node(s), 8 edge(s)
+[2026-06-10 11:15:52,672][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:15:53,085][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:15:53,490][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:15:53,900][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:15:54,308][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:15:54,717][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:15:55,131][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:15:55,546][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:16:46,251][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c16: LABEL=MALIGNANT
+[2026-06-10 11:16:46,253][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c17: LABEL=MALIGNANT
+[2026-06-10 11:16:46,253][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c18: LABEL=MALIGNANT
+[2026-06-10 11:16:46,253][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c19: LABEL=MALIGNANT
+[2026-06-10 11:17:31,626][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c20: LABEL=MALIGNANT
+[2026-06-10 11:17:31,626][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c21: LABEL=MALIGNANT
+[2026-06-10 11:17:31,626][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c22: LABEL=MALIGNANT
+[2026-06-10 11:17:31,626][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c23: LABEL=MALIGNANT
+[2026-06-10 11:17:31,626][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 2 (adversarial=False): 8 node(s), 8 edge(s)
+[2026-06-10 11:17:37,561][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:17:37,987][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:17:38,402][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:17:38,808][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:17:39,228][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:17:39,640][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:17:40,055][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:17:40,466][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:17:40,469][debate_kg.consensus.check][INFO] - is_consensus: hard cap reached (round=2, max_rounds=3)
+[2026-06-10 11:17:40,469][__main__][INFO] - Consensus at round 2 for sample 020
+[2026-06-10 11:17:40,478][__main__][INFO] - Sample 020 → MALIGNANT (gold=MALIGNANT, rounds=3, time=281.3s)
+[2026-06-10 11:17:40,483][__main__][INFO] - Sample 123 — gold=MALIGNANT
+[2026-06-10 11:18:07,037][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 11:18:45,772][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c2: LABEL=BENIGN
+[2026-06-10 11:18:45,772][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c3: LABEL=BENIGN
+[2026-06-10 11:18:45,772][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c4: LABEL=BENIGN
+[2026-06-10 11:18:45,772][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 4 node(s), 1 edge(s)
+[2026-06-10 11:18:51,764][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:18:52,204][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:18:52,627][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:18:53,039][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:19:41,704][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c5: LABEL=BENIGN
+[2026-06-10 11:19:41,704][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c6: LABEL=BENIGN
+[2026-06-10 11:19:41,704][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c7: LABEL=BENIGN
+[2026-06-10 11:19:41,706][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c8: LABEL=BENIGN
+[2026-06-10 11:20:33,032][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c9: LABEL=BENIGN
+[2026-06-10 11:20:33,033][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c10: LABEL=BENIGN
+[2026-06-10 11:20:33,033][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c11: LABEL=BENIGN
+[2026-06-10 11:20:33,033][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=BENIGN
+[2026-06-10 11:20:33,033][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 8 node(s), 3 edge(s)
+[2026-06-10 11:20:38,995][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:20:39,416][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:20:39,825][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:20:40,233][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:20:40,640][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:20:41,049][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:20:41,452][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:20:41,868][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:20:41,869][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (3 edge(s))
+[2026-06-10 11:20:41,869][__main__][INFO] - Consensus at round 1 for sample 123
+[2026-06-10 11:20:41,877][__main__][INFO] - Sample 123 → BENIGN (gold=MALIGNANT, rounds=2, time=181.4s)
+[2026-06-10 11:20:41,881][__main__][INFO] - Sample 046 — gold=BENIGN
+[2026-06-10 11:21:39,851][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 11:21:39,851][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 11:21:39,851][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 11:21:39,853][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=BENIGN
+[2026-06-10 11:21:39,854][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c5: LABEL=BENIGN
+[2026-06-10 11:21:39,856][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c6: LABEL=BENIGN
+[2026-06-10 11:22:43,941][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=BENIGN
+[2026-06-10 11:22:43,943][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=BENIGN
+[2026-06-10 11:22:43,943][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c9: LABEL=BENIGN
+[2026-06-10 11:22:43,944][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c10: LABEL=BENIGN
+[2026-06-10 11:22:43,944][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c11: LABEL=BENIGN
+[2026-06-10 11:22:43,944][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c12: LABEL=BENIGN
+[2026-06-10 11:22:43,944][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 12 node(s), 6 edge(s)
+[2026-06-10 11:22:49,883][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:22:50,319][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:22:50,735][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:22:51,151][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 11:22:51,558][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:22:51,965][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:22:52,378][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:22:52,780][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:22:53,193][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:22:53,603][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 11:22:54,013][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:22:54,420][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:24:02,056][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c13: LABEL=BENIGN
+[2026-06-10 11:24:02,058][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c14: LABEL=BENIGN
+[2026-06-10 11:24:02,058][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c15: LABEL=BENIGN
+[2026-06-10 11:24:02,058][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c16: LABEL=BENIGN
+[2026-06-10 11:24:02,058][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c17: LABEL=BENIGN
+[2026-06-10 11:24:02,058][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c18: LABEL=BENIGN
+[2026-06-10 11:24:02,058][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c19: LABEL=BENIGN
+[2026-06-10 11:25:00,374][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c20: LABEL=BENIGN
+[2026-06-10 11:25:00,374][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c21: LABEL=BENIGN
+[2026-06-10 11:25:00,374][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c22: LABEL=BENIGN
+[2026-06-10 11:25:00,376][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c23: LABEL=BENIGN
+[2026-06-10 11:25:00,378][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c24: LABEL=BENIGN
+[2026-06-10 11:25:00,379][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c25: LABEL=BENIGN
+[2026-06-10 11:25:00,381][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 13 node(s), 13 edge(s)
+[2026-06-10 11:25:06,340][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:25:06,767][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:25:07,183][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:25:07,600][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:25:08,011][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 11:25:08,424][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:25:08,831][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:25:09,240][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:25:09,652][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:25:10,059][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:25:10,474][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=90
+[2026-06-10 11:25:10,884][debate_kg.judges.medgemma_judge][INFO] -   scored c24 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 11:25:11,291][debate_kg.judges.medgemma_judge][INFO] -   scored c25 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 11:25:11,292][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (13 edge(s))
+[2026-06-10 11:25:11,293][__main__][INFO] - Consensus at round 1 for sample 046
+[2026-06-10 11:25:11,301][__main__][INFO] - Sample 046 → BENIGN (gold=BENIGN, rounds=2, time=269.4s)
+[2026-06-10 11:25:11,306][__main__][INFO] - Sample 054 — gold=BENIGN
+[2026-06-10 11:26:05,712][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=?
+[2026-06-10 11:26:05,712][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=?
+[2026-06-10 11:26:05,712][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=?
+[2026-06-10 11:26:05,714][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=?
+[2026-06-10 11:26:43,611][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=MALIGNANT
+[2026-06-10 11:26:43,611][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=MALIGNANT
+[2026-06-10 11:26:43,611][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=MALIGNANT
+[2026-06-10 11:26:43,611][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=BENIGN
+[2026-06-10 11:26:43,611][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 8 node(s), 4 edge(s)
+[2026-06-10 11:26:49,551][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:26:49,973][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:26:50,381][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=90
+[2026-06-10 11:26:50,803][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:26:51,208][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:26:51,622][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:26:52,027][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=90
+[2026-06-10 11:26:52,441][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:27:41,645][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=MALIGNANT
+[2026-06-10 11:27:41,645][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=MALIGNANT
+[2026-06-10 11:27:41,645][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c11: LABEL=BENIGN
+[2026-06-10 11:27:41,647][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c12: LABEL=BENIGN
+[2026-06-10 11:28:23,340][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c13: LABEL=MALIGNANT
+[2026-06-10 11:28:23,340][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c14: LABEL=MALIGNANT
+[2026-06-10 11:28:23,340][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c15: LABEL=BENIGN
+[2026-06-10 11:28:23,342][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c16: LABEL=BENIGN
+[2026-06-10 11:28:23,344][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 8 node(s), 7 edge(s)
+[2026-06-10 11:28:29,304][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:28:29,729][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:28:30,147][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:28:30,561][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:28:30,965][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:28:31,376][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:28:31,782][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:28:32,198][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:29:25,742][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c17: LABEL=MALIGNANT
+[2026-06-10 11:29:25,742][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c18: LABEL=MALIGNANT
+[2026-06-10 11:29:25,744][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c19: LABEL=MALIGNANT
+[2026-06-10 11:29:25,745][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c20: LABEL=MALIGNANT
+[2026-06-10 11:30:13,705][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c21: LABEL=MALIGNANT
+[2026-06-10 11:30:13,705][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c22: LABEL=MALIGNANT
+[2026-06-10 11:30:13,705][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c23: LABEL=MALIGNANT
+[2026-06-10 11:30:13,705][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c24: LABEL=MALIGNANT
+[2026-06-10 11:30:13,705][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 2 (adversarial=False): 8 node(s), 8 edge(s)
+[2026-06-10 11:30:19,612][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:30:20,035][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:30:20,446][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:30:20,845][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:30:21,254][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:30:21,657][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:30:22,064][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:30:22,468][debate_kg.judges.medgemma_judge][INFO] -   scored c24 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:30:22,469][debate_kg.consensus.check][INFO] - is_consensus: hard cap reached (round=2, max_rounds=3)
+[2026-06-10 11:30:22,470][__main__][INFO] - Consensus at round 2 for sample 054
+[2026-06-10 11:30:22,478][__main__][INFO] - Sample 054 → MALIGNANT (gold=BENIGN, rounds=3, time=311.2s)
+[2026-06-10 11:30:22,483][__main__][INFO] - Sample 062 — gold=BENIGN
+[2026-06-10 11:30:58,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 11:30:58,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 11:30:58,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 11:31:32,266][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c4: LABEL=BENIGN
+[2026-06-10 11:31:32,266][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=BENIGN
+[2026-06-10 11:31:32,266][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=BENIGN
+[2026-06-10 11:31:32,266][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 6 node(s), 3 edge(s)
+[2026-06-10 11:31:38,214][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:31:38,634][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:31:39,048][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:31:39,459][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:31:39,868][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:31:40,276][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:32:19,307][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c7: LABEL=BENIGN
+[2026-06-10 11:32:19,307][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c8: LABEL=BENIGN
+[2026-06-10 11:32:19,307][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=BENIGN
+[2026-06-10 11:32:55,138][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c10: LABEL=BENIGN
+[2026-06-10 11:32:55,139][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c11: LABEL=BENIGN
+[2026-06-10 11:32:55,139][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=BENIGN
+[2026-06-10 11:32:55,139][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 6 node(s), 6 edge(s)
+[2026-06-10 11:33:01,071][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:33:01,493][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:33:01,906][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:33:02,312][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:33:02,721][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:33:03,127][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:33:03,129][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (6 edge(s))
+[2026-06-10 11:33:03,129][__main__][INFO] - Consensus at round 1 for sample 062
+[2026-06-10 11:33:03,135][__main__][INFO] - Sample 062 → BENIGN (gold=BENIGN, rounds=2, time=160.7s)
+[2026-06-10 11:33:03,140][__main__][INFO] - Sample 002 — gold=BENIGN
+[2026-06-10 11:33:25,425][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 11:34:06,793][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c2: LABEL=BENIGN
+[2026-06-10 11:34:06,793][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c3: LABEL=BENIGN
+[2026-06-10 11:34:06,793][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c4: LABEL=BENIGN
+[2026-06-10 11:34:06,793][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=BENIGN
+[2026-06-10 11:34:06,793][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=BENIGN
+[2026-06-10 11:34:06,793][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 6 node(s), 1 edge(s)
+[2026-06-10 11:34:12,739][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:34:13,164][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:34:13,580][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:34:13,986][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:34:14,393][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:34:14,797][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:34:59,976][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c7: LABEL=BENIGN
+[2026-06-10 11:34:59,976][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c8: LABEL=BENIGN
+[2026-06-10 11:34:59,979][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=BENIGN
+[2026-06-10 11:34:59,980][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=BENIGN
+[2026-06-10 11:35:39,980][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c11: LABEL=BENIGN
+[2026-06-10 11:35:39,980][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=BENIGN
+[2026-06-10 11:35:39,980][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c13: LABEL=BENIGN
+[2026-06-10 11:35:39,980][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c14: LABEL=BENIGN
+[2026-06-10 11:35:39,980][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 8 node(s), 8 edge(s)
+[2026-06-10 11:35:45,920][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:35:46,344][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:35:46,756][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:35:47,160][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:35:47,575][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:35:47,984][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:35:48,391][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:35:48,794][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:35:48,796][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (8 edge(s))
+[2026-06-10 11:35:48,796][__main__][INFO] - Consensus at round 1 for sample 002
+[2026-06-10 11:35:48,803][__main__][INFO] - Sample 002 → BENIGN (gold=BENIGN, rounds=2, time=165.7s)
+[2026-06-10 11:35:48,808][__main__][INFO] - Sample 090 — gold=BENIGN
+[2026-06-10 11:36:30,412][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=MALIGNANT
+[2026-06-10 11:36:30,413][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=MALIGNANT
+[2026-06-10 11:36:30,413][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=MALIGNANT
+[2026-06-10 11:36:30,414][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=MALIGNANT
+[2026-06-10 11:37:14,761][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=MALIGNANT
+[2026-06-10 11:37:14,761][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=MALIGNANT
+[2026-06-10 11:37:14,761][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=MALIGNANT
+[2026-06-10 11:37:14,761][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=MALIGNANT
+[2026-06-10 11:37:14,761][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 8 node(s), 4 edge(s)
+[2026-06-10 11:37:20,703][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:37:21,127][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:37:21,542][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:37:21,954][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=75
+[2026-06-10 11:37:22,354][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:37:22,765][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 11:37:23,177][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:37:23,587][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=75
+[2026-06-10 11:38:13,859][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=MALIGNANT
+[2026-06-10 11:38:13,859][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=MALIGNANT
+[2026-06-10 11:38:13,862][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c11: LABEL=MALIGNANT
+[2026-06-10 11:38:13,864][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c12: LABEL=MALIGNANT
+[2026-06-10 11:39:06,353][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c13: LABEL=MALIGNANT
+[2026-06-10 11:39:06,353][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c14: LABEL=MALIGNANT
+[2026-06-10 11:39:06,353][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 6 node(s), 7 edge(s)
+[2026-06-10 11:39:12,292][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:39:12,715][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:39:13,123][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:39:13,526][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:39:13,928][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:39:14,336][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:39:14,338][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (7 edge(s))
+[2026-06-10 11:39:14,338][__main__][INFO] - Consensus at round 1 for sample 090
+[2026-06-10 11:39:14,345][__main__][INFO] - Sample 090 → MALIGNANT (gold=BENIGN, rounds=2, time=205.5s)
+[2026-06-10 11:39:14,350][__main__][INFO] - Sample 066 — gold=BENIGN
+[2026-06-10 11:40:10,963][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 11:40:10,963][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 11:40:10,963][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 11:40:10,965][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=BENIGN
+[2026-06-10 11:40:10,967][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c5: LABEL=BENIGN
+[2026-06-10 11:40:10,969][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c6: LABEL=BENIGN
+[2026-06-10 11:40:10,970][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c7: LABEL=BENIGN
+[2026-06-10 11:41:12,806][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=BENIGN
+[2026-06-10 11:41:12,808][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c9: LABEL=BENIGN
+[2026-06-10 11:41:12,809][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c10: LABEL=BENIGN
+[2026-06-10 11:41:12,809][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c11: LABEL=BENIGN
+[2026-06-10 11:41:12,809][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c12: LABEL=BENIGN
+[2026-06-10 11:41:12,809][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c13: LABEL=BENIGN
+[2026-06-10 11:41:12,809][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c14: LABEL=BENIGN
+[2026-06-10 11:41:12,809][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 14 node(s), 6 edge(s)
+[2026-06-10 11:41:18,733][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 11:41:19,148][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:41:19,564][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:41:19,973][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:41:20,377][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_a): IMAGE_GROUNDING=40  MEDICAL_ACCURACY=60
+[2026-06-10 11:41:20,793][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_a): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 11:41:21,209][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:41:21,617][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:41:22,032][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 11:41:22,441][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:41:22,851][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:41:23,254][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=40  MEDICAL_ACCURACY=60
+[2026-06-10 11:41:23,655][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 11:41:24,052][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 11:42:23,279][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c15: LABEL=BENIGN
+[2026-06-10 11:42:23,279][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c16: LABEL=BENIGN
+[2026-06-10 11:42:23,279][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c17: LABEL=BENIGN
+[2026-06-10 11:42:23,279][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c18: LABEL=BENIGN
+[2026-06-10 11:42:23,280][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c19: LABEL=BENIGN
+[2026-06-10 11:42:23,280][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c20: LABEL=BENIGN
+[2026-06-10 11:42:23,280][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c21: LABEL=BENIGN
+[2026-06-10 11:44:42,887][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c22: LABEL=BENIGN
+[2026-06-10 11:44:42,889][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c23: LABEL=BENIGN
+[2026-06-10 11:44:42,889][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c24: LABEL=BENIGN
+[2026-06-10 11:44:42,889][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c25: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c26: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c27: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c28: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c29: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c30: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c31: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c32: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c33: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c34: LABEL=BENIGN
+[2026-06-10 11:44:42,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c35: LABEL=BENIGN
+[2026-06-10 11:44:42,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c36: LABEL=BENIGN
+[2026-06-10 11:44:42,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c37: LABEL=BENIGN
+[2026-06-10 11:44:42,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c38: LABEL=BENIGN
+[2026-06-10 11:44:42,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c39: LABEL=BENIGN
+[2026-06-10 11:44:42,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c40: LABEL=BENIGN
+[2026-06-10 11:44:42,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c41: LABEL=BENIGN
+[2026-06-10 11:44:42,891][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c42: LABEL=BENIGN
+[2026-06-10 11:44:42,891][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 28 node(s), 0 edge(s)
+[2026-06-10 11:44:48,842][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:49,274][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:44:49,689][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:50,105][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:50,512][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:50,919][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:44:51,327][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:51,744][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:52,158][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:52,566][debate_kg.judges.medgemma_judge][INFO] -   scored c24 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:44:52,977][debate_kg.judges.medgemma_judge][INFO] -   scored c25 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:53,384][debate_kg.judges.medgemma_judge][INFO] -   scored c26 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:53,790][debate_kg.judges.medgemma_judge][INFO] -   scored c27 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:44:54,204][debate_kg.judges.medgemma_judge][INFO] -   scored c28 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:54,611][debate_kg.judges.medgemma_judge][INFO] -   scored c29 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:55,016][debate_kg.judges.medgemma_judge][INFO] -   scored c30 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:44:55,424][debate_kg.judges.medgemma_judge][INFO] -   scored c31 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:55,825][debate_kg.judges.medgemma_judge][INFO] -   scored c32 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:56,227][debate_kg.judges.medgemma_judge][INFO] -   scored c33 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:56,634][debate_kg.judges.medgemma_judge][INFO] -   scored c34 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:44:57,042][debate_kg.judges.medgemma_judge][INFO] -   scored c35 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:57,456][debate_kg.judges.medgemma_judge][INFO] -   scored c36 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:57,861][debate_kg.judges.medgemma_judge][INFO] -   scored c37 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:44:58,276][debate_kg.judges.medgemma_judge][INFO] -   scored c38 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:58,688][debate_kg.judges.medgemma_judge][INFO] -   scored c39 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:59,099][debate_kg.judges.medgemma_judge][INFO] -   scored c40 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:44:59,514][debate_kg.judges.medgemma_judge][INFO] -   scored c41 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:44:59,918][debate_kg.judges.medgemma_judge][INFO] -   scored c42 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:48:58,932][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c43: LABEL=BENIGN
+[2026-06-10 11:48:58,933][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c44: LABEL=BENIGN
+[2026-06-10 11:48:58,933][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c45: LABEL=BENIGN
+[2026-06-10 11:48:58,934][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c46: LABEL=BENIGN
+[2026-06-10 11:48:58,934][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c47: LABEL=BENIGN
+[2026-06-10 11:48:58,934][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c48: LABEL=BENIGN
+[2026-06-10 11:48:58,934][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c49: LABEL=BENIGN
+[2026-06-10 11:48:58,934][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c50: LABEL=BENIGN
+[2026-06-10 11:48:58,934][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c51: LABEL=BENIGN
+[2026-06-10 11:48:58,934][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c52: LABEL=BENIGN
+[2026-06-10 11:48:58,934][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c53: LABEL=BENIGN
+[2026-06-10 11:48:58,934][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c54: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c55: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c56: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c57: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c58: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c59: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c60: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c61: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c62: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c63: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c64: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c65: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c66: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c67: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c68: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c69: LABEL=BENIGN
+[2026-06-10 11:48:58,935][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c70: LABEL=BENIGN
+[2026-06-10 11:48:58,936][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c71: LABEL=BENIGN
+[2026-06-10 11:48:58,936][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c72: LABEL=BENIGN
+[2026-06-10 11:48:58,936][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c73: LABEL=BENIGN
+[2026-06-10 11:48:58,936][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c74: LABEL=BENIGN
+[2026-06-10 11:48:58,936][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c75: LABEL=BENIGN
+[2026-06-10 11:48:58,936][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c76: LABEL=BENIGN
+[2026-06-10 11:48:58,936][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c77: LABEL=BENIGN
+[2026-06-10 11:49:59,894][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c78: LABEL=BENIGN
+[2026-06-10 11:49:59,895][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c79: LABEL=BENIGN
+[2026-06-10 11:49:59,896][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c80: LABEL=BENIGN
+[2026-06-10 11:49:59,896][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c81: LABEL=BENIGN
+[2026-06-10 11:49:59,896][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c82: LABEL=BENIGN
+[2026-06-10 11:49:59,896][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c83: LABEL=BENIGN
+[2026-06-10 11:49:59,896][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c84: LABEL=BENIGN
+[2026-06-10 11:49:59,896][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 2 (adversarial=False): 42 node(s), 0 edge(s)
+[2026-06-10 11:50:05,827][debate_kg.judges.medgemma_judge][INFO] -   scored c43 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:06,252][debate_kg.judges.medgemma_judge][INFO] -   scored c44 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:50:06,667][debate_kg.judges.medgemma_judge][INFO] -   scored c45 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:07,075][debate_kg.judges.medgemma_judge][INFO] -   scored c46 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:07,479][debate_kg.judges.medgemma_judge][INFO] -   scored c47 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:07,885][debate_kg.judges.medgemma_judge][INFO] -   scored c48 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:50:08,289][debate_kg.judges.medgemma_judge][INFO] -   scored c49 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:08,693][debate_kg.judges.medgemma_judge][INFO] -   scored c50 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:09,093][debate_kg.judges.medgemma_judge][INFO] -   scored c51 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:50:09,496][debate_kg.judges.medgemma_judge][INFO] -   scored c52 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:09,903][debate_kg.judges.medgemma_judge][INFO] -   scored c53 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:10,312][debate_kg.judges.medgemma_judge][INFO] -   scored c54 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:10,716][debate_kg.judges.medgemma_judge][INFO] -   scored c55 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:50:11,111][debate_kg.judges.medgemma_judge][INFO] -   scored c56 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:11,517][debate_kg.judges.medgemma_judge][INFO] -   scored c57 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:11,927][debate_kg.judges.medgemma_judge][INFO] -   scored c58 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:50:12,337][debate_kg.judges.medgemma_judge][INFO] -   scored c59 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:12,749][debate_kg.judges.medgemma_judge][INFO] -   scored c60 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:13,153][debate_kg.judges.medgemma_judge][INFO] -   scored c61 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:13,548][debate_kg.judges.medgemma_judge][INFO] -   scored c62 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:50:13,953][debate_kg.judges.medgemma_judge][INFO] -   scored c63 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:14,362][debate_kg.judges.medgemma_judge][INFO] -   scored c64 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:14,773][debate_kg.judges.medgemma_judge][INFO] -   scored c65 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:50:15,183][debate_kg.judges.medgemma_judge][INFO] -   scored c66 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:15,583][debate_kg.judges.medgemma_judge][INFO] -   scored c67 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:15,993][debate_kg.judges.medgemma_judge][INFO] -   scored c68 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:16,396][debate_kg.judges.medgemma_judge][INFO] -   scored c69 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:50:16,800][debate_kg.judges.medgemma_judge][INFO] -   scored c70 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:17,205][debate_kg.judges.medgemma_judge][INFO] -   scored c71 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:17,612][debate_kg.judges.medgemma_judge][INFO] -   scored c72 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:50:18,017][debate_kg.judges.medgemma_judge][INFO] -   scored c73 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:18,419][debate_kg.judges.medgemma_judge][INFO] -   scored c74 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:18,833][debate_kg.judges.medgemma_judge][INFO] -   scored c75 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:19,240][debate_kg.judges.medgemma_judge][INFO] -   scored c76 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:50:19,643][debate_kg.judges.medgemma_judge][INFO] -   scored c77 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:20,058][debate_kg.judges.medgemma_judge][INFO] -   scored c78 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:20,454][debate_kg.judges.medgemma_judge][INFO] -   scored c79 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:50:20,855][debate_kg.judges.medgemma_judge][INFO] -   scored c80 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:21,256][debate_kg.judges.medgemma_judge][INFO] -   scored c81 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:21,654][debate_kg.judges.medgemma_judge][INFO] -   scored c82 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:22,061][debate_kg.judges.medgemma_judge][INFO] -   scored c83 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:50:22,461][debate_kg.judges.medgemma_judge][INFO] -   scored c84 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:50:22,463][debate_kg.consensus.check][INFO] - is_consensus: hard cap reached (round=2, max_rounds=3)
+[2026-06-10 11:50:22,463][__main__][INFO] - Consensus at round 2 for sample 066
+[2026-06-10 11:50:22,474][__main__][INFO] - Sample 066 → BENIGN (gold=BENIGN, rounds=3, time=668.1s)
+[2026-06-10 11:50:22,479][__main__][INFO] - Sample 093 — gold=BENIGN
+[2026-06-10 11:51:04,517][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 11:51:04,517][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 11:51:04,517][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 11:51:52,261][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c4: LABEL=BENIGN
+[2026-06-10 11:51:52,261][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=BENIGN
+[2026-06-10 11:51:52,261][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=BENIGN
+[2026-06-10 11:51:52,261][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=BENIGN
+[2026-06-10 11:51:52,261][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 7 node(s), 4 edge(s)
+[2026-06-10 11:51:58,195][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:51:58,618][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:51:59,035][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:51:59,438][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:51:59,846][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:52:00,253][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:52:00,662][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:52:54,815][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c8: LABEL=BENIGN
+[2026-06-10 11:52:54,815][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=BENIGN
+[2026-06-10 11:52:54,815][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=BENIGN
+[2026-06-10 11:52:54,815][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c11: LABEL=BENIGN
+[2026-06-10 11:53:49,997][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=BENIGN
+[2026-06-10 11:53:49,997][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c13: LABEL=BENIGN
+[2026-06-10 11:53:49,997][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c14: LABEL=BENIGN
+[2026-06-10 11:53:49,999][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 7 node(s), 10 edge(s)
+[2026-06-10 11:53:55,932][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:53:56,366][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:53:56,773][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:53:57,186][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:53:57,597][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:53:58,003][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:53:58,413][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:53:58,415][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (10 edge(s))
+[2026-06-10 11:53:58,415][__main__][INFO] - Consensus at round 1 for sample 093
+[2026-06-10 11:53:58,422][__main__][INFO] - Sample 093 → BENIGN (gold=BENIGN, rounds=2, time=215.9s)
+[2026-06-10 11:53:58,427][__main__][INFO] - Sample 111 — gold=BENIGN
+[2026-06-10 11:55:13,286][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 11:55:13,288][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 11:55:13,288][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 11:55:13,288][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=BENIGN
+[2026-06-10 11:55:13,288][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c5: LABEL=BENIGN
+[2026-06-10 11:55:13,288][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c6: LABEL=BENIGN
+[2026-06-10 11:55:13,288][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c7: LABEL=BENIGN
+[2026-06-10 11:55:13,288][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c8: LABEL=BENIGN
+[2026-06-10 11:55:13,288][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c9: LABEL=BENIGN
+[2026-06-10 11:55:13,288][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c10: LABEL=BENIGN
+[2026-06-10 11:55:13,289][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c11: LABEL=BENIGN
+[2026-06-10 11:56:34,552][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c12: LABEL=BENIGN
+[2026-06-10 11:56:34,554][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c13: LABEL=BENIGN
+[2026-06-10 11:56:34,554][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c14: LABEL=BENIGN
+[2026-06-10 11:56:34,554][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c15: LABEL=BENIGN
+[2026-06-10 11:56:34,554][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c16: LABEL=BENIGN
+[2026-06-10 11:56:34,555][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c17: LABEL=BENIGN
+[2026-06-10 11:56:34,555][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c18: LABEL=BENIGN
+[2026-06-10 11:56:34,555][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c19: LABEL=BENIGN
+[2026-06-10 11:56:34,555][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c20: LABEL=BENIGN
+[2026-06-10 11:56:34,555][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 20 node(s), 9 edge(s)
+[2026-06-10 11:56:40,488][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:56:40,916][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:56:41,324][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=40  MEDICAL_ACCURACY=60
+[2026-06-10 11:56:41,727][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 11:56:42,123][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:56:42,560][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:56:42,960][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 11:56:43,374][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:56:43,784][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:56:44,189][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:56:44,591][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=90
+[2026-06-10 11:56:44,994][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:56:45,400][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:56:45,804][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 11:56:46,214][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:56:46,628][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 11:56:47,036][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:56:47,444][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 11:56:47,851][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:56:48,252][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=90
+[2026-06-10 11:58:17,272][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c21: LABEL=BENIGN
+[2026-06-10 11:58:17,274][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c22: LABEL=BENIGN
+[2026-06-10 11:58:17,274][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c23: LABEL=BENIGN
+[2026-06-10 11:58:17,274][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c24: LABEL=BENIGN
+[2026-06-10 11:58:17,275][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c25: LABEL=BENIGN
+[2026-06-10 11:58:17,275][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c26: LABEL=BENIGN
+[2026-06-10 11:58:17,275][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c27: LABEL=BENIGN
+[2026-06-10 11:58:17,275][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c28: LABEL=BENIGN
+[2026-06-10 11:58:17,275][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c29: LABEL=BENIGN
+[2026-06-10 11:59:39,794][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c30: LABEL=BENIGN
+[2026-06-10 11:59:39,796][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c31: LABEL=BENIGN
+[2026-06-10 11:59:39,796][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c32: LABEL=BENIGN
+[2026-06-10 11:59:39,796][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c33: LABEL=BENIGN
+[2026-06-10 11:59:39,796][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c34: LABEL=BENIGN
+[2026-06-10 11:59:39,796][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c35: LABEL=BENIGN
+[2026-06-10 11:59:39,796][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c36: LABEL=BENIGN
+[2026-06-10 11:59:39,796][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c37: LABEL=BENIGN
+[2026-06-10 11:59:39,796][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c38: LABEL=BENIGN
+[2026-06-10 11:59:39,797][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 18 node(s), 17 edge(s)
+[2026-06-10 11:59:45,734][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:46,165][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:46,579][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 11:59:46,988][debate_kg.judges.medgemma_judge][INFO] -   scored c24 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:47,396][debate_kg.judges.medgemma_judge][INFO] -   scored c25 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:47,813][debate_kg.judges.medgemma_judge][INFO] -   scored c26 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:48,220][debate_kg.judges.medgemma_judge][INFO] -   scored c27 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:48,633][debate_kg.judges.medgemma_judge][INFO] -   scored c28 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:49,037][debate_kg.judges.medgemma_judge][INFO] -   scored c29 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:49,442][debate_kg.judges.medgemma_judge][INFO] -   scored c30 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:49,850][debate_kg.judges.medgemma_judge][INFO] -   scored c31 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:50,255][debate_kg.judges.medgemma_judge][INFO] -   scored c32 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:50,667][debate_kg.judges.medgemma_judge][INFO] -   scored c33 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:51,083][debate_kg.judges.medgemma_judge][INFO] -   scored c34 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:51,492][debate_kg.judges.medgemma_judge][INFO] -   scored c35 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:51,902][debate_kg.judges.medgemma_judge][INFO] -   scored c36 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:52,306][debate_kg.judges.medgemma_judge][INFO] -   scored c37 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:52,706][debate_kg.judges.medgemma_judge][INFO] -   scored c38 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 11:59:52,708][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (17 edge(s))
+[2026-06-10 11:59:52,708][__main__][INFO] - Consensus at round 1 for sample 111
+[2026-06-10 11:59:52,717][__main__][INFO] - Sample 111 → BENIGN (gold=BENIGN, rounds=2, time=354.3s)
+[2026-06-10 11:59:52,721][__main__][INFO] - Sample 096 — gold=BENIGN
+[2026-06-10 12:00:32,102][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=MALIGNANT
+[2026-06-10 12:00:32,102][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=MALIGNANT
+[2026-06-10 12:00:32,102][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=MALIGNANT
+[2026-06-10 12:00:32,104][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=MALIGNANT
+[2026-06-10 12:01:11,494][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=MALIGNANT
+[2026-06-10 12:01:11,494][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=MALIGNANT
+[2026-06-10 12:01:11,494][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=MALIGNANT
+[2026-06-10 12:01:11,494][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=MALIGNANT
+[2026-06-10 12:01:11,494][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 8 node(s), 3 edge(s)
+[2026-06-10 12:01:17,410][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 12:01:17,835][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:01:18,244][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:01:18,649][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:01:19,060][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:01:19,472][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:01:19,883][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:01:20,289][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 12:02:07,419][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=MALIGNANT
+[2026-06-10 12:02:07,419][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=MALIGNANT
+[2026-06-10 12:02:07,419][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c11: LABEL=MALIGNANT
+[2026-06-10 12:02:07,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c12: LABEL=MALIGNANT
+[2026-06-10 12:02:52,638][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c13: LABEL=MALIGNANT
+[2026-06-10 12:02:52,638][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c14: LABEL=MALIGNANT
+[2026-06-10 12:02:52,638][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c15: LABEL=MALIGNANT
+[2026-06-10 12:02:52,638][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c16: LABEL=MALIGNANT
+[2026-06-10 12:02:52,639][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 8 node(s), 8 edge(s)
+[2026-06-10 12:02:58,627][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:02:59,057][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:02:59,480][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:02:59,886][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 12:03:00,300][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:03:00,716][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:03:01,131][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:03:01,539][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=85
+[2026-06-10 12:04:07,720][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c17: LABEL=MALIGNANT
+[2026-06-10 12:04:07,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c18: LABEL=MALIGNANT
+[2026-06-10 12:04:07,723][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c19: LABEL=MALIGNANT
+[2026-06-10 12:04:07,723][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c20: LABEL=MALIGNANT
+[2026-06-10 12:04:07,723][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c21: LABEL=MALIGNANT
+[2026-06-10 12:04:07,723][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c22: LABEL=MALIGNANT
+[2026-06-10 12:04:07,723][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c23: LABEL=MALIGNANT
+[2026-06-10 12:04:07,723][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c24: LABEL=MALIGNANT
+[2026-06-10 12:06:47,070][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c25: LABEL=MALIGNANT
+[2026-06-10 12:06:47,072][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c26: LABEL=MALIGNANT
+[2026-06-10 12:06:47,072][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c27: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c28: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c29: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c30: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c31: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c32: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c33: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c34: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c35: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c36: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c37: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c38: LABEL=MALIGNANT
+[2026-06-10 12:06:47,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c39: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c40: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c41: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c42: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c43: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c44: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c45: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c46: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c47: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c48: LABEL=MALIGNANT
+[2026-06-10 12:06:47,074][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 2 (adversarial=False): 32 node(s), 0 edge(s)
+[2026-06-10 12:06:53,017][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 12:06:53,437][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:06:53,851][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:06:54,258][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:06:54,660][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:06:55,068][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:06:55,474][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:06:55,880][debate_kg.judges.medgemma_judge][INFO] -   scored c24 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=85
+[2026-06-10 12:06:56,292][debate_kg.judges.medgemma_judge][INFO] -   scored c25 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:06:56,687][debate_kg.judges.medgemma_judge][INFO] -   scored c26 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:06:57,087][debate_kg.judges.medgemma_judge][INFO] -   scored c27 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:06:57,488][debate_kg.judges.medgemma_judge][INFO] -   scored c28 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=85
+[2026-06-10 12:06:57,890][debate_kg.judges.medgemma_judge][INFO] -   scored c29 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:06:58,295][debate_kg.judges.medgemma_judge][INFO] -   scored c30 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:06:58,703][debate_kg.judges.medgemma_judge][INFO] -   scored c31 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:06:59,107][debate_kg.judges.medgemma_judge][INFO] -   scored c32 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=85
+[2026-06-10 12:06:59,513][debate_kg.judges.medgemma_judge][INFO] -   scored c33 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 12:06:59,920][debate_kg.judges.medgemma_judge][INFO] -   scored c34 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:07:00,329][debate_kg.judges.medgemma_judge][INFO] -   scored c35 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:07:00,738][debate_kg.judges.medgemma_judge][INFO] -   scored c36 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=85
+[2026-06-10 12:07:01,138][debate_kg.judges.medgemma_judge][INFO] -   scored c37 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 12:07:01,538][debate_kg.judges.medgemma_judge][INFO] -   scored c38 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:07:01,939][debate_kg.judges.medgemma_judge][INFO] -   scored c39 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:07:02,339][debate_kg.judges.medgemma_judge][INFO] -   scored c40 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=80
+[2026-06-10 12:07:02,739][debate_kg.judges.medgemma_judge][INFO] -   scored c41 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 12:07:03,139][debate_kg.judges.medgemma_judge][INFO] -   scored c42 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:07:03,540][debate_kg.judges.medgemma_judge][INFO] -   scored c43 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:07:03,940][debate_kg.judges.medgemma_judge][INFO] -   scored c44 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=85
+[2026-06-10 12:07:04,338][debate_kg.judges.medgemma_judge][INFO] -   scored c45 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:07:04,738][debate_kg.judges.medgemma_judge][INFO] -   scored c46 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:07:05,135][debate_kg.judges.medgemma_judge][INFO] -   scored c47 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:07:05,530][debate_kg.judges.medgemma_judge][INFO] -   scored c48 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=85
+[2026-06-10 12:07:05,532][debate_kg.consensus.check][INFO] - is_consensus: hard cap reached (round=2, max_rounds=3)
+[2026-06-10 12:07:05,532][__main__][INFO] - Consensus at round 2 for sample 096
+[2026-06-10 12:07:05,540][__main__][INFO] - Sample 096 → MALIGNANT (gold=BENIGN, rounds=3, time=432.8s)
+[2026-06-10 12:07:05,545][__main__][INFO] - Sample 012 — gold=BENIGN
+[2026-06-10 12:07:38,445][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:07:38,446][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 12:07:38,446][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 12:08:11,080][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c4: LABEL=BENIGN
+[2026-06-10 12:08:11,080][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=BENIGN
+[2026-06-10 12:08:11,080][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=BENIGN
+[2026-06-10 12:08:11,080][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 6 node(s), 3 edge(s)
+[2026-06-10 12:08:17,019][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:08:17,435][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:08:17,841][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:08:18,249][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:08:18,653][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:08:19,062][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:09:04,811][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c7: LABEL=BENIGN
+[2026-06-10 12:09:04,811][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c8: LABEL=BENIGN
+[2026-06-10 12:09:04,811][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=BENIGN
+[2026-06-10 12:09:04,811][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=BENIGN
+[2026-06-10 12:09:38,317][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c11: LABEL=BENIGN
+[2026-06-10 12:09:38,318][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=BENIGN
+[2026-06-10 12:09:38,318][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c13: LABEL=BENIGN
+[2026-06-10 12:09:38,318][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 7 node(s), 7 edge(s)
+[2026-06-10 12:09:44,259][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:09:44,687][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:09:45,114][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:09:45,534][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:09:45,953][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:09:46,376][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:09:46,800][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:09:46,802][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (7 edge(s))
+[2026-06-10 12:09:46,802][__main__][INFO] - Consensus at round 1 for sample 012
+[2026-06-10 12:09:46,809][__main__][INFO] - Sample 012 → BENIGN (gold=BENIGN, rounds=2, time=161.3s)
+[2026-06-10 12:09:46,813][__main__][INFO] - Sample 088 — gold=BENIGN
+[2026-06-10 12:10:37,885][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:10:37,885][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 12:10:37,885][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 12:10:37,887][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=BENIGN
+[2026-06-10 12:10:37,888][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c5: LABEL=BENIGN
+[2026-06-10 12:10:37,890][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c6: LABEL=BENIGN
+[2026-06-10 12:11:33,321][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=BENIGN
+[2026-06-10 12:11:33,322][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=BENIGN
+[2026-06-10 12:11:33,322][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c9: LABEL=BENIGN
+[2026-06-10 12:11:33,322][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c10: LABEL=BENIGN
+[2026-06-10 12:11:33,322][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c11: LABEL=BENIGN
+[2026-06-10 12:11:33,322][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c12: LABEL=BENIGN
+[2026-06-10 12:11:33,322][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 12 node(s), 6 edge(s)
+[2026-06-10 12:11:39,308][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=20
+[2026-06-10 12:11:39,729][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=20
+[2026-06-10 12:11:40,137][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:11:40,551][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=20
+[2026-06-10 12:11:40,955][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_a): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:11:41,357][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_a): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=70
+[2026-06-10 12:11:41,757][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=20
+[2026-06-10 12:11:42,161][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=20
+[2026-06-10 12:11:42,565][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:11:42,971][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:11:43,373][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:11:43,783][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:12:37,329][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c13: LABEL=BENIGN
+[2026-06-10 12:12:37,329][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c14: LABEL=BENIGN
+[2026-06-10 12:12:37,329][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c15: LABEL=BENIGN
+[2026-06-10 12:12:37,329][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c16: LABEL=BENIGN
+[2026-06-10 12:12:37,329][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c17: LABEL=BENIGN
+[2026-06-10 12:12:37,329][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c18: LABEL=BENIGN
+[2026-06-10 12:13:45,160][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c19: LABEL=BENIGN
+[2026-06-10 12:13:45,162][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c20: LABEL=BENIGN
+[2026-06-10 12:13:45,163][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c21: LABEL=BENIGN
+[2026-06-10 12:13:45,163][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c22: LABEL=BENIGN
+[2026-06-10 12:13:45,163][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c23: LABEL=BENIGN
+[2026-06-10 12:13:45,163][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c24: LABEL=BENIGN
+[2026-06-10 12:13:45,164][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 12 node(s), 12 edge(s)
+[2026-06-10 12:13:51,106][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=20
+[2026-06-10 12:13:51,535][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=20
+[2026-06-10 12:13:51,946][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:13:52,362][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:13:52,771][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:13:53,179][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_b): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:13:53,586][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_a): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=20
+[2026-06-10 12:13:54,002][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_a): IMAGE_GROUNDING=10  MEDICAL_ACCURACY=20
+[2026-06-10 12:13:54,406][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_a): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:13:54,810][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_a): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:13:55,218][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_a): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:13:55,627][debate_kg.judges.medgemma_judge][INFO] -   scored c24 (expert_a): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:13:55,629][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (12 edge(s))
+[2026-06-10 12:13:55,629][__main__][INFO] - Consensus at round 1 for sample 088
+[2026-06-10 12:13:55,637][__main__][INFO] - Sample 088 → BENIGN (gold=BENIGN, rounds=2, time=248.8s)
+[2026-06-10 12:13:55,641][__main__][INFO] - Sample 118 — gold=BENIGN
+[2026-06-10 12:14:21,083][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:14:51,174][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c2: LABEL=BENIGN
+[2026-06-10 12:14:51,175][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c3: LABEL=BENIGN
+[2026-06-10 12:14:51,175][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 3 node(s), 1 edge(s)
+[2026-06-10 12:14:57,180][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:14:57,606][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:14:58,020][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:15:38,096][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c4: LABEL=BENIGN
+[2026-06-10 12:15:38,096][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c5: LABEL=BENIGN
+[2026-06-10 12:15:38,096][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c6: LABEL=BENIGN
+[2026-06-10 12:16:11,858][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c7: LABEL=BENIGN
+[2026-06-10 12:16:11,858][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c8: LABEL=MALIGNANT
+[2026-06-10 12:16:11,859][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 5 node(s), 4 edge(s)
+[2026-06-10 12:16:17,854][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:16:18,272][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 12:16:18,685][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:16:19,097][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:16:19,509][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:17:14,101][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c9: LABEL=BENIGN
+[2026-06-10 12:17:14,101][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c10: LABEL=BENIGN
+[2026-06-10 12:17:14,101][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c11: LABEL=BENIGN
+[2026-06-10 12:17:14,101][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c12: LABEL=MALIGNANT
+[2026-06-10 12:18:02,138][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c13: LABEL=BENIGN
+[2026-06-10 12:18:02,138][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c14: LABEL=BENIGN
+[2026-06-10 12:18:02,139][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c15: LABEL=BENIGN
+[2026-06-10 12:18:02,139][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c16: LABEL=BENIGN
+[2026-06-10 12:18:02,139][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c17: LABEL=BENIGN
+[2026-06-10 12:18:02,139][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 2 (adversarial=False): 9 node(s), 1 edge(s)
+[2026-06-10 12:18:08,132][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:18:08,557][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 12:18:08,978][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:18:09,402][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:18:09,807][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:18:10,210][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 12:18:10,612][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:18:11,025][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:18:11,426][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:18:11,428][debate_kg.consensus.check][INFO] - is_consensus: hard cap reached (round=2, max_rounds=3)
+[2026-06-10 12:18:11,428][__main__][INFO] - Consensus at round 2 for sample 118
+[2026-06-10 12:18:11,435][__main__][INFO] - Sample 118 → BENIGN (gold=BENIGN, rounds=3, time=255.8s)
+[2026-06-10 12:18:11,440][__main__][INFO] - Sample 149 — gold=BENIGN
+[2026-06-10 12:18:58,810][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=?
+[2026-06-10 12:18:58,810][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=MALIGNANT
+[2026-06-10 12:18:58,810][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=MALIGNANT
+[2026-06-10 12:18:58,810][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=?
+[2026-06-10 12:18:58,812][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c5: LABEL=MALIGNANT
+[2026-06-10 12:19:54,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=BENIGN
+[2026-06-10 12:19:54,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=MALIGNANT
+[2026-06-10 12:19:54,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=MALIGNANT
+[2026-06-10 12:19:54,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c9: LABEL=BENIGN
+[2026-06-10 12:19:54,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c10: LABEL=MALIGNANT
+[2026-06-10 12:19:54,421][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 10 node(s), 3 edge(s)
+[2026-06-10 12:20:00,395][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:20:00,824][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:20:01,254][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:20:01,666][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:20:02,083][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:20:02,495][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:20:02,913][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:20:03,335][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:20:03,744][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:20:04,177][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:20:52,488][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c11: LABEL=MALIGNANT
+[2026-06-10 12:20:52,488][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c12: LABEL=MALIGNANT
+[2026-06-10 12:20:52,488][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c13: LABEL=BENIGN
+[2026-06-10 12:20:52,490][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c14: LABEL=MALIGNANT
+[2026-06-10 12:21:47,266][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c15: LABEL=BENIGN
+[2026-06-10 12:21:47,266][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c16: LABEL=MALIGNANT
+[2026-06-10 12:21:47,266][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c17: LABEL=MALIGNANT
+[2026-06-10 12:21:47,266][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c18: LABEL=BENIGN
+[2026-06-10 12:21:47,266][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c19: LABEL=MALIGNANT
+[2026-06-10 12:21:47,266][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 9 node(s), 9 edge(s)
+[2026-06-10 12:21:53,202][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:21:53,633][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:21:54,051][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:21:54,461][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:21:54,869][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:21:55,283][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:21:55,690][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:21:56,104][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:21:56,510][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:22:59,022][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c20: LABEL=BENIGN
+[2026-06-10 12:22:59,024][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c21: LABEL=MALIGNANT
+[2026-06-10 12:22:59,024][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c22: LABEL=MALIGNANT
+[2026-06-10 12:22:59,024][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c23: LABEL=BENIGN
+[2026-06-10 12:22:59,024][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c24: LABEL=MALIGNANT
+[2026-06-10 12:23:57,381][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c25: LABEL=BENIGN
+[2026-06-10 12:23:57,382][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c26: LABEL=MALIGNANT
+[2026-06-10 12:23:57,382][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c27: LABEL=MALIGNANT
+[2026-06-10 12:23:57,382][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c28: LABEL=BENIGN
+[2026-06-10 12:23:57,382][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c29: LABEL=MALIGNANT
+[2026-06-10 12:23:57,382][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 2 (adversarial=False): 10 node(s), 10 edge(s)
+[2026-06-10 12:24:03,378][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:24:03,805][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:24:04,217][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:24:04,625][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:24:05,039][debate_kg.judges.medgemma_judge][INFO] -   scored c24 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:24:05,443][debate_kg.judges.medgemma_judge][INFO] -   scored c25 (expert_b): IMAGE_GROUNDING=85  MEDICAL_ACCURACY=90
+[2026-06-10 12:24:05,852][debate_kg.judges.medgemma_judge][INFO] -   scored c26 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:24:06,257][debate_kg.judges.medgemma_judge][INFO] -   scored c27 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:24:06,664][debate_kg.judges.medgemma_judge][INFO] -   scored c28 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=75
+[2026-06-10 12:24:07,067][debate_kg.judges.medgemma_judge][INFO] -   scored c29 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:24:07,069][debate_kg.consensus.check][INFO] - is_consensus: hard cap reached (round=2, max_rounds=3)
+[2026-06-10 12:24:07,069][__main__][INFO] - Consensus at round 2 for sample 149
+[2026-06-10 12:24:07,078][__main__][INFO] - Sample 149 → MALIGNANT (gold=BENIGN, rounds=3, time=355.6s)
+[2026-06-10 12:24:07,082][__main__][INFO] - Sample 000 — gold=MALIGNANT
+[2026-06-10 12:24:33,820][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:24:33,821][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=MALIGNANT
+[2026-06-10 12:25:05,570][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c3: LABEL=BENIGN
+[2026-06-10 12:25:05,570][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c4: LABEL=MALIGNANT
+[2026-06-10 12:25:05,570][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=MALIGNANT
+[2026-06-10 12:25:05,572][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 5 node(s), 2 edge(s)
+[2026-06-10 12:25:11,494][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=20  MEDICAL_ACCURACY=40
+[2026-06-10 12:25:11,916][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=40  MEDICAL_ACCURACY=60
+[2026-06-10 12:25:12,328][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:25:12,735][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:25:13,148][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=40  MEDICAL_ACCURACY=60
+[2026-06-10 12:25:57,092][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c6: LABEL=BENIGN
+[2026-06-10 12:25:57,093][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c7: LABEL=MALIGNANT
+[2026-06-10 12:25:57,093][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c8: LABEL=MALIGNANT
+[2026-06-10 12:25:57,093][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=BENIGN
+[2026-06-10 12:26:30,815][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c10: LABEL=MALIGNANT
+[2026-06-10 12:26:30,815][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c11: LABEL=MALIGNANT
+[2026-06-10 12:26:30,815][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=BENIGN
+[2026-06-10 12:26:30,815][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 7 node(s), 6 edge(s)
+[2026-06-10 12:26:36,737][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:26:37,169][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:26:37,578][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:26:37,982][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:26:38,392][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:26:38,810][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:26:39,217][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:27:18,376][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c13: LABEL=MALIGNANT
+[2026-06-10 12:27:18,377][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c14: LABEL=BENIGN
+[2026-06-10 12:27:18,377][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c15: LABEL=BENIGN
+[2026-06-10 12:27:54,602][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c16: LABEL=MALIGNANT
+[2026-06-10 12:27:54,602][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c17: LABEL=BENIGN
+[2026-06-10 12:27:54,602][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c18: LABEL=BENIGN
+[2026-06-10 12:27:54,602][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 2 (adversarial=False): 6 node(s), 5 edge(s)
+[2026-06-10 12:28:00,546][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:28:00,981][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:28:01,391][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:28:01,797][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:28:02,209][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:28:02,607][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:28:02,609][debate_kg.consensus.check][INFO] - is_consensus: hard cap reached (round=2, max_rounds=3)
+[2026-06-10 12:28:02,609][__main__][INFO] - Consensus at round 2 for sample 000
+[2026-06-10 12:28:02,616][__main__][INFO] - Sample 000 → MALIGNANT (gold=MALIGNANT, rounds=3, time=235.5s)
+[2026-06-10 12:28:02,621][__main__][INFO] - Sample 098 — gold=BENIGN
+[2026-06-10 12:28:36,782][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:28:36,782][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 12:28:36,782][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 12:29:11,345][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c4: LABEL=BENIGN
+[2026-06-10 12:29:11,345][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=BENIGN
+[2026-06-10 12:29:11,345][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=BENIGN
+[2026-06-10 12:29:11,345][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 6 node(s), 2 edge(s)
+[2026-06-10 12:29:17,274][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:29:17,691][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:29:18,102][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:29:18,508][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:29:18,918][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:29:19,322][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:30:09,327][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c7: LABEL=BENIGN
+[2026-06-10 12:30:09,327][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c8: LABEL=BENIGN
+[2026-06-10 12:30:09,327][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=BENIGN
+[2026-06-10 12:30:09,329][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=BENIGN
+[2026-06-10 12:30:54,153][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c11: LABEL=BENIGN
+[2026-06-10 12:30:54,153][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=BENIGN
+[2026-06-10 12:30:54,153][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c13: LABEL=BENIGN
+[2026-06-10 12:30:54,153][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c14: LABEL=BENIGN
+[2026-06-10 12:30:54,153][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 8 node(s), 5 edge(s)
+[2026-06-10 12:31:00,072][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:31:00,495][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:31:00,907][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:31:01,314][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:31:01,727][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:31:02,142][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:31:02,542][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:31:02,953][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:31:02,954][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (5 edge(s))
+[2026-06-10 12:31:02,955][__main__][INFO] - Consensus at round 1 for sample 098
+[2026-06-10 12:31:02,961][__main__][INFO] - Sample 098 → BENIGN (gold=BENIGN, rounds=2, time=180.3s)
+[2026-06-10 12:31:02,966][__main__][INFO] - Sample 089 — gold=BENIGN
+[2026-06-10 12:31:59,871][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:31:59,871][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 12:31:59,871][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 12:31:59,873][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=BENIGN
+[2026-06-10 12:31:59,875][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c5: LABEL=BENIGN
+[2026-06-10 12:31:59,877][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c6: LABEL=BENIGN
+[2026-06-10 12:33:02,655][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=BENIGN
+[2026-06-10 12:33:02,657][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=BENIGN
+[2026-06-10 12:33:02,657][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c9: LABEL=BENIGN
+[2026-06-10 12:33:02,657][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c10: LABEL=BENIGN
+[2026-06-10 12:33:02,657][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c11: LABEL=BENIGN
+[2026-06-10 12:33:02,657][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c12: LABEL=BENIGN
+[2026-06-10 12:33:02,658][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 12 node(s), 6 edge(s)
+[2026-06-10 12:33:08,633][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:33:09,053][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:33:09,463][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:33:09,869][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:33:10,273][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:33:10,686][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:33:11,091][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:33:11,494][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:33:11,898][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:33:12,305][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:33:12,713][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 12:33:13,118][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:34:22,255][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c13: LABEL=BENIGN
+[2026-06-10 12:34:22,257][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c14: LABEL=BENIGN
+[2026-06-10 12:34:22,257][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c15: LABEL=BENIGN
+[2026-06-10 12:34:22,257][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c16: LABEL=BENIGN
+[2026-06-10 12:34:22,258][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c17: LABEL=BENIGN
+[2026-06-10 12:34:22,258][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c18: LABEL=BENIGN
+[2026-06-10 12:37:04,014][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c19: LABEL=BENIGN
+[2026-06-10 12:37:04,016][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c20: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c21: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c22: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c23: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c24: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c25: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c26: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c27: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c28: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c29: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c30: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c31: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c32: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c33: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c34: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c35: LABEL=BENIGN
+[2026-06-10 12:37:04,017][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c36: LABEL=BENIGN
+[2026-06-10 12:37:04,018][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 24 node(s), 24 edge(s)
+[2026-06-10 12:37:09,936][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:10,357][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:10,771][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:11,177][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:11,592][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:12,005][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:12,415][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:12,820][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:13,228][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:13,630][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:14,042][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:14,452][debate_kg.judges.medgemma_judge][INFO] -   scored c24 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:14,857][debate_kg.judges.medgemma_judge][INFO] -   scored c25 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:15,262][debate_kg.judges.medgemma_judge][INFO] -   scored c26 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:15,666][debate_kg.judges.medgemma_judge][INFO] -   scored c27 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:16,069][debate_kg.judges.medgemma_judge][INFO] -   scored c28 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:16,471][debate_kg.judges.medgemma_judge][INFO] -   scored c29 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:16,874][debate_kg.judges.medgemma_judge][INFO] -   scored c30 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:17,274][debate_kg.judges.medgemma_judge][INFO] -   scored c31 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:17,672][debate_kg.judges.medgemma_judge][INFO] -   scored c32 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:18,074][debate_kg.judges.medgemma_judge][INFO] -   scored c33 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:18,478][debate_kg.judges.medgemma_judge][INFO] -   scored c34 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:18,879][debate_kg.judges.medgemma_judge][INFO] -   scored c35 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:19,285][debate_kg.judges.medgemma_judge][INFO] -   scored c36 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:37:19,287][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (24 edge(s))
+[2026-06-10 12:37:19,287][__main__][INFO] - Consensus at round 1 for sample 089
+[2026-06-10 12:37:19,296][__main__][INFO] - Sample 089 → BENIGN (gold=BENIGN, rounds=2, time=376.3s)
+[2026-06-10 12:37:19,301][__main__][INFO] - Sample 027 — gold=BENIGN
+[2026-06-10 12:38:05,022][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=MALIGNANT
+[2026-06-10 12:38:05,022][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=MALIGNANT
+[2026-06-10 12:38:05,022][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=MALIGNANT
+[2026-06-10 12:38:05,024][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=MALIGNANT
+[2026-06-10 12:38:46,721][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=MALIGNANT
+[2026-06-10 12:38:46,721][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=MALIGNANT
+[2026-06-10 12:38:46,721][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=MALIGNANT
+[2026-06-10 12:38:46,721][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=MALIGNANT
+[2026-06-10 12:38:46,721][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 8 node(s), 4 edge(s)
+[2026-06-10 12:38:52,670][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 12:38:53,092][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:38:53,500][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=60
+[2026-06-10 12:38:53,899][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:38:54,306][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:38:54,722][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:38:55,131][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:38:55,543][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:39:36,916][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=MALIGNANT
+[2026-06-10 12:39:36,916][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=MALIGNANT
+[2026-06-10 12:39:36,918][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c11: LABEL=MALIGNANT
+[2026-06-10 12:40:20,188][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=MALIGNANT
+[2026-06-10 12:40:20,188][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c13: LABEL=MALIGNANT
+[2026-06-10 12:40:20,188][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 5 node(s), 11 edge(s)
+[2026-06-10 12:40:26,138][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:40:26,561][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=75
+[2026-06-10 12:40:26,972][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:40:27,376][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:40:27,782][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:41:11,419][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c14: LABEL=MALIGNANT
+[2026-06-10 12:41:11,419][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c15: LABEL=MALIGNANT
+[2026-06-10 12:41:11,419][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 2 c16: LABEL=MALIGNANT
+[2026-06-10 12:41:47,486][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c17: LABEL=MALIGNANT
+[2026-06-10 12:41:47,487][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c18: LABEL=MALIGNANT
+[2026-06-10 12:41:47,487][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 2 c19: LABEL=MALIGNANT
+[2026-06-10 12:41:47,487][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 2 (adversarial=False): 6 node(s), 6 edge(s)
+[2026-06-10 12:41:53,419][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:41:53,841][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=75
+[2026-06-10 12:41:54,255][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:41:54,661][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=90
+[2026-06-10 12:41:55,069][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:41:55,469][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:41:55,471][debate_kg.consensus.check][INFO] - is_consensus: hard cap reached (round=2, max_rounds=3)
+[2026-06-10 12:41:55,471][__main__][INFO] - Consensus at round 2 for sample 027
+[2026-06-10 12:41:55,479][__main__][INFO] - Sample 027 → MALIGNANT (gold=BENIGN, rounds=3, time=276.2s)
+[2026-06-10 12:41:55,484][__main__][INFO] - Sample 070 — gold=BENIGN
+[2026-06-10 12:42:35,882][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:42:35,883][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 12:42:35,883][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 12:43:11,214][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c4: LABEL=BENIGN
+[2026-06-10 12:43:11,214][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=BENIGN
+[2026-06-10 12:43:11,214][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=BENIGN
+[2026-06-10 12:43:11,214][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 6 node(s), 3 edge(s)
+[2026-06-10 12:43:17,229][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:43:17,656][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:43:18,067][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:43:18,467][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:43:18,871][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:43:19,275][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:44:01,819][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c7: LABEL=BENIGN
+[2026-06-10 12:44:01,819][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c8: LABEL=BENIGN
+[2026-06-10 12:44:01,819][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=BENIGN
+[2026-06-10 12:44:39,431][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c10: LABEL=BENIGN
+[2026-06-10 12:44:39,431][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c11: LABEL=BENIGN
+[2026-06-10 12:44:39,431][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c12: LABEL=BENIGN
+[2026-06-10 12:44:39,432][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 6 node(s), 6 edge(s)
+[2026-06-10 12:44:45,362][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:44:45,786][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:44:46,203][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:44:46,606][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:44:47,011][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:44:47,420][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:44:47,422][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (6 edge(s))
+[2026-06-10 12:44:47,422][__main__][INFO] - Consensus at round 1 for sample 070
+[2026-06-10 12:44:47,428][__main__][INFO] - Sample 070 → BENIGN (gold=BENIGN, rounds=2, time=171.9s)
+[2026-06-10 12:44:47,433][__main__][INFO] - Sample 127 — gold=MALIGNANT
+[2026-06-10 12:45:40,697][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:45:40,697][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 12:45:40,697][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 12:45:40,697][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=BENIGN
+[2026-06-10 12:45:40,697][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c5: LABEL=BENIGN
+[2026-06-10 12:45:40,697][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c6: LABEL=BENIGN
+[2026-06-10 12:46:37,302][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=BENIGN
+[2026-06-10 12:46:37,302][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=BENIGN
+[2026-06-10 12:46:37,302][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c9: LABEL=BENIGN
+[2026-06-10 12:46:37,302][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c10: LABEL=BENIGN
+[2026-06-10 12:46:37,302][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c11: LABEL=BENIGN
+[2026-06-10 12:46:37,302][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 11 node(s), 5 edge(s)
+[2026-06-10 12:46:43,225][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:46:43,646][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:46:44,120][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:46:44,529][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:46:44,943][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:46:45,345][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=85
+[2026-06-10 12:46:45,755][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:46:46,166][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:46:46,572][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=80
+[2026-06-10 12:46:46,993][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:46:47,394][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:47:51,151][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c12: LABEL=BENIGN
+[2026-06-10 12:47:51,152][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c13: LABEL=BENIGN
+[2026-06-10 12:47:51,152][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c14: LABEL=BENIGN
+[2026-06-10 12:47:51,152][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c15: LABEL=BENIGN
+[2026-06-10 12:47:51,152][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c16: LABEL=BENIGN
+[2026-06-10 12:49:28,720][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c17: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c18: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c19: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c20: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c21: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c22: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c23: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c24: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c25: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c26: LABEL=BENIGN
+[2026-06-10 12:49:28,722][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 15 node(s), 5 edge(s)
+[2026-06-10 12:49:34,723][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:35,148][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:35,563][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:35,972][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:36,376][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_b): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:36,783][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:37,181][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:37,581][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:37,990][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:38,401][debate_kg.judges.medgemma_judge][INFO] -   scored c21 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:38,803][debate_kg.judges.medgemma_judge][INFO] -   scored c22 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:39,209][debate_kg.judges.medgemma_judge][INFO] -   scored c23 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:39,614][debate_kg.judges.medgemma_judge][INFO] -   scored c24 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:40,019][debate_kg.judges.medgemma_judge][INFO] -   scored c25 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:40,425][debate_kg.judges.medgemma_judge][INFO] -   scored c26 (expert_a): IMAGE_GROUNDING=95  MEDICAL_ACCURACY=95
+[2026-06-10 12:49:40,427][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (5 edge(s))
+[2026-06-10 12:49:40,427][__main__][INFO] - Consensus at round 1 for sample 127
+[2026-06-10 12:49:40,436][__main__][INFO] - Sample 127 → BENIGN (gold=MALIGNANT, rounds=2, time=293.0s)
+[2026-06-10 12:49:40,441][__main__][INFO] - Sample 154 — gold=BENIGN
+[2026-06-10 12:50:28,246][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:50:28,246][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 12:50:28,246][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 12:50:28,248][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=BENIGN
+[2026-06-10 12:50:28,248][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c5: LABEL=BENIGN
+[2026-06-10 12:51:10,255][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=BENIGN
+[2026-06-10 12:51:10,256][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=BENIGN
+[2026-06-10 12:51:10,256][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=BENIGN
+[2026-06-10 12:51:10,256][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c9: LABEL=BENIGN
+[2026-06-10 12:51:10,256][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 9 node(s), 4 edge(s)
+[2026-06-10 12:51:16,193][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=60
+[2026-06-10 12:51:16,619][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:51:17,038][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=60  MEDICAL_ACCURACY=70
+[2026-06-10 12:51:17,444][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:51:17,851][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:51:18,255][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:51:18,655][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:51:19,065][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:51:19,475][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=80
+[2026-06-10 12:52:15,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=BENIGN
+[2026-06-10 12:52:15,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c11: LABEL=BENIGN
+[2026-06-10 12:52:15,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c12: LABEL=BENIGN
+[2026-06-10 12:52:15,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c13: LABEL=BENIGN
+[2026-06-10 12:52:15,073][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c14: LABEL=BENIGN
+[2026-06-10 12:52:57,808][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c15: LABEL=BENIGN
+[2026-06-10 12:52:57,808][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c16: LABEL=BENIGN
+[2026-06-10 12:52:57,810][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c17: LABEL=BENIGN
+[2026-06-10 12:52:57,812][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c18: LABEL=BENIGN
+[2026-06-10 12:52:57,814][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 9 node(s), 9 edge(s)
+[2026-06-10 12:53:03,739][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=90
+[2026-06-10 12:53:04,157][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:53:04,566][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:53:04,977][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:53:05,382][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=90
+[2026-06-10 12:53:05,787][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_a): IMAGE_GROUNDING=85  MEDICAL_ACCURACY=80
+[2026-06-10 12:53:06,198][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:53:06,607][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:53:07,015][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:53:07,017][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (9 edge(s))
+[2026-06-10 12:53:07,017][__main__][INFO] - Consensus at round 1 for sample 154
+[2026-06-10 12:53:07,024][__main__][INFO] - Sample 154 → BENIGN (gold=BENIGN, rounds=2, time=206.6s)
+[2026-06-10 12:53:07,029][__main__][INFO] - Sample 051 — gold=BENIGN
+[2026-06-10 12:53:51,256][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c1: LABEL=BENIGN
+[2026-06-10 12:53:51,256][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c2: LABEL=BENIGN
+[2026-06-10 12:53:51,256][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c3: LABEL=BENIGN
+[2026-06-10 12:53:51,258][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 0 c4: LABEL=BENIGN
+[2026-06-10 12:54:33,955][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c5: LABEL=BENIGN
+[2026-06-10 12:54:33,955][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c6: LABEL=BENIGN
+[2026-06-10 12:54:33,955][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c7: LABEL=BENIGN
+[2026-06-10 12:54:33,955][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 0 c8: LABEL=BENIGN
+[2026-06-10 12:54:33,956][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 0 (adversarial=False): 8 node(s), 4 edge(s)
+[2026-06-10 12:54:39,906][debate_kg.judges.medgemma_judge][INFO] -   scored c1 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:54:40,332][debate_kg.judges.medgemma_judge][INFO] -   scored c2 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:54:40,741][debate_kg.judges.medgemma_judge][INFO] -   scored c3 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:54:41,156][debate_kg.judges.medgemma_judge][INFO] -   scored c4 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:54:41,561][debate_kg.judges.medgemma_judge][INFO] -   scored c5 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:54:41,973][debate_kg.judges.medgemma_judge][INFO] -   scored c6 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:54:42,376][debate_kg.judges.medgemma_judge][INFO] -   scored c7 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:54:42,784][debate_kg.judges.medgemma_judge][INFO] -   scored c8 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:55:45,419][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c9: LABEL=BENIGN
+[2026-06-10 12:55:45,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c10: LABEL=BENIGN
+[2026-06-10 12:55:45,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c11: LABEL=BENIGN
+[2026-06-10 12:55:45,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c12: LABEL=BENIGN
+[2026-06-10 12:55:45,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c13: LABEL=BENIGN
+[2026-06-10 12:55:45,421][debate_kg.debate.breast_orchestrator][INFO] -   expert_b round 1 c14: LABEL=BENIGN
+[2026-06-10 12:56:42,475][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c15: LABEL=BENIGN
+[2026-06-10 12:56:42,475][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c16: LABEL=BENIGN
+[2026-06-10 12:56:42,475][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c17: LABEL=BENIGN
+[2026-06-10 12:56:42,477][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c18: LABEL=BENIGN
+[2026-06-10 12:56:42,479][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c19: LABEL=BENIGN
+[2026-06-10 12:56:42,480][debate_kg.debate.breast_orchestrator][INFO] -   expert_a round 1 c20: LABEL=BENIGN
+[2026-06-10 12:56:42,482][debate_kg.debate.breast_orchestrator][INFO] - structured_debate round 1 (adversarial=False): 12 node(s), 11 edge(s)
+[2026-06-10 12:56:48,418][debate_kg.judges.medgemma_judge][INFO] -   scored c9 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:56:48,846][debate_kg.judges.medgemma_judge][INFO] -   scored c10 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:56:49,260][debate_kg.judges.medgemma_judge][INFO] -   scored c11 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:56:49,666][debate_kg.judges.medgemma_judge][INFO] -   scored c12 (expert_b): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:56:50,069][debate_kg.judges.medgemma_judge][INFO] -   scored c13 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:56:50,472][debate_kg.judges.medgemma_judge][INFO] -   scored c14 (expert_b): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:56:50,874][debate_kg.judges.medgemma_judge][INFO] -   scored c15 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:56:51,284][debate_kg.judges.medgemma_judge][INFO] -   scored c16 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:56:51,693][debate_kg.judges.medgemma_judge][INFO] -   scored c17 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:56:52,105][debate_kg.judges.medgemma_judge][INFO] -   scored c18 (expert_a): IMAGE_GROUNDING=70  MEDICAL_ACCURACY=70
+[2026-06-10 12:56:52,506][debate_kg.judges.medgemma_judge][INFO] -   scored c19 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:56:52,920][debate_kg.judges.medgemma_judge][INFO] -   scored c20 (expert_a): IMAGE_GROUNDING=90  MEDICAL_ACCURACY=95
+[2026-06-10 12:56:52,921][debate_kg.consensus.check][INFO] - is_consensus: no disagreement edges at round 1 (11 edge(s))
+[2026-06-10 12:56:52,921][__main__][INFO] - Consensus at round 1 for sample 051
+[2026-06-10 12:56:52,929][__main__][INFO] - Sample 051 → BENIGN (gold=BENIGN, rounds=2, time=225.9s)
+[2026-06-10 12:56:52,942][__main__][INFO] - Done. acc=0.6200 sens=0.6364 spec=0.6154 auc=0.5851 conv=0.7200 mean_rounds=2.28 mean_time=264.8s total=13240s

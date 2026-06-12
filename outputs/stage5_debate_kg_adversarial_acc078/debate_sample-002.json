@@ -1,0 +1,615 @@
+{
+  "mode": "debate_kg_adversarial",
+  "nodes": [
+    {
+      "id": "a12c6d7b-f33a-4ae4-85ea-82a71958f61c",
+      "short_id": "c1",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The lesion appears to be oval in shape, which is a benign descriptor",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "0a26d332-241e-488c-92e0-d90c661e290e",
+      "short_id": "c2",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The lesion is well circumscribed, indicating a benign finding",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "ab3e3a9f-2b70-4799-8057-8f0d582469a7",
+      "short_id": "c3",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The lesion has an anechoic content, which is typical for a simple cyst",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "ddc99ed9-5000-4bf0-84c9-5dd9886edd84",
+      "short_id": "c4",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The irregular shape of the lesion is a strong indicator of malignancy, contradicting the benign interpretation suggested in c1",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "a12c6d7b-f33a-4ae4-85ea-82a71958f61c",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "c8adac4e-0b6a-46f7-b839-b3a9de69451d",
+      "short_id": "c5",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The lesion shows non-parallel orientation, which is a suspicious feature for malignancy, contradicting the benign assessment in c2",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "0a26d332-241e-488c-92e0-d90c661e290e",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_056"
+      ]
+    },
+    {
+      "id": "5bdd2d8d-c77a-421f-bb82-395d210f9d9d",
+      "short_id": "c6",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The presence of posterior shadowing is a significant feature that suggests malignancy, contrary to the benign interpretation in c3",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "ab3e3a9f-2b70-4799-8057-8f0d582469a7",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_035"
+      ]
+    },
+    {
+      "id": "c1e505dd-5e33-4fc4-a985-5c3e35975d76",
+      "short_id": "c7",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The lesion's irregular margins and non-parallel orientation are suspicious features for malignancy, contradicting the benign assessment in c2 and c5",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "0a26d332-241e-488c-92e0-d90c661e290e",
+          "stance": "DISAGREE"
+        },
+        {
+          "node_id": "c8adac4e-0b6a-46f7-b839-b3a9de69451d",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045",
+        "t_056"
+      ]
+    },
+    {
+      "id": "d68ba2a6-cf76-4822-a171-caa707fd0f3f",
+      "short_id": "c8",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The presence of posterior shadowing is a significant feature that suggests malignancy, contrary to the benign interpretation in c3",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "ab3e3a9f-2b70-4799-8057-8f0d582469a7",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_035"
+      ]
+    },
+    {
+      "id": "f77bda5f-f9cb-4c9e-a69d-d35c4e5bbb0d",
+      "short_id": "c9",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The lesion's shape is oval, which is a benign descriptor, supporting the initial benign interpretation",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "a12c6d7b-f33a-4ae4-85ea-82a71958f61c",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "eb359678-e823-413f-9b14-ae6f22b55571",
+      "short_id": "c10",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The lesion is well circumscribed, indicating a benign finding, consistent with the initial assessment",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "0a26d332-241e-488c-92e0-d90c661e290e",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "845f9884-a117-4c3b-9498-d6a2c2504047",
+      "short_id": "c11",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The lesion has an anechoic content, which is typical for a simple cyst, supporting the benign interpretation",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "ab3e3a9f-2b70-4799-8057-8f0d582469a7",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "40c1996e-364c-4679-a5c6-3ef164019539",
+      "short_id": "c12",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The lesion's parallel orientation suggests benign morphology, in agreement with the initial assessment",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "0a26d332-241e-488c-92e0-d90c661e290e",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_056"
+      ]
+    },
+    {
+      "id": "bb97db44-b592-4bed-8880-03969b6a5a32",
+      "short_id": "c13",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The presence of posterior acoustic enhancement is not necessarily indicative of malignancy, as it can be seen in benign lesions like simple cysts",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "5bdd2d8d-c77a-421f-bb82-395d210f9d9d",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_034"
+      ]
+    },
+    {
+      "id": "9b9f92a4-cf9e-4049-87d4-328ad020c8d1",
+      "short_id": "c14",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The absence of spiculated margins and irregular shapes in this case supports a benign interpretation, in contrast to the malignancy suggestion in c7 and c8",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_045, t_056"
+      ]
+    },
+    {
+      "id": "4c6441e5-1949-41e9-81a4-c337a00dae1b",
+      "short_id": "c15",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The lesion is oval in shape, which is a benign descriptor supporting the initial assessment",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "f77bda5f-f9cb-4c9e-a69d-d35c4e5bbb0d",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "3fb72aa6-8890-4cc8-a1e1-b02a62e49e56",
+      "short_id": "c16",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The lesion is well circumscribed, indicating a benign finding, consistent with the initial interpretation",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "eb359678-e823-413f-9b14-ae6f22b55571",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "a4408931-da1d-44a1-9d89-bd87e0cfb366",
+      "short_id": "c17",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The lesion has an anechoic content, which is typical for a simple cyst, supporting the benign interpretation",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "845f9884-a117-4c3b-9498-d6a2c2504047",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "2eb1b8a5-228d-42ac-bb78-8a520ca894b6",
+      "short_id": "c18",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The lesion's parallel orientation suggests benign morphology, in agreement with the initial assessment",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "40c1996e-364c-4679-a5c6-3ef164019539",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_056"
+      ]
+    },
+    {
+      "id": "e270757f-98d6-4028-a41b-b3d5414e73c4",
+      "short_id": "c19",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The absence of spiculated margins and irregular shapes in this case supports a benign interpretation, in contrast to the malignancy suggestion in c7 and c8",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "9b9f92a4-cf9e-4049-87d4-328ad020c8d1",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_045, t_056"
+      ]
+    },
+    {
+      "id": "01421e41-8a01-422a-9440-d122c6fd9692",
+      "short_id": "c20",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The lesion's uniform echo pattern, indicative of simple cyst, aligns with the benign assessment",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "ab3e3a9f-2b70-4799-8057-8f0d582469a7",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042"
+      ]
+    },
+    {
+      "id": "061f315d-5d1a-42de-b132-d76a7d186818",
+      "short_id": "c21",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The lesion's irregular shape and non-parallel orientation are strong indicators of malignancy, supporting the malignancy diagnosis",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "4c6441e5-1949-41e9-81a4-c337a00dae1b",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045, t_056"
+      ]
+    },
+    {
+      "id": "19f89710-3bb1-4b1b-8504-f816f180b76b",
+      "short_id": "c22",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The presence of posterior shadowing is a significant feature that suggests malignancy, contradicting the benign interpretation in c3 and c13",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_035"
+      ]
+    },
+    {
+      "id": "988b92fb-f535-49a0-b11a-60958ba3bcaa",
+      "short_id": "c23",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The lesion's heterogeneous echo pattern, which includes a hypoechoic component, is suspicious for malignancy, supporting the malignancy diagnosis",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "2eb1b8a5-228d-42ac-bb78-8a520ca894b6",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_027, t_029"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "ddc99ed9-5000-4bf0-84c9-5dd9886edd84",
+      "target_id": "a12c6d7b-f33a-4ae4-85ea-82a71958f61c",
+      "sign": "-"
+    },
+    {
+      "source_id": "c8adac4e-0b6a-46f7-b839-b3a9de69451d",
+      "target_id": "0a26d332-241e-488c-92e0-d90c661e290e",
+      "sign": "-"
+    },
+    {
+      "source_id": "5bdd2d8d-c77a-421f-bb82-395d210f9d9d",
+      "target_id": "ab3e3a9f-2b70-4799-8057-8f0d582469a7",
+      "sign": "-"
+    },
+    {
+      "source_id": "c1e505dd-5e33-4fc4-a985-5c3e35975d76",
+      "target_id": "0a26d332-241e-488c-92e0-d90c661e290e",
+      "sign": "-"
+    },
+    {
+      "source_id": "c1e505dd-5e33-4fc4-a985-5c3e35975d76",
+      "target_id": "c8adac4e-0b6a-46f7-b839-b3a9de69451d",
+      "sign": "-"
+    },
+    {
+      "source_id": "d68ba2a6-cf76-4822-a171-caa707fd0f3f",
+      "target_id": "ab3e3a9f-2b70-4799-8057-8f0d582469a7",
+      "sign": "-"
+    },
+    {
+      "source_id": "f77bda5f-f9cb-4c9e-a69d-d35c4e5bbb0d",
+      "target_id": "a12c6d7b-f33a-4ae4-85ea-82a71958f61c",
+      "sign": "+"
+    },
+    {
+      "source_id": "eb359678-e823-413f-9b14-ae6f22b55571",
+      "target_id": "0a26d332-241e-488c-92e0-d90c661e290e",
+      "sign": "+"
+    },
+    {
+      "source_id": "845f9884-a117-4c3b-9498-d6a2c2504047",
+      "target_id": "ab3e3a9f-2b70-4799-8057-8f0d582469a7",
+      "sign": "+"
+    },
+    {
+      "source_id": "40c1996e-364c-4679-a5c6-3ef164019539",
+      "target_id": "0a26d332-241e-488c-92e0-d90c661e290e",
+      "sign": "+"
+    },
+    {
+      "source_id": "bb97db44-b592-4bed-8880-03969b6a5a32",
+      "target_id": "5bdd2d8d-c77a-421f-bb82-395d210f9d9d",
+      "sign": "-"
+    },
+    {
+      "source_id": "4c6441e5-1949-41e9-81a4-c337a00dae1b",
+      "target_id": "f77bda5f-f9cb-4c9e-a69d-d35c4e5bbb0d",
+      "sign": "+"
+    },
+    {
+      "source_id": "3fb72aa6-8890-4cc8-a1e1-b02a62e49e56",
+      "target_id": "eb359678-e823-413f-9b14-ae6f22b55571",
+      "sign": "+"
+    },
+    {
+      "source_id": "a4408931-da1d-44a1-9d89-bd87e0cfb366",
+      "target_id": "845f9884-a117-4c3b-9498-d6a2c2504047",
+      "sign": "+"
+    },
+    {
+      "source_id": "2eb1b8a5-228d-42ac-bb78-8a520ca894b6",
+      "target_id": "40c1996e-364c-4679-a5c6-3ef164019539",
+      "sign": "+"
+    },
+    {
+      "source_id": "e270757f-98d6-4028-a41b-b3d5414e73c4",
+      "target_id": "9b9f92a4-cf9e-4049-87d4-328ad020c8d1",
+      "sign": "+"
+    },
+    {
+      "source_id": "01421e41-8a01-422a-9440-d122c6fd9692",
+      "target_id": "ab3e3a9f-2b70-4799-8057-8f0d582469a7",
+      "sign": "+"
+    },
+    {
+      "source_id": "061f315d-5d1a-42de-b132-d76a7d186818",
+      "target_id": "4c6441e5-1949-41e9-81a4-c337a00dae1b",
+      "sign": "-"
+    },
+    {
+      "source_id": "988b92fb-f535-49a0-b11a-60958ba3bcaa",
+      "target_id": "2eb1b8a5-228d-42ac-bb78-8a520ca894b6",
+      "sign": "-"
+    }
+  ],
+  "scores": {
+    "a12c6d7b-f33a-4ae4-85ea-82a71958f61c": [
+      {
+        "groundedness": 20.0,
+        "factuality": 40.0
+      }
+    ],
+    "0a26d332-241e-488c-92e0-d90c661e290e": [
+      {
+        "groundedness": 20.0,
+        "factuality": 40.0
+      }
+    ],
+    "ab3e3a9f-2b70-4799-8057-8f0d582469a7": [
+      {
+        "groundedness": 70.0,
+        "factuality": 80.0
+      }
+    ],
+    "ddc99ed9-5000-4bf0-84c9-5dd9886edd84": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "c8adac4e-0b6a-46f7-b839-b3a9de69451d": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "5bdd2d8d-c77a-421f-bb82-395d210f9d9d": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "c1e505dd-5e33-4fc4-a985-5c3e35975d76": [
+      {
+        "groundedness": 95.0,
+        "factuality": 95.0
+      }
+    ],
+    "d68ba2a6-cf76-4822-a171-caa707fd0f3f": [
+      {
+        "groundedness": 95.0,
+        "factuality": 95.0
+      }
+    ],
+    "f77bda5f-f9cb-4c9e-a69d-d35c4e5bbb0d": [
+      {
+        "groundedness": 70.0,
+        "factuality": 80.0
+      }
+    ],
+    "eb359678-e823-413f-9b14-ae6f22b55571": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "845f9884-a117-4c3b-9498-d6a2c2504047": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "40c1996e-364c-4679-a5c6-3ef164019539": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "bb97db44-b592-4bed-8880-03969b6a5a32": [
+      {
+        "groundedness": 70.0,
+        "factuality": 80.0
+      }
+    ],
+    "9b9f92a4-cf9e-4049-87d4-328ad020c8d1": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "4c6441e5-1949-41e9-81a4-c337a00dae1b": [
+      {
+        "groundedness": 20.0,
+        "factuality": 40.0
+      }
+    ],
+    "3fb72aa6-8890-4cc8-a1e1-b02a62e49e56": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "a4408931-da1d-44a1-9d89-bd87e0cfb366": [
+      {
+        "groundedness": 85.0,
+        "factuality": 90.0
+      }
+    ],
+    "2eb1b8a5-228d-42ac-bb78-8a520ca894b6": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "e270757f-98d6-4028-a41b-b3d5414e73c4": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "01421e41-8a01-422a-9440-d122c6fd9692": [
+      {
+        "groundedness": 80.0,
+        "factuality": 90.0
+      }
+    ],
+    "061f315d-5d1a-42de-b132-d76a7d186818": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "19f89710-3bb1-4b1b-8504-f816f180b76b": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "988b92fb-f535-49a0-b11a-60958ba3bcaa": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ]
+  },
+  "verdict": "BENIGN",
+  "raw_score": -0.2781954887218045
+}

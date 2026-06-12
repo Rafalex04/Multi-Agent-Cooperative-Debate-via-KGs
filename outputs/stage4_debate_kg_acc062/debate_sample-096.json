@@ -1,0 +1,985 @@
+{
+  "mode": "debate_kg",
+  "nodes": [
+    {
+      "id": "1a79d446-a4b3-4b81-96ba-c636fec885a9",
+      "short_id": "c1",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The ultrasound image shows a mass with an irregular shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "9add2370-f75d-46b9-a6c3-8abce00d80a7",
+      "short_id": "c2",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The margin of the mass is spiculated, which is a strong indicator of malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "5c623f50-8315-4136-9329-ae678e0867bd",
+      "short_id": "c3",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The orientation of the mass is non parallel, suggesting malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "5ca29084-1bc1-4903-92c9-95f568d541c3",
+      "short_id": "c4",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "There is no evidence of posterior acoustic enhancement, which is typically associated with simple cysts.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "38330c85-df9d-480e-a1a6-2a2c4c5de677",
+      "short_id": "c5",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The mass in the ultrasound image is irregular in shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "1a79d446-a4b3-4b81-96ba-c636fec885a9",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "d79b04f5-246f-4bcd-b86e-95c1b0f98cb8",
+      "short_id": "c6",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The mass has a spiculated margin, indicating malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "9add2370-f75d-46b9-a6c3-8abce00d80a7",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "355d0410-57b8-4fe1-9b5b-6797d876ece1",
+      "short_id": "c7",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The orientation of the mass is non parallel, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "5c623f50-8315-4136-9329-ae678e0867bd",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "64992e71-f579-4751-9a35-0b2a184f2351",
+      "short_id": "c8",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy but is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "d018616b-897f-4047-b3cf-81edfb04f0e2",
+      "short_id": "c9",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The ultrasound image shows a mass with an irregular shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "1a79d446-a4b3-4b81-96ba-c636fec885a9",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "6b0d3a4e-8291-463b-87b3-162b151a93a0",
+      "short_id": "c10",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The mass has a spiculated margin, indicating malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "d79b04f5-246f-4bcd-b86e-95c1b0f98cb8",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "ec217eb4-d9c3-4152-b0e7-01a0379c9c5a",
+      "short_id": "c11",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The orientation of the mass is non parallel, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "355d0410-57b8-4fe1-9b5b-6797d876ece1",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "c9fab268-df5f-43cd-b8de-91720568e442",
+      "short_id": "c12",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy but is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "5ca29084-1bc1-4903-92c9-95f568d541c3",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "2a352594-b8a8-4366-b897-5f75819ab53b",
+      "short_id": "c13",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The ultrasound image shows a mass with a spiculated margin, which is a strong indicator of malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "d79b04f5-246f-4bcd-b86e-95c1b0f98cb8",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "2858e8e6-3bc8-406d-84ef-de2c910d17be",
+      "short_id": "c14",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass is irregular in shape, which is a typical feature of malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "d018616b-897f-4047-b3cf-81edfb04f0e2",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "4a76c227-6dde-4465-8868-951da43c02c5",
+      "short_id": "c15",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The orientation of the mass is non parallel, suggesting malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "355d0410-57b8-4fe1-9b5b-6797d876ece1",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "666f6066-a0dd-461b-814e-84b6c7a13060",
+      "short_id": "c16",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy, but it is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "64992e71-f579-4751-9a35-0b2a184f2351",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "d2a497b7-4f58-4600-8a52-f00be03bee2d",
+      "short_id": "c17",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The ultrasound image shows a mass with an irregular shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "48d3eee1-bcbc-4c2d-a8c5-119a94ab1138",
+      "short_id": "c18",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The margin of the mass is spiculated, which is a strong indicator of malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "697cad58-b851-4912-9ec5-1cdce2db56c6",
+      "short_id": "c19",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The orientation of the mass is non parallel, suggesting malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "c4405801-871f-404f-a391-e28fad7ed0f1",
+      "short_id": "c20",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "There is no evidence of posterior acoustic enhancement, which is typically associated with simple cysts.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "6a24ba10-e5da-43a7-9b81-ef79c5dfa609",
+      "short_id": "c21",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass is irregular in shape, which is a typical feature of malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "2c360f09-73b8-44fc-98a7-d9eed1918574",
+      "short_id": "c22",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass has a spiculated margin, indicating malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "ac2388d9-d547-4051-ade2-ed4348d9b657",
+      "short_id": "c23",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The orientation of the mass is non parallel, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "ed8987da-1028-4d37-af4c-8f1d1b9e6708",
+      "short_id": "c24",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy but is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "7114159f-0456-4949-be21-46d1181aa75c",
+      "short_id": "c25",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The ultrasound image shows a mass with an irregular shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "f15592f6-522e-45e8-8407-143544eddb97",
+      "short_id": "c26",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The mass has a spiculated margin, indicating malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "8c3f51a4-63a6-431b-a548-d315ffda50f2",
+      "short_id": "c27",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The orientation of the mass is non parallel, suggesting malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "e9c26bd8-8dae-482c-9912-8bec43058371",
+      "short_id": "c28",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy but is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "b8ea231e-dbae-41a8-a78c-99350d7376d3",
+      "short_id": "c29",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The ultrasound image shows a mass with an irregular shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "d6f0032c-3305-4719-a8e0-54cb71d7849c",
+      "short_id": "c30",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The mass has a spiculated margin, indicating malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "00b46c46-184e-47c8-b74e-a621e7f868e7",
+      "short_id": "c31",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The orientation of the mass is non parallel, suggesting malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "c175103e-4a35-4f44-ae50-ce6fbd972939",
+      "short_id": "c32",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy but is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "e5548a0c-8a1e-4541-9d4a-5af79a89a483",
+      "short_id": "c33",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The ultrasound image shows a mass with an irregular shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "ebd9508e-5c88-4b99-82c1-49a00e5579e6",
+      "short_id": "c34",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The mass has a spiculated margin, indicating malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "4379e56b-af91-47c5-82e1-f589bcf699ca",
+      "short_id": "c35",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The orientation of the mass is non parallel, suggesting malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "74869027-044f-4ef3-98b2-9210fdf503ae",
+      "short_id": "c36",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy but is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "3d715209-4db7-46ec-abaf-8f191addd98a",
+      "short_id": "c37",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The ultrasound image shows a mass with an irregular shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "9ebaac9b-01dd-4fdf-9e68-18dc66b585b8",
+      "short_id": "c38",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The mass has a spiculated margin, indicating malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "f754981c-4ff1-44ef-955a-9d193d62fda8",
+      "short_id": "c39",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The orientation of the mass is non parallel, suggesting malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "5303cbab-6796-44b1-84ad-3a17658ce23b",
+      "short_id": "c40",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy but is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "cb6a95fc-5c96-4a19-8d0e-5019f5781153",
+      "short_id": "c41",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The ultrasound image shows a mass with an irregular shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "c057ac63-8cf3-45ae-a4be-5f8d16fa81a3",
+      "short_id": "c42",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The mass has a spiculated margin, indicating malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "d225c6c9-0237-4a43-8bfc-8d3e25f0fd50",
+      "short_id": "c43",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The orientation of the mass is non parallel, suggesting malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "1c9ace4f-7ceb-4b4f-923e-77d3ad44783b",
+      "short_id": "c44",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy but is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    },
+    {
+      "id": "dcf94bbe-b637-4908-9718-cb8ad8dd328a",
+      "short_id": "c45",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The ultrasound image shows a mass with an irregular shape, which suggests malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "1407dd30-2521-46ac-8d7e-1103e35ebd4a",
+      "short_id": "c46",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The mass has a spiculated margin, indicating malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_023"
+      ]
+    },
+    {
+      "id": "2a76e9c7-c22c-4392-93e0-8bce87f6c242",
+      "short_id": "c47",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The orientation of the mass is non parallel, suggesting malignancy.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "d_007"
+      ]
+    },
+    {
+      "id": "43c7916e-2f8d-472c-a360-b841bf6355d9",
+      "short_id": "c48",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The absence of posterior acoustic enhancement does not rule out malignancy but is not a definitive sign of benignity.",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_043"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "38330c85-df9d-480e-a1a6-2a2c4c5de677",
+      "target_id": "1a79d446-a4b3-4b81-96ba-c636fec885a9",
+      "sign": "-"
+    },
+    {
+      "source_id": "d79b04f5-246f-4bcd-b86e-95c1b0f98cb8",
+      "target_id": "9add2370-f75d-46b9-a6c3-8abce00d80a7",
+      "sign": "-"
+    },
+    {
+      "source_id": "355d0410-57b8-4fe1-9b5b-6797d876ece1",
+      "target_id": "5c623f50-8315-4136-9329-ae678e0867bd",
+      "sign": "-"
+    },
+    {
+      "source_id": "d018616b-897f-4047-b3cf-81edfb04f0e2",
+      "target_id": "1a79d446-a4b3-4b81-96ba-c636fec885a9",
+      "sign": "+"
+    },
+    {
+      "source_id": "6b0d3a4e-8291-463b-87b3-162b151a93a0",
+      "target_id": "d79b04f5-246f-4bcd-b86e-95c1b0f98cb8",
+      "sign": "+"
+    },
+    {
+      "source_id": "ec217eb4-d9c3-4152-b0e7-01a0379c9c5a",
+      "target_id": "355d0410-57b8-4fe1-9b5b-6797d876ece1",
+      "sign": "+"
+    },
+    {
+      "source_id": "c9fab268-df5f-43cd-b8de-91720568e442",
+      "target_id": "5ca29084-1bc1-4903-92c9-95f568d541c3",
+      "sign": "+"
+    },
+    {
+      "source_id": "2a352594-b8a8-4366-b897-5f75819ab53b",
+      "target_id": "d79b04f5-246f-4bcd-b86e-95c1b0f98cb8",
+      "sign": "-"
+    },
+    {
+      "source_id": "2858e8e6-3bc8-406d-84ef-de2c910d17be",
+      "target_id": "d018616b-897f-4047-b3cf-81edfb04f0e2",
+      "sign": "-"
+    },
+    {
+      "source_id": "4a76c227-6dde-4465-8868-951da43c02c5",
+      "target_id": "355d0410-57b8-4fe1-9b5b-6797d876ece1",
+      "sign": "-"
+    },
+    {
+      "source_id": "666f6066-a0dd-461b-814e-84b6c7a13060",
+      "target_id": "64992e71-f579-4751-9a35-0b2a184f2351",
+      "sign": "-"
+    }
+  ],
+  "scores": {
+    "1a79d446-a4b3-4b81-96ba-c636fec885a9": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ],
+    "9add2370-f75d-46b9-a6c3-8abce00d80a7": [
+      {
+        "groundedness": 70.0,
+        "factuality": 80.0
+      }
+    ],
+    "5c623f50-8315-4136-9329-ae678e0867bd": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "5ca29084-1bc1-4903-92c9-95f568d541c3": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "38330c85-df9d-480e-a1a6-2a2c4c5de677": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "d79b04f5-246f-4bcd-b86e-95c1b0f98cb8": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "355d0410-57b8-4fe1-9b5b-6797d876ece1": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "64992e71-f579-4751-9a35-0b2a184f2351": [
+      {
+        "groundedness": 70.0,
+        "factuality": 85.0
+      }
+    ],
+    "d018616b-897f-4047-b3cf-81edfb04f0e2": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "6b0d3a4e-8291-463b-87b3-162b151a93a0": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "ec217eb4-d9c3-4152-b0e7-01a0379c9c5a": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "c9fab268-df5f-43cd-b8de-91720568e442": [
+      {
+        "groundedness": 70.0,
+        "factuality": 85.0
+      }
+    ],
+    "2a352594-b8a8-4366-b897-5f75819ab53b": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "2858e8e6-3bc8-406d-84ef-de2c910d17be": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "4a76c227-6dde-4465-8868-951da43c02c5": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "666f6066-a0dd-461b-814e-84b6c7a13060": [
+      {
+        "groundedness": 60.0,
+        "factuality": 85.0
+      }
+    ],
+    "d2a497b7-4f58-4600-8a52-f00be03bee2d": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ],
+    "48d3eee1-bcbc-4c2d-a8c5-119a94ab1138": [
+      {
+        "groundedness": 70.0,
+        "factuality": 80.0
+      }
+    ],
+    "697cad58-b851-4912-9ec5-1cdce2db56c6": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "c4405801-871f-404f-a391-e28fad7ed0f1": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "6a24ba10-e5da-43a7-9b81-ef79c5dfa609": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "2c360f09-73b8-44fc-98a7-d9eed1918574": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "ac2388d9-d547-4051-ade2-ed4348d9b657": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "ed8987da-1028-4d37-af4c-8f1d1b9e6708": [
+      {
+        "groundedness": 60.0,
+        "factuality": 85.0
+      }
+    ],
+    "7114159f-0456-4949-be21-46d1181aa75c": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "f15592f6-522e-45e8-8407-143544eddb97": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "8c3f51a4-63a6-431b-a548-d315ffda50f2": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "e9c26bd8-8dae-482c-9912-8bec43058371": [
+      {
+        "groundedness": 60.0,
+        "factuality": 85.0
+      }
+    ],
+    "b8ea231e-dbae-41a8-a78c-99350d7376d3": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "d6f0032c-3305-4719-a8e0-54cb71d7849c": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "00b46c46-184e-47c8-b74e-a621e7f868e7": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "c175103e-4a35-4f44-ae50-ce6fbd972939": [
+      {
+        "groundedness": 60.0,
+        "factuality": 85.0
+      }
+    ],
+    "e5548a0c-8a1e-4541-9d4a-5af79a89a483": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ],
+    "ebd9508e-5c88-4b99-82c1-49a00e5579e6": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "4379e56b-af91-47c5-82e1-f589bcf699ca": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "74869027-044f-4ef3-98b2-9210fdf503ae": [
+      {
+        "groundedness": 60.0,
+        "factuality": 85.0
+      }
+    ],
+    "3d715209-4db7-46ec-abaf-8f191addd98a": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ],
+    "9ebaac9b-01dd-4fdf-9e68-18dc66b585b8": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "f754981c-4ff1-44ef-955a-9d193d62fda8": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "5303cbab-6796-44b1-84ad-3a17658ce23b": [
+      {
+        "groundedness": 60.0,
+        "factuality": 80.0
+      }
+    ],
+    "cb6a95fc-5c96-4a19-8d0e-5019f5781153": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ],
+    "c057ac63-8cf3-45ae-a4be-5f8d16fa81a3": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "d225c6c9-0237-4a43-8bfc-8d3e25f0fd50": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "1c9ace4f-7ceb-4b4f-923e-77d3ad44783b": [
+      {
+        "groundedness": 60.0,
+        "factuality": 85.0
+      }
+    ],
+    "dcf94bbe-b637-4908-9718-cb8ad8dd328a": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "1407dd30-2521-46ac-8d7e-1103e35ebd4a": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "2a76e9c7-c22c-4392-93e0-8bce87f6c242": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "43c7916e-2f8d-472c-a360-b841bf6355d9": [
+      {
+        "groundedness": 60.0,
+        "factuality": 85.0
+      }
+    ]
+  },
+  "verdict": "MALIGNANT",
+  "raw_score": 1.0
+}

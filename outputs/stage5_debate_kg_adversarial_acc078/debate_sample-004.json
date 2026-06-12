@@ -1,0 +1,684 @@
+{
+  "mode": "debate_kg_adversarial",
+  "nodes": [
+    {
+      "id": "45509778-f5fa-4c44-8120-6fa8e73ef9fc",
+      "short_id": "c1",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass in the image is circumscribed, which is a strong indicator of benignity.",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_042",
+        "d_007"
+      ]
+    },
+    {
+      "id": "b0c3f793-a2b4-4987-9429-e638303ceeed",
+      "short_id": "c2",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The shape of the mass is oval, which is also a feature associated with benign masses.",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_097",
+        "d_007"
+      ]
+    },
+    {
+      "id": "00c60f55-5a76-41d3-9c76-04edae496762",
+      "short_id": "c3",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The orientation of the mass is parallel, which suggests it is benign.",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_143",
+        "d_007"
+      ]
+    },
+    {
+      "id": "2d9cf0f3-361d-4968-8cfc-b7bb1398037e",
+      "short_id": "c4",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The image shows an irregular margin, which is a strong indicator of malignancy",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "45509778-f5fa-4c44-8120-6fa8e73ef9fc",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "81965cd6-5fd7-4c2d-b759-5008e2a60ba1",
+      "short_id": "c5",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The non-parallel orientation of the mass further suggests malignancy",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "00c60f55-5a76-41d3-9c76-04edae496762",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_056"
+      ]
+    },
+    {
+      "id": "f4f12e11-3e0a-4e73-b1db-1ecb30aace3d",
+      "short_id": "c6",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The heterogeneous echo pattern within the mass is consistent with malignancy, as it is often associated with malignant lesions",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "45509778-f5fa-4c44-8120-6fa8e73ef9fc",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    },
+    {
+      "id": "9b40549c-4e71-4585-b8a8-0613d9a9c1e1",
+      "short_id": "c7",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The presence of an irregular margin, as observed in the image, is a strong indicator of malignancy",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "45509778-f5fa-4c44-8120-6fa8e73ef9fc",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "4ad9ece7-3d47-4be4-aa99-6ee027e6c488",
+      "short_id": "c8",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The non-parallel orientation of the mass, which is evident in the image, further supports a malignancy diagnosis",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "00c60f55-5a76-41d3-9c76-04edae496762",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_056"
+      ]
+    },
+    {
+      "id": "6b210431-e691-4f75-b419-83adb71705b6",
+      "short_id": "c9",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The heterogeneous echo pattern within the mass, seen in the image, is often associated with malignant lesions and is a significant finding for malignancy",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "f4f12e11-3e0a-4e73-b1db-1ecb30aace3d",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    },
+    {
+      "id": "e44a9314-cfcf-4931-ae92-9b288930d138",
+      "short_id": "c10",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass is circumscribed, a strong indicator of benignity, supporting c1",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "45509778-f5fa-4c44-8120-6fa8e73ef9fc",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042, d_007"
+      ]
+    },
+    {
+      "id": "e4489c43-d11b-4af6-830e-140a2fa4a7b6",
+      "short_id": "c11",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The shape of the mass is oval, a feature associated with benign masses, confirming c2",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "b0c3f793-a2b4-4987-9429-e638303ceeed",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_097, d_007"
+      ]
+    },
+    {
+      "id": "388690c3-aa4d-49de-878a-3a5307c2f424",
+      "short_id": "c12",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The parallel orientation of the mass suggests benignity, contradicting c3",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "00c60f55-5a76-41d3-9c76-04edae496762",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_143, d_007"
+      ]
+    },
+    {
+      "id": "67e62083-0cd8-4291-a951-b082e2e1aaea",
+      "short_id": "c13",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The heterogeneous echo pattern within the mass, while often associated with malignancy, does not necessarily indicate malignancy in this context. The mass appears circumscribed, which is a strong indicator of benignity",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "f4f12e11-3e0a-4e73-b1db-1ecb30aace3d",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    },
+    {
+      "id": "032733dc-0721-4114-818c-782010c796bc",
+      "short_id": "c14",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The presence of an irregular margin, as observed in the image, does not necessarily indicate malignancy if the mass is circumscribed and has a parallel orientation. These features are more consistent with benignity",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "9b40549c-4e71-4585-b8a8-0613d9a9c1e1",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "be0dfef1-09aa-4152-a6ef-80aa6be293e7",
+      "short_id": "c15",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The non-parallel orientation of the mass, while a feature that could suggest malignancy, is not the sole determining factor. The circumscribed margin and parallel orientation support the benign interpretation",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "4ad9ece7-3d47-4be4-aa99-6ee027e6c488",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_056"
+      ]
+    },
+    {
+      "id": "978c765a-8de3-4869-8407-124b8a981dc9",
+      "short_id": "c16",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The heterogeneous echo pattern within the mass is often associated with malignancy but does not necessarily indicate malignancy if the mass is circumscribed and has a parallel orientation. The mass's features support benignity",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "6b210431-e691-4f75-b419-83adb71705b6",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    },
+    {
+      "id": "5e220cd8-642a-4f58-9608-3510aae49f09",
+      "short_id": "c17",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass is circumscribed, supporting a benign interpretation, in alignment with c10",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "e44a9314-cfcf-4931-ae92-9b288930d138",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_042, d_007"
+      ]
+    },
+    {
+      "id": "bfa40800-0c4a-444d-a73a-edb9587ff04a",
+      "short_id": "c18",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The shape of the mass is oval, consistent with benign masses, in agreement with c11",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "e4489c43-d11b-4af6-830e-140a2fa4a7b6",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_097, d_007"
+      ]
+    },
+    {
+      "id": "e7700baf-26b4-43e0-9459-b5c45716bc96",
+      "short_id": "c19",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The parallel orientation of the mass suggests benignity, contradicting c12",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "388690c3-aa4d-49de-878a-3a5307c2f424",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_143, d_007"
+      ]
+    },
+    {
+      "id": "364ed2b0-0bbe-4721-8e87-94108a598183",
+      "short_id": "c20",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The heterogeneous echo pattern within the mass, while often associated with malignancy, does not necessarily indicate malignancy if the mass is circumscribed and has a parallel orientation. The mass's features support benignity, addressing c13",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "67e62083-0cd8-4291-a951-b082e2e1aaea",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    },
+    {
+      "id": "9c4545c5-fc84-4039-bde9-efc1d378c1fe",
+      "short_id": "c21",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The non-parallel orientation of the mass, while a feature that could suggest malignancy, is not the sole determining factor. The circumscribed margin and parallel orientation support the benign interpretation, addressing c15",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "be0dfef1-09aa-4152-a6ef-80aa6be293e7",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_056"
+      ]
+    },
+    {
+      "id": "f4f4fdb5-8d7c-4669-a91a-67ba66416121",
+      "short_id": "c22",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The heterogeneous echo pattern within the mass, often associated with malignancy, does not necessarily indicate malignancy if the mass is circumscribed and has a parallel orientation. The mass's features support benignity, addressing c16",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "978c765a-8de3-4869-8407-124b8a981dc9",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    },
+    {
+      "id": "b88f9e33-6367-4508-a335-190877a19880",
+      "short_id": "c23",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The presence of an irregular margin is a strong indicator of malignancy, as observed in the image",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "5e220cd8-642a-4f58-9608-3510aae49f09",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "84926d90-d026-4f13-9977-d24c353a26eb",
+      "short_id": "c24",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The non-parallel orientation of the mass, evident in the image, is a feature that suggests malignancy",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "bfa40800-0c4a-444d-a73a-edb9587ff04a",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_056"
+      ]
+    },
+    {
+      "id": "41c5126c-fee8-4539-a646-d48c29650881",
+      "short_id": "c25",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The heterogeneous echo pattern within the mass, seen in the image, is consistent with malignancy, as it is often associated with malignant lesions",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "e7700baf-26b4-43e0-9459-b5c45716bc96",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_029"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "2d9cf0f3-361d-4968-8cfc-b7bb1398037e",
+      "target_id": "45509778-f5fa-4c44-8120-6fa8e73ef9fc",
+      "sign": "-"
+    },
+    {
+      "source_id": "81965cd6-5fd7-4c2d-b759-5008e2a60ba1",
+      "target_id": "00c60f55-5a76-41d3-9c76-04edae496762",
+      "sign": "-"
+    },
+    {
+      "source_id": "f4f12e11-3e0a-4e73-b1db-1ecb30aace3d",
+      "target_id": "45509778-f5fa-4c44-8120-6fa8e73ef9fc",
+      "sign": "-"
+    },
+    {
+      "source_id": "9b40549c-4e71-4585-b8a8-0613d9a9c1e1",
+      "target_id": "45509778-f5fa-4c44-8120-6fa8e73ef9fc",
+      "sign": "-"
+    },
+    {
+      "source_id": "4ad9ece7-3d47-4be4-aa99-6ee027e6c488",
+      "target_id": "00c60f55-5a76-41d3-9c76-04edae496762",
+      "sign": "+"
+    },
+    {
+      "source_id": "6b210431-e691-4f75-b419-83adb71705b6",
+      "target_id": "f4f12e11-3e0a-4e73-b1db-1ecb30aace3d",
+      "sign": "+"
+    },
+    {
+      "source_id": "e44a9314-cfcf-4931-ae92-9b288930d138",
+      "target_id": "45509778-f5fa-4c44-8120-6fa8e73ef9fc",
+      "sign": "+"
+    },
+    {
+      "source_id": "e4489c43-d11b-4af6-830e-140a2fa4a7b6",
+      "target_id": "b0c3f793-a2b4-4987-9429-e638303ceeed",
+      "sign": "+"
+    },
+    {
+      "source_id": "388690c3-aa4d-49de-878a-3a5307c2f424",
+      "target_id": "00c60f55-5a76-41d3-9c76-04edae496762",
+      "sign": "-"
+    },
+    {
+      "source_id": "67e62083-0cd8-4291-a951-b082e2e1aaea",
+      "target_id": "f4f12e11-3e0a-4e73-b1db-1ecb30aace3d",
+      "sign": "-"
+    },
+    {
+      "source_id": "032733dc-0721-4114-818c-782010c796bc",
+      "target_id": "9b40549c-4e71-4585-b8a8-0613d9a9c1e1",
+      "sign": "-"
+    },
+    {
+      "source_id": "be0dfef1-09aa-4152-a6ef-80aa6be293e7",
+      "target_id": "4ad9ece7-3d47-4be4-aa99-6ee027e6c488",
+      "sign": "-"
+    },
+    {
+      "source_id": "978c765a-8de3-4869-8407-124b8a981dc9",
+      "target_id": "6b210431-e691-4f75-b419-83adb71705b6",
+      "sign": "-"
+    },
+    {
+      "source_id": "5e220cd8-642a-4f58-9608-3510aae49f09",
+      "target_id": "e44a9314-cfcf-4931-ae92-9b288930d138",
+      "sign": "+"
+    },
+    {
+      "source_id": "bfa40800-0c4a-444d-a73a-edb9587ff04a",
+      "target_id": "e4489c43-d11b-4af6-830e-140a2fa4a7b6",
+      "sign": "+"
+    },
+    {
+      "source_id": "e7700baf-26b4-43e0-9459-b5c45716bc96",
+      "target_id": "388690c3-aa4d-49de-878a-3a5307c2f424",
+      "sign": "-"
+    },
+    {
+      "source_id": "364ed2b0-0bbe-4721-8e87-94108a598183",
+      "target_id": "67e62083-0cd8-4291-a951-b082e2e1aaea",
+      "sign": "+"
+    },
+    {
+      "source_id": "9c4545c5-fc84-4039-bde9-efc1d378c1fe",
+      "target_id": "be0dfef1-09aa-4152-a6ef-80aa6be293e7",
+      "sign": "+"
+    },
+    {
+      "source_id": "f4f4fdb5-8d7c-4669-a91a-67ba66416121",
+      "target_id": "978c765a-8de3-4869-8407-124b8a981dc9",
+      "sign": "+"
+    },
+    {
+      "source_id": "b88f9e33-6367-4508-a335-190877a19880",
+      "target_id": "5e220cd8-642a-4f58-9608-3510aae49f09",
+      "sign": "+"
+    },
+    {
+      "source_id": "84926d90-d026-4f13-9977-d24c353a26eb",
+      "target_id": "bfa40800-0c4a-444d-a73a-edb9587ff04a",
+      "sign": "+"
+    },
+    {
+      "source_id": "41c5126c-fee8-4539-a646-d48c29650881",
+      "target_id": "e7700baf-26b4-43e0-9459-b5c45716bc96",
+      "sign": "+"
+    }
+  ],
+  "scores": {
+    "45509778-f5fa-4c44-8120-6fa8e73ef9fc": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "b0c3f793-a2b4-4987-9429-e638303ceeed": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "00c60f55-5a76-41d3-9c76-04edae496762": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "2d9cf0f3-361d-4968-8cfc-b7bb1398037e": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "81965cd6-5fd7-4c2d-b759-5008e2a60ba1": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "f4f12e11-3e0a-4e73-b1db-1ecb30aace3d": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "9b40549c-4e71-4585-b8a8-0613d9a9c1e1": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "4ad9ece7-3d47-4be4-aa99-6ee027e6c488": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ],
+    "6b210431-e691-4f75-b419-83adb71705b6": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ],
+    "e44a9314-cfcf-4931-ae92-9b288930d138": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "e4489c43-d11b-4af6-830e-140a2fa4a7b6": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "388690c3-aa4d-49de-878a-3a5307c2f424": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ],
+    "67e62083-0cd8-4291-a951-b082e2e1aaea": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "032733dc-0721-4114-818c-782010c796bc": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "be0dfef1-09aa-4152-a6ef-80aa6be293e7": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "978c765a-8de3-4869-8407-124b8a981dc9": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "5e220cd8-642a-4f58-9608-3510aae49f09": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "bfa40800-0c4a-444d-a73a-edb9587ff04a": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "e7700baf-26b4-43e0-9459-b5c45716bc96": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "364ed2b0-0bbe-4721-8e87-94108a598183": [
+      {
+        "groundedness": 70.0,
+        "factuality": 85.0
+      }
+    ],
+    "9c4545c5-fc84-4039-bde9-efc1d378c1fe": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "f4f4fdb5-8d7c-4669-a91a-67ba66416121": [
+      {
+        "groundedness": 70.0,
+        "factuality": 85.0
+      }
+    ],
+    "b88f9e33-6367-4508-a335-190877a19880": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "84926d90-d026-4f13-9977-d24c353a26eb": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "41c5126c-fee8-4539-a646-d48c29650881": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ]
+  },
+  "verdict": "BENIGN",
+  "raw_score": -0.3333333333333332
+}

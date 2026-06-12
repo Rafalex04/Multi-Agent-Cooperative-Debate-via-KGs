@@ -1,0 +1,605 @@
+{
+  "mode": "debate_kg_adversarial",
+  "nodes": [
+    {
+      "id": "be222b95-6e94-4324-a1c5-7396c7392d09",
+      "short_id": "c1",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass is circumscribed",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_017"
+      ]
+    },
+    {
+      "id": "3fb189a4-7256-4788-a342-815d20c8f9a5",
+      "short_id": "c2",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass has an oval shape",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_091"
+      ]
+    },
+    {
+      "id": "d004050e-363d-4188-8ddb-30bc1b8fa639",
+      "short_id": "c3",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The mass is parallel in orientation",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_014"
+      ]
+    },
+    {
+      "id": "64a3d82e-a011-4a39-9e87-f7013d5df487",
+      "short_id": "c4",
+      "expert_id": "expert_a",
+      "round_idx": 0,
+      "text": "The background echotexture is homogeneous, consistent with fat tissue",
+      "label": "BENIGN",
+      "addressed": [],
+      "provenance": [
+        "t_001"
+      ]
+    },
+    {
+      "id": "8259789a-3fe3-424b-b4e4-64bc3d5d56d6",
+      "short_id": "c5",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The mass exhibits irregular margins, a characteristic feature associated with malignancy",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "be222b95-6e94-4324-a1c5-7396c7392d09",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "818a5d05-8a4d-4015-9156-2d89010a8d1b",
+      "short_id": "c6",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The mass is not parallel in orientation, suggesting malignancy",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "d004050e-363d-4188-8ddb-30bc1b8fa639",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "52f8852a-a721-4478-a3fa-abb7eb1f1051",
+      "short_id": "c7",
+      "expert_id": "expert_b",
+      "round_idx": 0,
+      "text": "The echotexture is heterogeneous, indicative of malignancy",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "64a3d82e-a011-4a39-9e87-f7013d5df487",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_003"
+      ]
+    },
+    {
+      "id": "3877324a-84f0-45a0-86db-44be1d187380",
+      "short_id": "c8",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The mass exhibits heterogeneous echotexture, a feature indicative of malignancy",
+      "label": "MALIGNANT",
+      "addressed": [],
+      "provenance": [
+        "t_003"
+      ]
+    },
+    {
+      "id": "d2522a75-039c-4f05-8acf-4338d853bc5c",
+      "short_id": "c9",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The mass is not parallel in orientation, supporting the malignancy diagnosis",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "d004050e-363d-4188-8ddb-30bc1b8fa639",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "28afbcdb-0eb0-4c57-bdd4-b0fe917e3957",
+      "short_id": "c10",
+      "expert_id": "expert_b",
+      "round_idx": 1,
+      "text": "The irregular margin, a characteristic associated with malignancy, is observed",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "8259789a-3fe3-424b-b4e4-64bc3d5d56d6",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "20d32388-02b2-476f-a71d-2a9960cd1fc1",
+      "short_id": "c11",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass is circumscribed, consistent with benign morphology",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "be222b95-6e94-4324-a1c5-7396c7392d09",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_017"
+      ]
+    },
+    {
+      "id": "62cdaf61-6b33-4a4f-a752-e29fa9340d25",
+      "short_id": "c12",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass has an oval shape, typical of benign lesions",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "3fb189a4-7256-4788-a342-815d20c8f9a5",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_012"
+      ]
+    },
+    {
+      "id": "1fc26e91-1dd7-42e6-8f44-b782628f0825",
+      "short_id": "c13",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass is parallel in orientation, a feature associated with benign masses",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "d004050e-363d-4188-8ddb-30bc1b8fa639",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_014"
+      ]
+    },
+    {
+      "id": "6e0f3ec4-5c63-41c9-841e-2b461fece770",
+      "short_id": "c14",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The background echotexture is homogeneous, consistent with fat tissue",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "64a3d82e-a011-4a39-9e87-f7013d5df487",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_001"
+      ]
+    },
+    {
+      "id": "0b43fd3a-7833-4a8c-a372-a9710bde90f3",
+      "short_id": "c15",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The echotexture is homogeneous, which is more indicative of benign conditions",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "52f8852a-a721-4478-a3fa-abb7eb1f1051",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_001"
+      ]
+    },
+    {
+      "id": "1f12c5ad-292f-4c07-9f3d-b1374d8471e1",
+      "short_id": "c16",
+      "expert_id": "expert_a",
+      "round_idx": 1,
+      "text": "The mass is not parallel in orientation, suggesting malignancy",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "818a5d05-8a4d-4015-9156-2d89010a8d1b",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "b0ba5165-cf1c-4233-889d-096d46d9f722",
+      "short_id": "c17",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass is circumscribed, which is consistent with benign morphology",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "be222b95-6e94-4324-a1c5-7396c7392d09",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_017"
+      ]
+    },
+    {
+      "id": "152143d8-257e-425e-8071-a891d4c6c363",
+      "short_id": "c18",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass has an oval shape, a feature typical of benign lesions",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "3fb189a4-7256-4788-a342-815d20c8f9a5",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_012"
+      ]
+    },
+    {
+      "id": "1fd588e6-40a4-4b8c-8dac-088c53151ccc",
+      "short_id": "c19",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The mass is parallel in orientation, which is associated with benign masses",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "d004050e-363d-4188-8ddb-30bc1b8fa639",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_014"
+      ]
+    },
+    {
+      "id": "810a41c8-27e2-4f35-b4b7-9dbd2f9b4f2e",
+      "short_id": "c20",
+      "expert_id": "expert_a",
+      "round_idx": 2,
+      "text": "The background echotexture is homogeneous, consistent with fat tissue",
+      "label": "BENIGN",
+      "addressed": [
+        {
+          "node_id": "64a3d82e-a011-4a39-9e87-f7013d5df487",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_001"
+      ]
+    },
+    {
+      "id": "85940fc4-a464-4e4a-bd2d-0e298fff5e84",
+      "short_id": "c21",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The mass exhibits irregular margins, a characteristic feature associated with malignancy, which contradicts c17",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "b0ba5165-cf1c-4233-889d-096d46d9f722",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    },
+    {
+      "id": "cc60974b-44a8-4fa7-90be-f930d38ad65f",
+      "short_id": "c22",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The heterogeneous echotexture is indicative of malignancy, supporting the malignancy diagnosis",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "0b43fd3a-7833-4a8c-a372-a9710bde90f3",
+          "stance": "AGREE"
+        }
+      ],
+      "provenance": [
+        "t_003"
+      ]
+    },
+    {
+      "id": "0cefa3ec-fe8d-4f14-8721-eb2b8354f5ac",
+      "short_id": "c23",
+      "expert_id": "expert_b",
+      "round_idx": 2,
+      "text": "The mass is not parallel in orientation, suggesting malignancy, which contradicts c13",
+      "label": "MALIGNANT",
+      "addressed": [
+        {
+          "node_id": "1fc26e91-1dd7-42e6-8f44-b782628f0825",
+          "stance": "DISAGREE"
+        }
+      ],
+      "provenance": [
+        "t_045"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "8259789a-3fe3-424b-b4e4-64bc3d5d56d6",
+      "target_id": "be222b95-6e94-4324-a1c5-7396c7392d09",
+      "sign": "-"
+    },
+    {
+      "source_id": "818a5d05-8a4d-4015-9156-2d89010a8d1b",
+      "target_id": "d004050e-363d-4188-8ddb-30bc1b8fa639",
+      "sign": "-"
+    },
+    {
+      "source_id": "52f8852a-a721-4478-a3fa-abb7eb1f1051",
+      "target_id": "64a3d82e-a011-4a39-9e87-f7013d5df487",
+      "sign": "-"
+    },
+    {
+      "source_id": "d2522a75-039c-4f05-8acf-4338d853bc5c",
+      "target_id": "d004050e-363d-4188-8ddb-30bc1b8fa639",
+      "sign": "-"
+    },
+    {
+      "source_id": "28afbcdb-0eb0-4c57-bdd4-b0fe917e3957",
+      "target_id": "8259789a-3fe3-424b-b4e4-64bc3d5d56d6",
+      "sign": "+"
+    },
+    {
+      "source_id": "20d32388-02b2-476f-a71d-2a9960cd1fc1",
+      "target_id": "be222b95-6e94-4324-a1c5-7396c7392d09",
+      "sign": "+"
+    },
+    {
+      "source_id": "62cdaf61-6b33-4a4f-a752-e29fa9340d25",
+      "target_id": "3fb189a4-7256-4788-a342-815d20c8f9a5",
+      "sign": "+"
+    },
+    {
+      "source_id": "1fc26e91-1dd7-42e6-8f44-b782628f0825",
+      "target_id": "d004050e-363d-4188-8ddb-30bc1b8fa639",
+      "sign": "+"
+    },
+    {
+      "source_id": "6e0f3ec4-5c63-41c9-841e-2b461fece770",
+      "target_id": "64a3d82e-a011-4a39-9e87-f7013d5df487",
+      "sign": "+"
+    },
+    {
+      "source_id": "0b43fd3a-7833-4a8c-a372-a9710bde90f3",
+      "target_id": "52f8852a-a721-4478-a3fa-abb7eb1f1051",
+      "sign": "-"
+    },
+    {
+      "source_id": "1f12c5ad-292f-4c07-9f3d-b1374d8471e1",
+      "target_id": "818a5d05-8a4d-4015-9156-2d89010a8d1b",
+      "sign": "-"
+    },
+    {
+      "source_id": "b0ba5165-cf1c-4233-889d-096d46d9f722",
+      "target_id": "be222b95-6e94-4324-a1c5-7396c7392d09",
+      "sign": "+"
+    },
+    {
+      "source_id": "152143d8-257e-425e-8071-a891d4c6c363",
+      "target_id": "3fb189a4-7256-4788-a342-815d20c8f9a5",
+      "sign": "+"
+    },
+    {
+      "source_id": "1fd588e6-40a4-4b8c-8dac-088c53151ccc",
+      "target_id": "d004050e-363d-4188-8ddb-30bc1b8fa639",
+      "sign": "+"
+    },
+    {
+      "source_id": "810a41c8-27e2-4f35-b4b7-9dbd2f9b4f2e",
+      "target_id": "64a3d82e-a011-4a39-9e87-f7013d5df487",
+      "sign": "+"
+    },
+    {
+      "source_id": "85940fc4-a464-4e4a-bd2d-0e298fff5e84",
+      "target_id": "b0ba5165-cf1c-4233-889d-096d46d9f722",
+      "sign": "-"
+    },
+    {
+      "source_id": "cc60974b-44a8-4fa7-90be-f930d38ad65f",
+      "target_id": "0b43fd3a-7833-4a8c-a372-a9710bde90f3",
+      "sign": "+"
+    },
+    {
+      "source_id": "0cefa3ec-fe8d-4f14-8721-eb2b8354f5ac",
+      "target_id": "1fc26e91-1dd7-42e6-8f44-b782628f0825",
+      "sign": "-"
+    }
+  ],
+  "scores": {
+    "be222b95-6e94-4324-a1c5-7396c7392d09": [
+      {
+        "groundedness": 90.0,
+        "factuality": 90.0
+      }
+    ],
+    "3fb189a4-7256-4788-a342-815d20c8f9a5": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "d004050e-363d-4188-8ddb-30bc1b8fa639": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "64a3d82e-a011-4a39-9e87-f7013d5df487": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "8259789a-3fe3-424b-b4e4-64bc3d5d56d6": [
+      {
+        "groundedness": 85.0,
+        "factuality": 80.0
+      }
+    ],
+    "818a5d05-8a4d-4015-9156-2d89010a8d1b": [
+      {
+        "groundedness": 60.0,
+        "factuality": 60.0
+      }
+    ],
+    "52f8852a-a721-4478-a3fa-abb7eb1f1051": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "3877324a-84f0-45a0-86db-44be1d187380": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "d2522a75-039c-4f05-8acf-4338d853bc5c": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "28afbcdb-0eb0-4c57-bdd4-b0fe917e3957": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "20d32388-02b2-476f-a71d-2a9960cd1fc1": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "62cdaf61-6b33-4a4f-a752-e29fa9340d25": [
+      {
+        "groundedness": 60.0,
+        "factuality": 70.0
+      }
+    ],
+    "1fc26e91-1dd7-42e6-8f44-b782628f0825": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ],
+    "6e0f3ec4-5c63-41c9-841e-2b461fece770": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "0b43fd3a-7833-4a8c-a372-a9710bde90f3": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "1f12c5ad-292f-4c07-9f3d-b1374d8471e1": [
+      {
+        "groundedness": 40.0,
+        "factuality": 40.0
+      }
+    ],
+    "b0ba5165-cf1c-4233-889d-096d46d9f722": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "152143d8-257e-425e-8071-a891d4c6c363": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "1fd588e6-40a4-4b8c-8dac-088c53151ccc": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "810a41c8-27e2-4f35-b4b7-9dbd2f9b4f2e": [
+      {
+        "groundedness": 90.0,
+        "factuality": 95.0
+      }
+    ],
+    "85940fc4-a464-4e4a-bd2d-0e298fff5e84": [
+      {
+        "groundedness": 85.0,
+        "factuality": 80.0
+      }
+    ],
+    "cc60974b-44a8-4fa7-90be-f930d38ad65f": [
+      {
+        "groundedness": 70.0,
+        "factuality": 70.0
+      }
+    ],
+    "0cefa3ec-fe8d-4f14-8721-eb2b8354f5ac": [
+      {
+        "groundedness": 70.0,
+        "factuality": 60.0
+      }
+    ]
+  },
+  "verdict": "BENIGN",
+  "raw_score": -0.24260355029585792
+}

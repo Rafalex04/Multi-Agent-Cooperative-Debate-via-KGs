@@ -1,0 +1,183 @@
+[2026-06-10 17:44:05,145][__main__][INFO] - Config:
+model:
+  expert_model: qwen2.5vl:7b
+  expert_temperature: 0.7
+  ollama_base_url: http://localhost:11434
+data:
+  num_samples: 50
+  image_size: 224
+  seed: 42
+  kg_path: data/breast/knowledge_graph.json
+  definitions_path: data/breast/definitions.json
+  indices_path: data/breast/ablation_indices.json
+run:
+  mode: adaptive_adversarial
+  max_rounds: 3
+  confidence_threshold: 70
+  use_stub_data: false
+judges:
+  model: google/medgemma-4b-it
+  backend: ollama
+  base_url: http://localhost:8000
+  ollama_model: medgemma:4b
+  ollama_base_url: http://localhost:11434
+  temperature: 0.0
+
+[2026-06-10 17:44:05,145][__main__][INFO] - Starting BreastMNIST run: mode=adaptive_adversarial samples=50
+[2026-06-10 17:44:05,154][debate_kg.kg.loader][INFO] - Loaded KG from data/breast/knowledge_graph.json: 370 triples
+[2026-06-10 17:44:05,155][debate_kg.kg.loader][INFO] - Loaded 99 entity definitions from data/breast/definitions.json
+[2026-06-10 17:44:05,156][__main__][INFO] - Loaded KG (370 triples) for mode adaptive_adversarial
+[2026-06-10 17:44:05,214][debate_kg.judges.medgemma_judge][INFO] - Built MedGemmaJudge: backend=ollama model=medgemma:4b
+[2026-06-10 17:44:06,797][debate_kg.data.breastmnist][INFO] - Loading 50 BreastMNIST test samples (indices: [52, 124, 33, 50, 7] ...)
+[2026-06-10 17:44:07,726][debate_kg.data.breastmnist][INFO] - Loaded 50 samples
+[2026-06-10 17:44:07,732][__main__][INFO] - Sample 052 — gold=BENIGN
+[2026-06-10 17:44:16,110][__main__][INFO] - adaptive: sample 052 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:16,120][__main__][INFO] - Sample 052 → MALIGNANT (gold=BENIGN, rounds=1, time=8.4s)
+[2026-06-10 17:44:16,126][__main__][INFO] - Sample 124 — gold=BENIGN
+[2026-06-10 17:44:18,895][__main__][INFO] - adaptive: sample 124 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:18,902][__main__][INFO] - Sample 124 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:44:18,909][__main__][INFO] - Sample 033 — gold=BENIGN
+[2026-06-10 17:44:21,669][__main__][INFO] - adaptive: sample 033 confidence 88 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:21,675][__main__][INFO] - Sample 033 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:44:21,681][__main__][INFO] - Sample 050 — gold=BENIGN
+[2026-06-10 17:44:24,392][__main__][INFO] - adaptive: sample 050 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:24,399][__main__][INFO] - Sample 050 → MALIGNANT (gold=BENIGN, rounds=1, time=2.7s)
+[2026-06-10 17:44:24,404][__main__][INFO] - Sample 007 — gold=MALIGNANT
+[2026-06-10 17:44:27,154][__main__][INFO] - adaptive: sample 007 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:27,160][__main__][INFO] - Sample 007 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.8s)
+[2026-06-10 17:44:27,166][__main__][INFO] - Sample 108 — gold=BENIGN
+[2026-06-10 17:44:29,921][__main__][INFO] - adaptive: sample 108 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:29,927][__main__][INFO] - Sample 108 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:44:29,933][__main__][INFO] - Sample 115 — gold=BENIGN
+[2026-06-10 17:44:32,516][__main__][INFO] - adaptive: sample 115 confidence 72 >= 70 → using single-agent verdict BENIGN
+[2026-06-10 17:44:32,522][__main__][INFO] - Sample 115 → BENIGN (gold=BENIGN, rounds=1, time=2.6s)
+[2026-06-10 17:44:32,528][__main__][INFO] - Sample 152 — gold=BENIGN
+[2026-06-10 17:44:35,243][__main__][INFO] - adaptive: sample 152 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:35,250][__main__][INFO] - Sample 152 → MALIGNANT (gold=BENIGN, rounds=1, time=2.7s)
+[2026-06-10 17:44:35,255][__main__][INFO] - Sample 148 — gold=BENIGN
+[2026-06-10 17:44:38,019][__main__][INFO] - adaptive: sample 148 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:38,026][__main__][INFO] - Sample 148 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:44:38,031][__main__][INFO] - Sample 147 — gold=BENIGN
+[2026-06-10 17:44:40,763][__main__][INFO] - adaptive: sample 147 confidence 98 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:40,770][__main__][INFO] - Sample 147 → MALIGNANT (gold=BENIGN, rounds=1, time=2.7s)
+[2026-06-10 17:44:40,775][__main__][INFO] - Sample 008 — gold=BENIGN
+[2026-06-10 17:44:43,546][__main__][INFO] - adaptive: sample 008 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:43,553][__main__][INFO] - Sample 008 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:44:43,559][__main__][INFO] - Sample 122 — gold=BENIGN
+[2026-06-10 17:44:46,347][__main__][INFO] - adaptive: sample 122 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:46,353][__main__][INFO] - Sample 122 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:44:46,359][__main__][INFO] - Sample 114 — gold=MALIGNANT
+[2026-06-10 17:44:49,094][__main__][INFO] - adaptive: sample 114 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:49,100][__main__][INFO] - Sample 114 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.7s)
+[2026-06-10 17:44:49,105][__main__][INFO] - Sample 024 — gold=MALIGNANT
+[2026-06-10 17:44:51,856][__main__][INFO] - adaptive: sample 024 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:51,862][__main__][INFO] - Sample 024 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.8s)
+[2026-06-10 17:44:51,867][__main__][INFO] - Sample 081 — gold=BENIGN
+[2026-06-10 17:44:54,462][__main__][INFO] - adaptive: sample 081 confidence 72 >= 70 → using single-agent verdict BENIGN
+[2026-06-10 17:44:54,467][__main__][INFO] - Sample 081 → BENIGN (gold=BENIGN, rounds=1, time=2.6s)
+[2026-06-10 17:44:54,472][__main__][INFO] - Sample 150 — gold=MALIGNANT
+[2026-06-10 17:44:57,224][__main__][INFO] - adaptive: sample 150 confidence 88 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:57,230][__main__][INFO] - Sample 150 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.8s)
+[2026-06-10 17:44:57,235][__main__][INFO] - Sample 107 — gold=MALIGNANT
+[2026-06-10 17:44:59,970][__main__][INFO] - adaptive: sample 107 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:44:59,977][__main__][INFO] - Sample 107 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.7s)
+[2026-06-10 17:44:59,982][__main__][INFO] - Sample 101 — gold=BENIGN
+[2026-06-10 17:45:02,819][__main__][INFO] - adaptive: sample 101 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:02,825][__main__][INFO] - Sample 101 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:45:02,831][__main__][INFO] - Sample 134 — gold=BENIGN
+[2026-06-10 17:45:05,715][__main__][INFO] - adaptive: sample 134 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:05,721][__main__][INFO] - Sample 134 → MALIGNANT (gold=BENIGN, rounds=1, time=2.9s)
+[2026-06-10 17:45:05,727][__main__][INFO] - Sample 003 — gold=BENIGN
+[2026-06-10 17:45:08,546][__main__][INFO] - adaptive: sample 003 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:08,552][__main__][INFO] - Sample 003 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:45:08,558][__main__][INFO] - Sample 025 — gold=BENIGN
+[2026-06-10 17:45:11,453][__main__][INFO] - adaptive: sample 025 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:11,459][__main__][INFO] - Sample 025 → MALIGNANT (gold=BENIGN, rounds=1, time=2.9s)
+[2026-06-10 17:45:11,465][__main__][INFO] - Sample 117 — gold=BENIGN
+[2026-06-10 17:45:14,248][__main__][INFO] - adaptive: sample 117 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:14,254][__main__][INFO] - Sample 117 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:45:14,260][__main__][INFO] - Sample 038 — gold=MALIGNANT
+[2026-06-10 17:45:16,908][__main__][INFO] - adaptive: sample 038 confidence 72 >= 70 → using single-agent verdict BENIGN
+[2026-06-10 17:45:16,914][__main__][INFO] - Sample 038 → BENIGN (gold=MALIGNANT, rounds=1, time=2.7s)
+[2026-06-10 17:45:16,920][__main__][INFO] - Sample 068 — gold=MALIGNANT
+[2026-06-10 17:45:19,741][__main__][INFO] - adaptive: sample 068 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:19,747][__main__][INFO] - Sample 068 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.8s)
+[2026-06-10 17:45:19,753][__main__][INFO] - Sample 004 — gold=BENIGN
+[2026-06-10 17:45:22,613][__main__][INFO] - adaptive: sample 004 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:22,619][__main__][INFO] - Sample 004 → MALIGNANT (gold=BENIGN, rounds=1, time=2.9s)
+[2026-06-10 17:45:22,625][__main__][INFO] - Sample 037 — gold=BENIGN
+[2026-06-10 17:45:25,410][__main__][INFO] - adaptive: sample 037 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:25,416][__main__][INFO] - Sample 037 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:45:25,422][__main__][INFO] - Sample 056 — gold=BENIGN
+[2026-06-10 17:45:28,238][__main__][INFO] - adaptive: sample 056 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:28,244][__main__][INFO] - Sample 056 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:45:28,250][__main__][INFO] - Sample 020 — gold=MALIGNANT
+[2026-06-10 17:45:31,061][__main__][INFO] - adaptive: sample 020 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:31,067][__main__][INFO] - Sample 020 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.8s)
+[2026-06-10 17:45:31,073][__main__][INFO] - Sample 123 — gold=MALIGNANT
+[2026-06-10 17:45:33,842][__main__][INFO] - adaptive: sample 123 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:33,848][__main__][INFO] - Sample 123 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.8s)
+[2026-06-10 17:45:33,854][__main__][INFO] - Sample 046 — gold=BENIGN
+[2026-06-10 17:45:36,732][__main__][INFO] - adaptive: sample 046 confidence 88 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:36,739][__main__][INFO] - Sample 046 → MALIGNANT (gold=BENIGN, rounds=1, time=2.9s)
+[2026-06-10 17:45:36,744][__main__][INFO] - Sample 054 — gold=BENIGN
+[2026-06-10 17:45:39,572][__main__][INFO] - adaptive: sample 054 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:39,579][__main__][INFO] - Sample 054 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:45:39,584][__main__][INFO] - Sample 062 — gold=BENIGN
+[2026-06-10 17:45:42,372][__main__][INFO] - adaptive: sample 062 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:42,379][__main__][INFO] - Sample 062 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:45:42,385][__main__][INFO] - Sample 002 — gold=BENIGN
+[2026-06-10 17:45:45,032][__main__][INFO] - adaptive: sample 002 confidence 72 >= 70 → using single-agent verdict BENIGN
+[2026-06-10 17:45:45,038][__main__][INFO] - Sample 002 → BENIGN (gold=BENIGN, rounds=1, time=2.7s)
+[2026-06-10 17:45:45,043][__main__][INFO] - Sample 090 — gold=BENIGN
+[2026-06-10 17:45:47,943][__main__][INFO] - adaptive: sample 090 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:47,950][__main__][INFO] - Sample 090 → MALIGNANT (gold=BENIGN, rounds=1, time=2.9s)
+[2026-06-10 17:45:47,955][__main__][INFO] - Sample 066 — gold=BENIGN
+[2026-06-10 17:45:50,907][__main__][INFO] - adaptive: sample 066 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:50,913][__main__][INFO] - Sample 066 → MALIGNANT (gold=BENIGN, rounds=1, time=3.0s)
+[2026-06-10 17:45:50,919][__main__][INFO] - Sample 093 — gold=BENIGN
+[2026-06-10 17:45:53,775][__main__][INFO] - adaptive: sample 093 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:53,782][__main__][INFO] - Sample 093 → MALIGNANT (gold=BENIGN, rounds=1, time=2.9s)
+[2026-06-10 17:45:53,787][__main__][INFO] - Sample 111 — gold=BENIGN
+[2026-06-10 17:45:56,586][__main__][INFO] - adaptive: sample 111 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:56,592][__main__][INFO] - Sample 111 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:45:56,598][__main__][INFO] - Sample 096 — gold=BENIGN
+[2026-06-10 17:45:59,386][__main__][INFO] - adaptive: sample 096 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:45:59,392][__main__][INFO] - Sample 096 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:45:59,397][__main__][INFO] - Sample 012 — gold=BENIGN
+[2026-06-10 17:46:02,251][__main__][INFO] - adaptive: sample 012 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:46:02,258][__main__][INFO] - Sample 012 → MALIGNANT (gold=BENIGN, rounds=1, time=2.9s)
+[2026-06-10 17:46:02,263][__main__][INFO] - Sample 088 — gold=BENIGN
+[2026-06-10 17:46:05,102][__main__][INFO] - adaptive: sample 088 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:46:05,108][__main__][INFO] - Sample 088 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:46:05,113][__main__][INFO] - Sample 118 — gold=BENIGN
+[2026-06-10 17:46:07,948][__main__][INFO] - adaptive: sample 118 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:46:07,955][__main__][INFO] - Sample 118 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:46:07,961][__main__][INFO] - Sample 149 — gold=BENIGN
+[2026-06-10 17:46:10,821][__main__][INFO] - adaptive: sample 149 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:46:10,827][__main__][INFO] - Sample 149 → MALIGNANT (gold=BENIGN, rounds=1, time=2.9s)
+[2026-06-10 17:46:10,832][__main__][INFO] - Sample 000 — gold=MALIGNANT
+[2026-06-10 17:46:13,638][__main__][INFO] - adaptive: sample 000 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:46:13,644][__main__][INFO] - Sample 000 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.8s)
+[2026-06-10 17:46:13,650][__main__][INFO] - Sample 098 — gold=BENIGN
+[2026-06-10 17:46:16,516][__main__][INFO] - adaptive: sample 098 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:46:16,522][__main__][INFO] - Sample 098 → MALIGNANT (gold=BENIGN, rounds=1, time=2.9s)
+[2026-06-10 17:46:16,528][__main__][INFO] - Sample 089 — gold=BENIGN
+[2026-06-10 17:46:19,204][__main__][INFO] - adaptive: sample 089 confidence 72 >= 70 → using single-agent verdict BENIGN
+[2026-06-10 17:46:19,211][__main__][INFO] - Sample 089 → BENIGN (gold=BENIGN, rounds=1, time=2.7s)
+[2026-06-10 17:46:19,217][__main__][INFO] - Sample 027 — gold=BENIGN
+[2026-06-10 17:46:21,852][__main__][INFO] - adaptive: sample 027 confidence 72 >= 70 → using single-agent verdict BENIGN
+[2026-06-10 17:46:21,859][__main__][INFO] - Sample 027 → BENIGN (gold=BENIGN, rounds=1, time=2.6s)
+[2026-06-10 17:46:21,865][__main__][INFO] - Sample 070 — gold=BENIGN
+[2026-06-10 17:46:24,696][__main__][INFO] - adaptive: sample 070 confidence 85 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:46:24,703][__main__][INFO] - Sample 070 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:46:24,708][__main__][INFO] - Sample 127 — gold=MALIGNANT
+[2026-06-10 17:46:27,501][__main__][INFO] - adaptive: sample 127 confidence 95 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:46:27,508][__main__][INFO] - Sample 127 → MALIGNANT (gold=MALIGNANT, rounds=1, time=2.8s)
+[2026-06-10 17:46:27,513][__main__][INFO] - Sample 154 — gold=BENIGN
+[2026-06-10 17:46:30,356][__main__][INFO] - adaptive: sample 154 confidence 98 >= 70 → using single-agent verdict MALIGNANT
+[2026-06-10 17:46:30,362][__main__][INFO] - Sample 154 → MALIGNANT (gold=BENIGN, rounds=1, time=2.8s)
+[2026-06-10 17:46:30,368][__main__][INFO] - Sample 051 — gold=BENIGN
+[2026-06-10 17:46:33,040][__main__][INFO] - adaptive: sample 051 confidence 95 >= 70 → using single-agent verdict BENIGN
+[2026-06-10 17:46:33,047][__main__][INFO] - Sample 051 → BENIGN (gold=BENIGN, rounds=1, time=2.7s)
+[2026-06-10 17:46:33,069][__main__][INFO] - Done. acc=0.3200 sens=0.9091 spec=0.1538 auc=0.4452 conv=1.0000 mean_rounds=1.00 mean_time=2.9s total=145s
