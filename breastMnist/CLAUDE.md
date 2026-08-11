@@ -18,10 +18,17 @@
 │   ├── config_breast.yaml          # BreastMNIST pipeline root config
 │   ├── judges/medgemma.yaml        # MedGemma judge config (backend: ollama|vllm)
 │   └── run/                        # run group configs (breast_single, breast_debate_*, etc.)
-├── data/breast/                    # ACR BI-RADS KG + fixed ablation sample set
+├── monitor_daemon.py               # runs all splits sequentially, restarts on crash
+├── monitor.sh / restart_if_dead.sh # watchdog wrappers for the daemon
+├── data/breast/                    # ACR BI-RADS KG + split index files
 │   ├── knowledge_graph.json        # 370 triples, IDs t_001–t_370
 │   ├── definitions.json            # 100 entities, IDs d_001–d_100
-│   └── ablation_indices.json       # 50 fixed test-set indices (seed=42, never regenerate)
+│   ├── ablation_indices.json       # 50 fixed test-set indices (seed=42, never regenerate)
+│   ├── remaining_indices.json      # other 106 test indices (50 + 106 = 156 test)
+│   ├── val_indices.json            # 78 val indices
+│   ├── train_indices.json          # 546 train indices
+│   └── dataset_full/               # built graphs, per split
+│       └── {train,val,test}/graphs/sample_{id}.json  # 546 + 78 + 156 = 780
 ├── src/
 │   └── debate_kg/
 │       ├── main.py                 # FEVER Hydra entrypoint
@@ -42,6 +49,8 @@
 │       ├── merger/                 # rule-based KG merger (FEVER only)
 │       ├── data/
 │       │   └── breastmnist.py      # loads BreastMNIST as base64 JPEG samples
+│       ├── dataset/
+│       │   └── build_graph_dataset.py  # debate JSONs → per-split heterogeneous graphs
 │       ├── models/                 # OllamaClient, VLLMClient, StubClient
 │       └── eval/breast_metrics.py  # accuracy, AUC-ROC, sensitivity, specificity
 └── tests/
@@ -64,6 +73,8 @@
 - **Early stop (opinion mode)**: stops after round ≥ 1 if any expert writes `[FINISH]`, OR if both experts state the same verdict for 2 consecutive rounds (`consecutive_agreement >= 2`).
 - **Early stop (structured modes)**: shared `is_consensus()` with FEVER — round 0 never stops early; consensus can only be declared from `round_idx >= 1`.
 - **Fixed sample set**: `data/breast/ablation_indices.json` — 50 test-set indices. Never regenerate; all ablation stages must use the same samples.
+- **Image resolution**: `load_samples` must pass `size=` to `BreastMNIST(...)`. Omitting it silently loads 28×28 (medmnist ≥3.0 defaults `size=None` → 28), which then gets upscaled to `image_size` — this shipped through all six ablation stages and destroyed the debate signal. See SPEC.md Key Design Decision 6.
+- **Sample IDs are per-split**: train `000` and val `000` are different images. A sample is identified by `{split}/{id}`, never by `id` alone.
 - **Verdict (opinion)**: judge's `pick_winner` → winner's last stated label.
 - **Verdict (structured)**: weighted vote — `score = Σ weight_i × vote_i`, `weight_i = (groundedness + factuality) / 200`, `vote_i = +1` (MALIGNANT) or `−1` (BENIGN).
 - **GPU sharing**: the expert model (always Ollama — there is no vLLM path for experts) and an Ollama-backend judge share one Ollama instance. `breast_main` unloads each model (`keep_alive=0`) before the other runs, and caps the judge's `num_ctx` at 4096 vs the expert's 32768.

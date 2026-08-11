@@ -168,16 +168,22 @@ After all splits complete, `debate_kg.dataset.build_graph_dataset` builds a merg
 | Triple→triple edges | Shared-entity edges: two triples sharing a subject or object |
 | Graph label | Gold label: BENIGN=0, MALIGNANT=1 |
 
-**Output layout** (`data/breast/dataset_full/`):
-- `graphs/sample_{id}.json` — one file per sample
-- `index.json` — `{sample_id: {label, verdict, correct, num_claims, num_triples, …}}`
-- `stats.json` — aggregate statistics
+**Output layout** (`data/breast/dataset_full/`) — one subdirectory per split:
+- `{train,val,test}/graphs/sample_{id}.json` — one file per sample
+- `{train,val,test}/index.json` — `{sample_id: {gold_label, verdict, correct, rounds_used, stats}}`
+- `{train,val,test}/stats.json` — aggregate statistics for that split
+
+Sample IDs are only unique *within* a split (train `000` and val `000` are different
+images), so the split subdirectory is part of a sample's identity. Each debate output
+dir is assigned to a split via the `.split_{train,val,test}` marker file written by
+`monitor_daemon.py`; dirs without a marker are skipped.
+
+Totals: 546 train + 78 val + 156 test = **780 graphs** (the entire BreastMNIST dataset).
 
 Run:
 ```bash
 python -m debate_kg.dataset.build_graph_dataset \
-    --debate-dir outputs/2026-07-18/16-12-46 \
-    --debate-dir outputs/... \
+    --auto-discover \
     --out-dir data/breast/dataset_full \
     --k 3 --force
 ```
@@ -193,6 +199,8 @@ python -m debate_kg.dataset.build_graph_dataset \
 4. **Fixed ablation sample set.** `ablation_indices.json` ensures all six stages compare on identical inputs. Never regenerate.
 
 5. **Claim→triple edges recomputed at build time.** Debate JSON stores `[CITED:t_NNN]` provenance from the prompt, but claim→triple edges in the graph dataset use fresh TF-IDF retrieval (top-3 per claim) for consistency.
+
+6. **Images must be loaded at native MedMNIST+ resolution — never upscaled.** `load_samples` passes `size=` to the `BreastMNIST` constructor; omitting it silently defaults to 28×28 in medmnist ≥3.0. The stages 1–6 runs and the first 780-graph build hit exactly this: they fed Qwen2.5-VL 28×28 thumbnails LANCZOS-upscaled to 224×224. Verified by correlating the loader's output against both candidate sources on test sample 52 — **0.9999 against upscaled-from-28 vs 0.9718 against native 224**, with high-frequency detail at 1.20 vs 12.75 (64× fewer real pixels: 784 vs 50,176). BI-RADS margin character, echo texture, and posterior acoustic features are unresolvable at 28px, so experts fell back to stance-driven boilerplate. `_source_size()` now selects the smallest published resolution ≥ `image_size`, and the load is logged as `source WxH -> output WxH` so a regression is visible in run logs.
 
 ---
 

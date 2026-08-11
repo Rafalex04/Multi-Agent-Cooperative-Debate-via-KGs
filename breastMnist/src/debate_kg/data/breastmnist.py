@@ -4,6 +4,9 @@ Each returned sample is a dict with keys:
   id         — zero-padded test-set index string, e.g. "009"
   label      — "BENIGN" or "MALIGNANT"
   image_b64  — base64-encoded RGB JPEG at cfg.data.image_size × cfg.data.image_size
+
+Images are sourced at native MedMNIST+ resolution (28/64/128/224) — never
+upscaled from a lower-resolution variant.
 """
 from __future__ import annotations
 
@@ -21,6 +24,14 @@ logger = logging.getLogger(__name__)
 
 # MedMNIST v2 BreastMNIST label convention: 0 → MALIGNANT, 1 → BENIGN
 _LABEL_MAP = {0: "MALIGNANT", 1: "BENIGN"}
+
+# Resolutions published by MedMNIST+. Requesting anything else raises upstream.
+_MEDMNIST_SIZES = (28, 64, 128, 224)
+
+
+def _source_size(image_size: int) -> int:
+    """Smallest published MedMNIST+ resolution >= image_size (capped at 224)."""
+    return next((s for s in _MEDMNIST_SIZES if s >= image_size), _MEDMNIST_SIZES[-1])
 
 
 def _image_to_b64(img_array: np.ndarray, size: int) -> str:
@@ -56,14 +67,20 @@ def load_samples(cfg: DictConfig) -> list[dict]:
     image_size = int(cfg.data.image_size)
     split = str(getattr(cfg.data, "split", "test"))
 
+    source_size = _source_size(image_size)
+
     logger.info(
-        "Loading %d BreastMNIST %s samples (indices: %s ...)",
+        "Loading %d BreastMNIST %s samples at source %dx%d -> output %dx%d (indices: %s ...)",
         num_samples,
         split,
+        source_size,
+        source_size,
+        image_size,
+        image_size,
         selected[:5],
     )
 
-    dataset = BreastMNIST(split=split, download=True)
+    dataset = BreastMNIST(split=split, download=True, size=source_size)
     images = dataset.imgs       # shape (N, H, W) or (N, H, W, C)
     labels = dataset.labels     # shape (N, 1)
 
