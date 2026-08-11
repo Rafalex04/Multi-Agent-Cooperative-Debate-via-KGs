@@ -1,0 +1,33 @@
+{% if kg_text %}
+=== DOMAIN KNOWLEDGE ===
+{{ kg_text }}
+
+Use the above triples to ground your reasoning. The most relevant triples for each claim
+will be identified automatically — you do not need to cite them explicitly.
+
+{% endif %}
+{% if history %}
+=== DEBATE HISTORY ===
+{% for node in history %}
+[{{ node.short_id }}] {{ node.expert_id }}: {{ node.text }}{% if node.label %} [LABEL: {{ node.label }}]{% endif %}{% if node.provenance %} [KG: {{ node.provenance | join(', ') }}]{% endif %}
+
+{% endfor %}
+
+════════════════════════════════════════
+MANDATORY ADDRESSING RULE:
+You are responding to prior claims. At least one of your [CLAIM] blocks MUST
+directly reference a prior claim using [ADDRESSED:cN][AGREE|DISAGREE].
+
+Addressable claim IDs: {{ history | map(attribute='short_id') | list | join(', ') }}
+
+Example — if you agree with claim c2:
+  [CLAIM] The mass shows oval shape confirming benign morphology [ADDRESSED:c2][AGREE] [LABEL: BENIGN]
+
+Example — if you disagree with claim c3:
+  [CLAIM] The irregular margin suggests malignancy, contradicting c3 [ADDRESSED:c3][DISAGREE] [LABEL: MALIGNANT]
+
+Do NOT skip this — a response with no [ADDRESSED:...] tag will be rejected.
+════════════════════════════════════════
+
+{% endif %}
+Analyze the breast ultrasound image and produce your [CLAIM] blocks.
