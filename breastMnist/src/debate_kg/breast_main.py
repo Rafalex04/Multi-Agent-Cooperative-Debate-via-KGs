@@ -56,6 +56,89 @@ logger = logging.getLogger(__name__)
 # Output helpers
 # ---------------------------------------------------------------------------
 
+_DENSE_RANKER = None  # cached across samples; embedding the KG is the expensive part
+
+
+def _observation_conditioned_kg_text(
+    sample: dict,
+    image_b64: str,
+    cfg: DictConfig,
+    kg: KnowledgeGraph,
+    triple_by_uuid: dict,
+    fallback_kg_text: str,
+) -> str | None:
+    """Stage A + Stage B: observe the image, retrieve triples conditioned on it.
+
+    Returns the serialized KG block to use for every round of this sample, or
+    None to fall back to the legacy path. Retrieval happens once — the same
+    triples are shown in every round.
+    """
+    global _DENSE_RANKER
+    from breastMnist.src.debate_kg.debate.observation import (
+        load_observation, load_schema, observe, save_observation,
+    )
+    from breastMnist.src.debate_kg.models.ollama_client import OllamaClient
+    from breastMnist.src.debate_kg.retriever.kg_retrieval import DenseRanker, retrieve
+
+    kg_cfg = cfg.kg_retrieval
+    schema_path = Path(str(getattr(kg_cfg, "schema_path", "data/breast/schema.json")))
+    if not schema_path.exists():
+        logger.error("schema.json not found at %s — run debate_kg.kg.kg_schema first", schema_path)
+        return None
+
+    schema = load_schema(schema_path)
+    obs_dir = Path(str(getattr(kg_cfg, "observation_dir", "data/breast/observations")))
+
+    obs = load_observation(sample["id"], obs_dir)
+    if obs is None:
+        client = OllamaClient(
+            model=cfg.model.expert_model,
+            base_url=cfg.model.ollama_base_url,
+            num_ctx=int(cfg.model.num_ctx),
+        )
+        obs = observe(sample["id"], image_b64, schema, client,
+                      max_attempts=int(getattr(kg_cfg, "observation_max_attempts", 3)))
+        save_observation(obs, obs_dir)
+    else:
+        logger.info("sample %s: reusing cached observation", sample["id"])
+
+    observed = {c: v for c, v in obs.values.items() if v != "uncertain"}
+    logger.info("sample %s observation: %s", sample["id"], observed or "(all uncertain)")
+
+    triples = [
+        {"id": uid, "subject": t.subject, "relation": t.predicate, "object": t.object}
+        for uid, t in triple_by_uuid.items()
+    ]
+    if _DENSE_RANKER is None and bool(getattr(kg_cfg, "use_dense", True)):
+        _DENSE_RANKER = DenseRanker(triples, str(getattr(kg_cfg, "dense_model", "all-MiniLM-L6-v2")))
+
+    result = retrieve(
+        obs, triples, schema,
+        stance_ids=set(schema.get("stance_triple_ids", [])),
+        config={
+            "anchor_conf_threshold": float(getattr(kg_cfg, "anchor_conf_threshold", 0.4)),
+            "max_per_category": int(getattr(kg_cfg, "max_per_category", 3)),
+            "max_stance_triples": int(getattr(kg_cfg, "max_stance_triples", 4)),
+            "lambda_mmr": float(getattr(kg_cfg, "lambda_mmr", 0.6)),
+            "hub_penalty_alpha": float(getattr(kg_cfg, "hub_penalty_alpha", 0.5)),
+            "kg_token_budget": int(getattr(kg_cfg, "kg_token_budget", 200)),
+            "use_dense": bool(getattr(kg_cfg, "use_dense", True)),
+        },
+        dense_ranker=_DENSE_RANKER,
+    )
+
+    if not result.triples:
+        logger.warning("sample %s: retrieval returned nothing — using full KG", sample["id"])
+        return fallback_kg_text
+
+    selected = [triple_by_uuid[i] for i in result.ids() if i in triple_by_uuid]
+    logger.info(
+        "sample %s: frozen KG = %d/%d triples (~%d tok) held for all rounds",
+        sample["id"], len(selected), len(triple_by_uuid), result.token_estimate,
+    )
+    return serialize_triples_for_prompt(selected)
+
+
 def _write_json(path: Path, data: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
@@ -280,11 +363,24 @@ def _run_mode_structured(
     )
     k_round0: int = int(getattr(cfg.run, "kg_round0_k", 30))
 
+    kg_cfg = getattr(cfg, "kg_retrieval", None)
+    kg_mode = str(getattr(kg_cfg, "mode", "constant_seed")) if kg_cfg else "constant_seed"
+
+    # Observation-conditioned mode: retrieve ONCE from the Stage A observation and
+    # hold that triple set fixed for every round, so the KG cannot shrink mid-debate
+    # (the old cited_only path funnelled 30 -> 16 -> 21) and the only thing evolving
+    # across rounds is the debate itself.
+    frozen_kg_text: str | None = None
+    if kg_mode == "observation_conditioned" and retriever is not None:
+        frozen_kg_text = _observation_conditioned_kg_text(
+            sample, image_b64, cfg, kg, triple_by_uuid, kg_text
+        )
+
     for round_idx in range(cfg.run.max_rounds):
-        # Build focused KG text for this round.
-        # Round 0: top-k_round0 triples via seed query (keeps prompt within context window).
-        # Round 1+: union of all provenance triples from prior claims.
-        if retriever is not None and round_idx == 0:
+        if frozen_kg_text is not None:
+            # Same triples in every round — retrieved once, before round 0.
+            current_kg_text = frozen_kg_text
+        elif retriever is not None and round_idx == 0:
             seed_triples = retriever.retrieve(_KG_SEED_QUERY, k=k_round0)
             current_kg_text = serialize_triples_for_prompt(seed_triples)
             logger.info(

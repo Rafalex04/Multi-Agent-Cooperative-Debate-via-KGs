@@ -1,0 +1,48 @@
+# Ontology-specific relation names for observation-schema derivation.
+#
+# This file is the ONLY place ontology vocabulary lives. Swapping BI-RADS for
+# LI-RADS / TI-RADS / a non-radiology ontology is a change here, not in Python.
+# All names are matched case-insensitively against the KG's `relation` field.
+
+# Relations whose SUBJECT is an observation category and whose OBJECT is the
+# meta-category grouping it. In the ACR BI-RADS KG:
+#     shape_descriptor  category_descriptor  mass_finding
+# This is how the KG itself marks which categories are observational, which
+# keeps diagnosis categories (benign_breast_lesion, special_case) out of Stage A.
+observation_category_relations: ["category_descriptor"]
+
+# Relations linking a value to its category:  oval IS_A shape_descriptor
+category_relations: ["is_a"]
+
+# Relations expressing diagnostic stance. Every triple using one of these is
+# marked stance-bearing and is excluded from Stage A entirely, so the
+# observation cannot be contaminated by benign/malignant language.
+# Deliberately broad: over-excluding is safe, under-excluding leaks supervision.
+stance_relations:
+  - suggests_malignancy
+  - suggests_benign
+  - supports_malignancy_diagnosis
+  - has_no_malignant_potential
+  - suggests_birads_5
+  - suggests_benign_simple_cyst
+  - likelihood_of_malignancy
+  - likelihood_of_malignancy_range
+  - likelihood_of_malignancy_minimum
+  - associated_with_malignancy_predictor
+  - present_in_benign
+  - typically_classified_as
+  - birads_subcategory_of
+  - management
+  - indicates
+  - combination_indicates
+
+# Relations connecting a pathology to its imaging appearance. Used by Stage B
+# graph expansion to reach these triples, which the constant-seed retrieval
+# never surfaced (56 of 113 never cited).
+appearance_relations: ["ultrasound_appearance_includes"]
+
+# Minimum categories required; fewer means the relation names above are wrong.
+min_categories: 3
+
+# Minimum values for a category to be usable.
+min_values_per_category: 2
