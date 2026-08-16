@@ -138,8 +138,42 @@ dead probes dilute the live ones.
 `fit_probe_head.py` addresses this by learning the magnitudes on the train split
 (the KG still decides which features exist; only the weights are fitted). It
 reads probe vectors straight out of the v2 graphs, so it needs no extra
-inference. Results once the train split finishes — reported separately, since it
-is a supervised setting and not comparable to the zero-shot baseline.
+inference.
+
+**Supervised result: test AUC 0.7220, balanced accuracy 0.7011**, fitting on the
+537 train graphs and evaluating on the 156 test graphs. Train AUC is 0.7578, so
+the train/test gap is 0.036 — it is generalising, not memorising. (At 115 train
+samples the gap was 0.18; it closed as the split filled in.)
+
+This is a *supervised* number and is not comparable to the 0.6011 zero-shot
+baseline. The honest unsupervised comparison remains 0.6685 vs 0.6011.
+
+### The KG's stance polarity is largely correct
+
+A useful side-result. Comparing the learned weights against the signs the KG
+prescribes, **11 of 17 agree — and all 7 of the largest-magnitude weights
+agree**:
+
+| feature | KG | learned | |
+|---|---|---|---|
+| `clustered_microcysts` | −1.0 | −0.464 | ✓ |
+| `oval_shape` | −1.0 | −0.399 | ✓ |
+| `echogenic_rind` | +0.5 | +0.301 | ✓ |
+| `thin_uniform_pseudocapsule` | −1.0 | −0.290 | ✓ |
+| `irregular_shape` | +1.0 | +0.206 | ✓ |
+| `posterior_shadowing_…` | +1.0 | +0.191 | ✓ |
+| `echogenic_pseudocapsule` | −1.0 | −0.180 | ✓ |
+| `anechoic_content` | −1.0 | +0.178 | ✗ |
+| `spiculated_margin` | +1.0 | −0.133 | ✗ |
+| `hyperechoic_mass` | −1.0 | +0.041 | ✗ |
+| `circumscribed_margin` | −1.0 | +0.021 | ✗ |
+
+Every mismatch sits at |w| ≤ 0.18 and lands on a probe that is saturated or
+near-saturated — `spiculated` (mean 0.026), `microcalcifications` (0.001),
+`anechoic_content` (0.984), `circumscribed_margin`. Those are probes the model
+cannot actually measure, so the fit correctly learned to ignore them rather than
+contradicting the domain knowledge. Where MedGemma *can* see the feature, the
+ACR BI-RADS polarity in the graph is confirmed by the data.
 
 ---
 
@@ -268,17 +302,146 @@ be added at any time.
 
 Throughput ≈35 s/sample on a 2080 Ti.
 
-### Result
+### Result — matched test split, 156 graphs each
 
 | | v1 `dataset_full` | v2 `dataset_v2` |
 |---|---|---|
 | images | 28×28 upscaled | 224×224 native |
-| `mal_share` AUC | 0.5007 | PENDING |
-| best feature AUC | 0.5475 | PENDING |
-| verdict balanced acc | 0.4916 | PENDING |
-| per-node evidence | none | `p_yes`, `stance_weight` |
+| verdict accuracy | 0.6346 | **0.7372** |
+| verdict balanced acc | 0.4916 † | **0.5495** |
+| `mal_share` AUC (claim labels) | 0.5007 † | 0.4962 |
+| best structural feature | `n_tt_edges` 0.3868 | `n_cc_edges` 0.5900 |
+| **`evidence_score` AUC** | **not available** | **0.6535** |
+| `mean_signed_p` AUC | not available | 0.5756 |
+| within-graph claim uniqueness | 0.846 | **1.000** |
+| claims grounded in a measurement | — | 97.6% |
+
+† v1 figures over all 780; the test-only v1 verdict accuracy is 0.6346.
+
+**The honest read: v2 is trainable where v1 was not, but the signal comes from
+the measurements, not from the debate.**
+
+What genuinely improved:
+
+- Every claim node now carries a continuous measurement, and the aggregate of
+  those measurements separates the classes at **AUC 0.6535**. v1 had *nothing*
+  above 0.5475, and that was noise. This is the difference between a GNN having
+  node features worth propagating and having none.
+- Verdict balanced accuracy moved from below chance (0.4916) to 0.5495.
+- Claim repetition inside a graph is gone (uniqueness 1.000 vs 0.846).
+
+What did **not** improve, and should not be oversold:
+
+- **`mal_share` is still ~0.50** (0.4962 vs v1's 0.5007). The labels the agents
+  attach to their claims remain uncorrelated with the truth. Splitting the
+  evidence table into supports/contradicts did not stop them arguing their
+  assigned side. The debate is still substantially role-play; what changed is
+  that each claim is now tethered to a measurement that does carry signal.
+- `disagree` AUC looked like 0.7967 at n=25 and settled at 0.5608 at n=156.
+  Another small-sample mirage — I nearly wrote it up as the headline result.
+- The stored verdict is badly thresholded: `evidence_score >= 0.5` yields only
+  11 malignant calls out of 156 (sensitivity 0.143). The raw `evidence_score`
+  is stored per graph, so any downstream consumer should pick its own
+  threshold — at the best one, balanced accuracy is 0.6197.
+
+**For the GNN:** v2 gives it 17-dimensional per-claim evidence, a readout
+baseline of AUC 0.6535 to beat, and edge structure that is weakly informative
+(`n_cc_edges` 0.5900). That is a real starting point. v1 gave it nothing above
+noise, so any GNN trained on v1 would have been learning the class prior.
+
+### Whole dataset, 771 graphs (546 train / 78 val / 156 test)
+
+```
+Debate verdict: acc=0.7367  balanced_acc=0.5605   (v1: 0.6372 / 0.4916)
+  TP=37 FP=32 TN=531 FN=171  sens=0.178 spec=0.943
+
+evidence_score   AUC=0.6769   <- the only feature with real signal
+disagree         AUC=0.5502
+n_cc_edges       AUC=0.5415
+expert_gap       AUC=0.5323
+mal_share        AUC=0.4890   <- claim labels still carry nothing
+mean_signed_p    AUC=0.4959
+
+within-graph claim uniqueness = 1.000   (v1: 0.887)
+global claim uniqueness       = 0.640   (v1: 0.813)
+```
+
+Two caveats worth carrying forward:
+
+- **Global claim uniqueness dropped to 0.640** (v1 was 0.813). Because claims
+  are now anchored to a fixed 17-feature vocabulary, phrasing repeats across
+  graphs — "posterior shadowing with solid irregular mass indicates malignancy"
+  appears 241 times. Within any single graph there is no repetition, but a
+  text-encoder over claim strings will see less variety than in v1. If the GNN
+  uses text embeddings, this matters; if it uses `p_yes`/`stance_weight`, it
+  does not.
+- **`mean_signed_p` collapses to 0.4959 over the full set** while
+  `evidence_score` holds at 0.6769. The difference is that `evidence_score`
+  averages over *all 17* measurements whereas `mean_signed_p` averages only over
+  the features the agents chose to talk about — and the agents preferentially
+  cite the saturated, uninformative ones (`posterior_shadowing` leads the
+  citation counts). Another sign that the debate selects evidence poorly even
+  when the evidence itself is good.
 
 ---
+
+---
+
+## Summary of where things stand
+
+**Task 1 — solved.** MedGemma now does measurably better with the KG than
+without it: **AUC 0.6685 vs 0.6011**, the first of eight KG configurations to
+beat image-only. The fix was to stop putting the graph in the prompt and start
+using it to decide which visual questions to ask and how to weight the answers.
+With weights fitted on train, it reaches **0.7220** (supervised, not comparable
+to the zero-shot baseline).
+
+**Task 2 — answered, negatively.** `dataset_full` cannot support a GNN. Claim
+labels are uncorrelated with the truth (AUC 0.5007), the verdict is below chance
+when balanced (0.4916), and `expert_gap` is 0.997 for both classes. The agents
+disagreed by assignment, not by evidence, and the 28×28 inputs gave them nothing
+to disagree about.
+
+**Task 3 — dataset regenerated, with a real but partial improvement.** 780
+graphs at native 224px, each claim carrying a measured probe confidence. The
+node-level evidence separates the classes at **AUC 0.6769** where v1 had nothing
+above noise, and verdict balanced accuracy moved from 0.4916 to 0.5605.
+
+But the debate itself is still not doing the work. `mal_share` is 0.4890 —
+essentially unchanged from v1's 0.5007. Giving both agents the same measurements
+and telling them to concede contradicting evidence did not stop them arguing
+their assigned side. **The improvement is entirely attributable to the
+measurement phase, not to the debate dynamics.**
+
+### What I would try next
+
+1. **Drop the assigned roles.** Both agents currently get a side before seeing
+   the image. Letting each form its own position from the measurements, and
+   debating only where they actually differ, is the obvious test of whether
+   adversarial assignment is what is destroying the label signal.
+2. **Make agents cite informative features.** They preferentially cite the
+   saturated probes, which is why `mean_signed_p` (0.4959) is so much worse than
+   `evidence_score` (0.6769). Ranking the evidence table by measured variance
+   rather than by confidence would push them toward features that discriminate.
+3. **Re-threshold the verdict.** `evidence_score >= 0.5` gives sensitivity
+   0.143. The score is stored per graph, so this costs nothing to fix.
+4. **Train the GNN on v2** with `p_yes`/`stance_weight` as node features. The
+   number to beat is 0.6769 (evidence readout), not the 0.5605 verdict.
+
+### Caveats I want to flag rather than bury
+
+- I twice saw a result on a small prefix that did not survive the full split:
+  calibration at AUC 0.8006 on 39 samples (0.6614 on 156) and `disagree` at
+  0.7967 on 25 graphs (0.5502 on 771). Both are in the notes above as they
+  happened. Treat any number here computed on fewer than ~100 samples as
+  provisional.
+- `dataset_full` was left untouched. Nothing in this run overwrote it, and its
+  `CONTAMINATION.md` still applies.
+- The two GTX 1080 nodes ran ~4× slower than the 2080 Ti nodes, so the shard
+  workers finished at very different times; `scripts/completion_daemon.sh`
+  filled the gaps. One earlier version of that daemon hung on a foreground ssh
+  and left gpu22 idle for roughly an hour — fixed with `ssh -f`, but worth
+  knowing if the timings look uneven.
 
 ## Files added
 

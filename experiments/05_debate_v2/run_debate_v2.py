@@ -19,9 +19,10 @@ WHAT CHANGES HERE
 -----------------
 1. Native 224x224 images.
 2. A measurement phase runs BEFORE the debate. Each KG stance feature becomes a
-   yes/no visual probe and p(yes) is read from first-token logprobs. On the test
-   split this evidence alone separates the classes at AUC ~0.90, versus 0.601
-   for direct zero-shot classification.
+   yes/no visual probe and p(yes) is read from first-token logprobs. On the full
+   156-sample test split this evidence alone reaches AUC 0.6685, versus 0.6011
+   for direct zero-shot classification. (An early 39-sample prefix suggested
+   ~0.80; that did not survive the full split.)
 3. Both agents argue from the SAME measured evidence table. They still take
    opposite sides, but each claim must cite a feature that was actually
    measured, so disagreement now tracks the image instead of the role.
