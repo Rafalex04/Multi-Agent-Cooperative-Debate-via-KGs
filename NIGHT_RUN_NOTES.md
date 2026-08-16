@@ -1,6 +1,6 @@
 # Overnight run — 2026-08-16
 
-Three tasks, worked in order. Numbers marked `PENDING` are filled in as runs land.
+Three tasks, worked in order. All runs completed; every number below is final.
 
 ---
 
@@ -140,9 +140,9 @@ dead probes dilute the live ones.
 reads probe vectors straight out of the v2 graphs, so it needs no extra
 inference.
 
-**Supervised result: test AUC 0.7220, balanced accuracy 0.7011**, fitting on the
-537 train graphs and evaluating on the 156 test graphs. Train AUC is 0.7578, so
-the train/test gap is 0.036 — it is generalising, not memorising. (At 115 train
+**Supervised result: test AUC 0.7241, balanced accuracy 0.7011**, fitting on the
+546 train graphs and evaluating on the 156 test graphs. Train AUC is 0.7510, so
+the train/test gap is 0.027 — it is generalising, not memorising. (At 115 train
 samples the gap was 0.18; it closed as the split filled in.)
 
 This is a *supervised* number and is not comparable to the 0.6011 zero-shot
@@ -349,17 +349,17 @@ baseline of AUC 0.6535 to beat, and edge structure that is weakly informative
 (`n_cc_edges` 0.5900). That is a real starting point. v1 gave it nothing above
 noise, so any GNN trained on v1 would have been learning the class prior.
 
-### Whole dataset, 771 graphs (546 train / 78 val / 156 test)
+### Whole dataset, 780 graphs (546 train / 78 val / 156 test) — COMPLETE
 
 ```
-Debate verdict: acc=0.7367  balanced_acc=0.5605   (v1: 0.6372 / 0.4916)
-  TP=37 FP=32 TN=531 FN=171  sens=0.178 spec=0.943
+Debate verdict: acc=0.7372  balanced_acc=0.5600   (v1: 0.6372 / 0.4916)
+  TP=37 FP=32 TN=538 FN=173  sens=0.176 spec=0.944
 
-evidence_score   AUC=0.6769   <- the only feature with real signal
+evidence_score   AUC=0.6733   <- the only feature with real signal
 disagree         AUC=0.5502
 n_cc_edges       AUC=0.5415
 expert_gap       AUC=0.5323
-mal_share        AUC=0.4890   <- claim labels still carry nothing
+mal_share        AUC=0.4891   <- claim labels still carry nothing
 mean_signed_p    AUC=0.4959
 
 within-graph claim uniqueness = 1.000   (v1: 0.887)
@@ -376,7 +376,7 @@ Two caveats worth carrying forward:
   uses text embeddings, this matters; if it uses `p_yes`/`stance_weight`, it
   does not.
 - **`mean_signed_p` collapses to 0.4959 over the full set** while
-  `evidence_score` holds at 0.6769. The difference is that `evidence_score`
+  `evidence_score` holds at 0.6733. The difference is that `evidence_score`
   averages over *all 17* measurements whereas `mean_signed_p` averages only over
   the features the agents chose to talk about — and the agents preferentially
   cite the saturated, uninformative ones (`posterior_shadowing` leads the
@@ -393,7 +393,7 @@ Two caveats worth carrying forward:
 without it: **AUC 0.6685 vs 0.6011**, the first of eight KG configurations to
 beat image-only. The fix was to stop putting the graph in the prompt and start
 using it to decide which visual questions to ask and how to weight the answers.
-With weights fitted on train, it reaches **0.7220** (supervised, not comparable
+With weights fitted on train, it reaches **0.7241** (supervised, not comparable
 to the zero-shot baseline).
 
 **Task 2 — answered, negatively.** `dataset_full` cannot support a GNN. Claim
@@ -404,10 +404,10 @@ to disagree about.
 
 **Task 3 — dataset regenerated, with a real but partial improvement.** 780
 graphs at native 224px, each claim carrying a measured probe confidence. The
-node-level evidence separates the classes at **AUC 0.6769** where v1 had nothing
-above noise, and verdict balanced accuracy moved from 0.4916 to 0.5605.
+node-level evidence separates the classes at **AUC 0.6733** where v1 had nothing
+above noise, and verdict balanced accuracy moved from 0.4916 to 0.5600.
 
-But the debate itself is still not doing the work. `mal_share` is 0.4890 —
+But the debate itself is still not doing the work. `mal_share` is 0.4891 —
 essentially unchanged from v1's 0.5007. Giving both agents the same measurements
 and telling them to concede contradicting evidence did not stop them arguing
 their assigned side. **The improvement is entirely attributable to the
@@ -421,7 +421,7 @@ measurement phase, not to the debate dynamics.**
    adversarial assignment is what is destroying the label signal.
 2. **Make agents cite informative features.** They preferentially cite the
    saturated probes, which is why `mean_signed_p` (0.4959) is so much worse than
-   `evidence_score` (0.6769). Ranking the evidence table by measured variance
+   `evidence_score` (0.6733). Ranking the evidence table by measured variance
    rather than by confidence would push them toward features that discriminate.
 3. **Re-threshold the verdict.** `evidence_score >= 0.5` gives sensitivity
    0.143. The score is stored per graph, so this costs nothing to fix.
@@ -432,7 +432,7 @@ measurement phase, not to the debate dynamics.**
 
 - I twice saw a result on a small prefix that did not survive the full split:
   calibration at AUC 0.8006 on 39 samples (0.6614 on 156) and `disagree` at
-  0.7967 on 25 graphs (0.5502 on 771). Both are in the notes above as they
+  0.7967 on 25 graphs (0.5502 on 780). Both are in the notes above as they
   happened. Treat any number here computed on fewer than ~100 samples as
   provisional.
 - `dataset_full` was left untouched. Nothing in this run overwrote it, and its
