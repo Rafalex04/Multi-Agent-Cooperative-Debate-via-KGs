@@ -1,0 +1,522 @@
+{
+ "sample_id": "011",
+ "gold_label": "MALIGNANT",
+ "gold_label_int": 1,
+ "verdict": "BENIGN",
+ "correct": false,
+ "rounds_used": 3,
+ "evidence": [
+  {
+   "feature": "architectural_distortion",
+   "weight": 1.0,
+   "p_yes": 0.062327845976844924
+  },
+  {
+   "feature": "irregular_shape",
+   "weight": 1.0,
+   "p_yes": 0.901893987018355
+  },
+  {
+   "feature": "non_parallel_orientation",
+   "weight": 1.0,
+   "p_yes": 0.9852539561668381
+  },
+  {
+   "feature": "posterior_shadowing_with_solid_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.996780112925389
+  },
+  {
+   "feature": "spiculated",
+   "weight": 1.0,
+   "p_yes": 0.005792320115923688
+  },
+  {
+   "feature": "spiculated_margin",
+   "weight": 1.0,
+   "p_yes": 0.006598644528215349
+  },
+  {
+   "feature": "spiculated_or_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.7040436436512536
+  },
+  {
+   "feature": "echogenic_rind",
+   "weight": 0.5,
+   "p_yes": 0.1423964385218253
+  },
+  {
+   "feature": "microcalcifications_in_hypoechoic_mass",
+   "weight": 0.5,
+   "p_yes": 0.0007509518570076957
+  },
+  {
+   "feature": "anechoic_content",
+   "weight": -1.0,
+   "p_yes": 0.9771571131883128
+  },
+  {
+   "feature": "circumscribed_margin",
+   "weight": -1.0,
+   "p_yes": 0.8902512279536128
+  },
+  {
+   "feature": "clustered_microcysts",
+   "weight": -1.0,
+   "p_yes": 0.1872972377746104
+  },
+  {
+   "feature": "echogenic_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.5528213639161026
+  },
+  {
+   "feature": "hyperechoic_mass",
+   "weight": -1.0,
+   "p_yes": 0.9825353032102467
+  },
+  {
+   "feature": "oval_shape",
+   "weight": -1.0,
+   "p_yes": 0.8114594073815278
+  },
+  {
+   "feature": "parallel_orientation",
+   "weight": -1.0,
+   "p_yes": 0.9588925396240999
+  },
+  {
+   "feature": "thin_uniform_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.0915179561507974
+  }
+ ],
+ "evidence_score": 0.44632287676165394,
+ "debate_mal_share": 1.0,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "Posterior shadowing with solid irregular mass suggests malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.996780112925389,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c2",
+    "type": "claim",
+    "text": "Non-parallel orientation indicates malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "non_parallel_orientation",
+    "p_yes": 0.9852539561668381,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "Irregular shape is suspicious for malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "irregular_shape",
+    "p_yes": 0.901893987018355,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "The hyperechoic mass with anechoic content suggests a benign lesion.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "hyperechoic_mass",
+    "p_yes": 0.9825353032102467,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "The circumscribed margin and oval shape are consistent with a benign lesion.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.8902512279536128,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "The echogenic pseudocapsule is a typical finding in benign breast lesions.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "echogenic_pseudocapsule",
+    "p_yes": 0.5528213639161026,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c7",
+    "type": "claim",
+    "text": "The hyperechoic mass with anechoic content, while appearing benign, can be a deceptive finding in breast ultrasound, as it can be seen in both benign and malignant lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "hyperechoic_mass",
+    "p_yes": 0.9825353032102467,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c8",
+    "type": "claim",
+    "text": "The circumscribed margin and oval shape, often associated with benign lesions, can also be present in malignant tumors, particularly in early stages or with specific histological subtypes.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.8902512279536128,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c9",
+    "type": "claim",
+    "text": "The echogenic pseudocapsule, typically indicative of benign lesions, can be found in malignant tumors, especially in cases of invasive ductal carcinoma.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "echogenic_pseudocapsule",
+    "p_yes": 0.5528213639161026,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c14",
+    "type": "claim",
+    "text": "The hyperechoic mass with anechoic content, while appearing benign, can be a deceptive finding in breast ultrasound, as it can be seen in both benign and malignant lesions. The hyperechoic mass with anechoic content, while appearing benign, can be a deceptive finding in breast ultrasound, as it can be seen in both benign and malignant lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "hyperechoic_mass",
+    "p_yes": 0.9825353032102467,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c15",
+    "type": "claim",
+    "text": "The circumscribed margin and oval shape, often associated with benign lesions, can also be present in malignant tumors, particularly in early stages or with specific histological subtypes. The circumscribed margin and oval shape, often associated with benign lesions, can also be present in malignant tumors, particularly in early stages or with specific histological subtypes.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.8902512279536128,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c16",
+    "type": "claim",
+    "text": "The echogenic pseudocapsule, typically indicative of benign lesions, can be found in malignant tumors, especially in cases of invasive ductal carcinoma. The echogenic pseudocapsule, typically indicative of benign lesions, can be found in malignant tumors, especially in cases of invasive ductal carcinoma.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "echogenic_pseudocapsule",
+    "p_yes": 0.5528213639161026,
+    "stance_weight": -1.0
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_353",
+    "type": "triple",
+    "subject": "posterior_shadowing_with_solid_irregular_mass",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "posterior_shadowing_with_solid_irregular_mass suggests malignancy true"
+   },
+   {
+    "node_id": "t_356",
+    "type": "triple",
+    "subject": "non_parallel_orientation",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "non_parallel_orientation suggests malignancy true"
+   },
+   {
+    "node_id": "t_355",
+    "type": "triple",
+    "subject": "irregular_shape",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "irregular_shape suggests malignancy true"
+   },
+   {
+    "node_id": "t_291",
+    "type": "triple",
+    "subject": "hyperechoic_mass",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "hyperechoic_mass suggests benign true"
+   },
+   {
+    "node_id": "t_364",
+    "type": "triple",
+    "subject": "circumscribed_margin",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "circumscribed_margin suggests benign true"
+   },
+   {
+    "node_id": "t_052",
+    "type": "triple",
+    "subject": "echogenic_pseudocapsule",
+    "predicate": "is_a",
+    "object": "associated_feature",
+    "text": "echogenic_pseudocapsule is a associated_feature"
+   },
+   {
+    "node_id": "t_053",
+    "type": "triple",
+    "subject": "echogenic_pseudocapsule",
+    "predicate": "present_in_benign",
+    "object": "true",
+    "text": "echogenic_pseudocapsule present in benign true"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [
+   {
+    "src": "c7",
+    "dst": "c2",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c8",
+    "dst": "c5",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c9",
+    "dst": "c6",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c14",
+    "dst": "c7",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c15",
+    "dst": "c8",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c16",
+    "dst": "c9",
+    "sign": "+",
+    "type": "AGREE"
+   }
+  ],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c2",
+    "dst": "t_356",
+    "type": "cited"
+   },
+   {
+    "src": "c3",
+    "dst": "t_355",
+    "type": "cited"
+   },
+   {
+    "src": "c4",
+    "dst": "t_291",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c6",
+    "dst": "t_052",
+    "type": "cited"
+   },
+   {
+    "src": "c6",
+    "dst": "t_053",
+    "type": "cited"
+   },
+   {
+    "src": "c7",
+    "dst": "t_291",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c9",
+    "dst": "t_052",
+    "type": "cited"
+   },
+   {
+    "src": "c9",
+    "dst": "t_053",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_291",
+    "type": "cited"
+   },
+   {
+    "src": "c15",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c16",
+    "dst": "t_052",
+    "type": "cited"
+   },
+   {
+    "src": "c16",
+    "dst": "t_053",
+    "type": "cited"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_353",
+    "dst": "t_356",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_355",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_355",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_355",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_355",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_355",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_052",
+    "dst": "t_053",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 12,
+  "num_triples": 7,
+  "num_claim_claim_edges": 6,
+  "num_claim_triple_edges": 15,
+  "num_triple_triple_edges": 16,
+  "num_cited": 12
+ }
+}

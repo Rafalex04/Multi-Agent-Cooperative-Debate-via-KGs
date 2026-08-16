@@ -1,0 +1,587 @@
+{
+ "sample_id": "174",
+ "gold_label": "MALIGNANT",
+ "gold_label_int": 1,
+ "verdict": "MALIGNANT",
+ "correct": true,
+ "rounds_used": 3,
+ "evidence": [
+  {
+   "feature": "architectural_distortion",
+   "weight": 1.0,
+   "p_yes": 0.42406339221321393
+  },
+  {
+   "feature": "irregular_shape",
+   "weight": 1.0,
+   "p_yes": 0.964149287020726
+  },
+  {
+   "feature": "non_parallel_orientation",
+   "weight": 1.0,
+   "p_yes": 0.99673332993135
+  },
+  {
+   "feature": "posterior_shadowing_with_solid_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.9986124947592251
+  },
+  {
+   "feature": "spiculated",
+   "weight": 1.0,
+   "p_yes": 0.004633120162915757
+  },
+  {
+   "feature": "spiculated_margin",
+   "weight": 1.0,
+   "p_yes": 0.004174513266053875
+  },
+  {
+   "feature": "spiculated_or_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.951795024424471
+  },
+  {
+   "feature": "echogenic_rind",
+   "weight": 0.5,
+   "p_yes": 0.2965004458031932
+  },
+  {
+   "feature": "microcalcifications_in_hypoechoic_mass",
+   "weight": 0.5,
+   "p_yes": 0.0004597502914211887
+  },
+  {
+   "feature": "anechoic_content",
+   "weight": -1.0,
+   "p_yes": 0.9987510309077997
+  },
+  {
+   "feature": "circumscribed_margin",
+   "weight": -1.0,
+   "p_yes": 0.2434475144244275
+  },
+  {
+   "feature": "clustered_microcysts",
+   "weight": -1.0,
+   "p_yes": 0.34900095030827244
+  },
+  {
+   "feature": "echogenic_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.25116271422801256
+  },
+  {
+   "feature": "hyperechoic_mass",
+   "weight": -1.0,
+   "p_yes": 0.982112781105265
+  },
+  {
+   "feature": "oval_shape",
+   "weight": -1.0,
+   "p_yes": 0.4630081061186756
+  },
+  {
+   "feature": "parallel_orientation",
+   "weight": -1.0,
+   "p_yes": 0.9830165601389489
+  },
+  {
+   "feature": "thin_uniform_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.008067515242098845
+  }
+ ],
+ "evidence_score": 0.5066898152297425,
+ "debate_mal_share": 1.0,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "Posterior shadowing with solid irregular mass is suggestive of malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9986124947592251,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c2",
+    "type": "claim",
+    "text": "Non-parallel orientation of the mass is suspicious for malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "non_parallel_orientation",
+    "p_yes": 0.99673332993135,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "Irregular shape of the mass raises concern for malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "irregular_shape",
+    "p_yes": 0.964149287020726,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "Anechoic content suggests a benign cystic lesion.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9987510309077997,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "Parallel orientation of the mass is consistent with a benign cystic lesion.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "parallel_orientation",
+    "p_yes": 0.9830165601389489,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "The lack of posterior shadowing and irregular shape is indicative of a benign lesion.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "irregular_shape",
+    "p_yes": 0.964149287020726,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c7",
+    "type": "claim",
+    "text": "Anechoic content does not rule out malignancy, as solid malignant masses can also be anechoic.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9987510309077997,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c8",
+    "type": "claim",
+    "text": "Parallel orientation is not a reliable indicator of benignity, as it can be observed in both benign and malignant lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "parallel_orientation",
+    "p_yes": 0.9830165601389489,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c9",
+    "type": "claim",
+    "text": "The irregular shape and posterior shadowing are strong indicators of malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "irregular_shape",
+    "p_yes": 0.964149287020726,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c10",
+    "type": "claim",
+    "text": "Anechoic content can be seen in both benign and malignant masses. [LABEL] MALIGNANT",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": false,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9987510309077997,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c11",
+    "type": "claim",
+    "text": "Parallel orientation is not a reliable indicator of benignity. [LABEL] MALIGNANT",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": false,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "parallel_orientation",
+    "p_yes": 0.9830165601389489,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c12",
+    "type": "claim",
+    "text": "The irregular shape and posterior shadowing are strong indicators of malignancy. [LABEL] MALIGNANT",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": false,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "irregular_shape",
+    "p_yes": 0.964149287020726,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c13",
+    "type": "claim",
+    "text": "Posterior shadowing with solid irregular mass is suggestive of malignancy. The posterior shadowing with solid irregular mass is a strong indicator of malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 2,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9986124947592251,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c14",
+    "type": "claim",
+    "text": "Non-parallel orientation of the mass is suspicious for malignancy. Non-parallel orientation of the mass is suspicious for malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 2,
+    "cited_feature": "non_parallel_orientation",
+    "p_yes": 0.99673332993135,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c15",
+    "type": "claim",
+    "text": "Irregular shape of the mass raises concern for malignancy. Irregular shape of the mass raises concern for malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 2,
+    "cited_feature": "irregular_shape",
+    "p_yes": 0.964149287020726,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c16",
+    "type": "claim",
+    "text": "The anechoic content of the mass is consistent with a benign cystic lesion, as it is typically seen in both benign and malignant masses.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9987510309077997,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c17",
+    "type": "claim",
+    "text": "The parallel orientation of the mass is consistent with a benign cystic lesion, as it is a characteristic finding in benign cysts.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "parallel_orientation",
+    "p_yes": 0.9830165601389489,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c18",
+    "type": "claim",
+    "text": "The lack of posterior shadowing and irregular shape is indicative of a benign lesion, as these features are more commonly associated with malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "irregular_shape",
+    "p_yes": 0.964149287020726,
+    "stance_weight": 1.0
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_353",
+    "type": "triple",
+    "subject": "posterior_shadowing_with_solid_irregular_mass",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "posterior_shadowing_with_solid_irregular_mass suggests malignancy true"
+   },
+   {
+    "node_id": "t_356",
+    "type": "triple",
+    "subject": "non_parallel_orientation",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "non_parallel_orientation suggests malignancy true"
+   },
+   {
+    "node_id": "t_355",
+    "type": "triple",
+    "subject": "irregular_shape",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "irregular_shape suggests malignancy true"
+   },
+   {
+    "node_id": "t_367",
+    "type": "triple",
+    "subject": "anechoic_content",
+    "predicate": "suggests_benign_simple_cyst",
+    "object": "true",
+    "text": "anechoic_content suggests benign simple cyst true"
+   },
+   {
+    "node_id": "t_366",
+    "type": "triple",
+    "subject": "parallel_orientation",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "parallel_orientation suggests benign true"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [
+   {
+    "src": "c7",
+    "dst": "c2",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c8",
+    "dst": "c5",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c9",
+    "dst": "c6",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c10",
+    "dst": "c7",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c11",
+    "dst": "c8",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c12",
+    "dst": "c9",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c13",
+    "dst": "c12",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c14",
+    "dst": "c11",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c15",
+    "dst": "c12",
+    "sign": "+",
+    "type": "AGREE"
+   }
+  ],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c2",
+    "dst": "t_356",
+    "type": "cited"
+   },
+   {
+    "src": "c3",
+    "dst": "t_355",
+    "type": "cited"
+   },
+   {
+    "src": "c4",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_366",
+    "type": "cited"
+   },
+   {
+    "src": "c6",
+    "dst": "t_355",
+    "type": "cited"
+   },
+   {
+    "src": "c7",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_366",
+    "type": "cited"
+   },
+   {
+    "src": "c9",
+    "dst": "t_355",
+    "type": "cited"
+   },
+   {
+    "src": "c10",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_366",
+    "type": "cited"
+   },
+   {
+    "src": "c12",
+    "dst": "t_355",
+    "type": "cited"
+   },
+   {
+    "src": "c13",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_356",
+    "type": "cited"
+   },
+   {
+    "src": "c15",
+    "dst": "t_355",
+    "type": "cited"
+   },
+   {
+    "src": "c16",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c17",
+    "dst": "t_366",
+    "type": "cited"
+   },
+   {
+    "src": "c18",
+    "dst": "t_355",
+    "type": "cited"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_353",
+    "dst": "t_356",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_355",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_366",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_355",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_366",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_355",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_355",
+    "dst": "t_366",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_367",
+    "dst": "t_366",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 18,
+  "num_triples": 5,
+  "num_claim_claim_edges": 9,
+  "num_claim_triple_edges": 18,
+  "num_triple_triple_edges": 10,
+  "num_cited": 18
+ }
+}

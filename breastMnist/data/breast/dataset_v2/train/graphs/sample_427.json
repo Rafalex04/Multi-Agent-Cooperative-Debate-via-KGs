@@ -1,0 +1,1610 @@
+{
+ "sample_id": "427",
+ "gold_label": "BENIGN",
+ "gold_label_int": 0,
+ "verdict": "BENIGN",
+ "correct": true,
+ "rounds_used": 3,
+ "evidence": [
+  {
+   "feature": "architectural_distortion",
+   "weight": 1.0,
+   "p_yes": 0.9786170301834616
+  },
+  {
+   "feature": "irregular_shape",
+   "weight": 1.0,
+   "p_yes": 0.9985750872448281
+  },
+  {
+   "feature": "non_parallel_orientation",
+   "weight": 1.0,
+   "p_yes": 0.9985852272724828
+  },
+  {
+   "feature": "posterior_shadowing_with_solid_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.9997635558760176
+  },
+  {
+   "feature": "spiculated",
+   "weight": 1.0,
+   "p_yes": 0.3347142913434182
+  },
+  {
+   "feature": "spiculated_margin",
+   "weight": 1.0,
+   "p_yes": 0.36210867242481315
+  },
+  {
+   "feature": "spiculated_or_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.9993598164607371
+  },
+  {
+   "feature": "echogenic_rind",
+   "weight": 0.5,
+   "p_yes": 0.9712606066370651
+  },
+  {
+   "feature": "microcalcifications_in_hypoechoic_mass",
+   "weight": 0.5,
+   "p_yes": 0.0008622352564559376
+  },
+  {
+   "feature": "anechoic_content",
+   "weight": -1.0,
+   "p_yes": 0.9998709651526472
+  },
+  {
+   "feature": "circumscribed_margin",
+   "weight": -1.0,
+   "p_yes": 0.9994301764964847
+  },
+  {
+   "feature": "clustered_microcysts",
+   "weight": -1.0,
+   "p_yes": 0.39993561725566784
+  },
+  {
+   "feature": "echogenic_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.9264893753681462
+  },
+  {
+   "feature": "hyperechoic_mass",
+   "weight": -1.0,
+   "p_yes": 0.9997793665175693
+  },
+  {
+   "feature": "oval_shape",
+   "weight": -1.0,
+   "p_yes": 0.996586748355922
+  },
+  {
+   "feature": "parallel_orientation",
+   "weight": -1.0,
+   "p_yes": 0.9869451783788226
+  },
+  {
+   "feature": "thin_uniform_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.09341396856987966
+  }
+ ],
+ "evidence_score": 0.4923541783017931,
+ "debate_mal_share": 1.0,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "Posterior shadowing with solid irregular mass is suggestive of malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9997635558760176,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c2",
+    "type": "claim",
+    "text": "Spiculated or irregular mass is suggestive of malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "spiculated_or_irregular_mass",
+    "p_yes": 0.9993598164607371,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "Non-parallel orientation is suggestive of malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "non_parallel_orientation",
+    "p_yes": 0.9985852272724828,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "The hyperechoic mass with anechoic content is likely a benign cyst.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9998709651526472,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "The circumscribed margin and oval shape are consistent with a benign lesion.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.9994301764964847,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "The echogenic pseudocapsule is suggestive of a benign process.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "echogenic_pseudocapsule",
+    "p_yes": 0.9264893753681462,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c7",
+    "type": "claim",
+    "text": "The hyperechoic mass with anechoic content is likely a benign cyst. -> The hyperechoic mass with anechoic content is likely a benign cyst.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9998709651526472,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c8",
+    "type": "claim",
+    "text": "The circumscribed margin and oval shape are consistent with a benign lesion. -> The circumscribed margin and oval shape are consistent with a benign lesion.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.9994301764964847,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c9",
+    "type": "claim",
+    "text": "The echogenic pseudocapsule is suggestive of a benign process. -> The echogenic pseudocapsule is suggestive of a benign process.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "echogenic_pseudocapsule",
+    "p_yes": 0.9264893753681462,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c10",
+    "type": "claim",
+    "text": "The hyperechoic mass with anechoic content is likely a benign cyst. The hyperechoic mass with anechoic content is likely a benign cyst.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9998709651526472,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c11",
+    "type": "claim",
+    "text": "The circumscribed margin and oval shape are consistent with a benign lesion. The circumscribed margin and oval shape are consistent with a benign lesion.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.9994301764964847,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c12",
+    "type": "claim",
+    "text": "The echogenic pseudocapsule is suggestive of a benign process. The echogenic pseudocapsule is suggestive of a benign process.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "echogenic_pseudocapsule",
+    "p_yes": 0.9264893753681462,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c13",
+    "type": "claim",
+    "text": "The posterior shadowing with solid irregular mass, combined with the spiculated or irregular mass and non-parallel orientation, strongly suggests malignancy. The hyperechoic mass with anechoic content is likely a benign cyst.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 2,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9997635558760176,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c14",
+    "type": "claim",
+    "text": "The architectural distortion and irregular shape further support the suspicion of malignancy. The circumscribed margin and oval shape are consistent with a benign lesion.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 2,
+    "cited_feature": "architectural_distortion",
+    "p_yes": 0.9786170301834616,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c15",
+    "type": "claim",
+    "text": "The combination of these features, including the echogenic rind, points towards a malignant process. The echogenic pseudocapsule is suggestive of a benign process.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 2,
+    "cited_feature": "echogenic_pseudocapsule",
+    "p_yes": 0.9264893753681462,
+    "stance_weight": -1.0
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_353",
+    "type": "triple",
+    "subject": "posterior_shadowing_with_solid_irregular_mass",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "posterior_shadowing_with_solid_irregular_mass suggests malignancy true"
+   },
+   {
+    "node_id": "t_333",
+    "type": "triple",
+    "subject": "spiculated_or_irregular_mass",
+    "predicate": "suggests_birads_5",
+    "object": "true",
+    "text": "spiculated_or_irregular_mass suggests birads 5 true"
+   },
+   {
+    "node_id": "t_356",
+    "type": "triple",
+    "subject": "non_parallel_orientation",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "non_parallel_orientation suggests malignancy true"
+   },
+   {
+    "node_id": "t_367",
+    "type": "triple",
+    "subject": "anechoic_content",
+    "predicate": "suggests_benign_simple_cyst",
+    "object": "true",
+    "text": "anechoic_content suggests benign simple cyst true"
+   },
+   {
+    "node_id": "t_364",
+    "type": "triple",
+    "subject": "circumscribed_margin",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "circumscribed_margin suggests benign true"
+   },
+   {
+    "node_id": "t_052",
+    "type": "triple",
+    "subject": "echogenic_pseudocapsule",
+    "predicate": "is_a",
+    "object": "associated_feature",
+    "text": "echogenic_pseudocapsule is a associated_feature"
+   },
+   {
+    "node_id": "t_053",
+    "type": "triple",
+    "subject": "echogenic_pseudocapsule",
+    "predicate": "present_in_benign",
+    "object": "true",
+    "text": "echogenic_pseudocapsule present in benign true"
+   },
+   {
+    "node_id": "t_055",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "is_a",
+    "object": "associated_feature",
+    "text": "architectural_distortion is a associated_feature"
+   },
+   {
+    "node_id": "t_292",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "architectural_distortion suggests malignancy true"
+   },
+   {
+    "node_id": "t_293",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "typically_classified_as",
+    "object": "birads_4",
+    "text": "architectural_distortion typically classified as birads_4"
+   },
+   {
+    "node_id": "t_294",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "radiating_thin_straight_lines_or_spiculations",
+    "text": "architectural_distortion ultrasound appearance includes radiating_thin_straight_lines_or_spiculations"
+   },
+   {
+    "node_id": "t_295",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "focal_retraction_or_distortion_at_edge_of_parenchyma",
+    "text": "architectural_distortion ultrasound appearance includes focal_retraction_or_distortion_at_edge_of_parenchyma"
+   },
+   {
+    "node_id": "t_296",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "blurring_of_normal_tissue_planes",
+    "text": "architectural_distortion ultrasound appearance includes blurring_of_normal_tissue_planes"
+   },
+   {
+    "node_id": "t_297",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "straightening_or_thickening_of_cooper_ligaments",
+    "text": "architectural_distortion ultrasound appearance includes straightening_or_thickening_of_cooper_ligaments"
+   },
+   {
+    "node_id": "t_298",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "compression_of_tissue_around_mass",
+    "text": "architectural_distortion ultrasound appearance includes compression_of_tissue_around_mass"
+   },
+   {
+    "node_id": "t_299",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "invasive_breast_cancer",
+    "text": "architectural_distortion caused by invasive_breast_cancer"
+   },
+   {
+    "node_id": "t_300",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "ductal_carcinoma_in_situ",
+    "text": "architectural_distortion caused by ductal_carcinoma_in_situ"
+   },
+   {
+    "node_id": "t_301",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "radial_scar",
+    "text": "architectural_distortion caused by radial_scar"
+   },
+   {
+    "node_id": "t_302",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "complex_sclerosing_lesion",
+    "text": "architectural_distortion caused by complex_sclerosing_lesion"
+   },
+   {
+    "node_id": "t_303",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "fat_necrosis",
+    "text": "architectural_distortion caused by fat_necrosis"
+   },
+   {
+    "node_id": "t_304",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "sclerosing_adenosis",
+    "text": "architectural_distortion caused by sclerosing_adenosis"
+   },
+   {
+    "node_id": "t_305",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "fibromatosis",
+    "text": "architectural_distortion caused by fibromatosis"
+   },
+   {
+    "node_id": "t_306",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "postsurgical_scar",
+    "text": "architectural_distortion caused by postsurgical_scar"
+   },
+   {
+    "node_id": "t_307",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "trauma",
+    "text": "architectural_distortion caused by trauma"
+   },
+   {
+    "node_id": "t_308",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "caused_by",
+    "object": "infection",
+    "text": "architectural_distortion caused by infection"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [
+   {
+    "src": "c10",
+    "dst": "c7",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c11",
+    "dst": "c8",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c12",
+    "dst": "c9",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c13",
+    "dst": "c10",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c14",
+    "dst": "c11",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c15",
+    "dst": "c12",
+    "sign": "-",
+    "type": "DISAGREE"
+   }
+  ],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c2",
+    "dst": "t_333",
+    "type": "cited"
+   },
+   {
+    "src": "c3",
+    "dst": "t_356",
+    "type": "cited"
+   },
+   {
+    "src": "c4",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c6",
+    "dst": "t_052",
+    "type": "cited"
+   },
+   {
+    "src": "c6",
+    "dst": "t_053",
+    "type": "cited"
+   },
+   {
+    "src": "c7",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c9",
+    "dst": "t_052",
+    "type": "cited"
+   },
+   {
+    "src": "c9",
+    "dst": "t_053",
+    "type": "cited"
+   },
+   {
+    "src": "c10",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c12",
+    "dst": "t_052",
+    "type": "cited"
+   },
+   {
+    "src": "c12",
+    "dst": "t_053",
+    "type": "cited"
+   },
+   {
+    "src": "c13",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_055",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_292",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_293",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_294",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_295",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_296",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_297",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_298",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_299",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_300",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_301",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_302",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_303",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_304",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_305",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_306",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_307",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_308",
+    "type": "cited"
+   },
+   {
+    "src": "c15",
+    "dst": "t_052",
+    "type": "cited"
+   },
+   {
+    "src": "c15",
+    "dst": "t_053",
+    "type": "cited"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_353",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_356",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_292",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_356",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_292",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_292",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_367",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_367",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_367",
+    "dst": "t_292",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_292",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_052",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_052",
+    "dst": "t_055",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_053",
+    "dst": "t_292",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_292",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_293",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_294",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_295",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_296",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_297",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_298",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_299",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_300",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_055",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_293",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_294",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_295",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_296",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_297",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_298",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_299",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_300",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_292",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_294",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_295",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_296",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_297",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_298",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_299",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_300",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_293",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_295",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_296",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_297",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_298",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_299",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_300",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_294",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_296",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_297",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_298",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_299",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_300",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_295",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_297",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_298",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_299",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_300",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_298",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_299",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_300",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_297",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_299",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_300",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_298",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_299",
+    "dst": "t_300",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_299",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_299",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_299",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_299",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_299",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_299",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_299",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_299",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_300",
+    "dst": "t_301",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_300",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_300",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_300",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_300",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_300",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_300",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_300",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_301",
+    "dst": "t_302",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_301",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_301",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_301",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_301",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_301",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_301",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_302",
+    "dst": "t_303",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_302",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_302",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_302",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_302",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_302",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_303",
+    "dst": "t_304",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_303",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_303",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_303",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_303",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_304",
+    "dst": "t_305",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_304",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_304",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_304",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_305",
+    "dst": "t_306",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_305",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_305",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_306",
+    "dst": "t_307",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_306",
+    "dst": "t_308",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_307",
+    "dst": "t_308",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 15,
+  "num_triples": 25,
+  "num_claim_claim_edges": 6,
+  "num_claim_triple_edges": 36,
+  "num_triple_triple_edges": 176,
+  "num_cited": 15
+ }
+}

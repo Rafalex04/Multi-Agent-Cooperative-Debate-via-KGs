@@ -1,0 +1,602 @@
+{
+ "sample_id": "383",
+ "gold_label": "MALIGNANT",
+ "gold_label_int": 1,
+ "verdict": "MALIGNANT",
+ "correct": true,
+ "rounds_used": 3,
+ "evidence": [
+  {
+   "feature": "architectural_distortion",
+   "weight": 1.0,
+   "p_yes": 0.9901353045342887
+  },
+  {
+   "feature": "irregular_shape",
+   "weight": 1.0,
+   "p_yes": 0.9995506369863844
+  },
+  {
+   "feature": "non_parallel_orientation",
+   "weight": 1.0,
+   "p_yes": 0.9982464061806826
+  },
+  {
+   "feature": "posterior_shadowing_with_solid_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.9994160550224586
+  },
+  {
+   "feature": "spiculated",
+   "weight": 1.0,
+   "p_yes": 0.4584574683621666
+  },
+  {
+   "feature": "spiculated_margin",
+   "weight": 1.0,
+   "p_yes": 0.46407179224311945
+  },
+  {
+   "feature": "spiculated_or_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.9991141810345504
+  },
+  {
+   "feature": "echogenic_rind",
+   "weight": 0.5,
+   "p_yes": 0.9220922950534105
+  },
+  {
+   "feature": "microcalcifications_in_hypoechoic_mass",
+   "weight": 0.5,
+   "p_yes": 0.0006241157659515172
+  },
+  {
+   "feature": "anechoic_content",
+   "weight": -1.0,
+   "p_yes": 0.9992134304839356
+  },
+  {
+   "feature": "circumscribed_margin",
+   "weight": -1.0,
+   "p_yes": 0.9951643235515406
+  },
+  {
+   "feature": "clustered_microcysts",
+   "weight": -1.0,
+   "p_yes": 0.02178893858615594
+  },
+  {
+   "feature": "echogenic_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.2637644931446751
+  },
+  {
+   "feature": "hyperechoic_mass",
+   "weight": -1.0,
+   "p_yes": 0.9992142433390875
+  },
+  {
+   "feature": "oval_shape",
+   "weight": -1.0,
+   "p_yes": 0.9716418570423498
+  },
+  {
+   "feature": "parallel_orientation",
+   "weight": -1.0,
+   "p_yes": 0.9891583851394964
+  },
+  {
+   "feature": "thin_uniform_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.019697846552069125
+  }
+ ],
+ "evidence_score": 0.5347095791229382,
+ "debate_mal_share": 0.5,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "Irregular shape suggests malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "irregular_shape",
+    "p_yes": 0.9995506369863844,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c2",
+    "type": "claim",
+    "text": "Posterior shadowing with solid irregular mass is suspicious.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9994160550224586,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "Spiculated or irregular mass is concerning.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "spiculated_or_irregular_mass",
+    "p_yes": 0.9991141810345504,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "Hyperechoic mass is a characteristic of benign lesions.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "hyperechoic_mass",
+    "p_yes": 0.9992142433390875,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "Circumscribed margin is a characteristic of benign lesions.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.9951643235515406,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "Anechoic content is a characteristic of benign lesions.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9992134304839356,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c7",
+    "type": "claim",
+    "text": "Hyperechoic mass is a characteristic of benign lesions. -> Hyperechoic mass is not a characteristic of benign lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "hyperechoic_mass",
+    "p_yes": 0.9992142433390875,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c8",
+    "type": "claim",
+    "text": "Circumscribed margin is a characteristic of benign lesions. -> Circumscribed margin is not a characteristic of benign lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.9951643235515406,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c9",
+    "type": "claim",
+    "text": "Anechoic content is a characteristic of benign lesions. -> Anechoic content is not a characteristic of benign lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9992134304839356,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c10",
+    "type": "claim",
+    "text": "Hyperechoic mass is not a characteristic of benign lesions. The hyperechoic mass is not a characteristic of benign lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "hyperechoic_mass",
+    "p_yes": 0.9992142433390875,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c11",
+    "type": "claim",
+    "text": "Circumscribed margin is not a characteristic of benign lesions. The circumscribed margin is not a characteristic of benign lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.9951643235515406,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c12",
+    "type": "claim",
+    "text": "Anechoic content is not a characteristic of benign lesions. The anechoic content is not a characteristic of benign lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9992134304839356,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c13",
+    "type": "claim",
+    "text": "Hyperechoic mass is not a characteristic of benign lesions. The hyperechoic mass is not a characteristic of benign lesions. -> they labelled this MALIGNANT",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": false,
+    "expert_id": "expert_a",
+    "round_idx": 2,
+    "cited_feature": "hyperechoic_mass",
+    "p_yes": 0.9992142433390875,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c14",
+    "type": "claim",
+    "text": "Circumscribed margin is not a characteristic of benign lesions. The circumscribed margin is not a characteristic of benign lesions. -> they labelled this MALIGNANT",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": false,
+    "expert_id": "expert_a",
+    "round_idx": 2,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.9951643235515406,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c15",
+    "type": "claim",
+    "text": "Anechoic content is not a characteristic of benign lesions. The anechoic content is not a characteristic of benign lesions. -> they labelled this MALIGNANT",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": false,
+    "expert_id": "expert_a",
+    "round_idx": 2,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9992134304839356,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c16",
+    "type": "claim",
+    "text": "Hyperechoic mass is a characteristic of benign lesions. The hyperechoic mass is a characteristic of benign lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "hyperechoic_mass",
+    "p_yes": 0.9992142433390875,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c17",
+    "type": "claim",
+    "text": "Circumscribed margin is a characteristic of benign lesions. The circumscribed margin is a characteristic of benign lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "circumscribed_margin",
+    "p_yes": 0.9951643235515406,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c18",
+    "type": "claim",
+    "text": "Anechoic content is a characteristic of benign lesions. The anechoic content is a characteristic of benign lesions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "anechoic_content",
+    "p_yes": 0.9992134304839356,
+    "stance_weight": -1.0
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_355",
+    "type": "triple",
+    "subject": "irregular_shape",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "irregular_shape suggests malignancy true"
+   },
+   {
+    "node_id": "t_353",
+    "type": "triple",
+    "subject": "posterior_shadowing_with_solid_irregular_mass",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "posterior_shadowing_with_solid_irregular_mass suggests malignancy true"
+   },
+   {
+    "node_id": "t_333",
+    "type": "triple",
+    "subject": "spiculated_or_irregular_mass",
+    "predicate": "suggests_birads_5",
+    "object": "true",
+    "text": "spiculated_or_irregular_mass suggests birads 5 true"
+   },
+   {
+    "node_id": "t_291",
+    "type": "triple",
+    "subject": "hyperechoic_mass",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "hyperechoic_mass suggests benign true"
+   },
+   {
+    "node_id": "t_364",
+    "type": "triple",
+    "subject": "circumscribed_margin",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "circumscribed_margin suggests benign true"
+   },
+   {
+    "node_id": "t_367",
+    "type": "triple",
+    "subject": "anechoic_content",
+    "predicate": "suggests_benign_simple_cyst",
+    "object": "true",
+    "text": "anechoic_content suggests benign simple cyst true"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [
+   {
+    "src": "c10",
+    "dst": "c1",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c11",
+    "dst": "c2",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c12",
+    "dst": "c3",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c16",
+    "dst": "c2",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c17",
+    "dst": "c14",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c18",
+    "dst": "c15",
+    "sign": "-",
+    "type": "DISAGREE"
+   }
+  ],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_355",
+    "type": "cited"
+   },
+   {
+    "src": "c2",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c3",
+    "dst": "t_333",
+    "type": "cited"
+   },
+   {
+    "src": "c4",
+    "dst": "t_291",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c6",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c7",
+    "dst": "t_291",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c9",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c10",
+    "dst": "t_291",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c12",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c13",
+    "dst": "t_291",
+    "type": "cited"
+   },
+   {
+    "src": "c14",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c15",
+    "dst": "t_367",
+    "type": "cited"
+   },
+   {
+    "src": "c16",
+    "dst": "t_291",
+    "type": "cited"
+   },
+   {
+    "src": "c17",
+    "dst": "t_364",
+    "type": "cited"
+   },
+   {
+    "src": "c18",
+    "dst": "t_367",
+    "type": "cited"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_355",
+    "dst": "t_353",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_355",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_355",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_355",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_355",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_367",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 18,
+  "num_triples": 6,
+  "num_claim_claim_edges": 6,
+  "num_claim_triple_edges": 18,
+  "num_triple_triple_edges": 15,
+  "num_cited": 18
+ }
+}

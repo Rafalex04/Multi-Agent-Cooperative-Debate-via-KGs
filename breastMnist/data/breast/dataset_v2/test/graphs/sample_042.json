@@ -1,0 +1,1071 @@
+{
+ "sample_id": "042",
+ "gold_label": "MALIGNANT",
+ "gold_label_int": 1,
+ "verdict": "BENIGN",
+ "correct": false,
+ "rounds_used": 3,
+ "evidence": [
+  {
+   "feature": "architectural_distortion",
+   "weight": 1.0,
+   "p_yes": 0.7714527627008072
+  },
+  {
+   "feature": "irregular_shape",
+   "weight": 1.0,
+   "p_yes": 0.9872889744362237
+  },
+  {
+   "feature": "non_parallel_orientation",
+   "weight": 1.0,
+   "p_yes": 0.9945960490222455
+  },
+  {
+   "feature": "posterior_shadowing_with_solid_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.9989842095932324
+  },
+  {
+   "feature": "spiculated",
+   "weight": 1.0,
+   "p_yes": 0.006162433039536288
+  },
+  {
+   "feature": "spiculated_margin",
+   "weight": 1.0,
+   "p_yes": 0.005879573138592878
+  },
+  {
+   "feature": "spiculated_or_irregular_mass",
+   "weight": 1.0,
+   "p_yes": 0.9893117163212564
+  },
+  {
+   "feature": "echogenic_rind",
+   "weight": 0.5,
+   "p_yes": 0.27792788553045245
+  },
+  {
+   "feature": "microcalcifications_in_hypoechoic_mass",
+   "weight": 0.5,
+   "p_yes": 0.0005402511808667452
+  },
+  {
+   "feature": "anechoic_content",
+   "weight": -1.0,
+   "p_yes": 0.9983959326776685
+  },
+  {
+   "feature": "circumscribed_margin",
+   "weight": -1.0,
+   "p_yes": 0.9620060188526472
+  },
+  {
+   "feature": "clustered_microcysts",
+   "weight": -1.0,
+   "p_yes": 0.8650945599556896
+  },
+  {
+   "feature": "echogenic_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.49824498731628125
+  },
+  {
+   "feature": "hyperechoic_mass",
+   "weight": -1.0,
+   "p_yes": 0.99726742315454
+  },
+  {
+   "feature": "oval_shape",
+   "weight": -1.0,
+   "p_yes": 0.9310005190914246
+  },
+  {
+   "feature": "parallel_orientation",
+   "weight": -1.0,
+   "p_yes": 0.9871538247344507
+  },
+  {
+   "feature": "thin_uniform_pseudocapsule",
+   "weight": -1.0,
+   "p_yes": 0.013987755529874907
+  }
+ ],
+ "evidence_score": 0.45749246141546807,
+ "debate_mal_share": 1.0,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "Posterior shadowing with solid irregular mass is suggestive of malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9989842095932324,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c2",
+    "type": "claim",
+    "text": "Non-parallel orientation of the mass is suspicious for malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "non_parallel_orientation",
+    "p_yes": 0.9945960490222455,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "Spiculated or irregular mass is indicative of malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "cited_feature": "spiculated_or_irregular_mass",
+    "p_yes": 0.9893117163212564,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "The hyperechoic mass is well-defined and circumscribed, suggesting a benign process.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "hyperechoic_mass",
+    "p_yes": 0.99726742315454,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "The clustered microcysts are present, which can be seen in both benign and malignant lesions, but are more commonly associated with benign conditions.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "clustered_microcysts",
+    "p_yes": 0.8650945599556896,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "The parallel orientation of the mass is consistent with a benign process.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "cited_feature": "parallel_orientation",
+    "p_yes": 0.9871538247344507,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c7",
+    "type": "claim",
+    "text": "The posterior shadowing with solid irregular mass, combined with the non-parallel orientation and spiculated or irregular mass, strongly suggests malignancy. The hyperechoic mass is well-defined and circumscribed, suggesting a benign process.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9989842095932324,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c8",
+    "type": "claim",
+    "text": "The clustered microcysts, while present, are more commonly associated with benign conditions, and the overall image characteristics point towards malignancy. The clustered microcysts are present, which can be seen in both benign and malignant lesions, but are more commonly associated with benign conditions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "clustered_microcysts",
+    "p_yes": 0.8650945599556896,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c9",
+    "type": "claim",
+    "text": "The non-parallel orientation of the mass is suspicious for malignancy, and the spiculated or irregular mass further supports this suspicion. The parallel orientation of the mass is consistent with a benign process.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "cited_feature": "spiculated_or_irregular_mass",
+    "p_yes": 0.9893117163212564,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c10",
+    "type": "claim",
+    "text": "The posterior shadowing with solid irregular mass, combined with the non-parallel orientation and spiculated or irregular mass, strongly suggests malignancy. The hyperechoic mass is well-defined and circumscribed, suggesting a benign process. The posterior shadowing with solid irregular mass, combined with the non-parallel orientation and spiculated or irregular mass, strongly suggests malignancy. The hyperechoic mass is well-defined and circumscribed, suggesting a benign process.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9989842095932324,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c11",
+    "type": "claim",
+    "text": "The clustered microcysts, while present, are more commonly associated with benign conditions, and the overall image characteristics point towards malignancy. The clustered microcysts are present, which can be seen in both benign and malignant lesions, but are more commonly associated with benign conditions. The clustered microcysts, while present, are more commonly associated with benign conditions, and the overall image characteristics point towards malignancy. The clustered microcysts are present, which can be seen in both benign and malignant lesions, but are more commonly associated with benign conditions.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "clustered_microcysts",
+    "p_yes": 0.8650945599556896,
+    "stance_weight": -1.0
+   },
+   {
+    "node_id": "c12",
+    "type": "claim",
+    "text": "The non-parallel orientation of the mass is suspicious for malignancy, and the spiculated or irregular mass further supports this suspicion. The parallel orientation of the mass is consistent with a benign process. The non-parallel orientation of the mass is suspicious for malignancy, and the spiculated or irregular mass further supports this suspicion. The parallel orientation of the",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": false,
+    "expert_id": "expert_b",
+    "round_idx": 1,
+    "cited_feature": "spiculated_or_irregular_mass",
+    "p_yes": 0.9893117163212564,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c16",
+    "type": "claim",
+    "text": "The hyperechoic mass is well-defined and circumscribed, suggesting a benign process. The posterior shadowing with solid irregular mass, combined with the non-parallel orientation and spiculated or irregular mass, strongly suggests malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9989842095932324,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c17",
+    "type": "claim",
+    "text": "The clustered microcysts are present, which can be seen in both benign and malignant lesions, but are more commonly associated with benign conditions. The posterior shadowing with solid irregular mass, combined with the non-parallel orientation and spiculated or irregular mass, strongly suggests malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "posterior_shadowing_with_solid_irregular_mass",
+    "p_yes": 0.9989842095932324,
+    "stance_weight": 1.0
+   },
+   {
+    "node_id": "c18",
+    "type": "claim",
+    "text": "The parallel orientation of the mass is consistent with a benign process. The non-parallel orientation of the mass is suspicious for malignancy, and the spiculated or irregular mass further supports this suspicion.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 2,
+    "cited_feature": "spiculated_or_irregular_mass",
+    "p_yes": 0.9893117163212564,
+    "stance_weight": 1.0
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_353",
+    "type": "triple",
+    "subject": "posterior_shadowing_with_solid_irregular_mass",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "posterior_shadowing_with_solid_irregular_mass suggests malignancy true"
+   },
+   {
+    "node_id": "t_356",
+    "type": "triple",
+    "subject": "non_parallel_orientation",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "non_parallel_orientation suggests malignancy true"
+   },
+   {
+    "node_id": "t_333",
+    "type": "triple",
+    "subject": "spiculated_or_irregular_mass",
+    "predicate": "suggests_birads_5",
+    "object": "true",
+    "text": "spiculated_or_irregular_mass suggests birads 5 true"
+   },
+   {
+    "node_id": "t_291",
+    "type": "triple",
+    "subject": "hyperechoic_mass",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "hyperechoic_mass suggests benign true"
+   },
+   {
+    "node_id": "t_075",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "is_a",
+    "object": "special_case",
+    "text": "clustered_microcysts is a special_case"
+   },
+   {
+    "node_id": "t_076",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "cluster_of_anechoic_masses",
+    "text": "clustered_microcysts ultrasound appearance includes cluster_of_anechoic_masses"
+   },
+   {
+    "node_id": "t_077",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "thin_intervening_septations_under_0_5mm",
+    "text": "clustered_microcysts ultrasound appearance includes thin_intervening_septations_under_0_5mm"
+   },
+   {
+    "node_id": "t_078",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "no_discrete_solid_component",
+    "text": "clustered_microcysts ultrasound appearance includes no_discrete_solid_component"
+   },
+   {
+    "node_id": "t_309",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "is_a",
+    "object": "benign_breast_lesion",
+    "text": "clustered_microcysts is a benign_breast_lesion"
+   },
+   {
+    "node_id": "t_310",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "has_no_malignant_potential",
+    "object": "true",
+    "text": "clustered_microcysts has no malignant potential true"
+   },
+   {
+    "node_id": "t_311",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "cluster_of_anechoic_foci",
+    "text": "clustered_microcysts ultrasound appearance includes cluster_of_anechoic_foci"
+   },
+   {
+    "node_id": "t_312",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "individual_foci_less_than_2_to_3mm",
+    "text": "clustered_microcysts ultrasound appearance includes individual_foci_less_than_2_to_3mm"
+   },
+   {
+    "node_id": "t_313",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "thin_intervening_septations_under_0_5mm",
+    "text": "clustered_microcysts ultrasound appearance includes thin_intervening_septations_under_0_5mm"
+   },
+   {
+    "node_id": "t_314",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "no_discrete_solid_components",
+    "text": "clustered_microcysts ultrasound appearance includes no_discrete_solid_components"
+   },
+   {
+    "node_id": "t_348",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "differs_from",
+    "object": "simple_breast_cyst",
+    "text": "clustered_microcysts differs from simple_breast_cyst"
+   },
+   {
+    "node_id": "t_366",
+    "type": "triple",
+    "subject": "parallel_orientation",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "parallel_orientation suggests benign true"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [
+   {
+    "src": "c7",
+    "dst": "c2",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c8",
+    "dst": "c5",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c9",
+    "dst": "c6",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c10",
+    "dst": "c7",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c11",
+    "dst": "c8",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c12",
+    "dst": "c9",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c16",
+    "dst": "c2",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c17",
+    "dst": "c8",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c18",
+    "dst": "c9",
+    "sign": "+",
+    "type": "AGREE"
+   }
+  ],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c2",
+    "dst": "t_356",
+    "type": "cited"
+   },
+   {
+    "src": "c3",
+    "dst": "t_333",
+    "type": "cited"
+   },
+   {
+    "src": "c4",
+    "dst": "t_291",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_075",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_076",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_077",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_078",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_309",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_310",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_311",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_312",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_313",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_314",
+    "type": "cited"
+   },
+   {
+    "src": "c5",
+    "dst": "t_348",
+    "type": "cited"
+   },
+   {
+    "src": "c6",
+    "dst": "t_366",
+    "type": "cited"
+   },
+   {
+    "src": "c7",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_075",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_076",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_077",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_078",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_309",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_310",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_311",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_312",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_313",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_314",
+    "type": "cited"
+   },
+   {
+    "src": "c8",
+    "dst": "t_348",
+    "type": "cited"
+   },
+   {
+    "src": "c9",
+    "dst": "t_333",
+    "type": "cited"
+   },
+   {
+    "src": "c10",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_075",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_076",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_077",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_078",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_309",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_310",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_311",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_312",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_313",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_314",
+    "type": "cited"
+   },
+   {
+    "src": "c11",
+    "dst": "t_348",
+    "type": "cited"
+   },
+   {
+    "src": "c12",
+    "dst": "t_333",
+    "type": "cited"
+   },
+   {
+    "src": "c16",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c17",
+    "dst": "t_353",
+    "type": "cited"
+   },
+   {
+    "src": "c18",
+    "dst": "t_333",
+    "type": "cited"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_353",
+    "dst": "t_356",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_310",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_366",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_310",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_366",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_310",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_366",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_310",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_366",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_076",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_077",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_078",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_309",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_310",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_311",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_312",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_313",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_075",
+    "dst": "t_348",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_077",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_078",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_309",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_310",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_311",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_312",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_313",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_348",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_078",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_309",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_310",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_311",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_312",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_313",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_348",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_078",
+    "dst": "t_309",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_078",
+    "dst": "t_310",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_078",
+    "dst": "t_311",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_078",
+    "dst": "t_312",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_078",
+    "dst": "t_313",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_078",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_078",
+    "dst": "t_348",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_309",
+    "dst": "t_310",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_309",
+    "dst": "t_311",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_309",
+    "dst": "t_312",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_309",
+    "dst": "t_313",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_309",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_309",
+    "dst": "t_348",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_310",
+    "dst": "t_311",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_310",
+    "dst": "t_312",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_310",
+    "dst": "t_313",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_310",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_310",
+    "dst": "t_348",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_310",
+    "dst": "t_366",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_311",
+    "dst": "t_312",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_311",
+    "dst": "t_313",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_311",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_311",
+    "dst": "t_348",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_312",
+    "dst": "t_313",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_312",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_312",
+    "dst": "t_348",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_313",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_313",
+    "dst": "t_348",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_314",
+    "dst": "t_348",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 15,
+  "num_triples": 16,
+  "num_claim_claim_edges": 9,
+  "num_claim_triple_edges": 45,
+  "num_triple_triple_edges": 70,
+  "num_cited": 15
+ }
+}
