@@ -24,6 +24,8 @@ logger = logging.getLogger(__name__)
 _HERE = Path(__file__).resolve()
 _TAXONOMY = {"is_a", "subtype_of", "birads_subcategory_of", "category_descriptor",
              "also_known_as"}
+# v4 assigns sides; v5 does not, so agents there are agent_1/agent_2 and no
+# claim can be "against side". Both formats build the same graph schema.
 _SIDE = {"expert_a": "MALIGNANT", "expert_b": "BENIGN"}
 # Literal objects, not entities — expanding through them would join every
 # `suggests_benign true` triple into one hub.
@@ -166,10 +168,18 @@ def main():
                        (c["node_id"], tgt) in seen:
                         continue
                     seen.add((c["node_id"], tgt))
-                    same = lab[c["node_id"]] and lab[c["node_id"]] == lab[tgt]
+                    # v5 states AGREE/DISAGREE explicitly, which is what the
+                    # agent meant; v4 has to infer it from labels matching.
+                    v = c.get("stance_verdict")
+                    if v in ("AGREE", "DISAGREE"):
+                        etype = v
+                    else:
+                        same = lab[c["node_id"]] and lab[c["node_id"]] == lab[tgt]
+                        etype = "AGREE" if same else "DISAGREE"
                     cc.append({"src": c["node_id"], "dst": tgt,
-                               "sign": "+" if same else "-",
-                               "type": "AGREE" if same else "DISAGREE"})
+                               "sign": "+" if etype == "AGREE" else "-",
+                               "type": etype,
+                               "explicit": v in ("AGREE", "DISAGREE")})
 
             tt, tids = [], list(used)
             for a in range(len(tids)):
