@@ -15,14 +15,35 @@ Both are replaced here:
   question   Built from the graph: the feature's `definition` triple if it has
              one, otherwise its `ultrasound_appearance_includes` objects,
              otherwise the humanised name.
-  exclusion  Not a list. Probe everything, then drop features whose measured
-             variance across a corpus is near zero (`--min-std`). A feature the
-             model cannot see answers identically for every image, so variance
-             filtering finds the unobservable ones from data instead of from my
-             judgement — and it finds them for any KG, not just this one.
+  exclusion  Not a list. Probe everything, and let a trained head weight the
+             features (see fit_probe_head.py).
+
+             NOTE: an earlier version of this docstring claimed variance
+             filtering could replace the manual exclusion list. Measurement
+             disproved that. Features the model cannot assess do not answer
+             identically for every image — they answer at random, so they show
+             the *highest* variance in the set (evidence_of_interval_growth
+             std 0.409, hard_elasticity 0.393, axillary_adenopathy 0.386).
+             Variance only catches saturated probes, never hallucinated ones,
+             and filtering on it does not recover the loss (0.5748 at
+             min_std=0.02 vs 0.5750 unfiltered). Separating signal from
+             hallucination needs label correlation, i.e. supervision.
 
 Nothing here names a breast-imaging concept, so pointing it at a different
 domain graph yields a different probe set with no code changes.
+
+MEASURED COST OF THE AUTOMATION (156-sample test split):
+
+  manual 17 probes, hand-written questions      AUC 0.6685
+  automatic, restricted to those same 17        AUC 0.5923
+  automatic, all 29                             AUC 0.5750
+
+Most of the gap is question wording, not the extra features. Only 2 of 29
+features carry `ultrasound_appearance_includes` triples, because the graph
+attaches its 113 appearance triples to lesion *types* rather than to features,
+so most probes fall back to the bare humanised name. Generating the missing
+descriptions with one cached LLM call per feature would keep this generalizable
+while restoring the detail; see EXPERIMENT_QUEUE.md item 4.
 
 Usage:
   python probe_auto.py --kg-root ../../breastMnist        # inspect probe set
