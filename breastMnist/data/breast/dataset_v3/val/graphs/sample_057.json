@@ -1,0 +1,455 @@
+{
+ "sample_id": "057",
+ "gold_label": "BENIGN",
+ "gold_label_int": 0,
+ "verdict": "BENIGN",
+ "correct": true,
+ "rounds_used": 3,
+ "debate_mal_share": 0.3333333333333333,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "The mass has irregular margins.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "top_sim": 0.4791,
+    "n_links": 4
+   },
+   {
+    "node_id": "c2",
+    "type": "claim",
+    "text": "The mass has a heterogeneous internal echo pattern.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "top_sim": 0.4765,
+    "n_links": 4
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "The mass is located in the retroareolar region.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "top_sim": 0.5153,
+    "n_links": 4
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "The mass appears to be relatively well-defined with smooth margins.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "top_sim": 0.5081,
+    "n_links": 4
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "The echotexture of the mass is homogenous, suggesting a uniform composition.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "top_sim": 0.4492,
+    "n_links": 4
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "There is no evidence of suspicious features such as microcalcifications or irregular borders.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "top_sim": 0.37,
+    "n_links": 4
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_364",
+    "type": "triple",
+    "subject": "circumscribed_margin",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "circumscribed margin suggests benign"
+   },
+   {
+    "node_id": "t_147",
+    "type": "triple",
+    "subject": "hypoechoic_circumscribed_oval_parallel_mass",
+    "predicate": "typically_classified_as",
+    "object": "birads_3",
+    "text": "hypoechoic circumscribed oval parallel mass typically classified as birads 3"
+   },
+   {
+    "node_id": "t_291",
+    "type": "triple",
+    "subject": "hyperechoic_mass",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "hyperechoic mass suggests benign"
+   },
+   {
+    "node_id": "t_333",
+    "type": "triple",
+    "subject": "spiculated_or_irregular_mass",
+    "predicate": "suggests_birads_5",
+    "object": "true",
+    "text": "spiculated or irregular mass suggests birads 5"
+   },
+   {
+    "node_id": "t_080",
+    "type": "triple",
+    "subject": "complicated_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "homogeneous_low_level_internal_echoes",
+    "text": "complicated cyst ultrasound appearance includes homogeneous low level internal echoes"
+   },
+   {
+    "node_id": "t_202",
+    "type": "triple",
+    "subject": "immobile_echogenic_component_in_cyst",
+    "predicate": "indicates",
+    "object": "true_intracystic_mass_or_adherent_debris",
+    "text": "immobile echogenic component in cyst indicates true intracystic mass or adherent debris"
+   },
+   {
+    "node_id": "t_181",
+    "type": "triple",
+    "subject": "internal_vascularity",
+    "predicate": "suggests_solid_mass",
+    "object": "true",
+    "text": "internal vascularity suggests solid mass"
+   },
+   {
+    "node_id": "t_176",
+    "type": "triple",
+    "subject": "complicated_breast_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "low_level_internal_echoes",
+    "text": "complicated breast cyst ultrasound appearance includes low level internal echoes"
+   },
+   {
+    "node_id": "t_241",
+    "type": "triple",
+    "subject": "galactocele",
+    "predicate": "often_located_in",
+    "object": "subareolar_region",
+    "text": "galactocele often located in subareolar region"
+   },
+   {
+    "node_id": "t_148",
+    "type": "triple",
+    "subject": "hyperechoic_mass_with_central_hypoechoic_anechoic_components_and_surrounding_oedema",
+    "predicate": "typically_classified_as",
+    "object": "birads_3",
+    "text": "hyperechoic mass with central hypoechoic anechoic components and surrounding oedema typically classified as birads 3"
+   },
+   {
+    "node_id": "t_298",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "compression_of_tissue_around_mass",
+    "text": "architectural distortion ultrasound appearance includes compression of tissue around mass"
+   },
+   {
+    "node_id": "t_076",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "cluster_of_anechoic_masses",
+    "text": "clustered microcysts ultrasound appearance includes cluster of anechoic masses"
+   },
+   {
+    "node_id": "t_225",
+    "type": "triple",
+    "subject": "metastatic_intramammary_lymph_node",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "round_well_defined_homogeneous_high_density_mass_over_1cm",
+    "text": "metastatic intramammary lymph node ultrasound appearance includes round well defined homogeneous high density mass over 1cm"
+   },
+   {
+    "node_id": "t_314",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "no_discrete_solid_components",
+    "text": "clustered microcysts ultrasound appearance includes no discrete solid components"
+   },
+   {
+    "node_id": "t_269",
+    "type": "triple",
+    "subject": "breast_hamartoma",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "no_intralesional_microcalcification",
+    "text": "breast hamartoma ultrasound appearance includes no intralesional microcalcification"
+   },
+   {
+    "node_id": "t_078",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "no_discrete_solid_component",
+    "text": "clustered microcysts ultrasound appearance includes no discrete solid component"
+   },
+   {
+    "node_id": "t_207",
+    "type": "triple",
+    "subject": "oil_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "no_posterior_features_typical",
+    "text": "oil cyst ultrasound appearance includes no posterior features typical"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_364",
+    "rank": 0,
+    "score": 0.4791,
+    "type": "retrieval"
+   },
+   {
+    "src": "c1",
+    "dst": "t_147",
+    "rank": 1,
+    "score": 0.4597,
+    "type": "retrieval"
+   },
+   {
+    "src": "c1",
+    "dst": "t_291",
+    "rank": 2,
+    "score": 0.4425,
+    "type": "retrieval"
+   },
+   {
+    "src": "c1",
+    "dst": "t_333",
+    "rank": 3,
+    "score": 0.4406,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_080",
+    "rank": 0,
+    "score": 0.4765,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_202",
+    "rank": 1,
+    "score": 0.4684,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_181",
+    "rank": 2,
+    "score": 0.4602,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_176",
+    "rank": 3,
+    "score": 0.4496,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_241",
+    "rank": 0,
+    "score": 0.5153,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_291",
+    "rank": 1,
+    "score": 0.5144,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_148",
+    "rank": 2,
+    "score": 0.4994,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_147",
+    "rank": 3,
+    "score": 0.4976,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_291",
+    "rank": 0,
+    "score": 0.5081,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_364",
+    "rank": 1,
+    "score": 0.4283,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_147",
+    "rank": 2,
+    "score": 0.4161,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_181",
+    "rank": 3,
+    "score": 0.4131,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_298",
+    "rank": 0,
+    "score": 0.4492,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_076",
+    "rank": 1,
+    "score": 0.4142,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_291",
+    "rank": 2,
+    "score": 0.4082,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_225",
+    "rank": 3,
+    "score": 0.4057,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_314",
+    "rank": 0,
+    "score": 0.37,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_269",
+    "rank": 1,
+    "score": 0.3635,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_078",
+    "rank": 2,
+    "score": 0.3583,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_207",
+    "rank": 3,
+    "score": 0.3553,
+    "type": "retrieval"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_364",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_181",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_147",
+    "dst": "t_148",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_181",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_181",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_076",
+    "dst": "t_078",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_314",
+    "dst": "t_078",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 6,
+  "num_triples": 17,
+  "num_claim_claim_edges": 0,
+  "num_claim_triple_edges": 24,
+  "num_triple_triple_edges": 10
+ }
+}

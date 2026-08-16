@@ -1,0 +1,103 @@
+{
+ "sample_id": "232",
+ "gold_label": "MALIGNANT",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "The mass has irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c2",
+   "text": "The mass has a heterogeneous internal echo pattern.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c3",
+   "text": "The mass is hypoechoic compared to the surrounding breast tissue.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c4",
+   "text": "The mass appears to have smooth, well-defined margins.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c5",
+   "text": "The internal echo pattern is hypoechoic, suggesting a solid component.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c6",
+   "text": "The posterior acoustic shadow is present, indicating a solid mass.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c13",
+   "text": "The smooth, well-defined margins are not present.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "addressed_ids": [
+    "c4"
+   ]
+  },
+  {
+   "node_id": "c14",
+   "text": "The internal echo pattern is not hypoechoic.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "addressed_ids": [
+    "c5"
+   ]
+  },
+  {
+   "node_id": "c15",
+   "text": "The posterior acoustic shadow is present. The posterior acoustic shadow is not absent.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "addressed_ids": [
+    "c6"
+   ]
+  },
+  {
+   "node_id": "c16",
+   "text": "-> The margins are not smooth and well-defined, but rather irregular.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "addressed_ids": []
+  }
+ ]
+}

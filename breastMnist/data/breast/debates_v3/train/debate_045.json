@@ -1,0 +1,103 @@
+{
+ "sample_id": "045",
+ "gold_label": "MALIGNANT",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "The mass has irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c2",
+   "text": "The mass has a heterogeneous internal echo pattern.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c3",
+   "text": "The mass is hypoechoic.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c4",
+   "text": "The mass appears to be hypoechoic with a relatively smooth posterior acoustic shadow.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c5",
+   "text": "The mass is well-defined and has a regular shape.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c6",
+   "text": "The mass is located in the breast parenchyma, away from the chest wall.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c7",
+   "text": "A smooth posterior acoustic shadow is not always indicative of benignity.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c4"
+   ]
+  },
+  {
+   "node_id": "c8",
+   "text": "A well-defined and regular shape is not always indicative of benignity.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c5"
+   ]
+  },
+  {
+   "node_id": "c9",
+   "text": "Location in the breast parenchyma does not rule out malignancy.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c6"
+   ]
+  },
+  {
+   "node_id": "c10",
+   "text": "The posterior acoustic shadow is not always indicative of malignancy.",
+   "label": null,
+   "label_explicit": false,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "addressed_ids": []
+  }
+ ]
+}

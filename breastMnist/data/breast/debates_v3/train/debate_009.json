@@ -1,0 +1,103 @@
+{
+ "sample_id": "009",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "The mass has irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c2",
+   "text": "The mass has a heterogeneous internal echo pattern.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c3",
+   "text": "The mass is located in the retroareolar region.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c4",
+   "text": "The mass appears to be relatively well-defined with smooth margins.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c5",
+   "text": "The echotexture of the mass is homogenous and hypoechoic.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c6",
+   "text": "The posterior acoustic enhancement is limited, suggesting a benign process.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c7",
+   "text": "The mass has irregular margins, which is not consistent with the description of smooth margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c4"
+   ]
+  },
+  {
+   "node_id": "c8",
+   "text": "The mass has a heterogeneous internal echo pattern, which is not consistent with the description of homogenous.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c5"
+   ]
+  },
+  {
+   "node_id": "c9",
+   "text": "The mass is located in the retroareolar region, which is not consistent with the description of limited posterior acoustic enhancement.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c6"
+   ]
+  },
+  {
+   "node_id": "c15",
+   "text": "The mass has irregular margins, which is not consistent with the description of limited posterior acoustic enhancement.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "addressed_ids": []
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5301.43it/s]
+/data/rm2125/venv/lib/python3.12/site-packages/torch_geometric/utils/_scatter.py:91: UserWarning: The usage of `scatter(reduce='max')` can be accelerated via the 'torch-scatter' package, but it was not found
+  warnings.warn(
+
+==========================================================================================
+v3 (KG-free debate): /homes/rm2125/Multi-Agent-Cooperative-Debate-via-KGs/breastMnist/data/breast/dataset_v3
+==========================================================================================
+  train=546 val=78 test=156  node_dim=390  pos_weight=2.71
+
+  model                                 test AUC         bAcc@best       bAcc@val-th
+  ------------------------------------------------------------------------------------
+  text-mean (no edges)           0.5127+-0.009   0.5610+-0.006   0.5079+-0.012
+  GraphSAGE (claims only)        0.5519+-0.029   0.5861+-0.013   0.5237+-0.038
+  GraphSAGE + KG triple text     0.5543+-0.009   0.5796+-0.009   0.5336+-0.023
+
+Reference points, same test split:
+  zero-shot no KG            AUC 0.6013   bAcc 0.5883 (own th)
+  probe vector MLP, no graph AUC 0.6985   bAcc 0.6305 (val th)
+  v2 GraphSAGE               AUC 0.6037   bAcc 0.5654 (val th)
+  v2 hybrid (graph + probes) AUC 0.6772   bAcc 0.6323 (val th)

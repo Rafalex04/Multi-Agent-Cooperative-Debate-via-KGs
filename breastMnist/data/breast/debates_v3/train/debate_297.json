@@ -1,0 +1,121 @@
+{
+ "sample_id": "297",
+ "gold_label": "MALIGNANT",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "The mass is hypoechoic and has irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c2",
+   "text": "The mass has posterior acoustic enhancement.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c3",
+   "text": "The mass is heterogeneous in echotexture.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c4",
+   "text": "The mass appears to have well-defined, smooth margins.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c5",
+   "text": "The internal echo pattern is hypoechoic, suggesting a solid mass.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c6",
+   "text": "The mass is located in the axilla, which is a common location for benign breast conditions.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c7",
+   "text": "The mass has irregular margins. Well-defined margins are more characteristic of benign lesions.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c4"
+   ]
+  },
+  {
+   "node_id": "c8",
+   "text": "Hypoechoic lesions can be both benign and malignant, but posterior enhancement is more suggestive of malignancy.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c5"
+   ]
+  },
+  {
+   "node_id": "c9",
+   "text": "Heterogeneity is more suggestive of malignancy.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c6"
+   ]
+  },
+  {
+   "node_id": "c14",
+   "text": "Posterior acoustic enhancement is more suggestive of malignancy.",
+   "label": null,
+   "label_explicit": false,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c16",
+   "text": "Posterior acoustic enhancement is not a reliable indicator of malignancy.",
+   "label": null,
+   "label_explicit": false,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c17",
+   "text": "The mass has well-defined, smooth margins, which is more consistent with a benign process.",
+   "label": null,
+   "label_explicit": false,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "addressed_ids": []
+  }
+ ]
+}

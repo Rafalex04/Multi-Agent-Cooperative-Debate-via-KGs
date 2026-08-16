@@ -1,0 +1,103 @@
+{
+ "sample_id": "079",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "The mass has irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c2",
+   "text": "The mass has a heterogeneous internal echo pattern.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c3",
+   "text": "The mass is posterior to the breast tissue.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c4",
+   "text": "The mass appears to have smooth, well-defined margins.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c5",
+   "text": "The mass exhibits a hypoechoic internal pattern.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c6",
+   "text": "The posterior acoustic enhancement is minimal.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c7",
+   "text": "Smooth, well-defined margins are more typical of benign lesions.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c4"
+   ]
+  },
+  {
+   "node_id": "c8",
+   "text": "A hypoechoic internal pattern can be seen in both benign and malignant lesions.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c5"
+   ]
+  },
+  {
+   "node_id": "c9",
+   "text": "Minimal posterior acoustic enhancement is not sufficient to rule out malignancy.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c6"
+   ]
+  },
+  {
+   "node_id": "c16",
+   "text": "The mass has smooth, well-defined margins. BENIGN",
+   "label": null,
+   "label_explicit": false,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "addressed_ids": []
+  }
+ ]
+}

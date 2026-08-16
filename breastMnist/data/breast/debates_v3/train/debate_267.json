@@ -1,0 +1,123 @@
+{
+ "sample_id": "267",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "The mass has irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c2",
+   "text": "The mass has a heterogeneous internal echo pattern.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c3",
+   "text": "The mass is posterior to the breast tissue.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c4",
+   "text": "The mass appears to have well-defined, smooth margins.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c5",
+   "text": "The internal echo pattern is hypoechoic, suggesting a solid component.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c6",
+   "text": "The mass is located in the retroareolar region, a common location for benign breast conditions.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c7",
+   "text": "The mass is not smooth, but has irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c4"
+   ]
+  },
+  {
+   "node_id": "c8",
+   "text": "The internal echo pattern is not uniform, but heterogeneous.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c5"
+   ]
+  },
+  {
+   "node_id": "c9",
+   "text": "While the retroareolar region is common for benign conditions, the mass is not benign.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c6"
+   ]
+  },
+  {
+   "node_id": "c14",
+   "text": "The internal echo pattern is heterogeneous.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "addressed_ids": [
+    "c5"
+   ]
+  },
+  {
+   "node_id": "c16",
+   "text": "The internal echo pattern is heterogeneous, but this could be due to cystic components within the mass.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c17",
+   "text": "The mass appears to have well-defined, smooth margins, which is more consistent with a benign process.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "addressed_ids": []
+  }
+ ]
+}

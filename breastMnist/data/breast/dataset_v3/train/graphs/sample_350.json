@@ -1,0 +1,571 @@
+{
+ "sample_id": "350",
+ "gold_label": "BENIGN",
+ "gold_label_int": 0,
+ "verdict": "MALIGNANT",
+ "correct": false,
+ "rounds_used": 3,
+ "debate_mal_share": 0.625,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "The mass has irregular margins.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "top_sim": 0.4791,
+    "n_links": 4
+   },
+   {
+    "node_id": "c2",
+    "type": "claim",
+    "text": "The mass has a heterogeneous internal echo pattern.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "top_sim": 0.4765,
+    "n_links": 4
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "The mass is hypoechoic compared to the surrounding breast tissue.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 0,
+    "top_sim": 0.5747,
+    "n_links": 4
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "The mass appears to be well-defined with smooth margins.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "top_sim": 0.5104,
+    "n_links": 4
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "The internal echo pattern is hypoechoic, suggesting a solid component.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "top_sim": 0.5103,
+    "n_links": 4
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "The posterior acoustic enhancement is minimal, which is typical of benign lesions.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "expert_b",
+    "round_idx": 0,
+    "top_sim": 0.7701,
+    "n_links": 4
+   },
+   {
+    "node_id": "c7",
+    "type": "claim",
+    "text": "The mass is not well-defined, but rather has irregular margins.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "top_sim": 0.4977,
+    "n_links": 4
+   },
+   {
+    "node_id": "c8",
+    "type": "claim",
+    "text": "The internal echo pattern is heterogeneous, suggesting a solid component.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "expert_a",
+    "round_idx": 1,
+    "top_sim": 0.4828,
+    "n_links": 4
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_364",
+    "type": "triple",
+    "subject": "circumscribed_margin",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "circumscribed margin suggests benign"
+   },
+   {
+    "node_id": "t_147",
+    "type": "triple",
+    "subject": "hypoechoic_circumscribed_oval_parallel_mass",
+    "predicate": "typically_classified_as",
+    "object": "birads_3",
+    "text": "hypoechoic circumscribed oval parallel mass typically classified as birads 3"
+   },
+   {
+    "node_id": "t_291",
+    "type": "triple",
+    "subject": "hyperechoic_mass",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "hyperechoic mass suggests benign"
+   },
+   {
+    "node_id": "t_333",
+    "type": "triple",
+    "subject": "spiculated_or_irregular_mass",
+    "predicate": "suggests_birads_5",
+    "object": "true",
+    "text": "spiculated or irregular mass suggests birads 5"
+   },
+   {
+    "node_id": "t_080",
+    "type": "triple",
+    "subject": "complicated_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "homogeneous_low_level_internal_echoes",
+    "text": "complicated cyst ultrasound appearance includes homogeneous low level internal echoes"
+   },
+   {
+    "node_id": "t_202",
+    "type": "triple",
+    "subject": "immobile_echogenic_component_in_cyst",
+    "predicate": "indicates",
+    "object": "true_intracystic_mass_or_adherent_debris",
+    "text": "immobile echogenic component in cyst indicates true intracystic mass or adherent debris"
+   },
+   {
+    "node_id": "t_181",
+    "type": "triple",
+    "subject": "internal_vascularity",
+    "predicate": "suggests_solid_mass",
+    "object": "true",
+    "text": "internal vascularity suggests solid mass"
+   },
+   {
+    "node_id": "t_176",
+    "type": "triple",
+    "subject": "complicated_breast_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "low_level_internal_echoes",
+    "text": "complicated breast cyst ultrasound appearance includes low level internal echoes"
+   },
+   {
+    "node_id": "t_347",
+    "type": "triple",
+    "subject": "complex_cystic_and_solid_breast_mass",
+    "predicate": "differs_from",
+    "object": "simple_breast_cyst",
+    "text": "complex cystic and solid breast mass differs from simple breast cyst"
+   },
+   {
+    "node_id": "t_357",
+    "type": "triple",
+    "subject": "microcalcifications_in_hypoechoic_mass",
+    "predicate": "suggests_malignancy",
+    "object": "possible",
+    "text": "microcalcifications in hypoechoic mass suggests malignancy possible"
+   },
+   {
+    "node_id": "t_346",
+    "type": "triple",
+    "subject": "complex_cystic_and_solid_breast_mass",
+    "predicate": "differs_from",
+    "object": "complicated_breast_cyst",
+    "text": "complex cystic and solid breast mass differs from complicated breast cyst"
+   },
+   {
+    "node_id": "t_175",
+    "type": "triple",
+    "subject": "complicated_breast_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "homogeneous_hypoechoic_content",
+    "text": "complicated breast cyst ultrasound appearance includes homogeneous hypoechoic content"
+   },
+   {
+    "node_id": "t_201",
+    "type": "triple",
+    "subject": "mobile_echogenic_component_in_cyst",
+    "predicate": "indicates",
+    "object": "debris_or_pus_or_clot",
+    "text": "mobile echogenic component in cyst indicates debris or pus or clot"
+   },
+   {
+    "node_id": "t_212",
+    "type": "triple",
+    "subject": "oil_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "internal_echoic_bands_possible",
+    "text": "oil cyst ultrasound appearance includes internal echoic bands possible"
+   },
+   {
+    "node_id": "t_349",
+    "type": "triple",
+    "subject": "posterior_acoustic_enhancement",
+    "predicate": "associated_with",
+    "object": "cystic_lesions",
+    "text": "posterior acoustic enhancement associated with cystic lesions"
+   },
+   {
+    "node_id": "t_163",
+    "type": "triple",
+    "subject": "simple_breast_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "posterior_acoustic_enhancement",
+    "text": "simple breast cyst ultrasound appearance includes posterior acoustic enhancement"
+   },
+   {
+    "node_id": "t_174",
+    "type": "triple",
+    "subject": "complicated_breast_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "posterior_acoustic_enhancement_possible",
+    "text": "complicated breast cyst ultrasound appearance includes posterior acoustic enhancement possible"
+   },
+   {
+    "node_id": "t_187",
+    "type": "triple",
+    "subject": "complex_cystic_and_solid_breast_mass",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "posterior_acoustic_enhancement",
+    "text": "complex cystic and solid breast mass ultrasound appearance includes posterior acoustic enhancement"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [
+   {
+    "src": "c7",
+    "dst": "c4",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c8",
+    "dst": "c5",
+    "sign": "-",
+    "type": "DISAGREE"
+   }
+  ],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_364",
+    "rank": 0,
+    "score": 0.4791,
+    "type": "retrieval"
+   },
+   {
+    "src": "c1",
+    "dst": "t_147",
+    "rank": 1,
+    "score": 0.4597,
+    "type": "retrieval"
+   },
+   {
+    "src": "c1",
+    "dst": "t_291",
+    "rank": 2,
+    "score": 0.4425,
+    "type": "retrieval"
+   },
+   {
+    "src": "c1",
+    "dst": "t_333",
+    "rank": 3,
+    "score": 0.4406,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_080",
+    "rank": 0,
+    "score": 0.4765,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_202",
+    "rank": 1,
+    "score": 0.4684,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_181",
+    "rank": 2,
+    "score": 0.4602,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_176",
+    "rank": 3,
+    "score": 0.4496,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_347",
+    "rank": 0,
+    "score": 0.5747,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_357",
+    "rank": 1,
+    "score": 0.5649,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_346",
+    "rank": 2,
+    "score": 0.558,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_175",
+    "rank": 3,
+    "score": 0.5542,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_291",
+    "rank": 0,
+    "score": 0.5104,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_147",
+    "rank": 1,
+    "score": 0.4285,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_181",
+    "rank": 2,
+    "score": 0.4191,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_364",
+    "rank": 3,
+    "score": 0.4187,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_201",
+    "rank": 0,
+    "score": 0.5103,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_212",
+    "rank": 1,
+    "score": 0.4695,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_080",
+    "rank": 2,
+    "score": 0.4682,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_202",
+    "rank": 3,
+    "score": 0.4608,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_349",
+    "rank": 0,
+    "score": 0.7701,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_163",
+    "rank": 1,
+    "score": 0.6319,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_174",
+    "rank": 2,
+    "score": 0.629,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_187",
+    "rank": 3,
+    "score": 0.6241,
+    "type": "retrieval"
+   },
+   {
+    "src": "c7",
+    "dst": "t_291",
+    "rank": 0,
+    "score": 0.4977,
+    "type": "retrieval"
+   },
+   {
+    "src": "c7",
+    "dst": "t_181",
+    "rank": 1,
+    "score": 0.4542,
+    "type": "retrieval"
+   },
+   {
+    "src": "c7",
+    "dst": "t_147",
+    "rank": 2,
+    "score": 0.4333,
+    "type": "retrieval"
+   },
+   {
+    "src": "c7",
+    "dst": "t_333",
+    "rank": 3,
+    "score": 0.4308,
+    "type": "retrieval"
+   },
+   {
+    "src": "c8",
+    "dst": "t_080",
+    "rank": 0,
+    "score": 0.4828,
+    "type": "retrieval"
+   },
+   {
+    "src": "c8",
+    "dst": "t_201",
+    "rank": 1,
+    "score": 0.478,
+    "type": "retrieval"
+   },
+   {
+    "src": "c8",
+    "dst": "t_176",
+    "rank": 2,
+    "score": 0.443,
+    "type": "retrieval"
+   },
+   {
+    "src": "c8",
+    "dst": "t_212",
+    "rank": 3,
+    "score": 0.4414,
+    "type": "retrieval"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_364",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_181",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_291",
+    "dst": "t_181",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_181",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_176",
+    "dst": "t_175",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_176",
+    "dst": "t_174",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_347",
+    "dst": "t_346",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_347",
+    "dst": "t_187",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_346",
+    "dst": "t_187",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_175",
+    "dst": "t_174",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_163",
+    "dst": "t_187",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 8,
+  "num_triples": 18,
+  "num_claim_claim_edges": 2,
+  "num_claim_triple_edges": 32,
+  "num_triple_triple_edges": 13
+ }
+}

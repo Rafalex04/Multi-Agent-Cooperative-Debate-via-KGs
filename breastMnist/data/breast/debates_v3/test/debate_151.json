@@ -1,0 +1,121 @@
+{
+ "sample_id": "151",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "The mass has irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c2",
+   "text": "The mass has a heterogeneous internal echo pattern.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c3",
+   "text": "The mass is located in the retroareolar region.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c4",
+   "text": "The mass appears to have smooth, well-defined margins.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c5",
+   "text": "The echo pattern within the mass is relatively homogenous, without significant cystic components.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c6",
+   "text": "The mass is located in the retroareolar region, a common location for benign breast changes.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c7",
+   "text": "Smooth, well-defined margins are characteristic of benign lesions.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c4"
+   ]
+  },
+  {
+   "node_id": "c8",
+   "text": "Homogenous echo patterns are typical of benign lesions.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c5"
+   ]
+  },
+  {
+   "node_id": "c9",
+   "text": "Retroareolar location is not specific to benign or malignant lesions.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "addressed_ids": [
+    "c6"
+   ]
+  },
+  {
+   "node_id": "c16",
+   "text": "The smooth, well-defined margins suggest a benign process.",
+   "label": null,
+   "label_explicit": false,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c17",
+   "text": "The homogenous echo pattern is more consistent with a benign lesion.",
+   "label": null,
+   "label_explicit": false,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "addressed_ids": []
+  },
+  {
+   "node_id": "c18",
+   "text": "The retroareolar location is not specific to benign or malignant lesions. [LABEL] BENIGN",
+   "label": null,
+   "label_explicit": false,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "addressed_ids": []
+  }
+ ]
+}
