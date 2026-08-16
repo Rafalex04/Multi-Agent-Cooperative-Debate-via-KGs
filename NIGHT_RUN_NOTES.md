@@ -443,6 +443,23 @@ measurement phase, not to the debate dynamics.**
   and left gpu22 idle for roughly an hour — fixed with `ssh -f`, but worth
   knowing if the timings look uneven.
 
+### Machine state left behind
+
+- **gpu21, gpu23, gpu24**: ollama and the medgemma:4b blobs were copied to
+  `/data/rm2125/` on each (~3.2 GB per node; `/data` is node-local, not shared).
+  Their ollama servers are **stopped** and the GPUs are released. The install is
+  left in place so a future multi-GPU run can start immediately — delete
+  `/data/rm2125/{bin,ollama_models}` on those three nodes to reclaim the space.
+- **gpu22**: untouched apart from its ollama being restarted with
+  `OLLAMA_NUM_PARALLEL=4` (it was serving one request at a time, which was
+  halving probe throughput). Still running, as it was before the run started.
+- `breastMnist/data/breast/images_224/` (30 MB of pre-exported native-resolution
+  images) is gitignored — it is regenerable from medmnist in one command, and
+  worker nodes need it because only `$HOME` is shared between them.
+- Pre-existing uncommitted edits to `config_breast.yaml`, `breast_main.py`,
+  `kg_retrieval.py` and the `observations/*.json` files were already in the
+  working tree when the night started. I left them alone.
+
 ## Files added
 
 ```
