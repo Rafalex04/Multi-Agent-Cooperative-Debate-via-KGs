@@ -66,6 +66,15 @@ def main():
     p.add_argument("--kg-root", default=str(_HERE.parents[2] / "breastMnist"))
     p.add_argument("--hops", type=int, default=1,
                    help="KG expansion depth around each cited feature")
+    p.add_argument("--max-round0", type=int, default=0,
+                   help="cap opening claims per agent (0 = keep all). The prompt "
+                        "asks for at most 3 but the model emits ~5.4, and the "
+                        "opening round is where the repetition lives: measured "
+                        "over 217 graphs, round 0 has uniqueness 0.184 against "
+                        "0.622 and 0.731 for the two rebuttal rounds, while "
+                        "supplying 80% of all claims. Capping at 3 lifts overall "
+                        "uniqueness from 0.204 to 0.283 at the cost of dropping "
+                        "claims, so both variants are worth training.")
     args = p.parse_args()
 
     root = Path(args.kg_root)
@@ -91,6 +100,15 @@ def main():
         for f in files:
             d = json.loads(f.read_text())
             claims = d["claims"]
+            if args.max_round0:
+                per, kept = defaultdict(int), []
+                for c in claims:
+                    if c["round_idx"] == 0:
+                        if per[c["expert_id"]] >= args.max_round0:
+                            continue
+                        per[c["expert_id"]] += 1
+                    kept.append(c)
+                claims = kept
             if not claims:
                 continue
 
