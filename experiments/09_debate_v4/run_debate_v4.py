@@ -204,25 +204,42 @@ def _norm(t):
 
 
 def _dedupe(claim, seen):
-    """Strip echoed sentences; return True if nothing new remains."""
+    """Flag repetition instead of discarding it; return True only if empty.
+
+    Dropping repeats starved the debate. Measured over 311 debates, round 0
+    produced 11.1 claims per graph while rounds 1 and 2 together produced 2.7,
+    because 55% of rebuttal turns had every line removed as a repeat. The model
+    rebuts by re-reading its finding list and copying from it, so the filter was
+    correctly identifying parroting -- but deleting the turn also deleted the
+    ADDRESSED edge that came with it, leaving 2.7 debate edges per graph.
+
+    A sentence aimed at a different opponent claim is structurally new even when
+    its wording is not, so the claim is kept and marked. Echoed sentences are
+    still stripped when something original remains alongside them; only when
+    nothing original is left does the claim keep its original text and get
+    is_repeat, which the graph builder exposes as a node feature.
+    """
     parts = [x.strip() for x in re.split(r"(?<=[.!?])\s+", claim["text"]) if x.strip()]
     kept = [x for x in parts if _norm(x) and _norm(x) not in seen]
-    if not kept:
-        return True
-    text = " ".join(kept)
-    key = _norm(text)
-    if not key or len(key.split()) < 3 or key in seen:
-        return True
-    kt = set(key.split())
-    for prev in seen:
-        pt = set(prev.split())
-        if pt and len(kt & pt) / len(kt | pt) >= 0.9:
-            return True
-    claim["text"] = text
-    for x in kept:
-        seen.add(_norm(x))
-    seen.add(key)
-    return False
+    original = claim["text"]
+
+    if kept:
+        text = " ".join(kept)
+        key = _norm(text)
+        near = any(pt and len(set(key.split()) & pt) / len(set(key.split()) | pt) >= 0.9
+                   for pt in (set(p.split()) for p in seen))
+        if len(key.split()) >= 3 and not near:
+            claim["text"] = text
+            for x in kept:
+                seen.add(_norm(x))
+            seen.add(key)
+            claim["is_repeat"] = False
+            return False
+
+    # Nothing original left: keep the turn for its edge, but mark it.
+    claim["text"] = original
+    claim["is_repeat"] = True
+    return len(_norm(original).split()) < 3
 
 
 def parse_claims(text, role, round_idx, counter, tag2feat):
@@ -269,6 +286,7 @@ def parse_claims(text, role, round_idx, counter, tag2feat):
             "label": label, "label_explicit": label is not None,
             "expert_id": role, "round_idx": round_idx,
             "cited_features": feat, "addressed_ids": addressed,
+            "is_repeat": False,
         })
 
     if out:
@@ -288,6 +306,7 @@ def parse_claims(text, role, round_idx, counter, tag2feat):
             "cited_features": [tag2feat[t.lower()] for t in _CITES_RE.findall(part)
                                if t.lower() in tag2feat],
             "addressed_ids": [a.lower() for a in _ADDR_RE.findall(part)],
+            "is_repeat": False,
         })
     return out
 
@@ -400,11 +419,12 @@ def main():
         tmp.replace(dest)
 
         cited = sum(1 for c in claims if c["cited_features"])
+        rep = sum(1 for c in claims if c.get("is_repeat"))
         against = sum(1 for c in claims
                       if c["label"] and c["label"] != _SIDE[c["expert_id"]])
         rate = (time.time() - t0) / k
-        logger.info("  [%3d/%3d] %s gold=%-9s | %2d claims %2d cited %2d against-side | %.0fs | ETA %.1fh",
-                    k, len(idxs), sid, gold, len(claims), cited, against,
+        logger.info("  [%3d/%3d] %s gold=%-9s | %2d claims %2d cited %2d repeat %2d against | %.0fs | ETA %.1fh",
+                    k, len(idxs), sid, gold, len(claims), cited, rep, against,
                     time.time() - ts, rate * (len(idxs) - k) / 3600)
 
     logger.info("Done in %.1f min -> %s", (time.time() - t0) / 60, out_dir)

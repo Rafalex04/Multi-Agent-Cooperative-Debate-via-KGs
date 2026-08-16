@@ -66,6 +66,12 @@ def main():
     p.add_argument("--kg-root", default=str(_HERE.parents[2] / "breastMnist"))
     p.add_argument("--hops", type=int, default=1,
                    help="KG expansion depth around each cited feature")
+    p.add_argument("--drop-repeats", action="store_true",
+                   help="discard claims flagged is_repeat. Debate-time dedup is "
+                        "irreversible and cost 9 of every 12 rebuttal edges, so "
+                        "repeats are kept and flagged during generation and "
+                        "filtered here instead, which makes the choice a "
+                        "build-time option rather than a commitment.")
     p.add_argument("--max-round0", type=int, default=0,
                    help="cap opening claims per agent (0 = keep all). The prompt "
                         "asks for at most 3 but the model emits ~5.4, and the "
@@ -100,6 +106,8 @@ def main():
         for f in files:
             d = json.loads(f.read_text())
             claims = d["claims"]
+            if args.drop_repeats:
+                claims = [c for c in claims if not c.get("is_repeat")]
             if args.max_round0:
                 per, kept = defaultdict(int), []
                 for c in claims:
@@ -134,6 +142,10 @@ def main():
                     "expert_id": c["expert_id"], "round_idx": c["round_idx"],
                     "cited_features": c.get("cited_features", []),
                     "n_cited": len(c.get("cited_features", [])),
+                    # Repeats are kept for the ADDRESSED edge they carry; the
+                    # flag lets a model discount their text without losing the
+                    # structure. See run_debate_v4._dedupe.
+                    "is_repeat": bool(c.get("is_repeat")),
                     # True when the agent labelled against the side it was told
                     # to argue, which v1 and v2 had no way to express.
                     "against_side": bool(c["label"]) and c["label"] != side,
@@ -180,6 +192,7 @@ def main():
                 "rounds_used": d.get("rounds_used", 3),
                 "debate_mal_share": share,
                 "n_against_side": sum(1 for c in claim_nodes if c["against_side"]),
+                "n_repeat": sum(1 for c in claim_nodes if c["is_repeat"]),
                 "nodes": {"claims": claim_nodes, "triples": triple_nodes},
                 "edges": {"claim_claim": cc, "claim_triple": ct, "triple_triple": tt},
                 "stats": {

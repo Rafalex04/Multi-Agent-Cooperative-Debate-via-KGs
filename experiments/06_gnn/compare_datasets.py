@@ -36,7 +36,7 @@ from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import SAGEConv, global_mean_pool, global_max_pool
 
-_META = 6      # label, expert, round, n_cited, against_side, is_claim
+_META = 7      # label, expert, round, n_cited, against_side, is_repeat, is_claim
 
 
 def auc(pos, neg):
@@ -85,6 +85,7 @@ def build(root: Path, split: str, enc):
                 c.get("round_idx", 0) / 3.0,
                 float(c.get("n_cited", c.get("n_links", 0))) / 4.0,
                 1.0 if c.get("against_side") else 0.0,
+                1.0 if c.get("is_repeat") else 0.0,
                 1.0,
             ])
         for t in triples:
