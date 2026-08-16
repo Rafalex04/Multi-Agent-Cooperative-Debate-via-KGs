@@ -196,25 +196,46 @@ def main():
     p.add_argument("--split",      default="test")
     p.add_argument("--image-size", type=int, default=224)
     p.add_argument("--limit",      type=int, default=None)
+    p.add_argument("--shard",      type=int, default=0)
+    p.add_argument("--num-shards", type=int, default=1)
+    p.add_argument("--workers",    type=int, default=1,
+                   help="probes run concurrently within a sample")
     p.add_argument("--timeout",    type=int, default=1800)
     p.add_argument("--output",     default=None)
     p.add_argument("--kg-root",
         default=str(Path(__file__).resolve().parents[2] / "breastMnist"))
+    p.add_argument("--probe-set", choices=("manual", "auto"), default="manual",
+                   help="'auto' derives polarity and question text from the KG "
+                        "itself, with no hand-written feature tables")
     args = p.parse_args()
-
-    from medmnist import BreastMNIST
 
     root    = Path(args.kg_root)
     triples = json.loads((root / "data/breast/knowledge_graph.json").read_text())["triples"]
     schema  = json.loads((root / "data/breast/schema.json").read_text())
-    probes  = build_probes(triples, schema)
+    if args.probe_set == "auto":
+        sys.path.insert(0, str(Path(__file__).parent))
+        from probe_auto import build_probes_auto
+        probes = build_probes_auto(triples, schema)
+    else:
+        probes = build_probes(triples, schema)
 
-    logger.info("Derived %d probes from KG stance triples:", len(probes))
+    logger.info("Derived %d probes (%s) from KG stance triples:",
+                len(probes), args.probe_set)
     for pr in probes:
         logger.info("   w=%+.1f  %s", pr["weight"], pr["feature"])
 
-    ds = BreastMNIST(split=args.split, download=True, size=args.image_size)
-    n  = len(ds.imgs) if args.limit is None else min(args.limit, len(ds.imgs))
+    # Prefer the pre-exported npz so worker nodes need only numpy + PIL; fall
+    # back to medmnist on machines where it is installed.
+    npz_path = root / f"data/breast/images_224/{args.split}.npz"
+    if npz_path.exists():
+        import numpy as np
+        z = np.load(npz_path)
+        imgs, labels = z["imgs"], z["labels"]
+    else:
+        from medmnist import BreastMNIST
+        ds = BreastMNIST(split=args.split, download=True, size=args.image_size)
+        imgs, labels = ds.imgs, ds.labels
+    n = len(imgs) if args.limit is None else min(args.limit, len(imgs))
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     out_path = Path(args.output) if args.output else \
@@ -234,21 +255,30 @@ def main():
 
     with out_path.open("a") as fh:
         for idx in range(n):
-            if idx in done:
+            if idx % args.num_shards != args.shard or idx in done:
                 continue
-            gold = _LABEL_MAP[int(ds.labels[idx][0])]
-            b64  = _b64(ds.imgs[idx], args.image_size)
+            gold = _LABEL_MAP[int(labels[idx][0])]
+            b64  = _b64(imgs[idx], args.image_size)
 
             t0 = time.time()
-            results = []
-            for pr in probes:
-                out = client.call(pr["question"], image=b64, num_predict=3, logprobs=True)
-                lp  = out.get("logprobs") or out["message"].get("logprobs")
-                results.append({
-                    "feature": pr["feature"],
-                    "weight":  pr["weight"],
-                    "p_yes":   _p_yes(lp),
-                })
+
+            def _run(pr):
+                try:
+                    out = client.call(pr["question"], image=b64,
+                                      num_predict=3, logprobs=True)
+                    lp  = out.get("logprobs") or out["message"].get("logprobs")
+                    py  = _p_yes(lp)
+                except Exception as exc:
+                    logger.warning("probe %s failed: %s", pr["feature"], exc)
+                    py = None
+                return {"feature": pr["feature"], "weight": pr["weight"], "p_yes": py}
+
+            if args.workers > 1:
+                from concurrent.futures import ThreadPoolExecutor
+                with ThreadPoolExecutor(max_workers=args.workers) as ex:
+                    results = list(ex.map(_run, probes))
+            else:
+                results = [_run(pr) for pr in probes]
             elapsed = time.time() - t0
 
             p_m  = score_sample(results)
