@@ -36,7 +36,7 @@ Usage:
 """
 from __future__ import annotations
 
-import argparse, base64, io, json, logging, re, sys, time, urllib.request
+import argparse, base64, io, json, logging, random, re, sys, time, urllib.request
 from pathlib import Path
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -102,8 +102,9 @@ These ACR BI-RADS findings indicate a {side} mass. Each is described by how it \
 looks on ultrasound:
 {_toolkit_block(kit)}
 
-Check each finding against the image, then reply with exactly 3 lines and \
-nothing else. Each line has three fields separated by | :
+Check each finding against the image, then report ONLY the ones you can \
+actually see. Reply with between 1 and 3 lines and nothing else. Each line has \
+three fields separated by | :
 
   finding tag | {side} or {other} | what you actually see in this image
 
@@ -116,7 +117,9 @@ Worked examples of the format:
 Those three are only to show the format. Write your own observations.
 
 Rules:
-- Use three DIFFERENT finding tags from the list above.
+- Report only findings genuinely visible in THIS image. If you can see just one,
+  write one line. Three weak claims are worse than one solid one.
+- Use a different finding tag on each line.
 - Never copy a finding's wording. Say what THIS image looks like.
 - If a finding is absent, say so and put {other} in the middle field, as in the \
 second example. An honest absence is stronger evidence than a claimed presence.
@@ -149,12 +152,12 @@ YOUR OPPONENT JUST SAID:
 Sentences you have already used, do not repeat any:
 {mine}
 
-Reply with exactly 3 lines and nothing else. Each line has four fields \
+Reply with between 1 and 3 lines and nothing else. Each line has four fields \
 separated by | :
 
   their claim id | your finding tag | {side} or {other} | your answer
 
-Fill in exactly these three, one per opponent claim:
+Answer their claims, one line each, using only findings you can actually see:
 
 {ex}
 
@@ -289,6 +292,26 @@ def parse_claims(text, role, round_idx, counter, tag2feat):
     return out
 
 
+def shuffled(kits, sample_id):
+    """Re-order each toolkit per sample, re-tagging f1..fN in the new order.
+
+    Measured on the first 227 debates, agents cite whatever sits at the top of
+    the list: the malignant advocate spent 90% of its citations on f1-f3 and
+    named spiculation, the strongest malignancy sign, in 2.6% of claims. Only 39
+    distinct citation-sets appeared across 227 images. Shuffling per sample
+    makes position uninformative, so a finding gets cited because it is visible
+    rather than because it is first. Seeded by sample id to stay reproducible.
+    """
+    rng = random.Random(int(sample_id))
+    out, t2f = {}, {}
+    for role, kit in kits.items():
+        items = [(feat, desc) for _, feat, desc in kit]
+        rng.shuffle(items)
+        out[role] = [(f"f{i+1}", feat, desc) for i, (feat, desc) in enumerate(items)]
+        t2f[role] = {t: f for t, f, _ in out[role]}
+    return out, t2f
+
+
 def debate(b64, client, kits, tag2feat, rounds, temperature):
     counter = [0]
     by_expert = {"expert_a": [], "expert_b": []}
@@ -366,8 +389,9 @@ def main():
             continue
         gold = _LABEL_MAP[int(labels[idx][0])]
         ts = time.time()
-        claims = debate(_b64(imgs[idx], args.image_size), client, kits, tag2feat,
-                        args.rounds, args.temperature)
+        kits_s, tag2feat_s = shuffled(kits, sid)
+        claims = debate(_b64(imgs[idx], args.image_size), client, kits_s,
+                        tag2feat_s, args.rounds, args.temperature)
         tmp = dest.with_suffix(f".{args.shard}.tmp")
         tmp.write_text(json.dumps({
             "sample_id": sid, "gold_label": gold, "rounds_used": args.rounds,
