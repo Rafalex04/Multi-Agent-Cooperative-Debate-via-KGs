@@ -1,0 +1,684 @@
+{
+ "sample_id": "419",
+ "gold_label": "BENIGN",
+ "gold_label_int": 0,
+ "verdict": "BENIGN",
+ "correct": true,
+ "rounds_used": 3,
+ "debate_mal_share": 0.2,
+ "n_against_side": 15,
+ "n_repeat": 0,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "there is a dark band behind the mass.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "cited_features": [
+     "posterior_shadowing_with_solid_irregular_mass"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.9980054420364457,
+    "stance_weight": 1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c2",
+    "type": "claim",
+    "text": "the edges of the mass are smooth.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "cited_features": [
+     "circumscribed_margin"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.25744727181975474,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "the mass is taller than it is wide.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "cited_features": [
+     "non_parallel_orientation"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.9750748647595723,
+    "stance_weight": 1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "a bright capsule is visible around the mass.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "cited_features": [
+     "thin_uniform_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.007650715895024348,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "the mass has irregular borders.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "cited_features": [
+     "spiculated_or_irregular_mass"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.17818869017271058,
+    "stance_weight": 1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "there is a bright, thin rim around the mass.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "cited_features": [
+     "thin_uniform_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.007650715895024348,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c7",
+    "type": "claim",
+    "text": "there is a bright echogenic rim around the mass.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "cited_features": [
+     "echogenic_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.1716869816343753,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c8",
+    "type": "claim",
+    "text": "the mass is anechoic.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "cited_features": [
+     "anechoic_content"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.9969640547152118,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c9",
+    "type": "claim",
+    "text": "They missed the dark band behind the mass.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 1,
+    "cited_features": [
+     "echogenic_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.1716869816343753,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c10",
+    "type": "claim",
+    "text": "They are mistaken about the bright echogenic rim.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 1,
+    "cited_features": [
+     "echogenic_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.1716869816343753,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c11",
+    "type": "claim",
+    "text": "The mass is not anechoic, it has acoustic shadowing.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 1,
+    "cited_features": [
+     "anechoic_content"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.9969640547152118,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c12",
+    "type": "claim",
+    "text": "There is an acoustic shadow behind the mass.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 1,
+    "cited_features": [
+     "posterior_shadowing_with_solid_irregular_mass"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.9980054420364457,
+    "stance_weight": 1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c18",
+    "type": "claim",
+    "text": "The mass does not have a dark band behind it, and is likely not anechoic.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 2,
+    "cited_features": [
+     "posterior_shadowing_with_solid_irregular_mass"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.9980054420364457,
+    "stance_weight": 1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c19",
+    "type": "claim",
+    "text": "The echogenic rim is very thin and bright, not what they are claiming.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 2,
+    "cited_features": [
+     "echogenic_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.1716869816343753,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c20",
+    "type": "claim",
+    "text": "The mass does not have an acoustic shadow behind it, it does not have the bright echogenic rim either.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 2,
+    "cited_features": [
+     "posterior_shadowing_with_solid_irregular_mass"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.9980054420364457,
+    "stance_weight": 1.0,
+    "measured": true
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_353",
+    "type": "triple",
+    "subject": "posterior_shadowing_with_solid_irregular_mass",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "posterior shadowing with solid irregular mass suggests malignancy"
+   },
+   {
+    "node_id": "t_364",
+    "type": "triple",
+    "subject": "circumscribed_margin",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "circumscribed margin suggests benign"
+   },
+   {
+    "node_id": "t_356",
+    "type": "triple",
+    "subject": "non_parallel_orientation",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "non parallel orientation suggests malignancy"
+   },
+   {
+    "node_id": "t_368",
+    "type": "triple",
+    "subject": "thin_uniform_pseudocapsule",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "thin uniform pseudocapsule suggests benign"
+   },
+   {
+    "node_id": "t_333",
+    "type": "triple",
+    "subject": "spiculated_or_irregular_mass",
+    "predicate": "suggests_birads_5",
+    "object": "true",
+    "text": "spiculated or irregular mass suggests birads 5"
+   },
+   {
+    "node_id": "t_053",
+    "type": "triple",
+    "subject": "echogenic_pseudocapsule",
+    "predicate": "present_in_benign",
+    "object": "true",
+    "text": "echogenic pseudocapsule present in benign"
+   },
+   {
+    "node_id": "t_367",
+    "type": "triple",
+    "subject": "anechoic_content",
+    "predicate": "suggests_benign_simple_cyst",
+    "object": "true",
+    "text": "anechoic content suggests benign simple cyst"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [
+   {
+    "src": "c9",
+    "dst": "c6",
+    "sign": "-",
+    "type": "DISAGREE",
+    "explicit": true
+   },
+   {
+    "src": "c10",
+    "dst": "c7",
+    "sign": "-",
+    "type": "DISAGREE",
+    "explicit": true
+   },
+   {
+    "src": "c11",
+    "dst": "c8",
+    "sign": "-",
+    "type": "DISAGREE",
+    "explicit": true
+   },
+   {
+    "src": "c12",
+    "dst": "c9",
+    "sign": "-",
+    "type": "DISAGREE",
+    "explicit": true
+   }
+  ],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_353",
+    "type": "cited",
+    "feature": "posterior_shadowing_with_solid_irregular_mass"
+   },
+   {
+    "src": "c2",
+    "dst": "t_364",
+    "type": "cited",
+    "feature": "circumscribed_margin"
+   },
+   {
+    "src": "c3",
+    "dst": "t_356",
+    "type": "cited",
+    "feature": "non_parallel_orientation"
+   },
+   {
+    "src": "c4",
+    "dst": "t_368",
+    "type": "cited",
+    "feature": "thin_uniform_pseudocapsule"
+   },
+   {
+    "src": "c5",
+    "dst": "t_333",
+    "type": "cited",
+    "feature": "spiculated_or_irregular_mass"
+   },
+   {
+    "src": "c6",
+    "dst": "t_368",
+    "type": "cited",
+    "feature": "thin_uniform_pseudocapsule"
+   },
+   {
+    "src": "c7",
+    "dst": "t_053",
+    "type": "cited",
+    "feature": "echogenic_pseudocapsule"
+   },
+   {
+    "src": "c8",
+    "dst": "t_367",
+    "type": "cited",
+    "feature": "anechoic_content"
+   },
+   {
+    "src": "c9",
+    "dst": "t_053",
+    "type": "cited",
+    "feature": "echogenic_pseudocapsule"
+   },
+   {
+    "src": "c10",
+    "dst": "t_053",
+    "type": "cited",
+    "feature": "echogenic_pseudocapsule"
+   },
+   {
+    "src": "c11",
+    "dst": "t_367",
+    "type": "cited",
+    "feature": "anechoic_content"
+   },
+   {
+    "src": "c12",
+    "dst": "t_353",
+    "type": "cited",
+    "feature": "posterior_shadowing_with_solid_irregular_mass"
+   },
+   {
+    "src": "c18",
+    "dst": "t_353",
+    "type": "cited",
+    "feature": "posterior_shadowing_with_solid_irregular_mass"
+   },
+   {
+    "src": "c19",
+    "dst": "t_053",
+    "type": "cited",
+    "feature": "echogenic_pseudocapsule"
+   },
+   {
+    "src": "c20",
+    "dst": "t_353",
+    "type": "cited",
+    "feature": "posterior_shadowing_with_solid_irregular_mass"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_353",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_356",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_368",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_356",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_368",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_368",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_356",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_368",
+    "dst": "t_333",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_368",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_368",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_333",
+    "dst": "t_367",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_053",
+    "dst": "t_367",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 15,
+  "num_triples": 7,
+  "num_claim_claim_edges": 4,
+  "num_claim_triple_edges": 15,
+  "num_triple_triple_edges": 21
+ },
+ "cited_evidence_score": 0.1461240389000225,
+ "evidence": [
+  {
+   "feature": "architectural_distortion",
+   "p_yes": 0.06130486923183169,
+   "weight": 1.0
+  },
+  {
+   "feature": "irregular_shape",
+   "p_yes": 0.6407378055658187,
+   "weight": 1.0
+  },
+  {
+   "feature": "non_parallel_orientation",
+   "p_yes": 0.9750748647595723,
+   "weight": 1.0
+  },
+  {
+   "feature": "posterior_shadowing_with_solid_irregular_mass",
+   "p_yes": 0.9980054420364457,
+   "weight": 1.0
+  },
+  {
+   "feature": "spiculated",
+   "p_yes": 0.0026419726084567653,
+   "weight": 1.0
+  },
+  {
+   "feature": "spiculated_margin",
+   "p_yes": 0.002788302016713326,
+   "weight": 1.0
+  },
+  {
+   "feature": "spiculated_or_irregular_mass",
+   "p_yes": 0.17818869017271058,
+   "weight": 1.0
+  },
+  {
+   "feature": "echogenic_rind",
+   "p_yes": 0.012978510963137457,
+   "weight": 0.5
+  },
+  {
+   "feature": "microcalcifications_in_hypoechoic_mass",
+   "p_yes": 0.000932173471303267,
+   "weight": 0.5
+  },
+  {
+   "feature": "anechoic_content",
+   "p_yes": 0.9969640547152118,
+   "weight": -1.0
+  },
+  {
+   "feature": "circumscribed_margin",
+   "p_yes": 0.25744727181975474,
+   "weight": -1.0
+  },
+  {
+   "feature": "clustered_microcysts",
+   "p_yes": 0.24641191582889355,
+   "weight": -1.0
+  },
+  {
+   "feature": "echogenic_pseudocapsule",
+   "p_yes": 0.1716869816343753,
+   "weight": -1.0
+  },
+  {
+   "feature": "hyperechoic_mass",
+   "p_yes": 0.9492298691977546,
+   "weight": -1.0
+  },
+  {
+   "feature": "oval_shape",
+   "p_yes": 0.6469440242322132,
+   "weight": -1.0
+  },
+  {
+   "feature": "parallel_orientation",
+   "p_yes": 0.9458051377244787,
+   "weight": -1.0
+  },
+  {
+   "feature": "thin_uniform_pseudocapsule",
+   "p_yes": 0.007650715895024348,
+   "weight": -1.0
+  }
+ ]
+}

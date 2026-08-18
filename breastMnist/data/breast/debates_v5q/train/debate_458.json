@@ -1,0 +1,311 @@
+{
+ "sample_id": "458",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "the mass has an irregular, non-oval shape.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "irregular_shape"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c2",
+   "text": "the mass edge shows spiculated, angular projections.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c3",
+   "text": "a dark shadow band is visible directly behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c4",
+   "text": "a thick, irregular bright halo surrounds the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "echogenic_rind"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c5",
+   "text": "the mass has an irregular, non-circumscribed outline.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "spiculated_or_irregular_mass"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c6",
+   "text": "a dark shadow is visible directly behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": true
+  },
+  {
+   "node_id": "c7",
+   "text": "sharp spiculations radiate from the mass edge.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c8",
+   "text": "the margin appears smooth and well-defined.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "circumscribed_margin"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c9",
+   "text": "posterior acoustic shadowing is not present; the dark band behind the mass is artifact or adjacent tissue distortion.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c6"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c10",
+   "text": "no spiculated margins are visible; the edges are smooth and well-defined, not angular or radiating.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c7"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c11",
+   "text": "the margin is not smooth or well-defined; it is irregular and poorly circumscribed.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [
+    "circumscribed_margin"
+   ],
+   "addressed_ids": [
+    "c8"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c12",
+   "text": "a distinct posterior acoustic shadowing band is present directly behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c9"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c13",
+   "text": "sharp spiculated margins with radiating angular lines are clearly visible.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c10"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c14",
+   "text": "the margin is irregular and poorly circumscribed, not smooth or well-defined.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [
+    "irregular_shape"
+   ],
+   "addressed_ids": [
+    "c11"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true
+  },
+  {
+   "node_id": "c15",
+   "text": "posterior acoustic shadowing is absent; the dark band is artifact from adjacent tissue layers.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c12"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c16",
+   "text": "no spiculated margins are visible; the edges are smooth and well-defined.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c13"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c17",
+   "text": "the margin is smooth and circumscribed, not irregular or poorly defined.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [
+    "circumscribed_margin"
+   ],
+   "addressed_ids": [
+    "c14"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c18",
+   "text": "a distinct posterior acoustic shadowing band is present directly behind the mass, not artifact.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c15"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c19",
+   "text": "sharp spiculated margins with radiating angular lines are clearly visible.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c16"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true
+  },
+  {
+   "node_id": "c20",
+   "text": "the margin is irregular and poorly circumscribed, not smooth or well-defined.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [
+    "irregular_shape"
+   ],
+   "addressed_ids": [
+    "c17"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true
+  }
+ ]
+}

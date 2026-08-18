@@ -1,0 +1,203 @@
+{
+ "sample_id": "113",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "the mass has a hypoechoic, irregularly shaped core.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c2",
+   "text": "the surrounding tissue shows no obvious architectural distortion.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c3",
+   "text": "posterior acoustic shadowing is present behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c4",
+   "text": "the mass has a relatively well-defined but not perfectly smooth margin.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c5",
+   "text": "the mass has a poorly defined, irregular border.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c6",
+   "text": "the surrounding tissue shows no obvious architectural distortion.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": true
+  },
+  {
+   "node_id": "c7",
+   "text": "posterior acoustic shadowing is present behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": true
+  },
+  {
+   "node_id": "c8",
+   "text": "the margin is relatively well-defined, not poorly defined as claimed.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c5"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c9",
+   "text": "no posterior acoustic shadowing is visible in the image.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c7"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c10",
+   "text": "the margin is irregular and spiculated, not well-defined.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c8"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c11",
+   "text": "posterior acoustic shadowing is present behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c9"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true
+  },
+  {
+   "node_id": "c12",
+   "text": "the margin is well-defined and smooth, not irregular or spiculated.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c10"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c13",
+   "text": "no posterior acoustic shadowing is visible in the image.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c11"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true
+  },
+  {
+   "node_id": "c14",
+   "text": "the margin is irregular and spiculated, not well-defined.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c12"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true
+  },
+  {
+   "node_id": "c15",
+   "text": "posterior acoustic shadowing is present behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c13"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true
+  }
+ ]
+}

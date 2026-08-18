@@ -1,0 +1,271 @@
+{
+ "sample_id": "344",
+ "gold_label": "MALIGNANT",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "the mass has a hypoechoic, irregularly shaped core.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c2",
+   "text": "the surrounding tissue shows no significant architectural distortion.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c3",
+   "text": "posterior acoustic shadowing is present behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c4",
+   "text": "the mass has a smooth, well-demarcated border.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c5",
+   "text": "the mass has a posterior acoustic shadowing.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c6",
+   "text": "the margins appear relatively well-defined.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c7",
+   "text": "the echotexture within the mass is heterogeneous.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c8",
+   "text": "the surrounding tissue shows no obvious architectural distortion.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c9",
+   "text": "the margins are irregular and not well-defined, suggesting infiltration.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c6"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c10",
+   "text": "heterogeneous echotexture alone is not diagnostic of malignancy here.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c7"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c11",
+   "text": "architectural distortion is present due to the mass effect and posterior shadowing.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c8"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c12",
+   "text": "the margins appear relatively well-defined, not irregular as claimed.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c9"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c13",
+   "text": "heterogeneous echotexture alone is not diagnostic of malignancy here.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c10"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": true
+  },
+  {
+   "node_id": "c14",
+   "text": "no architectural distortion is present; posterior shadowing is not distortion.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c11"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c15",
+   "text": "the margins are irregular and infiltrative, not well-defined as claimed.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c12"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c16",
+   "text": "heterogeneous echotexture is present, and posterior shadowing suggests malignancy.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c13"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c17",
+   "text": "architectural distortion is evident due to the mass effect and shadowing.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c14"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c18",
+   "text": "margins appear relatively well-defined, not irregular.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c15"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c19",
+   "text": "heterogeneous echotexture alone is not diagnostic.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c16"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c20",
+   "text": "no architectural distortion present.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c17"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  }
+ ]
+}

@@ -1,0 +1,247 @@
+{
+ "sample_id": "021",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "hypoechoic mass with irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c2",
+   "text": "posterior acoustic enhancement present.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c3",
+   "text": "shadowing artifact posterior to the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c4",
+   "text": "the mass has a dark, hypoechoic center with posterior acoustic shadowing.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c5",
+   "text": "the surrounding tissue shows no irregular borders or architectural distortion.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c6",
+   "text": "the mass appears well-circumscribed but with a heterogeneous internal echo pattern.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c7",
+   "text": "posterior acoustic shadowing is not present; the dark center is likely a shadow artifact from adjacent structures.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c4"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c8",
+   "text": "architectural distortion is visible in the surrounding tissue, indicating malignant potential.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c5"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c9",
+   "text": "the mass is well-circumscribed and the heterogeneous pattern is consistent with benign findings.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c6"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c10",
+   "text": "posterior acoustic shadowing is present as a bright line behind the mass, not an artifact.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c7"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c11",
+   "text": "no architectural distortion is visible; surrounding tissue architecture is preserved.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c8"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c12",
+   "text": "the mass is well-circumscribed with heterogeneous echo, consistent with benign features.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c9"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c13",
+   "text": "posterior acoustic shadowing is an artifact, not a true sonographic feature; the dark area is likely shadow from adjacent structures, not a malignancy indicator.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c10"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c14",
+   "text": "architectural distortion is evident in surrounding tissue, suggesting malignant infiltration.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c11"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c15",
+   "text": "the mass is not well-circumscribed; margins are irregular and spiculated, inconsistent with benign features.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c12"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c16",
+   "text": "posterior acoustic shadowing is a true sonographic feature indicating density, not artifact.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c13"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c17",
+   "text": "no architectural distortion is visible; tissue architecture is preserved.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c14"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c18",
+   "text": "the mass is well-circumscribed with smooth margins, not spiculated.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c15"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  }
+ ]
+}

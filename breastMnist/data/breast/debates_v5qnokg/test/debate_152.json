@@ -1,0 +1,259 @@
+{
+ "sample_id": "152",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "the mass has a poorly defined border with irregular contours.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c2",
+   "text": "the mass appears hypoechoic with posterior acoustic enhancement.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c3",
+   "text": "the mass shows internal shadowing and lacks uniform internal texture.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c4",
+   "text": "the mass has a non-parallel, angular upper border.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c5",
+   "text": "the mass has a relatively uniform echotexture without internal vascularity.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c6",
+   "text": "the mass appears hypoechoic with irregular margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c7",
+   "text": "the surrounding tissue shows no signs of invasion or distortion.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c8",
+   "text": "the mass shows posterior acoustic enhancement, which is more suggestive of benign lesion.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c5"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c9",
+   "text": "the irregular margins are not clearly defined on ultrasound, but the internal echotexture lacks vascularity.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c6"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c10",
+   "text": "the surrounding tissue shows distortion and architectural distortion, not just invasion or distortion.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c7"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c11",
+   "text": "posterior acoustic enhancement is not visible; the mass is hypoechoic with shadowing, suggesting malignancy.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c8"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c12",
+   "text": "internal vascularity is present as hyperechoic foci, and margins are irregular with angular contour.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c9"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c13",
+   "text": "no tissue distortion or invasion is seen; the mass is well-circumscribed with no architectural disruption.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c10"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c14",
+   "text": "posterior acoustic enhancement is clearly present, reducing malignancy suspicion.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c11"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c15",
+   "text": "no internal vascularity is visible; margins appear smooth, not angular.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c12"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c16",
+   "text": "surrounding tissue shows architectural distortion and invasion, not just lack of invasion.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c13"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c17",
+   "text": "posterior acoustic enhancement is absent; the mass shows shadowing, indicating potential malignancy.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c14"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c18",
+   "text": "internal vascularity is present as hyperechoic foci, and margins are irregular.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c15"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c19",
+   "text": "surrounding tissue shows architectural distortion and invasion, not just lack of invasion.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c16"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": true
+  }
+ ]
+}

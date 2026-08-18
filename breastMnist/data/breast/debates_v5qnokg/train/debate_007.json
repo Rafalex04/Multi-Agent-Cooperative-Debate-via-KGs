@@ -1,0 +1,259 @@
+{
+ "sample_id": "007",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "irregular, hypoechoic mass with posterior acoustic shadowing.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c2",
+   "text": "well-defined, oval-shaped lesion with smooth margins.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c3",
+   "text": "heterogeneous internal echoes with central necrosis-like areas.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c4",
+   "text": "irregular, hypoechoic mass with posterior acoustic shadowing.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": true
+  },
+  {
+   "node_id": "c5",
+   "text": "well-defined, round mass with homogeneous internal echoes.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c6",
+   "text": "indistinct margins blending into surrounding tissue.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c7",
+   "text": "no microcalcifications visible in the mass.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false
+  },
+  {
+   "node_id": "c8",
+   "text": "heterogeneous echoes and posterior shadowing suggest malignancy, not homogeneous.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c5"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c9",
+   "text": "margins are not indistinct; they appear well-circumscribed with no blending.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c6"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c10",
+   "text": "no microcalcifications visible does not rule out malignancy; this is non-specific.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c7"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c11",
+   "text": "posterior shadowing alone is not diagnostic; this mass is homogeneous and lacks irregularity.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c8"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c12",
+   "text": "margins are indeed well-defined, not indistinct, and no blending is evident.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c9"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c13",
+   "text": "absence of microcalcifications is non-specific; malignancy cannot be inferred without other features.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [],
+   "addressed_ids": [
+    "c10"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c14",
+   "text": "posterior shadowing is present and strong, suggesting high density or calcification, not just non-specific features.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c11"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c15",
+   "text": "margins are indeed sharply defined with no irregularity or blending.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c12"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c16",
+   "text": "absence of microcalcifications is non-specific; this lesion lacks other malignant features like irregular borders or heterogeneity.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c13"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c17",
+   "text": "posterior shadowing is present but the mass is homogeneous and lacks internal irregularity, making it non-specific.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c14"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c18",
+   "text": "margins are sharply defined and no blending or spiculation is visible.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c15"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false
+  },
+  {
+   "node_id": "c19",
+   "text": "absence of microcalcifications is correct; no other malignant features are evident, supporting benignity.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [],
+   "addressed_ids": [
+    "c16"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false
+  }
+ ]
+}

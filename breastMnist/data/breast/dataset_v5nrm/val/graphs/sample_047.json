@@ -1,0 +1,500 @@
+{
+ "sample_id": "047",
+ "gold_label": "MALIGNANT",
+ "gold_label_int": 1,
+ "verdict": "BENIGN",
+ "correct": false,
+ "rounds_used": 3,
+ "debate_mal_share": 0.2727272727272727,
+ "n_against_side": 11,
+ "n_repeat": 0,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "the upper border is smooth.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "cited_features": [
+     "echogenic_rind"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.03989450172146624,
+    "stance_weight": 0.5,
+    "measured": true
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "the mass is round.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "cited_features": [
+     "oval_shape"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.6637112148156573,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "the mass is surrounded by a thin bright echogenic rim.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "cited_features": [
+     "echogenic_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.19280467761385445,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "the mass has a smooth, well-defined boundary.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "cited_features": [
+     "circumscribed_margin"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.42720001733426005,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "there is a thin, bright echogenic rim around the mass.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "cited_features": [
+     "echogenic_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.19280467761385445,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c7",
+    "type": "claim",
+    "text": "the mass is brighter than the surrounding fat.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "cited_features": [
+     "hyperechoic_mass"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.9709359733138883,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c8",
+    "type": "claim",
+    "text": "the upper border is not smooth.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 1,
+    "cited_features": [
+     "circumscribed_margin"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.42720001733426005,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c9",
+    "type": "claim",
+    "text": "the echogenic rim is not uniform.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 1,
+    "cited_features": [
+     "echogenic_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.19280467761385445,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c10",
+    "type": "claim",
+    "text": "the mass is not brighter than the surrounding fat.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 1,
+    "cited_features": [
+     "hyperechoic_mass"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.9709359733138883,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c11",
+    "type": "claim",
+    "text": "The upper border is smooth, and the echogenic rim is uniform.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 1,
+    "cited_features": [
+     "oval_shape"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.6637112148156573,
+    "stance_weight": -1.0,
+    "measured": true
+   },
+   {
+    "node_id": "c12",
+    "type": "claim",
+    "text": "The echogenic rim is uniform.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 1,
+    "cited_features": [
+     "echogenic_pseudocapsule"
+    ],
+    "n_cited": 1,
+    "is_repeat": false,
+    "against_side": true,
+    "p_yes": 0.19280467761385445,
+    "stance_weight": -1.0,
+    "measured": true
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_362",
+    "type": "triple",
+    "subject": "echogenic_rind",
+    "predicate": "suggests_malignancy",
+    "object": "possible",
+    "text": "echogenic rind suggests malignancy possible"
+   },
+   {
+    "node_id": "t_365",
+    "type": "triple",
+    "subject": "oval_shape",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "oval shape suggests benign"
+   },
+   {
+    "node_id": "t_053",
+    "type": "triple",
+    "subject": "echogenic_pseudocapsule",
+    "predicate": "present_in_benign",
+    "object": "true",
+    "text": "echogenic pseudocapsule present in benign"
+   },
+   {
+    "node_id": "t_364",
+    "type": "triple",
+    "subject": "circumscribed_margin",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "circumscribed margin suggests benign"
+   },
+   {
+    "node_id": "t_291",
+    "type": "triple",
+    "subject": "hyperechoic_mass",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "hyperechoic mass suggests benign"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [
+   {
+    "src": "c8",
+    "dst": "c5",
+    "sign": "-",
+    "type": "DISAGREE",
+    "explicit": true
+   },
+   {
+    "src": "c9",
+    "dst": "c6",
+    "sign": "-",
+    "type": "DISAGREE",
+    "explicit": true
+   },
+   {
+    "src": "c10",
+    "dst": "c7",
+    "sign": "-",
+    "type": "DISAGREE",
+    "explicit": true
+   },
+   {
+    "src": "c11",
+    "dst": "c8",
+    "sign": "-",
+    "type": "DISAGREE",
+    "explicit": true
+   },
+   {
+    "src": "c12",
+    "dst": "c9",
+    "sign": "-",
+    "type": "DISAGREE",
+    "explicit": true
+   }
+  ],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_362",
+    "type": "cited",
+    "feature": "echogenic_rind"
+   },
+   {
+    "src": "c3",
+    "dst": "t_365",
+    "type": "cited",
+    "feature": "oval_shape"
+   },
+   {
+    "src": "c4",
+    "dst": "t_053",
+    "type": "cited",
+    "feature": "echogenic_pseudocapsule"
+   },
+   {
+    "src": "c5",
+    "dst": "t_364",
+    "type": "cited",
+    "feature": "circumscribed_margin"
+   },
+   {
+    "src": "c6",
+    "dst": "t_053",
+    "type": "cited",
+    "feature": "echogenic_pseudocapsule"
+   },
+   {
+    "src": "c7",
+    "dst": "t_291",
+    "type": "cited",
+    "feature": "hyperechoic_mass"
+   },
+   {
+    "src": "c8",
+    "dst": "t_364",
+    "type": "cited",
+    "feature": "circumscribed_margin"
+   },
+   {
+    "src": "c9",
+    "dst": "t_053",
+    "type": "cited",
+    "feature": "echogenic_pseudocapsule"
+   },
+   {
+    "src": "c10",
+    "dst": "t_291",
+    "type": "cited",
+    "feature": "hyperechoic_mass"
+   },
+   {
+    "src": "c11",
+    "dst": "t_365",
+    "type": "cited",
+    "feature": "oval_shape"
+   },
+   {
+    "src": "c12",
+    "dst": "t_053",
+    "type": "cited",
+    "feature": "echogenic_pseudocapsule"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_365",
+    "dst": "t_053",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_365",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_365",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_053",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_053",
+    "dst": "t_291",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_291",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 11,
+  "num_triples": 5,
+  "num_claim_claim_edges": 5,
+  "num_claim_triple_edges": 11,
+  "num_triple_triple_edges": 6
+ },
+ "cited_evidence_score": -0.46428246385926625,
+ "evidence": [
+  {
+   "feature": "architectural_distortion",
+   "p_yes": 0.07819999339552758,
+   "weight": 1.0
+  },
+  {
+   "feature": "irregular_shape",
+   "p_yes": 0.8508877707100878,
+   "weight": 1.0
+  },
+  {
+   "feature": "non_parallel_orientation",
+   "p_yes": 0.9933780830000181,
+   "weight": 1.0
+  },
+  {
+   "feature": "posterior_shadowing_with_solid_irregular_mass",
+   "p_yes": 0.9991729696028222,
+   "weight": 1.0
+  },
+  {
+   "feature": "spiculated",
+   "p_yes": 0.0021046244055282584,
+   "weight": 1.0
+  },
+  {
+   "feature": "spiculated_margin",
+   "p_yes": 0.0021092837155677656,
+   "weight": 1.0
+  },
+  {
+   "feature": "spiculated_or_irregular_mass",
+   "p_yes": 0.29071464811406916,
+   "weight": 1.0
+  },
+  {
+   "feature": "echogenic_rind",
+   "p_yes": 0.03989450172146624,
+   "weight": 0.5
+  },
+  {
+   "feature": "microcalcifications_in_hypoechoic_mass",
+   "p_yes": 0.0005507095984069511,
+   "weight": 0.5
+  },
+  {
+   "feature": "anechoic_content",
+   "p_yes": 0.9997615113363932,
+   "weight": -1.0
+  },
+  {
+   "feature": "circumscribed_margin",
+   "p_yes": 0.42720001733426005,
+   "weight": -1.0
+  },
+  {
+   "feature": "clustered_microcysts",
+   "p_yes": 0.1683172514501672,
+   "weight": -1.0
+  },
+  {
+   "feature": "echogenic_pseudocapsule",
+   "p_yes": 0.19280467761385445,
+   "weight": -1.0
+  },
+  {
+   "feature": "hyperechoic_mass",
+   "p_yes": 0.9709359733138883,
+   "weight": -1.0
+  },
+  {
+   "feature": "oval_shape",
+   "p_yes": 0.6637112148156573,
+   "weight": -1.0
+  },
+  {
+   "feature": "parallel_orientation",
+   "p_yes": 0.9811867378297326,
+   "weight": -1.0
+  },
+  {
+   "feature": "thin_uniform_pseudocapsule",
+   "p_yes": 0.0077650867847669945,
+   "weight": -1.0
+  }
+ ]
+}

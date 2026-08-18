@@ -1,0 +1,65 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1713.35it/s]
+/data/rm2125/venv/lib/python3.12/site-packages/torch_geometric/utils/_scatter.py:91: UserWarning: The usage of `scatter(reduce='max')` can be accelerated via the 'torch-scatter' package, but it was not found
+  warnings.warn(
+
+v3  (train=546 test=156)
+  test AUC        0.5638 +- 0.035
+  test bAcc       0.5377 +- 0.045
+  best val AUC    0.6893  at epoch 29.0
+  train AUC there 0.6953  (gap +0.0060)
+  val gain by ep15 +0.0727
+
+v4  (train=546 test=156)
+  test AUC        0.4778 +- 0.059
+  test bAcc       0.4753 +- 0.050
+  best val AUC    0.6022  at epoch 30.6
+  train AUC there 0.5549  (gap -0.0473)
+  val gain by ep15 -0.0075
+
+v4cap  (train=546 test=156)
+  test AUC        0.4751 +- 0.028
+  test bAcc       0.4771 +- 0.026
+  best val AUC    0.6723  at epoch 18.8
+  train AUC there 0.5831  (gap -0.0892)
+  val gain by ep15 +0.0620
+
+v4nr  (train=546 test=156)
+  test AUC        0.4436 +- 0.048
+  test bAcc       0.4630 +- 0.026
+  best val AUC    0.6281  at epoch 35.2
+  train AUC there 0.5741  (gap -0.0540)
+  val gain by ep15 +0.0603
+
+v5  (train=546 test=156)
+  test AUC        0.5495 +- 0.032
+  test bAcc       0.5241 +- 0.049
+  best val AUC    0.5250  at epoch 9.8
+  train AUC there 0.6346  (gap +0.1096)
+  val gain by ep15 -0.0902
+
+v5nr  (train=546 test=156)
+  test AUC        0.4488 +- 0.050
+  test bAcc       0.4618 +- 0.049
+  best val AUC    0.6069  at epoch 28.6
+  train AUC there 0.6943  (gap +0.0874)
+  val gain by ep15 +0.0152
+
+v2  (train=546 test=156)
+  test AUC        0.6027 +- 0.034
+  test bAcc       0.5697 +- 0.029
+  best val AUC    0.6767  at epoch 22.0
+  train AUC there 0.6866  (gap +0.0099)
+  val gain by ep15 +0.0734
+
+curves -> /homes/rm2125/Multi-Agent-Cooperative-Debate-via-KGs/experiments/06_gnn/curves.json
+
+==============================================================================
+dataset      test AUC  test bAcc   best val   epoch      gap  ep15 gain
+v3             0.5638     0.5377     0.6893    29.0  +0.0060    +0.0727
+v4             0.4778     0.4753     0.6022    30.6  -0.0473    -0.0075
+v4cap          0.4751     0.4771     0.6723    18.8  -0.0892    +0.0620
+v4nr           0.4436     0.4630     0.6281    35.2  -0.0540    +0.0603
+v5             0.5495     0.5241     0.5250     9.8  +0.1096    -0.0902
+v5nr           0.4488     0.4618     0.6069    28.6  +0.0874    +0.0152
+v2             0.6027     0.5697     0.6767    22.0  +0.0099    +0.0734

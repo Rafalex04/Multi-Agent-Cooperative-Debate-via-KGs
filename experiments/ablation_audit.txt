@@ -1,0 +1,20 @@
+=== dataset_v5qret  (KG IN prompt, qwen3-vl:8b-instruct, retrieval build) ===
+  graphs 780  claims/graph 19.5
+  uniqueness      0.397
+  cross-overlap   0.010
+  cc edges 11.9  ct edges 78.0  triples 24.5
+  labels {'MALIGNANT': 8561, 'BENIGN': 6659}
+    mal_share train AUC=0.6476  mean(mal)=0.618 mean(ben)=0.541
+    mal_share val   AUC=0.6871  mean(mal)=0.647 mean(ben)=0.551
+    mal_share test  AUC=0.7128  mean(mal)=0.640 mean(ben)=0.529
+
+=== dataset_v5qnokg  (KG-FREE control, qwen3-vl:8b-instruct, retrieval build) ===
+  graphs 780  claims/graph 18.9
+  uniqueness      0.619
+  cross-overlap   0.009
+  cc edges 11.9  ct edges 75.7  triples 32.1
+  labels {'MALIGNANT': 8154, 'BENIGN': 6618}
+    mal_share train AUC=0.5837  mean(mal)=0.573 mean(ben)=0.544
+    mal_share val   AUC=0.5201  mean(mal)=0.557 mean(ben)=0.551
+    mal_share test  AUC=0.4740  mean(mal)=0.552 mean(ben)=0.559
+

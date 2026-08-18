@@ -1,0 +1,176 @@
+########## structural comparison ##########
+===== dataset_v3 =====
+
+======================================================================
+SPLIT: test  (n=156)
+======================================================================
+Class balance: 42 malignant / 114 benign (26.9% positive)
+
+Debate verdict: acc=0.5321  balanced_acc=0.5144
+  TP=20 FP=51 TN=63 FN=22  sens=0.476 spec=0.553
+  verdict distribution: {'MALIGNANT': 71, 'BENIGN': 85}
+
+--- 1. SEPARABILITY (single-feature AUC; 0.5 = noise) ---
+  n_claims         AUC=0.4457  mean(mal)=   7.500 mean(ben)=   8.070
+  n_triples        AUC=0.5477  mean(mal)=  20.190 mean(ben)=  20.132
+  mal_share        AUC=0.5432  mean(mal)=   0.560 mean(ben)=   0.545
+  final_share      AUC=0.5116  mean(mal)=   0.702 mean(ben)=   0.685
+  expert_gap       AUC=0.5230  mean(mal)=   0.968 mean(ben)=   0.958
+  n_cc_edges       AUC=0.4812  mean(mal)=   1.286 mean(ben)=   1.395
+  agree            AUC=0.4912  mean(mal)=   0.000 mean(ben)=   0.018
+  disagree         AUC=0.4850  mean(mal)=   1.286 mean(ben)=   1.377
+  disagree_ratio   AUC=0.4680  mean(mal)=   0.429 mean(ben)=   0.494
+  n_ct_edges       AUC=0.4457  mean(mal)=  30.000 mean(ben)=  32.281
+  n_tt_edges       AUC=0.4973  mean(mal)=  26.595 mean(ben)=  27.535
+  rounds_used      AUC=0.5000  mean(mal)=   3.000 mean(ben)=   3.000
+
+--- 2. READOUT (can a trivial graph readout beat the verdict?) ---
+  mal_share    AUC=0.5432  best_balanced_acc=0.5752 @ th=0.667
+  final_share  AUC=0.5116  best_balanced_acc=0.5169 @ th=1.000
+
+--- 3. DIVERSITY (are the arguments varied?) ---
+  claims total=1235  globally unique=0.284
+  mean within-graph uniqueness=1.000
+  vocabulary=216 distinct words
+  10 most repeated claims:
+     147x  the mass has irregular margins.
+===== dataset_v4 =====
+
+======================================================================
+SPLIT: test  (n=156)
+======================================================================
+Class balance: 42 malignant / 114 benign (26.9% positive)
+
+Debate verdict: acc=0.6603  balanced_acc=0.5645
+  TP=15 FP=26 TN=88 FN=27  sens=0.357 spec=0.772
+  verdict distribution: {'BENIGN': 115, 'MALIGNANT': 41}
+
+--- 1. SEPARABILITY (single-feature AUC; 0.5 = noise) ---
+  n_claims         AUC=0.4919  mean(mal)=  25.429 mean(ben)=  25.360
+  n_triples        AUC=0.4711  mean(mal)=  38.071 mean(ben)=  37.667
+  mal_share        AUC=0.5684  mean(mal)=   0.496 mean(ben)=   0.479
+  final_share      AUC=0.5044  mean(mal)=   0.500 mean(ben)=   0.499
+  expert_gap       AUC=0.4701  mean(mal)=   0.967 mean(ben)=   0.977
+  n_cc_edges       AUC=0.5117  mean(mal)=  12.095 mean(ben)=  12.035
+  agree            AUC=0.4956  mean(mal)=   0.000 mean(ben)=   0.044
+  disagree         AUC=0.5162  mean(mal)=  12.095 mean(ben)=  11.991
+  disagree_ratio   AUC=0.5044  mean(mal)=   1.000 mean(ben)=   0.997
+  n_ct_edges       AUC=0.4608  mean(mal)=  68.786 mean(ben)=  71.298
+  n_tt_edges       AUC=0.4656  mean(mal)= 225.381 mean(ben)= 220.544
+  rounds_used      AUC=0.5000  mean(mal)=   3.000 mean(ben)=   3.000
+
+--- 2. READOUT (can a trivial graph readout beat the verdict?) ---
+  mal_share    AUC=0.5684  best_balanced_acc=0.5702 @ th=0.462
+  final_share  AUC=0.5044  best_balanced_acc=0.5044 @ th=0.500
+
+--- 3. DIVERSITY (are the arguments varied?) ---
+  claims total=3959  globally unique=0.154
+  mean within-graph uniqueness=0.609
+  vocabulary=226 distinct words
+  10 most repeated claims:
+     373x  the mass is irregular in shape.
+===== dataset_v4nr =====
+
+======================================================================
+SPLIT: test  (n=156)
+======================================================================
+Class balance: 42 malignant / 114 benign (26.9% positive)
+
+Debate verdict: acc=0.6410  balanced_acc=0.5514
+  TP=15 FP=29 TN=85 FN=27  sens=0.357 spec=0.746
+  verdict distribution: {'BENIGN': 112, 'MALIGNANT': 44}
+
+--- 1. SEPARABILITY (single-feature AUC; 0.5 = noise) ---
+  n_claims         AUC=0.5316  mean(mal)=  14.738 mean(ben)=  14.395
+  n_triples        AUC=0.4990  mean(mal)=  34.310 mean(ben)=  33.728
+  mal_share        AUC=0.5097  mean(mal)=   0.464 mean(ben)=   0.451
+  final_share      AUC=0.4518  mean(mal)=   0.376 mean(ben)=   0.445
+  expert_gap       AUC=0.4633  mean(mal)=   0.914 mean(ben)=   0.943
+  n_cc_edges       AUC=0.4646  mean(mal)=   1.000 mean(ben)=   1.219
+  agree            AUC=0.5000  mean(mal)=   0.000 mean(ben)=   0.000
+  disagree         AUC=0.4646  mean(mal)=   1.000 mean(ben)=   1.219
+  disagree_ratio   AUC=0.4561  mean(mal)=   0.333 mean(ben)=   0.421
+  n_ct_edges       AUC=0.5070  mean(mal)=  39.810 mean(ben)=  39.132
+  n_tt_edges       AUC=0.5043  mean(mal)= 198.429 mean(ben)= 190.509
+  rounds_used      AUC=0.5000  mean(mal)=   3.000 mean(ben)=   3.000
+
+--- 2. READOUT (can a trivial graph readout beat the verdict?) ---
+  mal_share    AUC=0.5097  best_balanced_acc=0.5689 @ th=0.529
+  final_share  AUC=0.4518  best_balanced_acc=0.5132 @ th=0.600
+
+--- 3. DIVERSITY (are the arguments varied?) ---
+  claims total=2260  globally unique=0.249
+  mean within-graph uniqueness=1.000
+  vocabulary=223 distinct words
+  10 most repeated claims:
+     138x  the mass is irregular in shape.
+===== dataset_v5 =====
+
+======================================================================
+SPLIT: test  (n=156)
+======================================================================
+Class balance: 42 malignant / 114 benign (26.9% positive)
+
+Debate verdict: acc=0.7308  balanced_acc=0.5000
+  TP=0 FP=0 TN=114 FN=42  sens=0.000 spec=1.000
+  verdict distribution: {'BENIGN': 156}
+
+--- 1. SEPARABILITY (single-feature AUC; 0.5 = noise) ---
+  n_claims         AUC=0.4798  mean(mal)=  19.500 mean(ben)=  19.368
+  n_triples        AUC=0.5565  mean(mal)=  19.810 mean(ben)=  17.711
+  mal_share        AUC=0.6257  mean(mal)=   0.225 mean(ben)=   0.173  <-- signal
+  final_share      AUC=0.5856  mean(mal)=   0.296 mean(ben)=   0.229  <-- signal
+  expert_gap       AUC=0.6296  mean(mal)=   0.399 mean(ben)=   0.290  <-- signal
+  n_cc_edges       AUC=0.5233  mean(mal)=  11.929 mean(ben)=  11.693
+  agree            AUC=0.4354  mean(mal)=   0.786 mean(ben)=   1.114
+  disagree         AUC=0.5781  mean(mal)=  11.143 mean(ben)=  10.579
+  disagree_ratio   AUC=0.5713  mean(mal)=   0.934 mean(ben)=   0.896
+  n_ct_edges       AUC=0.5685  mean(mal)=  43.929 mean(ben)=  37.368
+  n_tt_edges       AUC=0.5560  mean(mal)=  98.476 mean(ben)=  79.579
+  rounds_used      AUC=0.5000  mean(mal)=   3.000 mean(ben)=   3.000
+
+--- 2. READOUT (can a trivial graph readout beat the verdict?) ---
+  mal_share    AUC=0.6257  best_balanced_acc=0.6472 @ th=0.158
+  final_share  AUC=0.5856  best_balanced_acc=0.5934 @ th=0.500
+
+--- 3. DIVERSITY (are the arguments varied?) ---
+  claims total=3027  globally unique=0.366
+  mean within-graph uniqueness=0.654
+  vocabulary=328 distinct words
+  10 most repeated claims:
+      86x  the mass is wider than it is tall.
+===== dataset_v5nr =====
+
+======================================================================
+SPLIT: test  (n=156)
+======================================================================
+Class balance: 42 malignant / 114 benign (26.9% positive)
+
+Debate verdict: acc=0.7308  balanced_acc=0.5000
+  TP=0 FP=0 TN=114 FN=42  sens=0.000 spec=1.000
+  verdict distribution: {'BENIGN': 156}
+
+--- 1. SEPARABILITY (single-feature AUC; 0.5 = noise) ---
+  n_claims         AUC=0.4380  mean(mal)=  11.286 mean(ben)=  11.991
+  n_triples        AUC=0.5008  mean(mal)=  16.095 mean(ben)=  14.991
+  mal_share        AUC=0.6818  mean(mal)=   0.223 mean(ben)=   0.146  <-- signal
+  final_share      AUC=0.5936  mean(mal)=   0.436 mean(ben)=   0.291  <-- signal
+  expert_gap       AUC=0.6554  mean(mal)=   0.355 mean(ben)=   0.226  <-- signal
+  n_cc_edges       AUC=0.4840  mean(mal)=   3.571 mean(ben)=   3.842
+  agree            AUC=0.4805  mean(mal)=   0.214 mean(ben)=   0.272
+  disagree         AUC=0.4974  mean(mal)=   3.357 mean(ben)=   3.570
+  disagree_ratio   AUC=0.4670  mean(mal)=   0.811 mean(ben)=   0.883
+  n_ct_edges       AUC=0.4979  mean(mal)=  29.024 mean(ben)=  24.219
+  n_tt_edges       AUC=0.4918  mean(mal)=  73.952 mean(ben)=  63.623
+  rounds_used      AUC=0.5000  mean(mal)=   3.000 mean(ben)=   3.000
+
+--- 2. READOUT (can a trivial graph readout beat the verdict?) ---
+  mal_share    AUC=0.6818  best_balanced_acc=0.6623 @ th=0.200
+  final_share  AUC=0.5936  best_balanced_acc=0.5840 @ th=0.333
+
+--- 3. DIVERSITY (are the arguments varied?) ---
+  claims total=1841  globally unique=0.581
+  mean within-graph uniqueness=1.000
+  vocabulary=326 distinct words
+  10 most repeated claims:
+      45x  the mass is wider than it is tall.

@@ -83,7 +83,34 @@ def _block(kit):
     return "\n".join(f"[{tag}] {desc}" for tag, _, desc in kit)
 
 
-def opening_prompt(kit):
+def opening_prompt(kit, no_kg=False):
+    if no_kg:
+        # The KG-free control. Everything else about the debate is held fixed:
+        # open stance, same model, same rounds, same claim caps, same parser.
+        # Only the finding list and its tag field are gone, so the agents argue
+        # from the image in their own vocabulary.
+        return f"""\
+You are a radiologist examining a breast ultrasound image, taking part in a \
+debate about whether this mass is malignant or benign.
+
+You have not been assigned a side. Decide for yourself from the image.
+
+Report ONLY what you can actually see in this image. Reply with between 2 and \
+4 lines and nothing else, each with two fields separated by | :
+
+  MALIGNANT or BENIGN | what you actually see in this image
+
+Worked examples of the format only — write your own observations:
+
+  MALIGNANT | {_EXAMPLES[0]}
+  BENIGN | {_EXAMPLES[1]}
+  MALIGNANT | {_EXAMPLES[2]}
+
+Rules:
+- Describe a different observation on each line.
+- The first field is what that one observation implies on its own, not your
+  overall verdict. Mixed evidence is normal and expected.
+- One sentence per line."""
     return f"""\
 You are a radiologist examining a breast ultrasound image, taking part in a \
 debate about whether this mass is malignant or benign.
@@ -114,19 +141,28 @@ Rules:
 - Use a different finding tag on each line. One sentence per line."""
 
 
-def rebuttal_prompt(kit, opponent, own):
+def rebuttal_prompt(kit, opponent, own, no_kg=False):
     last = max((c["round_idx"] for c in opponent), default=0)
     recent = [c for c in opponent if c["round_idx"] == last]
     opp = "\n".join(f"  {c['node_id']} | {c['label']} | {c['text']}"
                     for c in recent) or "  (nothing yet)"
     mine = "\n".join(f"  - {c['text']}" for c in own) or "  (nothing yet)"
     ids = [c["node_id"] for c in recent] or ["c1", "c2"]
-    ex = "\n".join(
-        f"  {cid} | {v} | f{i+1} | {lab} | {t}"
-        for i, (cid, v, lab, t) in enumerate(zip(
-            (ids + ids)[:2], ("DISAGREE", "AGREE"), ("MALIGNANT", "BENIGN"),
-            ("what they missed or misread in the image",
-             "why you cannot honestly dispute this one"))))
+    reasons = ("what they missed or misread in the image",
+               "why you cannot honestly dispute this one")
+    pairs = list(zip((ids + ids)[:2], ("DISAGREE", "AGREE"),
+                     ("MALIGNANT", "BENIGN"), reasons))
+    if no_kg:
+        ex = "\n".join(f"  {cid} | {v} | {lab} | {t}" for cid, v, lab, t in pairs)
+        fields = ("four fields", "their claim id | AGREE or DISAGREE | "
+                                 "MALIGNANT or BENIGN | your reason")
+        kg_block = ""
+    else:
+        ex = "\n".join(f"  {cid} | {v} | f{i+1} | {lab} | {t}"
+                       for i, (cid, v, lab, t) in enumerate(pairs))
+        fields = ("five fields", "their claim id | AGREE or DISAGREE | "
+                                 "finding tag | MALIGNANT or BENIGN | your reason")
+        kg_block = f"\nFindings that matter for this decision:\n{_block(kit)}\n"
     return f"""\
 You are a radiologist examining a breast ultrasound image, taking part in a \
 debate about whether this mass is malignant or benign.
@@ -135,10 +171,7 @@ This is a DEBATE. You are expected to CHALLENGE what the other radiologist \
 claims. Look at the image again and find what they got wrong, overstated, or \
 missed. Only AGREE with a claim when you genuinely cannot find any grounds to \
 dispute it.
-
-Findings that matter for this decision:
-{_block(kit)}
-
+{kg_block}
 THE OTHER RADIOLOGIST JUST CLAIMED:
 {opp}
 
@@ -146,9 +179,9 @@ Sentences you have already used, do not repeat any:
 {mine}
 
 Answer their claims. Reply with between 2 and 4 lines and nothing else, each \
-with five fields separated by | :
+with {fields[0]} separated by | :
 
-  their claim id | AGREE or DISAGREE | finding tag | MALIGNANT or BENIGN | your reason
+  {fields[1]}
 
 Worked examples of the format only:
 
@@ -194,8 +227,13 @@ def _norm(t):
     return re.sub(r"[^a-z ]", " ", t.lower()).strip()
 
 
-def parse_claims(text, agent, round_idx, counter, tag2feat, max_claims=4):
-    """Parse 3-field opening lines or 5-field rebuttal lines."""
+def parse_claims(text, agent, round_idx, counter, tag2feat, max_claims=4,
+                 no_kg=False):
+    """Parse 3-field opening lines or 5-field rebuttal lines.
+
+    With --no-kg there is no finding tag, so the same lines carry 2 and 4
+    fields instead.
+    """
     out = []
     for raw in text.splitlines():
         line = raw.strip().lstrip("-*0123456789. ").strip()
@@ -210,10 +248,17 @@ def parse_claims(text, agent, round_idx, counter, tag2feat, max_claims=4):
         if parts and re.fullmatch(r"(AGREE|DISAGREE)", parts[0], re.I):
             verdict = parts[0].upper()
             parts = parts[1:]
-        if len(parts) < 3:
-            continue
-
-        tag, lab, body = parts[0], parts[1], " | ".join(parts[2:])
+        if no_kg:
+            # A stray tag turns up occasionally even with none in the prompt.
+            if len(parts) >= 3 and not re.search(r"(MALIGNANT|BENIGN)", parts[0], re.I):
+                parts = parts[1:]
+            if len(parts) < 2:
+                continue
+            tag, lab, body = "", parts[0], " | ".join(parts[1:])
+        else:
+            if len(parts) < 3:
+                continue
+            tag, lab, body = parts[0], parts[1], " | ".join(parts[2:])
         feat = ([tag2feat[tag.strip().lower()]]
                 if tag.strip().lower() in tag2feat else [])
         lm = re.search(r"(MALIGNANT|BENIGN)", lab, re.I)
@@ -263,7 +308,7 @@ def _mark_repeat(claim, seen):
     return len(_norm(original).split()) < 3
 
 
-def debate(b64, client, kits, tag2feats, rounds, temperature):
+def debate(b64, client, kits, tag2feats, rounds, temperature, no_kg=False, run_id=0):
     counter = [0]
     by_agent = {"agent_1": [], "agent_2": []}
     seen = {_norm(d) for k in kits.values() for _, _, d in k}
@@ -276,17 +321,19 @@ def debate(b64, client, kits, tag2feats, rounds, temperature):
             # Only the three most recent opponent claims are answerable; showing
             # fourteen made the model reply to every one and copy each verbatim.
             recent = by_agent[other][-3:]
-            prompt = (opening_prompt(kit) if r == 0 else
-                      rebuttal_prompt(kit, recent, by_agent[agent]))
+            prompt = (opening_prompt(kit, no_kg) if r == 0 else
+                      rebuttal_prompt(kit, recent, by_agent[agent], no_kg))
             try:
                 res = client.call(prompt, image=b64, temperature=temperature,
-                                  seed=1000 * r + (0 if agent == "agent_1" else 1))
+                                  seed=100000 * run_id + 1000 * r
+                                       + (0 if agent == "agent_1" else 1))
                 txt = res["message"]["content"]
             except Exception as exc:
                 logger.warning("turn %s r%d failed: %s", agent, r, exc)
                 continue
             fresh = [c for c in parse_claims(txt, agent, r, counter, tag2feat,
-                                             max_claims=4 if r == 0 else 3)
+                                             max_claims=4 if r == 0 else 3,
+                                             no_kg=no_kg)
                      if not _mark_repeat(c, seen)]
             by_agent[agent] += fresh
             out += fresh
@@ -304,6 +351,10 @@ def main():
     p.add_argument("--shard",      type=int, default=0)
     p.add_argument("--num-shards", type=int, default=1)
     p.add_argument("--reverse",    action="store_true")
+    p.add_argument("--no-kg",      action="store_true",
+                   help="KG-free control: identical debate, no findings in the prompt")
+    p.add_argument("--run-id",     type=int, default=0,
+                   help="independent repeat: reseeds sampling and finding order")
     p.add_argument("--url",        default="http://localhost:11434/api/chat")
     p.add_argument("--out-dir",    required=True)
     p.add_argument("--kg-root",    default=str(_HERE.parents[2] / "breastMnist"))
@@ -313,10 +364,13 @@ def main():
     root = Path(args.kg_root)
     triples = json.loads((root / "data/breast/knowledge_graph.json").read_text())["triples"]
     schema  = json.loads((root / "data/breast/schema.json").read_text())
-    findings = all_findings(triples, schema)
-    logger.info("shared finding set: %d (%d malignant, %d benign)", len(findings),
-                sum(1 for _, _, s in findings if s == "MALIGNANT"),
-                sum(1 for _, _, s in findings if s == "BENIGN"))
+    findings = [] if args.no_kg else all_findings(triples, schema)
+    if args.no_kg:
+        logger.info("KG-FREE control: no findings in the prompt")
+    else:
+        logger.info("shared finding set: %d (%d malignant, %d benign)", len(findings),
+                    sum(1 for _, _, s in findings if s == "MALIGNANT"),
+                    sum(1 for _, _, s in findings if s == "BENIGN"))
 
     z = np.load(root / f"data/breast/images_224/{args.split}.npz")
     imgs, labels = z["imgs"], z["labels"]
@@ -339,12 +393,13 @@ def main():
             continue
         gold = _LABEL_MAP[int(labels[idx][0])]
         ts = time.time()
-        k1, t1 = shuffled(findings, sid, 0)
-        k2, t2 = shuffled(findings, sid, 1)
+        k1, t1 = shuffled(findings, sid, 2 * args.run_id)
+        k2, t2 = shuffled(findings, sid, 2 * args.run_id + 1)
         claims = debate(_b64(imgs[idx], args.image_size), client,
                         {"agent_1": k1, "agent_2": k2},
                         {"agent_1": t1, "agent_2": t2},
-                        args.rounds, args.temperature)
+                        args.rounds, args.temperature, no_kg=args.no_kg,
+                        run_id=args.run_id)
         tmp = dest.with_suffix(f".{args.shard}.tmp")
         tmp.write_text(json.dumps({
             "sample_id": sid, "gold_label": gold, "rounds_used": args.rounds,

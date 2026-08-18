@@ -1,0 +1,317 @@
+{
+ "sample_id": "042",
+ "gold_label": "MALIGNANT",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "There is a posterior acoustic shadow behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c2",
+   "text": "The mass has spiculated margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c3",
+   "text": "There is a thick irregular bright halo around the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "echogenic_rind"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c4",
+   "text": "There are no microcalcifications.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "microcalcifications_in_hypoechoic_mass"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c5",
+   "text": "The mass is taller than it is wide.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "non_parallel_orientation"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c6",
+   "text": "The mass is irregular in shape.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "spiculated_or_irregular_mass"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c7",
+   "text": "There is architectural distortion around the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "architectural_distortion"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c8",
+   "text": "The mass has a bright echogenic rim.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "echogenic_pseudocapsule"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c9",
+   "text": "The mass has a bright, uniform capsule.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "thin_uniform_pseudocapsule"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c10",
+   "text": "The mass has a cluster of tiny anechoic cysts.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c11",
+   "text": "The mass has a posterior acoustic shadowing, a dark band directly behind a solid irregular mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c8"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c12",
+   "text": "The mass has spiculated margins, with sharp angular lines radiating outward from the mass edge.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c9"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c13",
+   "text": "There is a thick irregular bright halo around the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "cited_features": [
+    "echogenic_rind"
+   ],
+   "addressed_ids": [
+    "c10"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c14",
+   "text": "The mass has a thin bright echogenic rim.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "cited_features": [
+    "echogenic_pseudocapsule"
+   ],
+   "addressed_ids": [
+    "c11"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c15",
+   "text": "The mass has a thin, uniform bright capsule.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "cited_features": [
+    "thin_uniform_pseudocapsule"
+   ],
+   "addressed_ids": [
+    "c12"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c16",
+   "text": "The mass has a cluster of tiny anechoic cysts.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [
+    "c13"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c17",
+   "text": "There is a posterior acoustic shadowing behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c14"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c18",
+   "text": "The mass has spiculated margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c15"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c19",
+   "text": "There is a thick irregular bright halo around the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "cited_features": [
+    "echogenic_rind"
+   ],
+   "addressed_ids": [
+    "c16"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c20",
+   "text": "The mass has a thin bright echogenic rim.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "cited_features": [
+    "echogenic_pseudocapsule"
+   ],
+   "addressed_ids": [
+    "c17"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c21",
+   "text": "The mass has a thin, uniform bright capsule.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "cited_features": [
+    "thin_uniform_pseudocapsule"
+   ],
+   "addressed_ids": [
+    "c18"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c22",
+   "text": "The mass has a cluster of tiny anechoic cysts.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [
+    "c19"
+   ],
+   "is_repeat": true
+  }
+ ]
+}

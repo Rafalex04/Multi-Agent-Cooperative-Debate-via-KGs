@@ -1,0 +1,1149 @@
+{
+ "sample_id": "406",
+ "gold_label": "BENIGN",
+ "gold_label_int": 0,
+ "verdict": "MALIGNANT",
+ "correct": false,
+ "rounds_used": 3,
+ "debate_mal_share": 0.5263157894736842,
+ "nodes": {
+  "claims": [
+   {
+    "node_id": "c1",
+    "type": "claim",
+    "text": "irregular, hypoechoic mass with posterior acoustic shadowing.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "top_sim": 0.6011,
+    "n_links": 4
+   },
+   {
+    "node_id": "c2",
+    "type": "claim",
+    "text": "smooth, well-circumscribed borders with no microcalcifications.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "top_sim": 0.4384,
+    "n_links": 4
+   },
+   {
+    "node_id": "c3",
+    "type": "claim",
+    "text": "heterogeneous internal echoes with indistinct margins.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "top_sim": 0.5084,
+    "n_links": 4
+   },
+   {
+    "node_id": "c4",
+    "type": "claim",
+    "text": "no shadowing, consistent with simple cystic structure.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 0,
+    "top_sim": 0.6171,
+    "n_links": 4
+   },
+   {
+    "node_id": "c5",
+    "type": "claim",
+    "text": "irregular, hypoechoic mass with posterior acoustic shadowing.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "top_sim": 0.6011,
+    "n_links": 4
+   },
+   {
+    "node_id": "c6",
+    "type": "claim",
+    "text": "smooth, well-defined borders with no microcalcifications.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "top_sim": 0.366,
+    "n_links": 4
+   },
+   {
+    "node_id": "c7",
+    "type": "claim",
+    "text": "heterogeneous internal echoes with loss of normal tissue architecture.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 0,
+    "top_sim": 0.602,
+    "n_links": 4
+   },
+   {
+    "node_id": "c8",
+    "type": "claim",
+    "text": "posterior acoustic shadowing is absent; mass is isoechoic with no shadowing.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 1,
+    "top_sim": 0.6115,
+    "n_links": 4
+   },
+   {
+    "node_id": "c9",
+    "type": "claim",
+    "text": "borders are irregular and indistinct, not smooth or well-circumscribed.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 1,
+    "top_sim": 0.4743,
+    "n_links": 4
+   },
+   {
+    "node_id": "c10",
+    "type": "claim",
+    "text": "internal echoes are homogeneous, not heterogeneous, with preserved architecture.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 1,
+    "top_sim": 0.4746,
+    "n_links": 4
+   },
+   {
+    "node_id": "c11",
+    "type": "claim",
+    "text": "posterior acoustic shadowing is not absent; there is faint shadowing at the inferior margin.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 1,
+    "top_sim": 0.639,
+    "n_links": 4
+   },
+   {
+    "node_id": "c12",
+    "type": "claim",
+    "text": "borders appear smooth and well-circumscribed, not irregular or indistinct.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 1,
+    "top_sim": 0.544,
+    "n_links": 4
+   },
+   {
+    "node_id": "c13",
+    "type": "claim",
+    "text": "internal echoes are heterogeneous, not homogeneous, with disrupted architecture.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 1,
+    "top_sim": 0.4881,
+    "n_links": 4
+   },
+   {
+    "node_id": "c14",
+    "type": "claim",
+    "text": "faint shadowing is present but not diagnostic; mass has irregular margins and heterogeneous echoes suggesting malignancy.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 2,
+    "top_sim": 0.8312,
+    "n_links": 4
+   },
+   {
+    "node_id": "c15",
+    "type": "claim",
+    "text": "borders are actually indistinct and irregular, not smooth or well-circumscribed as claimed.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 2,
+    "top_sim": 0.4382,
+    "n_links": 4
+   },
+   {
+    "node_id": "c16",
+    "type": "claim",
+    "text": "internal echoes are heterogeneous with disrupted architecture, not preserved or homogeneous as claimed.",
+    "label": "MALIGNANT",
+    "label_int": 1,
+    "label_explicit": true,
+    "expert_id": "agent_1",
+    "round_idx": 2,
+    "top_sim": 0.4585,
+    "n_links": 4
+   },
+   {
+    "node_id": "c17",
+    "type": "claim",
+    "text": "faint shadowing is non-specific; mass has smooth borders and homogeneous echoes suggesting benignancy.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 2,
+    "top_sim": 0.6772,
+    "n_links": 4
+   },
+   {
+    "node_id": "c18",
+    "type": "claim",
+    "text": "borders are smooth and well-circumscribed, not irregular or indistinct as claimed.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 2,
+    "top_sim": 0.4842,
+    "n_links": 4
+   },
+   {
+    "node_id": "c19",
+    "type": "claim",
+    "text": "internal echoes are homogeneous with preserved architecture, not disrupted.",
+    "label": "BENIGN",
+    "label_int": 0,
+    "label_explicit": true,
+    "expert_id": "agent_2",
+    "round_idx": 2,
+    "top_sim": 0.4577,
+    "n_links": 4
+   }
+  ],
+  "triples": [
+   {
+    "node_id": "t_353",
+    "type": "triple",
+    "subject": "posterior_shadowing_with_solid_irregular_mass",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "posterior shadowing with solid irregular mass suggests malignancy"
+   },
+   {
+    "node_id": "t_094",
+    "type": "triple",
+    "subject": "postsurgical_scar_tissue",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "hypoechoic",
+    "text": "postsurgical scar tissue ultrasound appearance includes hypoechoic"
+   },
+   {
+    "node_id": "t_230",
+    "type": "triple",
+    "subject": "breast_lipoma",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "occasionally_hypoechoic",
+    "text": "breast lipoma ultrasound appearance includes occasionally hypoechoic"
+   },
+   {
+    "node_id": "t_047",
+    "type": "triple",
+    "subject": "macrocalcifications",
+    "predicate": "associated_with",
+    "object": "posterior_shadowing",
+    "text": "macrocalcifications associated with posterior shadowing"
+   },
+   {
+    "node_id": "t_364",
+    "type": "triple",
+    "subject": "circumscribed_margin",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "circumscribed margin suggests benign"
+   },
+   {
+    "node_id": "t_365",
+    "type": "triple",
+    "subject": "oval_shape",
+    "predicate": "suggests_benign",
+    "object": "true",
+    "text": "oval shape suggests benign"
+   },
+   {
+    "node_id": "t_313",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "thin_intervening_septations_under_0_5mm",
+    "text": "clustered microcysts ultrasound appearance includes thin intervening septations under 0 5mm"
+   },
+   {
+    "node_id": "t_077",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "thin_intervening_septations_under_0_5mm",
+    "text": "clustered microcysts ultrasound appearance includes thin intervening septations under 0 5mm"
+   },
+   {
+    "node_id": "t_080",
+    "type": "triple",
+    "subject": "complicated_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "homogeneous_low_level_internal_echoes",
+    "text": "complicated cyst ultrasound appearance includes homogeneous low level internal echoes"
+   },
+   {
+    "node_id": "t_176",
+    "type": "triple",
+    "subject": "complicated_breast_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "low_level_internal_echoes",
+    "text": "complicated breast cyst ultrasound appearance includes low level internal echoes"
+   },
+   {
+    "node_id": "t_177",
+    "type": "triple",
+    "subject": "complicated_breast_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "internal_echoes_shape_change_with_patient_position",
+    "text": "complicated breast cyst ultrasound appearance includes internal echoes shape change with patient position"
+   },
+   {
+    "node_id": "t_212",
+    "type": "triple",
+    "subject": "oil_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "internal_echoic_bands_possible",
+    "text": "oil cyst ultrasound appearance includes internal echoic bands possible"
+   },
+   {
+    "node_id": "t_350",
+    "type": "triple",
+    "subject": "posterior_shadowing",
+    "predicate": "associated_with",
+    "object": "macrocalcifications",
+    "text": "posterior shadowing associated with macrocalcifications"
+   },
+   {
+    "node_id": "t_352",
+    "type": "triple",
+    "subject": "posterior_shadowing",
+    "predicate": "associated_with",
+    "object": "postsurgical_scar",
+    "text": "posterior shadowing associated with postsurgical scar"
+   },
+   {
+    "node_id": "t_314",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "no_discrete_solid_components",
+    "text": "clustered microcysts ultrasound appearance includes no discrete solid components"
+   },
+   {
+    "node_id": "t_078",
+    "type": "triple",
+    "subject": "clustered_microcysts",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "no_discrete_solid_component",
+    "text": "clustered microcysts ultrasound appearance includes no discrete solid component"
+   },
+   {
+    "node_id": "t_249",
+    "type": "triple",
+    "subject": "fat_necrosis_subacute_phase",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "uni_or_multiloculated_with_low_level_echoes",
+    "text": "fat necrosis subacute phase ultrasound appearance includes uni or multiloculated with low level echoes"
+   },
+   {
+    "node_id": "t_296",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "blurring_of_normal_tissue_planes",
+    "text": "architectural distortion ultrasound appearance includes blurring of normal tissue planes"
+   },
+   {
+    "node_id": "t_093",
+    "type": "triple",
+    "subject": "postsurgical_scar_tissue",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "posterior_shadowing",
+    "text": "postsurgical scar tissue ultrasound appearance includes posterior shadowing"
+   },
+   {
+    "node_id": "t_355",
+    "type": "triple",
+    "subject": "irregular_shape",
+    "predicate": "suggests_malignancy",
+    "object": "true",
+    "text": "irregular shape suggests malignancy"
+   },
+   {
+    "node_id": "t_205",
+    "type": "triple",
+    "subject": "oil_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "smooth_walls",
+    "text": "oil cyst ultrasound appearance includes smooth walls"
+   },
+   {
+    "node_id": "t_165",
+    "type": "triple",
+    "subject": "simple_breast_cyst",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "smooth_walls",
+    "text": "simple breast cyst ultrasound appearance includes smooth walls"
+   },
+   {
+    "node_id": "t_295",
+    "type": "triple",
+    "subject": "architectural_distortion",
+    "predicate": "ultrasound_appearance_includes",
+    "object": "focal_retraction_or_distortion_at_edge_of_parenchyma",
+    "text": "architectural distortion ultrasound appearance includes focal retraction or distortion at edge of parenchyma"
+   },
+   {
+    "node_id": "t_149",
+    "type": "triple",
+    "subject": "refraction_shadowing_without_associated_mass",
+    "predicate": "typically_classified_as",
+    "object": "birads_3",
+    "text": "refraction shadowing without associated mass typically classified as birads 3"
+   }
+  ]
+ },
+ "edges": {
+  "claim_claim": [
+   {
+    "src": "c8",
+    "dst": "c5",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c9",
+    "dst": "c6",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c10",
+    "dst": "c7",
+    "sign": "+",
+    "type": "AGREE"
+   },
+   {
+    "src": "c11",
+    "dst": "c8",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c12",
+    "dst": "c9",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c13",
+    "dst": "c10",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c14",
+    "dst": "c11",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c15",
+    "dst": "c12",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c16",
+    "dst": "c13",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c17",
+    "dst": "c14",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c18",
+    "dst": "c15",
+    "sign": "-",
+    "type": "DISAGREE"
+   },
+   {
+    "src": "c19",
+    "dst": "c16",
+    "sign": "-",
+    "type": "DISAGREE"
+   }
+  ],
+  "claim_triple": [
+   {
+    "src": "c1",
+    "dst": "t_353",
+    "rank": 0,
+    "score": 0.6011,
+    "type": "retrieval"
+   },
+   {
+    "src": "c1",
+    "dst": "t_094",
+    "rank": 1,
+    "score": 0.5656,
+    "type": "retrieval"
+   },
+   {
+    "src": "c1",
+    "dst": "t_230",
+    "rank": 2,
+    "score": 0.5328,
+    "type": "retrieval"
+   },
+   {
+    "src": "c1",
+    "dst": "t_047",
+    "rank": 3,
+    "score": 0.5278,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_364",
+    "rank": 0,
+    "score": 0.4384,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_365",
+    "rank": 1,
+    "score": 0.4045,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_313",
+    "rank": 2,
+    "score": 0.3805,
+    "type": "retrieval"
+   },
+   {
+    "src": "c2",
+    "dst": "t_077",
+    "rank": 3,
+    "score": 0.3805,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_080",
+    "rank": 0,
+    "score": 0.5084,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_176",
+    "rank": 1,
+    "score": 0.5022,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_177",
+    "rank": 2,
+    "score": 0.4691,
+    "type": "retrieval"
+   },
+   {
+    "src": "c3",
+    "dst": "t_212",
+    "rank": 3,
+    "score": 0.4534,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_047",
+    "rank": 0,
+    "score": 0.6171,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_353",
+    "rank": 1,
+    "score": 0.6109,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_350",
+    "rank": 2,
+    "score": 0.6033,
+    "type": "retrieval"
+   },
+   {
+    "src": "c4",
+    "dst": "t_352",
+    "rank": 3,
+    "score": 0.4841,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_353",
+    "rank": 0,
+    "score": 0.6011,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_094",
+    "rank": 1,
+    "score": 0.5656,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_230",
+    "rank": 2,
+    "score": 0.5328,
+    "type": "retrieval"
+   },
+   {
+    "src": "c5",
+    "dst": "t_047",
+    "rank": 3,
+    "score": 0.5278,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_314",
+    "rank": 0,
+    "score": 0.366,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_078",
+    "rank": 1,
+    "score": 0.3575,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_365",
+    "rank": 2,
+    "score": 0.3506,
+    "type": "retrieval"
+   },
+   {
+    "src": "c6",
+    "dst": "t_350",
+    "rank": 3,
+    "score": 0.3438,
+    "type": "retrieval"
+   },
+   {
+    "src": "c7",
+    "dst": "t_080",
+    "rank": 0,
+    "score": 0.602,
+    "type": "retrieval"
+   },
+   {
+    "src": "c7",
+    "dst": "t_176",
+    "rank": 1,
+    "score": 0.5605,
+    "type": "retrieval"
+   },
+   {
+    "src": "c7",
+    "dst": "t_249",
+    "rank": 2,
+    "score": 0.5504,
+    "type": "retrieval"
+   },
+   {
+    "src": "c7",
+    "dst": "t_296",
+    "rank": 3,
+    "score": 0.5281,
+    "type": "retrieval"
+   },
+   {
+    "src": "c8",
+    "dst": "t_047",
+    "rank": 0,
+    "score": 0.6115,
+    "type": "retrieval"
+   },
+   {
+    "src": "c8",
+    "dst": "t_353",
+    "rank": 1,
+    "score": 0.5903,
+    "type": "retrieval"
+   },
+   {
+    "src": "c8",
+    "dst": "t_350",
+    "rank": 2,
+    "score": 0.5715,
+    "type": "retrieval"
+   },
+   {
+    "src": "c8",
+    "dst": "t_093",
+    "rank": 3,
+    "score": 0.5471,
+    "type": "retrieval"
+   },
+   {
+    "src": "c9",
+    "dst": "t_364",
+    "rank": 0,
+    "score": 0.4743,
+    "type": "retrieval"
+   },
+   {
+    "src": "c9",
+    "dst": "t_365",
+    "rank": 1,
+    "score": 0.4563,
+    "type": "retrieval"
+   },
+   {
+    "src": "c9",
+    "dst": "t_355",
+    "rank": 2,
+    "score": 0.4389,
+    "type": "retrieval"
+   },
+   {
+    "src": "c9",
+    "dst": "t_205",
+    "rank": 3,
+    "score": 0.3626,
+    "type": "retrieval"
+   },
+   {
+    "src": "c10",
+    "dst": "t_080",
+    "rank": 0,
+    "score": 0.4746,
+    "type": "retrieval"
+   },
+   {
+    "src": "c10",
+    "dst": "t_176",
+    "rank": 1,
+    "score": 0.4397,
+    "type": "retrieval"
+   },
+   {
+    "src": "c10",
+    "dst": "t_249",
+    "rank": 2,
+    "score": 0.4098,
+    "type": "retrieval"
+   },
+   {
+    "src": "c10",
+    "dst": "t_177",
+    "rank": 3,
+    "score": 0.4032,
+    "type": "retrieval"
+   },
+   {
+    "src": "c11",
+    "dst": "t_047",
+    "rank": 0,
+    "score": 0.639,
+    "type": "retrieval"
+   },
+   {
+    "src": "c11",
+    "dst": "t_093",
+    "rank": 1,
+    "score": 0.6026,
+    "type": "retrieval"
+   },
+   {
+    "src": "c11",
+    "dst": "t_350",
+    "rank": 2,
+    "score": 0.6022,
+    "type": "retrieval"
+   },
+   {
+    "src": "c11",
+    "dst": "t_352",
+    "rank": 3,
+    "score": 0.5585,
+    "type": "retrieval"
+   },
+   {
+    "src": "c12",
+    "dst": "t_355",
+    "rank": 0,
+    "score": 0.544,
+    "type": "retrieval"
+   },
+   {
+    "src": "c12",
+    "dst": "t_365",
+    "rank": 1,
+    "score": 0.5335,
+    "type": "retrieval"
+   },
+   {
+    "src": "c12",
+    "dst": "t_364",
+    "rank": 2,
+    "score": 0.4945,
+    "type": "retrieval"
+   },
+   {
+    "src": "c12",
+    "dst": "t_165",
+    "rank": 3,
+    "score": 0.398,
+    "type": "retrieval"
+   },
+   {
+    "src": "c13",
+    "dst": "t_080",
+    "rank": 0,
+    "score": 0.4881,
+    "type": "retrieval"
+   },
+   {
+    "src": "c13",
+    "dst": "t_176",
+    "rank": 1,
+    "score": 0.4687,
+    "type": "retrieval"
+   },
+   {
+    "src": "c13",
+    "dst": "t_249",
+    "rank": 2,
+    "score": 0.4229,
+    "type": "retrieval"
+   },
+   {
+    "src": "c13",
+    "dst": "t_177",
+    "rank": 3,
+    "score": 0.4084,
+    "type": "retrieval"
+   },
+   {
+    "src": "c14",
+    "dst": "t_353",
+    "rank": 0,
+    "score": 0.8312,
+    "type": "retrieval"
+   },
+   {
+    "src": "c14",
+    "dst": "t_355",
+    "rank": 1,
+    "score": 0.5988,
+    "type": "retrieval"
+   },
+   {
+    "src": "c14",
+    "dst": "t_350",
+    "rank": 2,
+    "score": 0.5581,
+    "type": "retrieval"
+   },
+   {
+    "src": "c14",
+    "dst": "t_047",
+    "rank": 3,
+    "score": 0.5528,
+    "type": "retrieval"
+   },
+   {
+    "src": "c15",
+    "dst": "t_364",
+    "rank": 0,
+    "score": 0.4382,
+    "type": "retrieval"
+   },
+   {
+    "src": "c15",
+    "dst": "t_365",
+    "rank": 1,
+    "score": 0.408,
+    "type": "retrieval"
+   },
+   {
+    "src": "c15",
+    "dst": "t_355",
+    "rank": 2,
+    "score": 0.3943,
+    "type": "retrieval"
+   },
+   {
+    "src": "c15",
+    "dst": "t_165",
+    "rank": 3,
+    "score": 0.3313,
+    "type": "retrieval"
+   },
+   {
+    "src": "c16",
+    "dst": "t_080",
+    "rank": 0,
+    "score": 0.4585,
+    "type": "retrieval"
+   },
+   {
+    "src": "c16",
+    "dst": "t_176",
+    "rank": 1,
+    "score": 0.4493,
+    "type": "retrieval"
+   },
+   {
+    "src": "c16",
+    "dst": "t_296",
+    "rank": 2,
+    "score": 0.4216,
+    "type": "retrieval"
+   },
+   {
+    "src": "c16",
+    "dst": "t_295",
+    "rank": 3,
+    "score": 0.4202,
+    "type": "retrieval"
+   },
+   {
+    "src": "c17",
+    "dst": "t_353",
+    "rank": 0,
+    "score": 0.6772,
+    "type": "retrieval"
+   },
+   {
+    "src": "c17",
+    "dst": "t_047",
+    "rank": 1,
+    "score": 0.6409,
+    "type": "retrieval"
+   },
+   {
+    "src": "c17",
+    "dst": "t_350",
+    "rank": 2,
+    "score": 0.6221,
+    "type": "retrieval"
+   },
+   {
+    "src": "c17",
+    "dst": "t_149",
+    "rank": 3,
+    "score": 0.5218,
+    "type": "retrieval"
+   },
+   {
+    "src": "c18",
+    "dst": "t_355",
+    "rank": 0,
+    "score": 0.4842,
+    "type": "retrieval"
+   },
+   {
+    "src": "c18",
+    "dst": "t_365",
+    "rank": 1,
+    "score": 0.4781,
+    "type": "retrieval"
+   },
+   {
+    "src": "c18",
+    "dst": "t_364",
+    "rank": 2,
+    "score": 0.4417,
+    "type": "retrieval"
+   },
+   {
+    "src": "c18",
+    "dst": "t_165",
+    "rank": 3,
+    "score": 0.3404,
+    "type": "retrieval"
+   },
+   {
+    "src": "c19",
+    "dst": "t_080",
+    "rank": 0,
+    "score": 0.4577,
+    "type": "retrieval"
+   },
+   {
+    "src": "c19",
+    "dst": "t_176",
+    "rank": 1,
+    "score": 0.455,
+    "type": "retrieval"
+   },
+   {
+    "src": "c19",
+    "dst": "t_295",
+    "rank": 2,
+    "score": 0.4282,
+    "type": "retrieval"
+   },
+   {
+    "src": "c19",
+    "dst": "t_296",
+    "rank": 3,
+    "score": 0.4277,
+    "type": "retrieval"
+   }
+  ],
+  "triple_triple": [
+   {
+    "src": "t_353",
+    "dst": "t_364",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_365",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_353",
+    "dst": "t_355",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_094",
+    "dst": "t_093",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_047",
+    "dst": "t_093",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_365",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_364",
+    "dst": "t_355",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_365",
+    "dst": "t_355",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_313",
+    "dst": "t_077",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_313",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_313",
+    "dst": "t_078",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_314",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_077",
+    "dst": "t_078",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_176",
+    "dst": "t_177",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_212",
+    "dst": "t_205",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_350",
+    "dst": "t_352",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_314",
+    "dst": "t_078",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_296",
+    "dst": "t_295",
+    "type": "shared_entity"
+   },
+   {
+    "src": "t_205",
+    "dst": "t_165",
+    "type": "shared_entity"
+   }
+  ]
+ },
+ "stats": {
+  "num_claims": 19,
+  "num_triples": 24,
+  "num_claim_claim_edges": 12,
+  "num_claim_triple_edges": 76,
+  "num_triple_triple_edges": 19
+ }
+}

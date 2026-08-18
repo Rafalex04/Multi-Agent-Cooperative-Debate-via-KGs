@@ -14,18 +14,20 @@ model:
 # Stage A/B observation-conditioned KG retrieval.
 # mode: constant_seed reproduces the original pipeline exactly (ablation baseline).
 kg_retrieval:
-  mode: "constant_seed"          # "observation_conditioned" | "constant_seed" (legacy)
+  mode: "observation_conditioned"  # "observation_conditioned" | "constant_seed" (legacy baseline)
   schema_path: "data/breast/schema.json"
   observation_dir: "data/breast/observations"
   observation_max_attempts: 3
   anchor_conf_threshold: 0.4
   max_per_category: 3
-  max_stance_triples: 4
+  max_stance_triples: 20           # was 4; stance triples are prioritised, not capped
   lambda_mmr: 0.6
   hub_penalty_alpha: 0.5
-  kg_token_budget: 200
+  kg_token_budget: 350             # was 200; extra room after filtering is_a taxonomy
   use_dense: true
   dense_model: "all-MiniLM-L6-v2"
+  taxonomy_relations:              # triples with these relations are stripped from the result
+    - "is_a"
 
 data:
   num_samples: 50

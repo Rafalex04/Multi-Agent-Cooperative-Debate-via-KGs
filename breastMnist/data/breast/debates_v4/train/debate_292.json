@@ -1,0 +1,291 @@
+{
+ "sample_id": "292",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "There is a posterior acoustic shadow behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c2",
+   "text": "The mass has spiculated margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c3",
+   "text": "The tissue around the mass is distorted.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "architectural_distortion"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c4",
+   "text": "The mass is oval shaped with a smooth contour.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "oval_shape"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c5",
+   "text": "The mass has a thin, uniform bright capsule around it.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c6",
+   "text": "The mass has anechoic content, meaning the inside of the mass is uniformly black like fluid.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "thin_uniform_pseudocapsule"
+   ],
+   "addressed_ids": [],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c7",
+   "text": "The mass has a thin bright echogenic rim surrounding it.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "anechoic_content"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c8",
+   "text": "The mass has circumscribed margins, meaning a smooth, sharply defined boundary.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "echogenic_pseudocapsule"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c9",
+   "text": "The posterior acoustic shadowing suggests a malignant process.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c4"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c10",
+   "text": "The spiculated margins indicate malignancy.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c5"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c11",
+   "text": "The architectural distortion is suggestive of malignancy.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "cited_features": [
+    "architectural_distortion"
+   ],
+   "addressed_ids": [
+    "c6"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c12",
+   "text": "The posterior acoustic shadowing is not present, and the mass is oval shaped with a smooth contour.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "cited_features": [
+    "oval_shape"
+   ],
+   "addressed_ids": [
+    "c9"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c13",
+   "text": "The mass has a cluster of tiny anechoic cysts under 3mm with thin septations.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [
+    "c10"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c14",
+   "text": "The mass has a thin, uniform bright capsule around it.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "cited_features": [
+    "thin_uniform_pseudocapsule"
+   ],
+   "addressed_ids": [
+    "c11"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c15",
+   "text": "There is a posterior acoustic shadowing behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c12"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c16",
+   "text": "The mass has spiculated margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c13"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c17",
+   "text": "The tissue around the mass is distorted.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "cited_features": [
+    "architectural_distortion"
+   ],
+   "addressed_ids": [
+    "c14"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c18",
+   "text": "The posterior acoustic shadowing is not present, and the mass is oval shaped with a smooth contour.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "cited_features": [
+    "oval_shape"
+   ],
+   "addressed_ids": [
+    "c15"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c19",
+   "text": "The mass has a cluster of tiny anechoic cysts under 3mm with thin septations.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [
+    "c16"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c20",
+   "text": "The mass has a thin, uniform bright capsule around it.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "cited_features": [
+    "thin_uniform_pseudocapsule"
+   ],
+   "addressed_ids": [
+    "c17"
+   ],
+   "is_repeat": true
+  }
+ ]
+}

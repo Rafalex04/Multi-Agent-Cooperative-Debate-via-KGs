@@ -37,12 +37,15 @@ logger = logging.getLogger(__name__)
 _DEFAULTS = {
     "anchor_conf_threshold": 0.4,
     "max_per_category": 3,
-    "max_stance_triples": 4,
+    "max_stance_triples": 20,       # was 4; stance triples are now prioritised, not capped
     "lambda_mmr": 0.6,
     "hub_penalty_alpha": 0.5,
-    "kg_token_budget": 200,
+    "kg_token_budget": 350,         # was 200; extra room after removing is_a taxonomy noise
     "dense_model": "all-MiniLM-L6-v2",
     "use_dense": True,
+    # Relations whose triples are filtered OUT of the final result — pure taxonomy,
+    # no diagnostic value.  Should match category_relations in conf/kg_schema.yaml.
+    "taxonomy_relations": ["is_a"],
 }
 
 # Rough token estimate; avoids a tokeniser dependency in the hot path.
@@ -171,6 +174,7 @@ def retrieve(
     cfg = {**_DEFAULTS, **(config or {})}
     stance_ids = stance_ids or set()
     by_id = {_tid(t): t for t in triples}
+    taxonomy_rels = set(cfg.get("taxonomy_relations", _DEFAULTS["taxonomy_relations"]))
 
     anchors = set(observation.anchors(cfg["anchor_conf_threshold"]))
     ent_cat = _entity_category(schema)
@@ -183,11 +187,19 @@ def retrieve(
             anchor_hits.append(t)
 
     # --- signal 2: 1-hop expansion ----------------------------------------
+    # FIX: do NOT add category hub entities (object of is_a triples) to the
+    # expansion seed.  Without this, observing "irregular" adds "shape_descriptor"
+    # via "irregular is_a shape_descriptor", which then pulls in every sibling
+    # value (oval, lobulated, anechoic …) that the model did NOT observe.
     anchored_entities = set(anchors)
     for t in anchor_hits:
-        s, _, o = _fields(t)
-        anchored_entities.add(s)
-        anchored_entities.add(o)
+        s, r, o = _fields(t)
+        if r in taxonomy_rels:
+            anchored_entities.add(s)   # observed value — yes
+            # skip o (the category hub) — blocks sibling leakage
+        else:
+            anchored_entities.add(s)
+            anchored_entities.add(o)
 
     anchor_ids = {_tid(t) for t in anchor_hits}
     expansion: list = []
@@ -296,15 +308,31 @@ def retrieve(
                 break
         return selected
 
-    for t in anchor_hits:
+    # FIX: process stance triples first within each source group so they
+    # claim budget slots before taxonomy or generic descriptor triples fill the window.
+    def _stance_first(lst: list) -> list:
+        return sorted(lst, key=lambda t: (0 if _tid(t) in stance_ids else 1))
+
+    for t in _stance_first(anchor_hits):
         try_add(t, "anchor")
-    for t in expansion:
+    for t in _stance_first(expansion):
         try_add(t, "expansion")
-    for t in mmr_order(dense_sorted):
+    for t in _stance_first(mmr_order(dense_sorted)):
         try_add(t, "dense")
 
+    # FIX: remove pure-taxonomy triples (is_a, etc.) from the final result —
+    # they carry no diagnostic value and crowd out the image signal.
+    if taxonomy_rels:
+        kept = [t for t in result.triples if _fields(t)[1] not in taxonomy_rels]
+        dropped_tax = len(result.triples) - len(kept)
+        if dropped_tax:
+            logger.info("  filtered %d taxonomy triples from result", dropped_tax)
+        result.triples = kept
+        result.source = {_tid(t): result.source[_tid(t)] for t in kept if _tid(t) in result.source}
+        tokens = sum(_token_len(verbalise(t)) + 6 for t in kept)
+        result.token_estimate = tokens
+
     result.dropped = considered - len(result.triples)
-    result.token_estimate = tokens
 
     logger.info(
         "  retrieval: %d triples (%d anchor, %d expansion, %d dense) | "

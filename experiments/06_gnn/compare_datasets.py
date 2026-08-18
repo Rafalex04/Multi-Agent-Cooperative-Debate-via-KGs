@@ -36,7 +36,8 @@ from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import SAGEConv, global_mean_pool, global_max_pool
 
-_META = 7      # label, expert, round, n_cited, against_side, is_repeat, is_claim
+_META = 10     # label, expert, round, n_cited, against_side, is_repeat,
+               # p_yes, p_yes*stance_weight, measured, is_claim
 
 
 def auc(pos, neg):
@@ -57,6 +58,11 @@ def bacc(scores, labels, th):
         return float("nan")
     return 0.5 * (sum(1 for s in pos if s >= th) / len(pos) +
                   sum(1 for s in neg if s < th) / len(neg))
+
+
+def _num(v, default):
+    """v2 stores p_yes as null when a probe failed; treat that as unmeasured."""
+    return default if v is None else float(v)
 
 
 def build(root: Path, split: str, enc):
@@ -86,6 +92,14 @@ def build(root: Path, split: str, enc):
                 float(c.get("n_cited", c.get("n_links", 0))) / 4.0,
                 1.0 if c.get("against_side") else 0.0,
                 1.0 if c.get("is_repeat") else 0.0,
+                # The measured probe value for the finding this claim cites.
+                # Omitting these was the flaw in the first comparison: v2 had
+                # them and the trainer ignored them, so a GNN over its graph
+                # scored 0.6027 against 0.6535 for a plain average of the same
+                # numbers. `measured` distinguishes a real 0.5 from a missing one.
+                _num(c.get("p_yes"), 0.5),
+                _num(c.get("p_yes"), 0.5) * _num(c.get("stance_weight"), 0.0),
+                1.0 if c.get("measured") else 0.0,
                 1.0,
             ])
         for t in triples:

@@ -1,0 +1,278 @@
+{
+ "sample_id": "382",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "There is a posterior acoustic shadow behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c2",
+   "text": "There are microcalcifications within the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "microcalcifications_in_hypoechoic_mass"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c3",
+   "text": "The mass has spiculated margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 0,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c4",
+   "text": "the mass is anechoic.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "anechoic_content"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c5",
+   "text": "there are tiny anechoic cysts.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c6",
+   "text": "the mass has a bright echogenic rim.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "thin_uniform_pseudocapsule"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c7",
+   "text": "the mass is circumscribed.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 0,
+   "cited_features": [
+    "circumscribed_margin"
+   ],
+   "addressed_ids": [],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c8",
+   "text": "There is a posterior acoustic shadowing behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c4"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c9",
+   "text": "There are microcalcifications within the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "cited_features": [
+    "microcalcifications_in_hypoechoic_mass"
+   ],
+   "addressed_ids": [
+    "c5"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c10",
+   "text": "The mass has spiculated margins.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 1,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c6"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c11",
+   "text": "The posterior acoustic shadowing is a normal artifact of ultrasound imaging.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "cited_features": [
+    "anechoic_content"
+   ],
+   "addressed_ids": [
+    "c8"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c12",
+   "text": "The presence of tiny anechoic cysts is consistent with a benign process.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [
+    "c9"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c13",
+   "text": "The bright echogenic rim around the mass is a typical finding in benign lesions.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 1,
+   "cited_features": [
+    "thin_uniform_pseudocapsule"
+   ],
+   "addressed_ids": [
+    "c10"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c14",
+   "text": "The posterior acoustic shadowing is a sign of a malignant mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c11"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c15",
+   "text": "The microcalcifications are a sign of a malignant mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "cited_features": [
+    "microcalcifications_in_hypoechoic_mass"
+   ],
+   "addressed_ids": [
+    "c12"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c16",
+   "text": "The spiculated margins are a sign of a malignant mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "expert_a",
+   "round_idx": 2,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c13"
+   ],
+   "is_repeat": false
+  },
+  {
+   "node_id": "c17",
+   "text": "The posterior acoustic shadowing is a normal artifact of ultrasound imaging.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "cited_features": [
+    "anechoic_content"
+   ],
+   "addressed_ids": [
+    "c14"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c18",
+   "text": "The presence of tiny anechoic cysts is consistent with a benign process.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [
+    "c15"
+   ],
+   "is_repeat": true
+  },
+  {
+   "node_id": "c19",
+   "text": "The bright echogenic rim around the mass is a typical finding in benign lesions.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "expert_b",
+   "round_idx": 2,
+   "cited_features": [
+    "thin_uniform_pseudocapsule"
+   ],
+   "addressed_ids": [
+    "c16"
+   ],
+   "is_repeat": true
+  }
+ ]
+}

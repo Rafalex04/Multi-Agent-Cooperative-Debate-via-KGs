@@ -1,0 +1,20 @@
+=== dataset_v5 (medgemma:4b) ===
+  graphs 780  claims/graph 19.4
+  uniqueness      0.249
+  cross-overlap   0.028
+  cc edges 11.7  ct edges 40.8  triples 18.5
+  labels {'BENIGN': 12488, 'MALIGNANT': 2647, None: 1}
+    mal_share train AUC=0.5217  mean(mal)=0.178 mean(ben)=0.168
+    mal_share val   AUC=0.5025  mean(mal)=0.181 mean(ben)=0.180
+    mal_share test  AUC=0.6257  mean(mal)=0.225 mean(ben)=0.173
+
+=== dataset_v5q (qwen3-vl:8b-instruct) ===
+  graphs 780  claims/graph 19.5
+  uniqueness      0.397
+  cross-overlap   0.010
+  cc edges 11.9  ct edges 30.5  triples 12.3
+  labels {'MALIGNANT': 8562, 'BENIGN': 6657}
+    mal_share train AUC=0.6472  mean(mal)=0.618 mean(ben)=0.542
+    mal_share val   AUC=0.6871  mean(mal)=0.647 mean(ben)=0.551
+    mal_share test  AUC=0.7128  mean(mal)=0.640 mean(ben)=0.529
+

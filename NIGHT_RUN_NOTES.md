@@ -471,3 +471,76 @@ scripts/launch.sh                                       detached launcher
 scripts/launch_debate_v2.sh                             multi-GPU shard launcher
 breastMnist/data/breast/images_224/*.npz                pre-exported native images
 ```
+
+---
+
+# 17 Aug 2026, 02:36-05:52 — ThothGNN Stage 4
+
+Implemented `gnn-architecture-implementation-plan.md` in full and swept it.
+Code in `experiments/12_thothgnn/`. Report artifact:
+https://claude.ai/code/artifact/23a6f31a-c21f-4273-8958-623f6caa5467
+
+## Gates (Section 9) — all pass
+Round-trip, sign invariant, normalised cites weights, and BASE reproducing
+mal_share to 6 dp on all 6 corpora (v5q 0.712824 == 0.712824).
+
+## Headline: the gain came from ensembling, not the architecture
+
+  runs   train    val    test    (BASE = pooled mal_share on merged graph)
+   1    0.6476  0.6871  0.7128
+   2    0.7110  0.6988  0.7427
+   3    0.7305  0.7937  0.7694
+   4    0.7453  0.7832  0.7506   <- test falls back
+
+Train is monotone at every step; test peaked at 3. Honest estimate ~0.75,
+not 0.7694. Run-to-run correlation of mal_share is 0.308, which is why
+pooling works. Runs 2-3 generated tonight via `--run-id` (reseeds sampling
+AND finding order).
+
+## FULL never reliably beats BASE
+  1 run  -0.0090 | 2 runs +0.0035 | 3 runs -0.0044 | 4 runs +0.0024
+All within seed spread; gamma swings -0.25..+0.03 and never settles on a sign.
+FULL also does not separate from UNIFORM-ATT, so the bipolar attention
+(the mechanism claim) is unsupported.
+
+## Ablations (v5q, 5 seeds) — BASE 0.7128 tops every learned config
+  BALANCE 0.7112 | NO-XLAYER 0.7101 | FUSE-GATE 0.7091 | NO-KG-NODES 0.7087
+  EDGE-FIXED 0.7080 | FULL 0.7038 | NO-NEXT 0.7025 | NO-SIGN 0.6982
+  UNIFORM-ATT 0.6963 | NO-ANCHOR 0.6067
+
+- NO-ANCHOR 0.6067 is the decisive result: strip the base score and the pure
+  graph model lands in the GraphSAGE band (0.6493). Anchoring is now empirical.
+- Cross-layer fusion HURT (NO-XLAYER better). The HINPool transfer did not hold.
+- EDGE-FIXED beat FULL -> drop MLP_edge per the plan's own criterion.
+- NO-SIGN is the largest single-component drop -> sign separation is the one
+  piece that earns its keep.
+
+## Why: rebuttals carry zero evidence
+diagnose.py, claim-level precision on v5q:
+  verdict AGREE     P(mal|MAL) 0.408  P(ben|BEN) 0.836   lift +0.176
+  verdict DISAGREE  P(mal|MAL) 0.263  P(ben|BEN) 0.735   lift -0.070
+Learned weights: MAL/AGREE +0.660, MAL/DISAGREE -0.042, BEN/AGREE -0.676,
+BEN/DISAGREE -0.008. DISAGREE ~ 0.00 = no information. The graph has 10.4
+DISAGREE edges per graph vs 1.5 AGREE, so its topology is dominated by the
+uninformative relation. In the KG-free control the AGREE lift collapses to
++0.066 -> the KG is what makes agreement meaningful.
+
+## Best result: evidence-weighted readout (6 fitted numbers, no network)
+  4-run ensemble + evidence weights   AUC 0.7556   bAcc 0.6930  <- best bAcc ever
+    (val-selected verdict+round variant; earlier 0.7563 mixed two variants
+     and predated the last 18 debates of run 3)
+  3-run ensemble mal_share            AUC 0.7694   bAcc 0.6673
+  single-run mal_share (prev best)    AUC 0.7128   bAcc 0.6610
+  GraphSAGE v5q                       AUC 0.6493   bAcc 0.5979
+
+## Interpretability: claim does NOT hold
+Faithfulness mean ratio 1.45x, but top-attention beats random on only 47% of
+graphs (below chance) — the mean is carried by a few large shifts. 10 of 139
+triples absorb 61% of attention mass; top-claim position bias 0.345 vs 0.5.
+Fixed interpret.py to require both mean ratio and win rate.
+
+## Deviations from the plan
+- Batches pre-collated once and fixed, batch 128 not 32 (a seed took 4.5 min
+  otherwise). Max epochs 100 not 200, CV selects epoch inside that.
+- E3 augmentation implemented (`--augment`, wired into CV folds) but not swept;
+  E2 and ensemble scaling were producing the measurable gains.

@@ -118,11 +118,12 @@ def _observation_conditioned_kg_text(
         config={
             "anchor_conf_threshold": float(getattr(kg_cfg, "anchor_conf_threshold", 0.4)),
             "max_per_category": int(getattr(kg_cfg, "max_per_category", 3)),
-            "max_stance_triples": int(getattr(kg_cfg, "max_stance_triples", 4)),
+            "max_stance_triples": int(getattr(kg_cfg, "max_stance_triples", 20)),
             "lambda_mmr": float(getattr(kg_cfg, "lambda_mmr", 0.6)),
             "hub_penalty_alpha": float(getattr(kg_cfg, "hub_penalty_alpha", 0.5)),
-            "kg_token_budget": int(getattr(kg_cfg, "kg_token_budget", 200)),
+            "kg_token_budget": int(getattr(kg_cfg, "kg_token_budget", 350)),
             "use_dense": bool(getattr(kg_cfg, "use_dense", True)),
+            "taxonomy_relations": list(getattr(kg_cfg, "taxonomy_relations", ["is_a"])),
         },
         dense_ranker=_DENSE_RANKER,
     )

@@ -1,0 +1,41 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3054.03it/s]
+/data/rm2125/venv/lib/python3.12/site-packages/torch_geometric/utils/_scatter.py:91: UserWarning: The usage of `scatter(reduce='max')` can be accelerated via the 'torch-scatter' package, but it was not found
+  warnings.warn(
+
+v5qret  (train=546 test=156)
+  test AUC        0.6501 +- 0.022
+  test bAcc       0.5925 +- 0.033
+  best val AUC    0.7250  at epoch 5.6
+  train AUC there 0.6799  (gap -0.0451)
+  val gain by ep15 -0.0480
+
+v5qnokg  (train=546 test=156)
+  test AUC        0.6222 +- 0.010
+  test bAcc       0.5699 +- 0.051
+  best val AUC    0.7298  at epoch 11.8
+  train AUC there 0.7503  (gap +0.0204)
+  val gain by ep15 +0.0525
+
+v5q  (train=546 test=156)
+  test AUC        0.6493 +- 0.049
+  test bAcc       0.5979 +- 0.026
+  best val AUC    0.7693  at epoch 39.0
+  train AUC there 0.8023  (gap +0.0330)
+  val gain by ep15 +0.0069
+
+v2  (train=546 test=156)
+  test AUC        0.6096 +- 0.009
+  test bAcc       0.5794 +- 0.019
+  best val AUC    0.6984  at epoch 7.0
+  train AUC there 0.6176  (gap -0.0808)
+  val gain by ep15 +0.0312
+
+curves -> /homes/rm2125/Multi-Agent-Cooperative-Debate-via-KGs/experiments/06_gnn/curves_ablation.json
+
+==============================================================================
+dataset      test AUC  test bAcc   best val   epoch      gap  ep15 gain
+v5qret         0.6501     0.5925     0.7250     5.6  -0.0451    -0.0480
+v5qnokg        0.6222     0.5699     0.7298    11.8  +0.0204    +0.0525
+v5q            0.6493     0.5979     0.7693    39.0  +0.0330    +0.0069
+v2             0.6096     0.5794     0.6984     7.0  -0.0808    +0.0312
