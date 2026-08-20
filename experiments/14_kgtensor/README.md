@@ -111,3 +111,89 @@ The GNN remains the one place the KG does not help.
     kg_tensor.py    the tensor, the model, the ablations
     combine.py      component combination
     bootstrap.py    paired significance test
+
+---
+
+# Stage 4 "make the GNN work" plan — executed, with the gate result
+
+## §0 The interaction gate — the answer is NO, and the test has power
+
+Per-finding counts vs the same counts plus all 496 pairwise products, identical
+5-fold CV and L2 sweep, on the 546 training graphs.
+
+    corpus     base CV    interaction CV    delta
+    1 run       0.5996        0.5754       -0.0242
+    4 runs      0.7309        0.7171       -0.0138
+
+Interaction is worse at **every** regularisation strength on both corpora.
+
+Two fixes were needed before this meant anything. Raw counts cannot express
+mal_share, which is a ratio, so the unnormalised base scored 0.5811 against
+mal_share's own 0.6476 — handicapping the base would have rigged the gate toward
+finding interactions. And at l2 >= 10 the optimiser diverged, printing AUC
+0.0000 rows that were overflow rather than heavy regularisation.
+
+**Positive control.** A null is only worth reporting if the protocol can detect a
+real effect. Against a synthetic XOR label (pure interaction, zero main effect):
+
+    counts CV 0.5112    interaction CV 0.7039    delta +0.1926
+
+The protocol finds a genuine interaction at +0.19 and finds nothing in the real
+labels. **The null is real, not a power failure.**
+
+Conclusion: the label is an additive function of independent claim evidence. No
+GNN over these graphs will beat the weighted count.
+
+## §1 Ranking loss — no gain
+
+Pairwise AUC surrogate against cross-entropy, same model, features, anchor and
+sweep, changing only the loss.
+
+    anchor      CE      rank     CE+aug   rank+aug
+    evidence   0.7308  0.7310    0.7391    0.7320
+    mal_share  0.7368  0.7316    0.7345    0.7203
+    none       0.7143  0.7235    0.7348    0.7203
+
+Mixed and inside noise. Note the failure mode: with augmentation the ranking loss
+reaches HIGHER CV (0.7533 vs 0.7400) and LOWER test — it overfits the selection
+criterion. The supervision argument (58,000 pairs from 546 graphs) is sound in
+principle and simply does not bind here.
+
+## §4.1 Cross-run reproducibility — the one gate the plan passed, and it still
+did not survive
+
+The §0 gate pools across runs, which destroys exactly the quantity §4.1 is about:
+a pooled count cannot tell one run flagging a finding twice from two independent
+runs flagging it once. So it was gated separately, with per-finding "fraction of
+runs mentioning it" and "spread of its stance across runs".
+
+    base CV 0.7309    +crossrun CV 0.7386    delta +0.0076   -> passes
+
+But end-to-end on the anchor:
+
+    anchor alone        TEST 0.7556   bAcc 0.6930
+    anchor + crossrun   TEST 0.7536   bAcc 0.6930
+    anchor + base       TEST 0.7609   bAcc 0.7049
+    anchor + both       TEST 0.7561   bAcc 0.6911
+
+**+0.0076 on CV became -0.0020 on test.** Consistent with this project's repeated
+pattern of CV and val gains not replicating on 156 test samples.
+
+## Verdict
+
+The plan's §8 failure case is what happened, and it is the reportable result:
+
+> debate structure carries no interaction information, and the correct readout
+> for an LLM debate is a weighted count.
+
+Four independent routes now say the same thing — the ablation (everything but the
+anchor inside seed noise), the mechanism (the dominant relation carries zero
+evidence), the interaction gate with a validated positive control, and the
+ranking-loss result. Sections 2, 3 and the rest of 4 were not run because §0
+conditions them on a gate that failed.
+
+Best figures in the project remain from combining mechanisms, not architectures:
+
+    evidence + BI-RADS (equal)   TEST 0.7646   bAcc 0.7036
+    all four (equal)             TEST 0.7642   bAcc 0.7061
+    anchor + per-finding base    TEST 0.7609   bAcc 0.7049
