@@ -1,0 +1,12 @@
+aligned: train 546  val 78  test 156
+
+(anchor probe model, cv 0.8142)
+  ANCHOR probe-32 (no GNN)   train 0.8375 val 0.9240 TEST 0.8137  bAcc 0.7826
+ANCHOR DISABLED: the graph term carries the whole score
+node features: 25  (2 probe, 6 debate, 1 prior, 16 identity)
+KG edges 72/120  same-stance 36  opposing 36
+
+  GNN signed KG              TEST 0.7755+-0.0108  bAcc 0.7299+-0.0234  val 0.8943  gamma +1.969
+  GNN unsigned KG            TEST 0.7691+-0.0051  bAcc 0.7202+-0.0228  val 0.8868  gamma +1.798
+  GNN shuffled KG            TEST 0.7728+-0.0097  bAcc 0.7005+-0.0206  val 0.8876  gamma +1.806
+  GNN no-prop                TEST 0.7710+-0.0077  bAcc 0.7188+-0.0225  val 0.8987  gamma +1.817
