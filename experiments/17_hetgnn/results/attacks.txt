@@ -1,0 +1,13 @@
+claims: 15220   correct stance: 50.5%
+
+                         correct     wrong     diff
+attacks received           0.533     0.536   -0.003
+credibility k=1            0.734     0.732   +0.002    AUC(credibility -> correct) 0.5017
+credibility k=2            0.794     0.797   -0.003    AUC(credibility -> correct) 0.4953
+credibility k=3            0.778     0.781   -0.003    AUC(credibility -> correct) 0.4914
+
+If that AUC sits at 0.500, being attacked is independent of being wrong,
+and propagation over the attack graph is a null by construction.
+
+attacks received by round: r0=0.32  r1=0.89  r2=0.45
+edges between OPPOSING stances: 81.3%   (chance 44.7%)

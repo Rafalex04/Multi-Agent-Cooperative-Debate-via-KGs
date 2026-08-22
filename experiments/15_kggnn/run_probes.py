@@ -147,6 +147,12 @@ def main():
     p.add_argument("--phrasing", type=int, default=1, choices=(1, 2, 3, 4),
                    help="which of the four factorial templates to ask")
     p.add_argument("--root", default=str(_HERE.parents[2] / "breastMnist"))
+    p.add_argument("--npz", default=None,
+                   help="external image archive; overrides the BreastMNIST split path. "
+                        "Same keys (imgs, labels) and the same MALIGNANT=0/BENIGN=1 "
+                        "convention, so a frozen model transfers without a sign flip.")
+    p.add_argument("--out-dir", default=None,
+                   help="where to write the jsonl; defaults to this experiment's results/")
     args = p.parse_args()
 
     import numpy as np
@@ -158,13 +164,15 @@ def main():
     findings = all_findings(triples, schema)          # (feature, description, side)
     logger.info("probing %d findings", len(findings))
 
-    z = np.load(root / f"data/breast/images_224/{args.split}.npz")
+    z = np.load(Path(args.npz) if args.npz
+                else root / f"data/breast/images_224/{args.split}.npz")
     imgs, labels = z["imgs"], z["labels"]
     want = [int(x) for x in args.shards.split(",")] if args.shards else [args.shard]
     idxs = [i for i in range(len(imgs)) if i % args.num_shards in want]
 
-    RESULTS.mkdir(parents=True, exist_ok=True)
-    out_path = RESULTS / f"{args.tag}_{args.split}_{'-'.join(map(str, want))}.jsonl"
+    out_root = Path(args.out_dir) if args.out_dir else RESULTS
+    out_root.mkdir(parents=True, exist_ok=True)
+    out_path = out_root / f"{args.tag}_{args.split}_{'-'.join(map(str, want))}.jsonl"
     done = set()
     if out_path.exists():
         for ln in out_path.read_text().splitlines():
