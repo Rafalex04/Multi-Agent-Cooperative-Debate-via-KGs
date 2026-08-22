@@ -1,0 +1,19 @@
+anchor features: 32  (2 phrasings x 16)
+
+=== S7: ranking loss vs cross-entropy on the flat probe model ===
+  cross-entropy  TEST 0.8114  bAcc 0.7888   (cv 0.8156 val 0.9106 l2 0.3)
+  ranking        TEST 0.8083  bAcc 0.7813   (cv 0.8203 val 0.9131 l2 0.3)
+
+=== G0: KG-masked probe interactions (72 adjacent pairs) ===
+  base (no products)       cv 0.8156   TEST 0.8114  bAcc 0.7888  (feats 32, l2 0.3)
+  + KG-masked products     cv 0.8223   TEST 0.8260  bAcc 0.7682  (feats 104, l2 0.03)
+  + ALL products           cv 0.8125   TEST 0.8062  bAcc 0.7494  (feats 152, l2 3.0)
+  -> KG-masked interaction delta on CV: +0.0067  SIGNAL, S1/S2 keep their prior
+
+=== S3 diagnostic: does the debate help where probes are uncertain? ===
+  confidence bin             n   corr(debate, residual)
+  Q1 most confident       137                   +0.260
+  Q2                      136                   +0.124
+  Q3                      136                   +0.114
+  Q4 least confident      137                   -0.015
+  -> spread across bins 0.275  conditional value plausible, build S3

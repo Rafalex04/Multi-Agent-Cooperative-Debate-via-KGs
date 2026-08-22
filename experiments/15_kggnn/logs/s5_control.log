@@ -1,0 +1,17 @@
+all arms fitted by the SAME fit_calib path; only L changes
+
+  lambda = 0 (no KG)       cv 0.8255  TEST 0.8139  bAcc 0.7462   (lam 0, l2 0.3, val 0.9315)
+  KG signed                cv 0.8288  TEST 0.8206  bAcc 0.7769   (lam 0.01, l2 0.3, val 0.9340)
+  KG unsigned              cv 0.8280  TEST 0.8200  bAcc 0.7607   (lam 0.03, l2 0.3, val 0.9340)
+
+  shuffled KG #0           cv 0.8275  TEST 0.8187  bAcc 0.7607   (lam 0.3, l2 0.1, val 0.9315)
+  shuffled KG #1           cv 0.8310  TEST 0.8064  bAcc 0.7287   (lam 0.03, l2 0.01, val 0.9407)
+  shuffled KG #2           cv 0.8290  TEST 0.8041  bAcc 0.7287   (lam 0.001, l2 0.1, val 0.9273)
+  shuffled KG #3           cv 0.8323  TEST 0.8097  bAcc 0.7481   (lam 0.01, l2 0.1, val 0.9340)
+  shuffled KG #4           cv 0.8289  TEST 0.8193  bAcc 0.7769   (lam 0.01, l2 0.3, val 0.9223)
+
+  shuffled: cv 0.8298+-0.0017  TEST 0.8117+-0.0063  bAcc 0.7486+-0.0187
+  KG signed vs lambda=0 : TEST +0.0067  bAcc +0.0307
+  KG signed vs shuffled : TEST +0.0089 (+1.4 sd)  bAcc +0.0283 (+1.5 sd)
+
+  bootstrap KG-signed vs lambda=0: +0.0067  95% CI [-0.0045, +0.0188]  P(better) 0.878

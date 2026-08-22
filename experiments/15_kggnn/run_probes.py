@@ -32,29 +32,63 @@ sys.path.insert(0, str(_HERE.parents[1] / "03_kg_grounded_vlm"))
 RESULTS = _HERE.parent / "results"
 _LABEL = {0: "MALIGNANT", 1: "BENIGN"}
 
-_Q = """\
+# ---------------------------------------------------------------- phrasings --
+# A 2x2 factorial, not four hand-written prompts. One axis is POLARITY (does the
+# finding hold / does it fail to hold); the other is FRAMING (report what you see
+# yourself / adjudicate a claim someone else made). Both axes are properties of
+# how a question is asked, not of breast imaging, so the same four templates
+# transfer to any ontology that supplies finding descriptions.
+#
+# Why more than one view helps at all: a yes/no probe carries acquiescence bias,
+# a lean toward "yes" that inflates every finding equally and therefore survives
+# any per-finding weighting. Flipping polarity points that lean the other way.
+# Flipping framing moves the model from generation to verification, which is a
+# different decision process on the same evidence. Measured on the first two:
+# mean p(present) 0.346 against 0.608, correlation +0.100.
+#
+# `invert` says whether a "yes" means the finding is ABSENT, so every arm is
+# stored as p(present) and the arms are directly poolable.
+_HEAD = """\
 You are an experienced radiologist examining a breast ultrasound image.
+"""
 
+_PHRASINGS = {
+    # direct observation, positive polarity
+    1: (_HEAD + """
 Look at the image and answer one question about what you can actually see.
 
 Does the mass in this image show {desc}?
 
-Answer with one word, yes or no."""
+Answer with one word, yes or no.""", False),
 
-# Negated phrasing. A yes/no probe is vulnerable to acquiescence bias -- a model
-# that leans toward "yes" inflates every finding equally, which survives any
-# per-finding weighting. Asking the same question in the negative and averaging
-# p(present) from both directions cancels that lean, because the bias pushes the
-# two phrasings in OPPOSITE directions while a real observation pushes them the
-# same way. No new information is assumed, only a second view of the same one.
-_Q_NEG = """\
-You are an experienced radiologist examining a breast ultrasound image.
-
+    # direct observation, negative polarity
+    2: (_HEAD + """
 Look at the image and answer one question about what you can actually see.
 
 Is the mass in this image FREE of {desc}?
 
-Answer with one word, yes or no."""
+Answer with one word, yes or no.""", True),
+
+    # verification framing, positive polarity
+    3: (_HEAD + """
+Another radiologist has reviewed this image and reports:
+
+    "The mass shows {desc}."
+
+Examine the image yourself. Do you agree with that report?
+
+Answer with one word, yes or no.""", False),
+
+    # verification framing, negative polarity
+    4: (_HEAD + """
+Another radiologist has reviewed this image and reports:
+
+    "The mass does not show {desc}."
+
+Examine the image yourself. Do you agree with that report?
+
+Answer with one word, yes or no.""", True),
+}
 
 
 class Client:
@@ -110,8 +144,8 @@ def main():
     p.add_argument("--num-shards", type=int, default=1)
     p.add_argument("--url", default="http://localhost:11434/api/chat")
     p.add_argument("--tag", default="probe")
-    p.add_argument("--negate", action="store_true",
-                   help="ask whether the finding is ABSENT; p_yes is inverted back")
+    p.add_argument("--phrasing", type=int, default=1, choices=(1, 2, 3, 4),
+                   help="which of the four factorial templates to ask")
     p.add_argument("--root", default=str(_HERE.parents[2] / "breastMnist"))
     args = p.parse_args()
 
@@ -152,16 +186,16 @@ def main():
             b64 = _b64(imgs[idx], args.image_size)
             ts = time.time()
             vals = {}
-            tmpl = _Q_NEG if args.negate else _Q
+            tmpl, invert = _PHRASINGS[args.phrasing]
             for feat, desc, _side in findings:
                 try:
                     v = p_yes(cl.call(tmpl.format(desc=desc), b64))
-                    # invert so both arms report p(finding PRESENT)
-                    vals[feat] = None if v is None else (1.0 - v if args.negate else v)
+                    # every arm is stored as p(finding PRESENT) so they pool directly
+                    vals[feat] = None if v is None else (1.0 - v if invert else v)
                 except Exception as e:
                     logger.warning("  %s %s failed: %s", idx, feat, e)
                     vals[feat] = None
-            fh.write(json.dumps({"index": idx,
+            fh.write(json.dumps({"index": idx, "phrasing": args.phrasing,
                                  "gold": _LABEL[int(labels[idx][0])],
                                  "p_yes": vals,
                                  "time_s": round(time.time() - ts, 1)}) + "\n")

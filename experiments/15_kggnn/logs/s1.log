@@ -1,0 +1,19 @@
+=== correctness gates ===
+  gradient check      max |analytic - numeric| = 1.26e-10  PASS
+  S1 vs S6 forward    max |difference|          = 2.22e-16  PASS
+
+lesion layer: 16 lesions, 43 edges, MAL 1 / BEN 15
+node features 8  (2 probe phrasings + 6 debate)
+
+ANCHOR flat probe-32: TEST 0.8114 bAcc 0.7888  (cv 0.8156)
+
+  loss       l2       CV              TEST             bAcc   gamma
+  ce      0.001   0.8236  0.8069+-0.0035 0.7830+-0.0048  -0.081
+  ce       0.01   0.8236  0.8065+-0.0040 0.7777+-0.0109  -0.154
+  ce        0.1   0.8265  0.8112+-0.0001 0.7888+-0.0000  -0.386
+  rank    0.001   0.8235  0.8102+-0.0013 0.7893+-0.0056  -0.067
+  rank     0.01   0.8254  0.8113+-0.0023 0.7845+-0.0128  -0.144
+  rank      0.1   0.8288  0.8113+-0.0003 0.7888+-0.0000  -0.150
+
+  CV-selected: loss=rank l2=0.1  ->  TEST 0.8113  bAcc 0.7888
+  KILL CRITERION: CV 0.8288 vs anchor CV 0.8156  -> SURVIVES

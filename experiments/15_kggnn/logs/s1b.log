@@ -1,0 +1,17 @@
+phrasings 2  anchor features 32
+KG-adjacent pairs 72 of 120
+
+  base (no products)             cv 0.8203  TEST 0.8083  bAcc 0.7813   (rank, l2 0.3, feats 32)
+  + KG-masked products           cv 0.8240  TEST 0.8329  bAcc 0.7425   (rank, l2 0.01, feats 104)
+  + ALL products                 cv 0.8125  TEST 0.8062  bAcc 0.7494   (ce, l2 3.0, feats 152)
+
+  + shuffled mask #0             cv 0.8202  TEST 0.8254  bAcc 0.7563   (ce, l2 0.01, feats 104)
+  + shuffled mask #1             cv 0.8172  TEST 0.8375  bAcc 0.7544   (rank, l2 0.01, feats 104)
+  + shuffled mask #2             cv 0.8142  TEST 0.8331  bAcc 0.7600   (rank, l2 0.01, feats 104)
+  + shuffled mask #3             cv 0.8167  TEST 0.8319  bAcc 0.7550   (ce, l2 0.01, feats 104)
+  + shuffled mask #4             cv 0.8197  TEST 0.8239  bAcc 0.7506   (ce, l2 0.01, feats 104)
+
+  shuffled-mask control: cv 0.8176+-0.0022   TEST 0.8304+-0.0050
+  KG mask vs shuffled:   cv +0.0064   TEST +0.0025
+
+  paired bootstrap, KG-masked vs base: +0.0246  95% CI [-0.0171, +0.0690]  P(better) 0.872

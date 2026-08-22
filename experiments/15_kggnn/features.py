@@ -33,10 +33,18 @@ def probe_table(results_dir=None, tag="probe"):
     out = {}
     for f in sorted(d.glob(f"{tag}_*.jsonl")):
         split = f.name.split("_")[1]
-        for ln in f.read_text().splitlines():
-            if ln.strip():
+        for ln in f.read_text(errors="replace").splitlines():
+            if not ln.strip():
+                continue
+            # Concurrent appends during a shard handover can interleave and
+            # produce a truncated line. Skipping it is right; letting json
+            # raise here would abort a whole evaluation over one bad record,
+            # and silently coercing it would poison the features.
+            try:
                 r = json.loads(ln)
                 out[(split, int(r["index"]))] = r["p_yes"]
+            except Exception:
+                continue
     return out
 
 
