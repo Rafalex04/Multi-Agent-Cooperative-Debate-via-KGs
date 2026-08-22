@@ -86,8 +86,26 @@ the BreastMNIST KG ablation (0.7128 vs 0.4740) stands regardless.
 
 ## 7. Deviations from the round-3 spec, and why
 
-- **arXiv 2603.08921 ("medcbr") does not resolve.** The id returns no entry from
-  the arXiv API, and a title/abstract search for a concept-based VLM paper
-  evaluated on BUS-BRA returns nothing. No comparison to it is claimed. If the
-  correct identifier surfaces, the comparison is a one-table addition.
+- **arXiv 2603.08921 ("MedCBR") located and read.** An earlier note in this file
+  said the id did not resolve; that was wrong — the arXiv *API* returned no entry
+  for it, but the paper exists and is now cited correctly. Harmanani et al.,
+  "Vision-Language Models Encode Clinical Guidelines for Concept-Based Medical
+  Reasoning", 9 Mar 2026.
+
+  **It is not a like-for-like comparator, and the write-up must say so.** MedCBR
+  reports 94.2 ± 0.4 AUROC / 89.0 bAcc on BUS-BRA under *5-fold cross-validation
+  with patient-level splits* — i.e. trained on BUS-BRA, with a radiologist's 15
+  BI-RADS concept annotations as concept supervision. Its baselines (CLIP ViT-L/14
+  93.5, CLIP-CBM 91.8, AdaCBM 87.9, CBM 84.8) are all likewise fitted in-domain.
+  This round evaluates models that never see a BUS-BRA label at all. The two
+  numbers answer different questions and will be tabulated as such: in-domain
+  supervised ceiling versus zero-shot transfer. Registered before seeing our own
+  external result, so it cannot be reframed afterwards.
+
+  Their concept list overlaps ours substantially (shadowing, enhancement, halo,
+  calcifications, skin thickening, circumscribed/spiculated/indistinct/angular/
+  microlobulated margins, regular shape, hyper/hypo/heterogeneous/cystic echo).
+  Their BUS-BRA concept annotations do not appear to be publicly released — the
+  repo ships the concept *names* only — so E2 stays on BrEaST, which publishes
+  descriptor ground truth.
 - E5/E6 remain optional and are attempted only after E1–E4 are complete.

@@ -358,6 +358,10 @@ def main():
     p.add_argument("--url",        default="http://localhost:11434/api/chat")
     p.add_argument("--out-dir",    required=True)
     p.add_argument("--kg-root",    default=str(_HERE.parents[2] / "breastMnist"))
+    p.add_argument("--npz", default=None,
+                   help="external image archive (same imgs/labels keys and the same "
+                        "MALIGNANT=0/BENIGN=1 convention). The KG still comes from "
+                        "--kg-root, so the debate argues the identical finding set.")
     args = p.parse_args()
 
     import numpy as np
@@ -372,7 +376,8 @@ def main():
                     sum(1 for _, _, s in findings if s == "MALIGNANT"),
                     sum(1 for _, _, s in findings if s == "BENIGN"))
 
-    z = np.load(root / f"data/breast/images_224/{args.split}.npz")
+    z = np.load(Path(args.npz) if args.npz
+                else root / f"data/breast/images_224/{args.split}.npz")
     imgs, labels = z["imgs"], z["labels"]
     n = len(imgs) if args.limit is None else min(args.limit, len(imgs))
     idxs = [i for i in range(n) if i % args.num_shards == args.shard]
@@ -386,8 +391,9 @@ def main():
                 args.split, args.shard, args.num_shards, len(idxs))
 
     t0 = time.time()
+    width = max(3, len(str(len(imgs) - 1)))
     for k, idx in enumerate(idxs, 1):
-        sid = f"{idx:03d}"
+        sid = f"{idx:0{width}d}"
         dest = out_dir / f"debate_{sid}.json"
         if dest.exists():
             continue
