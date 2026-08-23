@@ -9,3 +9,15 @@ Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /hom
   epoch  50/100 val_auc=0.9716 (best 0.9925 @ 17)  44.0 min
   epoch  60/100 val_auc=0.9657 (best 0.9925 @ 17)  52.6 min
   epoch  70/100 val_auc=0.9641 (best 0.9925 @ 17)  61.7 min
+  epoch  80/100 val_auc=0.9649 (best 0.9925 @ 17)  70.8 min
+  epoch  90/100 val_auc=0.9632 (best 0.9925 @ 17)  86.1 min
+  epoch 100/100 val_auc=0.9657 (best 0.9925 @ 17)  105.5 min
+trained in 105.5 min, best val AUC 0.9925 @ epoch 17
+
+in-domain BreastMNIST test: AUC 0.9478  bAcc 0.8678   (original run 0.9442 / 0.8672)
+reproduction OK
+busbra_pad2    n= 1875  AUC 0.6421  bAcc 0.5567  | case-level AUC 0.6605 bAcc 0.5580
+busbra_pad15   n= 1875  AUC 0.6278  bAcc 0.5754  | case-level AUC 0.6394 bAcc 0.5960
+breast         n=  252  AUC 0.6490  bAcc 0.5816
+
+generalisation gap (in-domain -> BUS-BRA case-level): +0.2873 AUC

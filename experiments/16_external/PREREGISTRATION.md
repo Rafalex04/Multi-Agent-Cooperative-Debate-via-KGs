@@ -109,3 +109,90 @@ the BreastMNIST KG ablation (0.7128 vs 0.4740) stands regardless.
   repo ships the concept *names* only — so E2 stays on BrEaST, which publishes
   descriptor ground truth.
 - E5/E6 remain optional and are attempted only after E1–E4 are complete.
+
+---
+
+# Outcomes, scored against the predictions above
+
+Filled in 2026-08-23 after the analysis ran. The frozen-model hash was unchanged
+throughout: `a08cdd88…c443ec`.
+
+## Primary endpoints
+
+| model | params | in-domain test | BUS-BRA case | **gap** |
+|---|---|---|---|---|
+| `kgsum` | 0 | 0.7531 | 0.6773 | **+0.076** |
+| `logit` | 33 | 0.8133 | 0.7356 | **+0.078** |
+| `s5` | 65 | 0.8156 | **0.7393** | **+0.076** |
+| ResNet-18 | 11.2M | 0.9478 | 0.6605 | **+0.287** |
+
+n = 1846 images / 1058 cases fully probed in both registered arms.
+
+**The registered hypothesis is confirmed.** The zero-shot generalisation gap is
++0.076; the supervised one is +0.287, 3.8× larger. The ordering *reverses* across
+the domain boundary: ResNet leads by 0.13 AUC in domain and trails by 0.08
+outside it. A model that never saw a BUS-BRA label beats one trained on
+BreastMNIST, on BUS-BRA.
+
+The ResNet retrain reproduced its published baseline first (0.9478 vs 0.9442), so
+the collapse is a transfer result and not a training failure. The PAD=1.5
+sensitivity arm agrees (ResNet case AUC 0.6394), as does BrEaST (0.6490).
+
+## Predictions, scored honestly
+
+| quantity | predicted | actual | verdict |
+|---|---|---|---|
+| probe external AUC (per-case) | 0.75 – 0.82 | 0.7393 | **missed low**, by 0.011 |
+| ResNet-18 external AUC | 0.80 – 0.90 | 0.6605 | **missed badly**, by 0.139 |
+| `kgsum` external AUC | 0.68 – 0.78 | 0.6773 | **missed low**, by 0.003 |
+| S5 replicates at P≥0.95 | ~0.4 probability | not confirmed | as expected |
+
+Three of four predictions were too optimistic, the supervised one grossly so. The
+kill criterion (`kgsum` below 0.65) was **not** triggered — 0.6773.
+
+## E3 — S5, and a distinction worth keeping
+
+| arm | BUS-BRA case AUC | vs S5 | P(better) |
+|---|---|---|---|
+| KG-signed Laplacian, λ=0.01 | 0.7393 | — | — |
+| λ = 0 (no penalty at all) | 0.7380 | +0.0013 | 0.702 |
+| shuffled KG, λ=0.01, 5 draws | 0.7219 ± 0.0112 | +0.0174 | **0.992** |
+
+**Not confirmed** under the registered bar, which required beating both. But the
+two comparisons say different things and the difference is the interesting part:
+against a *wrong* graph the real ontology wins at P=0.992 — the first
+ontology-topology effect in this project to clear 0.95 — while against *no graph*
+it wins nothing. The KG is not a useful prior here, but a false KG is an actively
+harmful one. The 0.878 P(better) seen at n=156 did not become a real effect at
+n=1846; it became a precise zero.
+
+## E4 — agreement with radiologist BI-RADS (BUS-BRA)
+
+| model | Spearman ρ | AUC(BI-RADS 4/5 vs 2/3) |
+|---|---|---|
+| `kgsum` | +0.161 | 0.598 |
+| `logit` | +0.314 | 0.667 |
+| `s5` | +0.312 | 0.668 |
+
+## E2 — probe validity against radiologists (BrEaST, n=252, complete)
+
+Per-descriptor perception AUC averages **0.5698**: 8 of 13 above 0.60, but **5 of
+13 below chance**, and the failures are not noise — `oval_shape` 0.2745 and
+`irregular_shape` 0.3352 are *systematically inverted*, which is a sign error
+rather than blindness. The strongest are `spiculated_or_irregular_mass` 0.7769,
+`posterior_shadowing` 0.7457, `hyperechoic_mass` 0.7417, `circumscribed_margin`
+0.7375.
+
+Decomposition through the identical 0-parameter KG-signed sum:
+
+| | AUC |
+|---|---|
+| probes → label | 0.7020 |
+| **radiologist descriptors → label** | **0.8515** |
+| perception error (ceiling − probes) | 0.1495 |
+| inference error (1.0 − ceiling) | 0.1485 |
+
+The ontology's stance mapping, given perfect inputs and fitting nothing, reaches
+0.8515. So the inference rule is sound and the remaining gap is split almost
+exactly evenly between seeing and reasoning — and the perception half is
+concentrated in a handful of invertible probes.

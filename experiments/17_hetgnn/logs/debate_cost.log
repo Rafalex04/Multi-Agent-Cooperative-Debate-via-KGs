@@ -1,0 +1,13 @@
+identical samples throughout: {'train': 546, 'val': 78, 'test': 156}
+
+  probes only                   32f  cv 0.8266  TEST 0.8133  bAcc 0.7538
+  debate only                   32f  cv 0.6088  TEST 0.7022  bAcc 0.6228
+  probes + debate               64f  cv 0.8069  TEST 0.8095  bAcc 0.7638
+
+  debate contribution on top of probes: -0.0038 AUC
+
+  permutation control: debate block shuffled across samples (20 draws)
+  shuffled-debate contribution: -0.0087 +- 0.0103
+  real minus shuffled:          +0.0049 (+0.48 sd)
+
+  -> the debate channel is indistinguishable from noise of the same shape once probes are present
