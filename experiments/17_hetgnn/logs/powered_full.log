@@ -1,1 +1,23 @@
 n=1849 images, 1059 cases, malignant 0.320
+  inner CV,  8 edges: 0.7746
+  inner CV, 16 edges: 0.7742
+  inner CV, 24 edges: 0.7714
+  inner CV, 40 edges: 0.7730
+  inner CV, 72 edges: 0.7730
+  -> edge budget 8 selected on train CV (0.7746)
+
+
+arm               image AUC   case AUC
+linear               0.7726     0.7953
+GNN+nograph          0.7296     0.7605
+GNN+KG               0.7749     0.7999
+GNN+KGsparse         0.7777     0.8023
+GNN+shuffled         0.7678     0.7933   (sd 0.0064, 5 draws)
+GNN+shuf(sparse)     0.7699     0.7952   (sd 0.0081, 5 draws)
+
+SPARSE (8 edges) KG minus shuffled: +0.0071   (+0.88 sd)   P(KG better) 0.596
+
+KG minus shuffled (case-level): +0.0066   (+1.04 sd)   P(KG better) 0.579
+KG minus linear:                +0.0046
+
+-> KG topology not distinguishable from a random graph of equal density
