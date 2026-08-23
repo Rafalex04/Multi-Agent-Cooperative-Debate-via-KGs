@@ -1,0 +1,18 @@
+BUS-BRA debates 1179  probes 1875  BOTH 1179
+debate gold vs npz label mismatches: 0
+
+n=1179 images, 704 cases, malignant 0.327
+arm                     image AUC   case AUC
+probes only                0.7537     0.7717
+probes + debate            0.7381     0.7604
+GNN+nograph                0.7519     0.7765
+GNN+KG                     0.7676     0.7884
+GNN+shuffled KG                       0.7717   (sd 0.0066, 5 draws)
+
+  debate on top of probes : -0.0113   P(better) 0.075
+  real KG vs shuffled KG  : +0.0167   (+2.54 sd)   P(better) 0.940
+
+  -> debate: no effect at P>=0.95
+  -> KG topology: no effect at P>=0.95
+
+wrote results/external_merged.json
