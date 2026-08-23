@@ -60,6 +60,17 @@ def finding_matrix(names):
     return breastmnist_matrix([(n, 0) for n in names])
 
 
+def best_fit(Xtr, ytr):
+    """Loss and L2 chosen by CV on train only."""
+    best = None
+    for nm, f in (("ce", fit_ce), ("rank", fit_rank)):
+        for l2 in L2S:
+            c = cv_score(Xtr, ytr, l2, f)[0]
+            if best is None or c > best[0]:
+                best = (c, l2, nm, f)
+    return best
+
+
 def sweep(sc, Y):
     f = np.concatenate([sc["train"], sc["val"]]); g = np.concatenate([Y["train"], Y["val"]])
     return max(sorted(set(f.tolist())), key=lambda t: bacc(f.tolist(), g.tolist(), t))
@@ -142,6 +153,31 @@ def main():
         _, l22, f2 = b2
         w2, b3 = f2(D["train"], Yc["train"], l22)
         row(tag, {s: D[s] @ w2 + b3 for s in SPLITS}, Yc, res)
+
+    print("\n=== 4. permutation control: is the gain the ontology, or 20 more columns? ===")
+    # 20 extra columns of ANYTHING will move a fitted score. Shuffle the lesion
+    # block across samples, preserving its dimensionality, scale and internal
+    # correlation while destroying its link to the label.
+    a_f = res["findings only (P2+P3)"]["auc"]["test"]
+    a_fl = res["findings + lesions"]["auc"]["test"]
+    _, l2s, _, fs = best_fit(np.hstack([Zf["train"], Zl["train"]]), Yc["train"])
+    deltas = []
+    for r in range(20):
+        rng = np.random.default_rng(1300 + r)
+        Zs = {k: np.hstack([Zf[k], Zl[k][rng.permutation(len(Yc[k]))]]) for k in SPLITS}
+        w3, b4 = fs(Zs["train"], Yc["train"], l2s)
+        sc = Zs["test"] @ w3 + b4
+        deltas.append(auc(Yc["test"], sc) - a_f)
+    m, sdv = float(np.mean(deltas)), float(np.std(deltas))
+    real = a_fl - a_f
+    print(f"  real lesion gain            {real:+.4f}")
+    print(f"  shuffled lesion block       {m:+.4f} +- {sdv:.4f}  (20 draws)")
+    print(f"  real minus shuffled         {real - m:+.4f}  ({(real - m) / (sdv + 1e-9):+.2f} sd)")
+    print("  -> " + ("the lesion channel carries real information beyond its width"
+                     if (real - m) / (sdv + 1e-9) > 2 else
+                     "indistinguishable from noise of the same shape"))
+    res["permutation"] = {"real_gain": real, "shuffled_mean": m, "shuffled_sd": sdv,
+                          "sigma": (real - m) / (sdv + 1e-9)}
 
     (_HERE / "results/lesion_analysis.json").write_text(json.dumps(res, indent=1, default=float))
     print("\nwrote results/lesion_analysis.json")
