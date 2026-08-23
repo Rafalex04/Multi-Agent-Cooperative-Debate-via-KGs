@@ -183,7 +183,7 @@ def main():
                     pass
 
     cl = Client(args.url, args.model)
-    t0, k = time.time(), 0
+    t0, k, dead = time.time(), 0, 0
     logger.info("probes | %s shards=%s | %d samples (%d done)",
                 args.split, want, len(idxs), len(done))
     with out_path.open("a") as fh:
@@ -203,13 +203,27 @@ def main():
                 except Exception as e:
                     logger.warning("  %s %s failed: %s", idx, feat, e)
                     vals[feat] = None
+            got = sum(1 for v in vals.values() if v is not None)
+            # A record with every probe null is worse than no record: it looks like
+            # data, survives resume-by-index so it is never retried, and enters the
+            # feature matrix as a row of 0.5 defaults. Two nodes returning HTTP 500
+            # wrote 452 such rows before this was caught. Refuse to write them, and
+            # give up on the node rather than filling a file with nothing.
+            if got == 0:
+                dead += 1
+                logger.error("  %s: every probe failed (%d in a row)", idx, dead)
+                if dead >= 5:
+                    logger.error("ABORT: %d consecutive fully-failed images; "
+                                 "this node is not serving. Nothing written.", dead)
+                    raise SystemExit(2)
+                continue
+            dead = 0
             fh.write(json.dumps({"index": idx, "phrasing": args.phrasing,
                                  "gold": _LABEL[int(labels[idx][0])],
                                  "p_yes": vals,
                                  "time_s": round(time.time() - ts, 1)}) + "\n")
             fh.flush()
             rate = (time.time() - t0) / k
-            got = sum(1 for v in vals.values() if v is not None)
             logger.info("  [%3d/%3d] %03d  %d/%d probes  | ETA %.2fh",
                         k, len(idxs), idx, got, len(findings),
                         rate * (len(idxs) - k) / 3600)
