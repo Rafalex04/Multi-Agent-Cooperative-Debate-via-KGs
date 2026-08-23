@@ -1,0 +1,605 @@
+<!doctype html><html><head><!-- frame-runtime --><base href="/_f/1786953193-1b50/"><script>window.__FRAME_PREAMBLE={"capabilities":{"artifact":"artifact.BWD0CGLd.js","assets":"assets.BkxVItX2.js","comments":"comments.CaMLzWgX.js","db":"db.5PgiKS-2.js","downloads":"downloads.C3GSvEDP.js","embed":"embed.CbQfZY8W.js","mcp":"mcp.D3B2EyQu.js","permissions":"permissions.BNySkLV5.js","room":"room.BgXZkiYR.js","sample":"sample.B3bg5_Ty.js","self":"artifact.BWD0CGLd.js","user":"user.BpKav-Rf.js"},"transforms":"_transforms.h3_8GSUa.js","comments":"_comments.8rmPM2AJ.js","translate":"_translate.5HCW4BJh.js"}</script><script>(function(){"use strict";var ce=["light","dark","system"],ue=/^[A-Za-z0-9_-]{1,64}$/,V=/^[a-zA-Z_:][a-zA-Z0-9_:.-]{0,127}$/,fe=new Set(["class","hidden","value","checked"]);function de(e){const t=e.toLowerCase();return t.startsWith("data-")||t.startsWith("aria-")||fe.has(t)}var pe="http://www.w3.org/1999/xhtml",me="http://www.w3.org/2000/svg",ge=new Set(["script","style","iframe","noscript","noframes","noembed","xmp","plaintext","template","title","textarea","object","embed"]),_e=new Set(["script","style"]);function ve(e){const t=e.localName.toLowerCase();return e.namespaceURI===pe?!ge.has(t):e.namespaceURI===me?!_e.has(t):!1}function he(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_patch;if(t===null||typeof t!="object")return!1;const{seq:n,elements:a}=t;if(typeof n!="number"||!Number.isSafeInteger(n)||!Array.isArray(a)||a.length===0||a.length>64)return!1;for(const i of a){if(i===null||typeof i!="object")return!1;const r=i;if(typeof r.target!="string"||!ue.test(r.target)||r.text!==void 0&&typeof r.text!="string")return!1;if(r.attrsSet!==void 0){if(r.attrsSet===null||typeof r.attrsSet!="object")return!1;for(const[l,c]of Object.entries(r.attrsSet))if(!V.test(l)||typeof c!="string")return!1}if(r.attrsRemoved!==void 0){if(!Array.isArray(r.attrsRemoved))return!1;for(const l of r.attrsRemoved)if(typeof l!="string"||!V.test(l))return!1}}return!0}function ye(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_init;return t!==null&&typeof t=="object"}function be(e){return e!==null&&typeof e=="object"&&e.__frame_size_poke===!0}function Ee(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_theme;if(t===null||typeof t!="object")return!1;const n=t.theme;return typeof n=="string"&&ce.includes(n)}function we(e){try{typeof reportError=="function"?reportError(e):setTimeout(()=>{throw e},0)}catch{}}var X=["#62744c","#b04e72","#5b7596","#a3651f","#7a6ba8","#3f7a75"];function J(e){let t=0;for(let n=0;n<e.length;n++)t=t*31+e.charCodeAt(n)>>>0;return X[t%X.length]??"#788c5d"}var Z="#c7c9d1",Ae=["data:image","/svg+xml,"].join("");function Q(e){return Ae+"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Ccircle cx='1' cy='1' r='1' fill='"+encodeURIComponent(e)+"'/%3E%3C/svg%3E"}var Se=Object.freeze({id:null,name:"",avatarUrl:Q(Z),color:Z,email:null,isOwner:!1,canEdit:!1});function je(...e){const t=e[0],n=typeof t=="string"?[t]:Array.isArray(t)?t.filter(i=>typeof i=="string"):[],a=Object.create(null);for(const i of n)a[i]={id:i,name:"",avatarUrl:Q(J(i)),color:J(i),email:null,isMe:!1};return a}var ee=Object.freeze(Object.assign(Object.create(null),{user:Object.freeze(Object.assign(Object.create(null),{id:null,isOwner:!1,canEdit:!1,me:Se,profiles:je,name:"",avatarUrl:null,search:Object.freeze([]),email:null}))})),Re={sample:"sample"};function te(){const e=new Uint8Array(20);try{crypto.getRandomValues(e)}catch{for(let n=0;n<e.length;n++)e[n]=Math.floor(Math.random()*256)}let t="";for(const n of e)t+=(n%36).toString(36);return t}function Oe(e,t){const n=r=>{const l={path:r},c=r.split("/");return{id:c[c.length-1],path:r,get:()=>t("get",[l]),set:d=>t("set",[l,d]),update:d=>t("update",[l,d]),delete:()=>t("delete",[l]),acquire:d=>t("acquire",[l,d]),onSnapshot:(d,E)=>t("subscribe",[l,d,E]),collection:d=>i(r+"/"+String(d))}},a=r=>({where:(l,c,d)=>a({...r,where:[...r.where??[],{f:String(l),op:String(c),v:d}]}),orderBy:(l,c)=>a({...r,orderBy:{f:String(l),dir:c===void 0?"asc":String(c)}}),limit:l=>a({...r,limit:Number(l)}),get:()=>t("query",[r]),onSnapshot:(l,c)=>t("subscribe",[r,l,c])}),i=r=>({...a({collection:r}),path:r,doc:l=>n(r+"/"+(l===void 0?te():String(l))),add:l=>{const c=n(r+"/"+te());return Promise.resolve(c.set(l)).then(()=>c)}});e.doc=r=>n(String(r)),e.collection=r=>i(String(r))}var Pe=Object.freeze([]);function Te(e,t){let n=null,a=null;const i=()=>e.__settled;e.peers=()=>Pe,e.connected=()=>!1,e.emit=()=>i()?.()??Promise.resolve(),e.presence=r=>{const l=i();if(l)return l();let c=null;if(r!==null&&typeof r=="object")try{Array.isArray(r)||(c={...r})}catch{}return c===null?Promise.reject({code:"invalid_argument",message:"presence takes an object"}):(n===null&&(n=Object.create(null),a=Promise.resolve(t("presence",[n]))),Object.assign(n,c),a)}}var B="__frame_scroll",Me=150,Le=310,ke=160,Ce=3e4;function Ne(){let e=0,t=!1,n=!1,a=!1,i=0,r=null;const l=u=>{try{sessionStorage.setItem(B,JSON.stringify({y:u}))}catch{}},c=()=>{if(clearTimeout(e),r===null)return;const u=r;r=null,l(u)},d=()=>{if(t){t=!1;return}n=!0,r=scrollY,clearTimeout(e),e=setTimeout(c,Me)};try{addEventListener("scroll",d,{passive:!0}),addEventListener("pagehide",c)}catch{}const E=()=>{let u;try{u=sessionStorage.getItem(B)}catch{return null}if(u===null)return null;let g;try{g=JSON.parse(u)}catch{g=null}const f=g?.y;if(!(typeof f=="number"&&Number.isFinite(f)&&f>=0)){try{sessionStorage.removeItem(B)}catch{}return null}return f};let T=!1;const h=u=>{try{const g=scrollY;scrollTo({top:u,left:0,behavior:"instant"}),i=u,a=!0,clearTimeout(e),r=null,l(u);const f=scrollY;f!==g&&(t=!0),f!==u&&!T&&(T=!0,addEventListener("load",()=>{try{if(scrollY===f){const p=E();h(p!==null?p:i)}}catch{}},{once:!0}))}catch{}},R=()=>{try{return!!location.hash}catch{return!0}};let A=!1;const O=()=>{try{if(A||innerWidth>Le||innerHeight>ke)return;A=!0;const u=Date.now(),g=()=>{try{removeEventListener("resize",g)}catch{}if(Date.now()-u>Ce||n||R())return;const f=E();h(f!==null?f:i)};addEventListener("resize",g)}catch{}};let M=!1,o=!1;return{restore(){if(M||(M=!0,R()))return;const u=E();u!==null&&(h(u),O())},promoted(){if(o||(o=!0,R()))return;const u=E();u!==null?(h(u),O()):a&&h(i)}}}var Ye="modulepreload",We=function(e){return"/"+e},Ke={},Ue=function(t,n,a){let i=Promise.resolve();function r(l){const c=new Event("vite:preloadError",{cancelable:!0});if(c.payload=l,window.dispatchEvent(c),!c.defaultPrevented)throw l}return i.then(l=>{for(const c of l||[])c.status==="rejected"&&r(c.reason);return t().catch(r)})};(function(){const e=Object.defineProperty,t=globalThis,n=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let a=0;for(let i=0;i<n.length;i++){const r=n[i];try{e(t,r,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[r]}catch{}try{e(t,r,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[r]=="function"&&a++}if(a&&window!==top)try{parent.postMessage({__frame_rtc_lockdown_failed:a},"*")}catch{}})();var qe=1e4,Ie=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function re(e){for(const t of Ie)if(t.endsWith(":*"))try{const n=new URL(e);if(`${n.protocol}//${n.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}var k=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities}),x=window.__FRAME_PREAMBLE?.transforms,$=window.__FRAME_PREAMBLE?.comments,z=window.__FRAME_PREAMBLE?.translate,q=/^[\w.-]+\.js$/,De=/^[a-z][a-z0-9_-]{0,63}$/;function I(e){return Ue(()=>import("/_runtime/"+e),void 0)}function Be(e,t){return{contract:e.contract,changes:new Set(e.changes??[]),flags:new Set(e.flags??[]),capabilities:e.capabilities??{},capBudgets:e.capBudgets??{},transforms:new Map,shellOrigin:t,mount:Y,pipe:()=>({wrap:(n,a)=>(...i)=>{try{return a(...i)}catch(r){return Promise.reject(r)}}})}}var ne=null,C=null;function F(e,t,n){try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!0,enumerable:!0})}catch{}}}var H=!1;function xe(e,t){const n=[];for(const a of e.elements){const i=document.querySelector(`[data-id="${a.target}"]`);if(!i){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}if([...Object.keys(a.attrsSet??{}),...a.attrsRemoved??[]].some(r=>!de(r))){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}if(a.text!==void 0&&!ve(i)){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}for(const[r,l]of Object.entries(a.attrsSet??{}))if(!oe(i,r)){try{i.setAttribute(r,l)}catch{}se(i,r,l)}for(const r of a.attrsRemoved??[])oe(i,r)||(i.removeAttribute(r),se(i,r,null));typeof a.text=="string"&&(i.textContent=a.text),n.push(a.target)}try{document.dispatchEvent(new CustomEvent("claude:edit",{detail:{seq:e.seq,targets:n}}))}catch{}}function se(e,t,n){if(!(e instanceof HTMLInputElement))return;const a=t.toLowerCase();a==="checked"?e.checked=n!==null:a==="value"&&e.type!=="file"&&(e.value=n??"")}function oe(e,t){const n=t.toLowerCase(),a=e;return n==="data-id"||(n==="value"||n==="checked")&&(a.__artifactSecret===!0||/^(password|hidden|file)$/.test(a.type??"")||/(^|\s)(cc-|one-time-code|current-password|new-password)/i.test(`${e.getAttribute("autocomplete")??""} ${a.autocomplete??""}`))}function ae(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,H=!0):H&&(delete t.dataset.theme,t.style.colorScheme="",H=!1)}var ie=256,N=Object.assign(Object.create(null),{mcp:Object.assign(Object.create(null),{watchTool:{handlerArg:3}}),db:Object.assign(Object.create(null),{subscribe:{handlerArg:1,errArg:2}}),room:Object.assign(Object.create(null),{on:{handlerArg:1,errArg:2},onPeers:{handlerArg:0,errArg:1},onConnection:{handlerArg:0,errArg:1}})}),$e=Object.assign(Object.create(null),{db:(e,t)=>Oe(e,t),room:(e,t,n)=>Te(e,n)}),j=new Map;function Y(e,t){const n=j.get(e);if(!n)return;const a=Object.assign(Object.create(null),t);Object.assign(n.impl,a),n.r(n.ns),n.impl.__settled=()=>Promise.reject({code:"capability_removed",message:`${e}: method not in this runtime`});const i=n.queue;n.queue=[];for(const r of i){const l=a[r.method];if(l)if(N[e]?.[r.method])try{r.resolve(l(...r.args))}catch{U(r,N[e][r.method],{code:"transform_error",message:`${e}.${r.method} rejected its arguments`})}else l(...r.args).then(r.resolve,r.reject);else{const c={code:"capability_removed",message:`${e}.${r.method} is not in this runtime`},d=N[e]?.[r.method];if(d){U(r,d,c);continue}r.reject(c)}}}function ze(e,t){const n=j.get(e);if(!n)return;n.impl.__settled=()=>Promise.reject(t),n.r(null);const a=n.queue;n.queue=[];for(const i of a){const r=N[e]?.[i.method];if(r){U(i,r,t);continue}i.reject(t)}}function le(e,t){if(typeof e=="function")try{return e(...t)}catch{return Object.create(null)}return Array.isArray(e)?[...e]:e!==null&&typeof e=="object"?{...e}:e}function D(e,t){const n=ee[e];if(!n){ze(e,t);return}j.get(e)?.r(null),Y(e,Object.fromEntries(Object.entries(n).map(([a,i])=>[a,(...r)=>Promise.resolve(le(i,r))])))}function U(e,t,n){if(e.syncState?.dead)return;const a=t.errArg===void 0?void 0:e.args[t.errArg],i=t.errArg===void 0?e.args[t.handlerArg]:a;typeof i=="function"&&queueMicrotask(()=>{if(!e.syncState?.dead)try{i(t.errArg===void 0?{type:"error",error:n}:n)}catch(r){we(r)}})}var W=Object.getOwnPropertyDescriptor(window,"claude");if(window!==top&&!(W&&W.writable===!1)){const e=x&&q.test(x)?I(x).catch(()=>{}):Promise.resolve(void 0),t=o=>{if(o.type==="auxclick"&&o.button!==1)return;const u=o.target,g=u&&u.closest?u.closest("a[href],area[href]"):null;if(!g)return;const f=g.getAttribute("href");if(!f)return;let p,P;try{p=new URL(f,document.baseURI),P=new URL(document.baseURI).origin}catch{return}if((p.protocol==="http:"||p.protocol==="https:")&&p.origin!==P){o.preventDefault();const w=(g.getAttribute("target")??"").toLowerCase(),y=o.type==="auxclick"||o.metaKey||o.ctrlKey||o.shiftKey||o.altKey||!["","_self","_top","_parent"].includes(w);parent.postMessage({__frame_nav:!0,url:p.href,newTab:y},"*")}};addEventListener("click",t,!0),addEventListener("auxclick",t,!0);const n={},a=o=>{o.isTrusted&&(n.pointer=!0)},i=o=>{o.isTrusted&&(n.click=!0)};addEventListener("pointermove",a,{capture:!0,passive:!0}),addEventListener("click",i,{capture:!0,passive:!0}),e.then(o=>{o?.wireNav&&(o.wireNav(),removeEventListener("click",t,!0),removeEventListener("auxclick",t,!0),removeEventListener("pointermove",a,!0),removeEventListener("click",i,!0),o.wireEngagement?.(n))});let r=null;try{r=Ne()}catch{}const l=W?.value??{};F(window,"claude",l);const c=o=>{let u;const g=new Promise(v=>{u=v}),f={impl:Object.create(null),queue:[],u:g,r:u,ns:null};j.set(o,f);const p=f.impl,P=v=>({code:"queue_overflow",message:`${o}.${v}: pre-init call queue is full`}),w=(v,s)=>{if(f.queue.length>=ie){const m=ee[o];return m&&v in m?Promise.resolve(le(m[v],s)):Promise.reject(P(v))}return new Promise((m,_)=>{f.queue.push({method:v,args:s,resolve:m,reject:_})})},y=Re[o],L=new Proxy(y===void 0?p:(()=>{}),{apply:(v,s,m)=>{const _=y,b=p[_]??p.__settled;return b?b(...m):w(_,m)},get:(v,s)=>{if(typeof s!="string"||s==="then"||s==="toJSON"||s==="valueOf")return;if(s==="toString")return Object.prototype.toString;if(y!==void 0&&(s==="call"||s==="apply"||s==="bind"))return Function.prototype[s];const m=N[o]?.[s];return m?(..._)=>{if(typeof _[m.handlerArg]!="function")throw new TypeError(`${o}.${s} requires a handler function`);const b=p[s];if(b)return b(..._);if(p.__settled){const S={dead:!1},Fe={args:[..._],syncState:S};return p.__settled().catch(He=>U(Fe,m,He)),()=>{S.dead=!0}}if(f.queue.length>=ie){const S={dead:!1};return U({args:[..._],syncState:S},m,P(s)),()=>{S.dead=!0}}let K=null;const G={dead:!1};return f.queue.push({method:s,args:_,resolve:S=>{K=typeof S=="function"?S:null,G.dead&&K?.()},reject:()=>{},syncState:G}),()=>{G.dead=!0,K?.()}}:(..._)=>{const b=p[s]??p.__settled;return b?b(..._):w(s,_)}},set:()=>!1});$e[o]?.(p,(v,s)=>L[v](...s),w),f.ns=L,F(l,o,L)};for(const o of Object.keys(k)){if(l[o]!==void 0){F(l,o,l[o]);continue}c(o)}if(l.use===void 0){const o=u=>{if(typeof u!="string"||!Object.hasOwn(k,u))return Promise.resolve(null);const g=j.get(u);return g?g.u:Promise.resolve(l[u]??null)};try{Object.defineProperty(l,"use",{value:o,writable:!0,configurable:!0,enumerable:!1})}catch{}}let d=null,E=null,T=0;const h=o=>{o.source!==parent||!re(o.origin)||ye(o.data)&&(d=o.data.__frame_init,C=o.origin,removeEventListener("message",h),clearTimeout(T),E?.())};addEventListener("message",h),parent.postMessage({__frame_connect:!0},"*");const R=new Promise(o=>{E=o,T=setTimeout(()=>{removeEventListener("message",h),o()},qe)}),A=document.readyState==="loading"?new Promise(o=>document.addEventListener("DOMContentLoaded",()=>o(),{once:!0})):Promise.resolve();A.then(()=>{try{r?.restore()}catch{}});const O={cb:null},M=o=>{if(!(o.source!==parent||!re(o.origin))&&be(o.data)){try{r?.promoted()}catch{}O.cb?.()}};addEventListener("message",M),R.then(async()=>{if(!d||!C){for(const s of j.keys())D(s,{code:"not_granted",message:"frame initialization did not arrive - capability unavailable"});return}ae(d.theme);const o=C;let u=!1,g=!1;addEventListener("message",s=>{if(s.source!==parent||s.origin!==o)return;Ee(s.data)&&ae(s.data.__frame_theme.theme),he(s.data)&&xe(s.data.__frame_patch,o);const m=s.data?.__fc_mode;m&&typeof m=="object"&&!u&&$&&q.test($)&&(u=!0,I($).then(b=>b.install?.(o,m.on===!0)).catch(()=>{}));const _=s.data?.__ft_cmd;_&&typeof _=="object"&&!g&&z&&q.test(z)&&(g=!0,I(z).then(b=>b.install?.(o,_)).catch(()=>{}))});const f=Object.keys(d.capabilities??{});for(const s of f)Object.hasOwn(k,s)||De.test(s)&&l[s]===void 0&&(c(s),D(s,{code:"capability_disabled",message:"capability not in this runtime generation"}));const p=f.filter(s=>Object.hasOwn(k,s)).map(s=>[s,k[s]]).filter(s=>typeof s[1]=="string"&&q.test(s[1])),P=await Promise.allSettled(p.map(([,s])=>I(s))),w=await e,y=C;w?.buildBoot||parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:"_transforms"}},y),ne=w?.buildBoot?w.buildBoot(d,w.TRANSFORMS??{},{shellOrigin:y,mount:Y},s=>parent.postMessage({__frame_cap_telemetry:s},y)):Be(d,y);const L=s=>parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:s}},y),v=ne;P.forEach((s,m)=>{const _=p[m][0];if(s.status!=="fulfilled"){L(_);return}try{s.value?.install?.(v)}catch{L(_)}});for(const[s,m]of j)if(m.impl.__settled===void 0){if(f.includes(s)){D(s,{code:"capability_disabled",message:"capability not available in this session"});continue}D(s,{code:"not_granted",message:"capability not available in this session"})}await A,parent.postMessage({__frame_ready:!0},C),e.then(s=>s?.installSizeReporter?.(y,O))})}})();</script><!-- /frame-runtime --><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>BreastMNIST KG-Debate Ledger</title>
+<style>
+  :root{
+    --paper:#f6f7f9; --raised:#ffffff; --sunk:#eceef2;
+    --ink:#13171d; --body:#39414e; --mute:#6b7585;
+    --rule:#dde1e8; --rule-strong:#c3cad4;
+    --accent:#8a5a12; --accent-soft:#f2e8d6;
+    --pos:#186a52; --neg:#9c3423; --flat:#6b7585;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#0d1014; --raised:#161b22; --sunk:#11151b;
+      --ink:#e7ecf3; --body:#b6bfcc; --mute:#7d8798;
+      --rule:#232b35; --rule-strong:#333d4a;
+      --accent:#d9a55c; --accent-soft:#2a2114;
+      --pos:#4fb894; --neg:#e0705c; --flat:#7d8798;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0d1014; --raised:#161b22; --sunk:#11151b;
+    --ink:#e7ecf3; --body:#b6bfcc; --mute:#7d8798;
+    --rule:#232b35; --rule-strong:#333d4a;
+    --accent:#d9a55c; --accent-soft:#2a2114;
+    --pos:#4fb894; --neg:#e0705c; --flat:#7d8798;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px 90px}
+  .col{max-width:70ch}
+  header{padding:66px 0 34px;border-bottom:1px solid var(--rule-strong)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 16px}
+  h1{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:clamp(32px,4.6vw,48px);
+    line-height:1.08;margin:0 0 18px;letter-spacing:-.015em;text-wrap:balance}
+  .standfirst{font-size:18px;line-height:1.55;margin:0;max-width:64ch}
+  .standfirst strong{color:var(--ink);font-weight:600}
+  section{padding:48px 0 0}
+  h2{font-family:var(--serif);color:var(--ink);font-weight:600;font-size:26px;line-height:1.2;
+    margin:0 0 6px;letter-spacing:-.01em;text-wrap:balance}
+  h2 .num{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em;
+    display:block;margin-bottom:9px;font-weight:400}
+  h3{font-size:15px;font-weight:650;color:var(--ink);margin:30px 0 8px}
+  p{margin:0 0 14px}
+  .lede{color:var(--mute);font-size:15px;margin:0 0 22px;max-width:70ch}
+  strong{color:var(--ink);font-weight:600}
+  em{color:var(--ink);font-style:italic}
+  code{font-family:var(--mono);font-size:.88em;background:var(--sunk);padding:1px 5px;
+    border-radius:3px;color:var(--ink)}
+  .scroll{overflow-x:auto;margin:20px 0 6px;border:1px solid var(--rule);border-radius:5px;
+    background:var(--raised)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:600px}
+  th,td{padding:10px 14px;text-align:right;white-space:nowrap;vertical-align:top}
+  th:first-child,td:first-child{text-align:left;white-space:normal;min-width:230px}
+  thead th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--mute);font-weight:500;border-bottom:1px solid var(--rule-strong);background:var(--sunk)}
+  tbody td{border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+  tbody tr:last-child td{border-bottom:none}
+  td.n{font-family:var(--mono);font-size:12.5px}
+  td.name{color:var(--ink);font-weight:600}
+  .what{display:block;font-weight:400;color:var(--mute);font-size:12.5px;line-height:1.45;
+    margin-top:3px;white-space:normal;max-width:46ch}
+  tr.hi td{background:var(--accent-soft)}
+  .pos{color:var(--pos)}.neg{color:var(--neg)}.flat{color:var(--flat)}
+  caption{caption-side:bottom;text-align:left;padding:10px 14px 12px;font-size:12.5px;
+    color:var(--mute);border-top:1px solid var(--rule)}
+  .note{border-left:2px solid var(--accent);background:var(--raised);padding:14px 18px;
+    margin:20px 0;border-radius:0 4px 4px 0;font-size:14.5px}
+  .note p:last-child{margin-bottom:0}
+  .note .vh{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:7px}
+  .glossary{background:var(--raised);border:1px solid var(--rule);border-radius:5px;
+    padding:4px 20px;margin:22px 0}
+  .glossary dl{margin:0}
+  .glossary dt{font-family:var(--mono);font-size:12.5px;color:var(--ink);margin:14px 0 3px}
+  .glossary dd{margin:0 0 14px;font-size:14px;color:var(--body)}
+  pre{font-family:var(--mono);font-size:12.5px;line-height:1.6;background:var(--raised);
+    border:1px solid var(--rule);border-radius:5px;padding:14px 16px;overflow-x:auto;margin:18px 0}
+  ul{margin:0 0 14px;padding-left:19px} li{margin-bottom:7px} li::marker{color:var(--mute)}
+  hr{border:none;border-top:1px solid var(--rule);margin:40px 0 0}
+  footer{padding:30px 0 0;color:var(--mute);font-size:13px}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="col">
+    <p class="eyebrow">Complete results · every experiment · 156-graph test split</p>
+    <h1>BreastMNIST KG-Debate Ledger</h1>
+    <p class="standfirst">Every configuration measured in this project, recomputed from the raw result files rather than quoted from notes. Each row carries a plain-language description of what it actually is. Balanced accuracy sits alongside AUC throughout, and partial runs are flagged as partial.</p>
+  </div>
+</header>
+
+<section>
+  <h2><span class="num">00</span>How to read every table</h2>
+  <div class="glossary">
+    <dl>
+      <dt>AUC</dt>
+      <dd>Ranking quality: the chance a random malignant image is scored higher than a random benign one. 0.5 is coin-flip, 1.0 is perfect. It ignores where you set the decision threshold. Ties are handled correctly (<code>(a&gt;b) + 0.5·(a==b)</code>) — an earlier uncorrected version understated one method by 0.18.</dd>
+      <dt>bAcc — balanced accuracy</dt>
+      <dd>Average of sensitivity and specificity at one fixed decision threshold. This is the number that matters clinically. The split is 42 malignant / 114 benign, so plain accuracy is misleading — always predicting "benign" scores 73% accuracy and 0.50 bAcc.</dd>
+      <dt>bAcc* — oracle</dt>
+      <dd>Balanced accuracy with the threshold swept <em>on the test set to find the best one</em>. It is an upper bound, not an achievable result. It is shown only where no honest threshold was available, and never used in the standings.</dd>
+      <dt>train / val / test</dt>
+      <dd>The official BreastMNIST splits: 546 / 78 / 156 images, never re-split. Where a table shows all three, the point is consistency — a number that appears on test but not on the 546-image train split is noise, and that pattern caught four false positives in this project.</dd>
+      <dt>±</dt>
+      <dd>Standard deviation across 5 random seeds. A difference smaller than the ± is not a difference.</dd>
+      <dt>mal_share</dt>
+      <dd>The fraction of claims in a debate that concluded MALIGNANT. A pure count with no model on top — this is the debate's own verdict, used directly as a prediction score.</dd>
+    </dl>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">01</span>Baselines — no KG, no debate</h2>
+  <p class="lede">What the image alone gets you, before any of this project's machinery.</p>
+  <div class="scroll">
+  <table>
+    <caption>All n=156. These set the bar every later method has to clear.</caption>
+    <thead><tr><th>Method</th><th>AUC</th><th>bAcc</th><th>bAcc*</th></tr></thead>
+    <tbody>
+      <tr><td class="name">ResNet-18 @224px
+        <span class="what">A conventional CNN trained directly on the images with labels. Not part of the debate work — included because it is the honest ceiling this whole approach sits below.</span></td>
+        <td class="n">0.9442</td><td class="n">0.8672</td><td class="n flat">—</td></tr>
+      <tr><td class="name">ResNet-18 @28px
+        <span class="what">Same CNN on the original low-resolution images. Shows how much of the CNN's advantage is just resolution.</span></td>
+        <td class="n">0.8603</td><td class="n">0.7581</td><td class="n flat">—</td></tr>
+      <tr class="hi"><td class="name">qwen3-vl:8b-instruct zero-shot
+        <span class="what">Ask the vision-language model "is this malignant?" and read the probability of its first token. No knowledge graph, no debate. This is the number the KG work must beat.</span></td>
+        <td class="n">0.7030</td><td class="n">0.5702</td><td class="n">0.6729</td></tr>
+      <tr><td class="name">medgemma:4b zero-shot
+        <span class="what">Same question to the smaller medical model used for most of the project before the switch to qwen.</span></td>
+        <td class="n">0.6013</td><td class="n">0.5927</td><td class="n">0.6284</td></tr>
+      <tr><td class="name">qwen2.5vl:7b zero-shot
+        <span class="what">Third model tried. Degenerate — bAcc of exactly 0.5000 because it never once predicted malignant.</span></td>
+        <td class="n">0.5881</td><td class="n">0.5000</td><td class="n">0.5946</td></tr>
+      <tr><td class="name">Majority class
+        <span class="what">Always answer "benign". The floor.</span></td>
+        <td class="n">0.5000</td><td class="n">0.5000</td><td class="n">0.5000</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">02</span>Knowledge graph in the prompt — 13 variants</h2>
+  <p class="lede">Every way the KG was written into the classification prompt. All on medgemma:4b, all n=156, so the bar is that model's zero-shot 0.6013.</p>
+  <div class="scroll">
+  <table>
+    <caption>Ranked by AUC. <em>ties</em> is the share of image pairs given identical scores — high ties means the prompt saturated and the model stopped discriminating.</caption>
+    <thead><tr><th>Variant</th><th>AUC</th><th>bAcc</th><th>bAcc*</th><th>ties</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="name">feature probe
+        <span class="what">The KG never enters the prompt. Instead it decides which single yes/no visual question to ask ("is the margin spiculated?") and whether a yes points malignant or benign. Score = weighted sum of the answers. The only variant that beats baseline.</span></td>
+        <td class="n">0.6685</td><td class="n">0.5614</td><td class="n">0.6497</td><td class="n">0%</td></tr>
+      <tr><td class="name">kg v1
+        <span class="what">Relevant triples pasted into the prompt as text before the question.</span></td>
+        <td class="n">0.6032</td><td class="n">0.5000</td><td class="n">0.5934</td><td class="n">0%</td></tr>
+      <tr><td class="name">kg v3
+        <span class="what">Reworded triple block, third phrasing attempt.</span></td>
+        <td class="n">0.5825</td><td class="n">0.5107</td><td class="n">0.6228</td><td class="n">0%</td></tr>
+      <tr><td class="name">kg v2
+        <span class="what">Second phrasing of the triple block.</span></td>
+        <td class="n">0.5810</td><td class="n">0.5107</td><td class="n">0.6178</td><td class="n">0%</td></tr>
+      <tr><td class="name">assertive phrasing
+        <span class="what">Same content, instructed to commit to a decision rather than hedge.</span></td>
+        <td class="n">0.5777</td><td class="n">0.5019</td><td class="n">0.6046</td><td class="n">0%</td></tr>
+      <tr><td class="name">auto-derived probes
+        <span class="what">Feature-probe method with the questions generated automatically from relation names instead of hand-written. 29 probes vs 17 manual, zero polarity disagreements — but worse, because the wording asks for jargon instead of describing what it looks like.</span></td>
+        <td class="n">0.5750</td><td class="n">0.5088</td><td class="n">0.6090</td><td class="n">0%</td></tr>
+      <tr><td class="name">enriched descriptions
+        <span class="what">Triples expanded with their ultrasound-appearance text.</span></td>
+        <td class="n">0.5716</td><td class="n">0.5025</td><td class="n">0.5927</td><td class="n">0%</td></tr>
+      <tr><td class="name">retrieval v2
+        <span class="what">Triples chosen per-image by dense retrieval rather than fixed. 42.6% ties — nearly half of all image pairs scored identically.</span></td>
+        <td class="n">0.5695</td><td class="n">0.4718</td><td class="n">0.5977</td><td class="n neg">42.6%</td></tr>
+      <tr><td class="name">BI-RADS category output
+        <span class="what">Model asked to name a BI-RADS category, which is then mapped to a risk score.</span></td>
+        <td class="n">0.5602</td><td class="n">0.5602</td><td class="n">0.5771</td><td class="n">0%</td></tr>
+      <tr><td class="name">stance direct
+        <span class="what">Model shown the malignant-supporting and benign-supporting findings and asked which set fits.</span></td>
+        <td class="n">0.5476</td><td class="n">0.5282</td><td class="n">0.5683</td><td class="n">0%</td></tr>
+      <tr><td class="name">free text
+        <span class="what">Open-ended description then a verdict. 100% ties — every single image received an identical score. Completely degenerate.</span></td>
+        <td class="n">0.5000</td><td class="n">0.5000</td><td class="n">0.5000</td><td class="n neg">100%</td></tr>
+      <tr><td class="name">medgemma-latest + kg
+        <span class="what">Different medgemma build. <strong>Partial run, n=95</strong> — not comparable to the rows above.</span></td>
+        <td class="n">0.4734</td><td class="n">0.5000</td><td class="n">0.5308</td><td class="n">6.2%</td></tr>
+      <tr><td class="name">binary forced choice
+        <span class="what">Forced to answer one word with no reasoning room. Below chance.</span></td>
+        <td class="n">0.4501</td><td class="n">0.5000</td><td class="n">0.5370</td><td class="n">0%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note">
+    <div class="vh">The governing finding</div>
+    <p><strong>Putting a <em>list</em> of findings in the prompt saturates the output.</strong> Free text produced 100% ties; retrieval v2 produced 42.6%. The KG helps only when it decides <em>what single question to ask</em> and how to weight the answer — never when it is text the model reads before deciding.</p>
+  </div>
+
+  <h3>The same method on a second backbone</h3>
+  <div class="scroll">
+  <table>
+    <caption><strong>Partial — 39 of 156 test samples.</strong> Listed because it is the only qwen3-vl probe measurement taken, but it is not comparable to any full-split number and is excluded from the standings.</caption>
+    <thead><tr><th>Variant</th><th>n</th><th>AUC</th><th>bAcc*</th></tr></thead>
+    <tbody>
+      <tr><td class="name">qwen3-vl:8b-instruct + feature probes
+        <span class="what">Best KG-prompt method applied to the stronger model. Suggestive that the KG gain replicates on a second backbone, but on a quarter of the test set.</span></td>
+        <td class="n neg">39</td><td class="n">0.7500</td><td class="n">0.7639</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">03</span>Two-run contrastive scoring</h2>
+  <p class="lede">Score the image against malignant findings, then separately against benign findings, and subtract. The hypothesis: a constant prompt bias would cancel out in the difference.</p>
+  <div class="scroll">
+  <table>
+    <caption>Seven variants, all n=156. None reached the medgemma zero-shot baseline of 0.6013.</caption>
+    <thead><tr><th>Variant</th><th>AUC</th><th>bAcc*</th></tr></thead>
+    <tbody>
+      <tr><td class="name">0–10 anchored, expected score difference
+        <span class="what">Model rates "how malignant, 0–10" then "how benign, 0–10", with each number's meaning spelled out in the prompt. Difference of the probability-weighted scores.</span></td>
+        <td class="n">0.5631</td><td class="n">0.5827</td></tr>
+      <tr><td class="name">match probability difference
+        <span class="what">"Do these findings match the image?" asked once per stance; difference of the two yes-probabilities.</span></td>
+        <td class="n">0.5587</td><td class="n">0.5840</td></tr>
+      <tr><td class="name">0–10 anchored, integer difference
+        <span class="what">Same as above but using the literal integers the model emitted rather than the expected value.</span></td>
+        <td class="n">0.5439</td><td class="n">0.5276</td></tr>
+      <tr><td class="name">match, malignant context only
+        <span class="what">Single run, no subtraction — the control showing what one half contributes alone.</span></td>
+        <td class="n">0.5416</td><td class="n">0.5721</td></tr>
+      <tr><td class="name">single-pass stance score
+        <span class="what">One prompt containing both stances, asked to pick. No subtraction.</span></td>
+        <td class="n">0.4994</td><td class="n">0.5301</td></tr>
+      <tr><td class="name">verdict probability difference
+        <span class="what">Difference of the malignant-verdict probabilities between the two contexts. The verdict channel saturates in both, so the difference is noise minus noise.</span></td>
+        <td class="n">0.4975</td><td class="n">0.5470</td></tr>
+      <tr><td class="name">verdict, malignant context only
+        <span class="what">The malignant half of the above, alone.</span></td>
+        <td class="n">0.4937</td><td class="n">0.5589</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">04</span>Every debate corpus — <code>mal_share</code> by split</h2>
+  <p class="lede">The debate's own verdict ratio used directly as a prediction. Shown on all three splits because reading one split in isolation produced four false positives in this project.</p>
+  <div class="scroll">
+  <table>
+    <caption><em>uniq</em> is claim-text uniqueness — low means agents kept repeating the same sentence. A row with a good test number and a chance-level <em>train</em> number is a mirage.</caption>
+    <thead><tr><th>Corpus</th><th>train</th><th>val</th><th>test</th><th>claims/graph</th><th>uniq</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="name">v5q
+        <span class="what">qwen3-vl, KG in prompt, neither agent assigned a side. The only corpus with signal on all three splits — and the basis of every later result.</span></td>
+        <td class="n">0.6472</td><td class="n">0.6871</td><td class="n">0.7128</td><td class="n">19.5</td><td class="n">0.397</td></tr>
+      <tr class="hi"><td class="name">v5qret
+        <span class="what">Identical debates to v5q, but graphs built by retrieval instead of citations, so it can be compared like-for-like against the KG-free control below.</span></td>
+        <td class="n">0.6476</td><td class="n">0.6871</td><td class="n">0.7128</td><td class="n">19.5</td><td class="n">0.397</td></tr>
+      <tr><td class="name">v5qnokg
+        <span class="what">The control: same model, same protocol, KG removed from the prompt only. At or below chance on all three splits.</span></td>
+        <td class="n">0.5837</td><td class="n">0.5201</td><td class="n neg">0.4740</td><td class="n">18.9</td><td class="n">0.619</td></tr>
+      <tr><td class="name">v5
+        <span class="what">Same open-stance protocol as v5q but with medgemma. Test 0.6257 against train 0.5217 — signal on the small split only, i.e. noise.</span></td>
+        <td class="n">0.5217</td><td class="n">0.5025</td><td class="n">0.6257</td><td class="n">19.4</td><td class="n">0.249</td></tr>
+      <tr><td class="name">v5m
+        <span class="what">v5 with probe measurements attached to claim nodes. Identical here because attaching measurements does not change claim labels.</span></td>
+        <td class="n">0.5217</td><td class="n">0.5025</td><td class="n">0.6257</td><td class="n">19.4</td><td class="n">0.249</td></tr>
+      <tr><td class="name">v5nr
+        <span class="what">v5 with repeated sentences dropped rather than flagged. The clearest mirage in the project: 0.6818 on test, 0.4969 on train.</span></td>
+        <td class="n">0.4969</td><td class="n">0.5363</td><td class="n">0.6818</td><td class="n">12.0</td><td class="n">0.389</td></tr>
+      <tr><td class="name">v5nrm
+        <span class="what">v5nr plus measurements. Same reason it is identical to v5nr.</span></td>
+        <td class="n">0.4969</td><td class="n">0.5363</td><td class="n">0.6818</td><td class="n">12.0</td><td class="n">0.389</td></tr>
+      <tr><td class="name">v4
+        <span class="what">Stance-locked debate: each agent assigned a side and given only that side's findings. Uniqueness 0.086 — the agents recited their toolkit.</span></td>
+        <td class="n">0.5014</td><td class="n">0.5489</td><td class="n">0.5684</td><td class="n">25.4</td><td class="n neg">0.086</td></tr>
+      <tr><td class="name">v4m
+        <span class="what">v4 plus measurements.</span></td>
+        <td class="n">0.5014</td><td class="n">0.5489</td><td class="n">0.5684</td><td class="n">25.4</td><td class="n neg">0.086</td></tr>
+      <tr><td class="name">v4nr
+        <span class="what">v4 with repeats dropped.</span></td>
+        <td class="n">0.4925</td><td class="n">0.5810</td><td class="n">0.5097</td><td class="n">14.4</td><td class="n">0.138</td></tr>
+      <tr><td class="name">v4cap
+        <span class="what">v4 with the opening round capped at 3 claims, to stop round 0 dominating the graph.</span></td>
+        <td class="n">0.4814</td><td class="n">0.4912</td><td class="n">0.5052</td><td class="n">18.1</td><td class="n">0.107</td></tr>
+      <tr><td class="name">v3
+        <span class="what">KG-free debate with medgemma; the KG attached afterwards by retrieval. Collapsed to 8 claims per graph and 0.181 uniqueness — one sentence covered 12% of all claims.</span></td>
+        <td class="n">0.5209</td><td class="n">0.5234</td><td class="n">0.5432</td><td class="n">8.0</td><td class="n neg">0.181</td></tr>
+      <tr><td class="name">v2
+        <span class="what">Agents given a measured evidence table before arguing. Well-grounded claims, but the debate collapsed onto a fixed 17-feature vocabulary.</span></td>
+        <td class="n">0.4870</td><td class="n">0.4545</td><td class="n">0.5380</td><td class="n">15.4</td><td class="n">0.639</td></tr>
+      <tr><td class="name">full
+        <span class="what">The first corpus built. Exactly 0.5000 on every split — no signal whatsoever.</span></td>
+        <td class="n">0.5000</td><td class="n">0.5000</td><td class="n">0.5000</td><td class="n">20.7</td><td class="n">0.813</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">05</span>The KG ablation — the contribution result</h2>
+  <p class="lede">Same model, same open-stance protocol, same rounds and claim caps, same retrieval graph builder. The <em>only</em> thing that differs is whether the 16 BI-RADS findings appear in the debate prompt.</p>
+  <div class="scroll">
+  <table>
+    <caption>This is the single-variable test. Everything else in the pipeline is held fixed.</caption>
+    <thead><tr><th>Arm</th><th>train</th><th>val</th><th>test</th><th>claims/g</th><th>uniq</th><th>triples/g</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="name">KG in prompt
+        <span class="what">Agents see the 16 findings, each with a description of how it looks on ultrasound, shuffled per sample and per agent.</span></td>
+        <td class="n">0.6476</td><td class="n">0.6871</td><td class="n">0.7128</td><td class="n">19.5</td><td class="n">0.397</td><td class="n">24.5</td></tr>
+      <tr><td class="name">KG-free control
+        <span class="what">Identical prompt with the findings block deleted. Agents argue from the image in their own words.</span></td>
+        <td class="n">0.5837</td><td class="n">0.5201</td><td class="n">0.4740</td><td class="n">18.9</td><td class="n">0.619</td><td class="n">32.1</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>The control is not degenerate — it argues just as much (18.9 vs 19.5 claims), links <em>more</em> KG triples, and has <em>higher</em> claim diversity. Its conclusions simply do not track the image. <strong>This is the cleanest evidence that the knowledge graph is what makes the debate informative.</strong></p>
+</section>
+
+<section>
+  <h2><span class="num">06</span>GraphSAGE — four separate sweeps</h2>
+  <p class="lede">The standard graph neural network, 5 seeds and 60 epochs per dataset. Four tables because these were four independent runs; the same dataset appearing twice with different numbers is itself a measure of seed noise.</p>
+
+  <h3>Sweep A — seven corpora, the first broad comparison</h3>
+  <div class="scroll">
+  <table>
+    <caption><em>best val</em> is the highest validation AUC reached; <em>peak epoch</em> is when. A late peak with a low test score means it never really learned.</caption>
+    <thead><tr><th>Dataset</th><th>test AUC</th><th>test bAcc</th><th>best val</th><th>peak epoch</th></tr></thead>
+    <tbody>
+      <tr><td class="name">v2 <span class="what">Evidence-table debate — the strongest of this group.</span></td><td class="n">0.6027</td><td class="n">0.5697</td><td class="n">0.6767</td><td class="n">22.0</td></tr>
+      <tr><td class="name">v3 <span class="what">KG-free debate.</span></td><td class="n">0.5638</td><td class="n">0.5377</td><td class="n">0.6893</td><td class="n">29.0</td></tr>
+      <tr><td class="name">v5 <span class="what">Open-stance medgemma.</span></td><td class="n">0.5495</td><td class="n">0.5241</td><td class="n">0.5250</td><td class="n">9.8</td></tr>
+      <tr><td class="name">v4 <span class="what">Stance-locked. Below chance.</span></td><td class="n">0.4778</td><td class="n">0.4753</td><td class="n">0.6022</td><td class="n">30.6</td></tr>
+      <tr><td class="name">v4cap <span class="what">Stance-locked, opening capped.</span></td><td class="n">0.4751</td><td class="n">0.4771</td><td class="n">0.6723</td><td class="n">18.8</td></tr>
+      <tr><td class="name">v5nr <span class="what">Repeats dropped — the GNN could not use it despite the strong test mal_share.</span></td><td class="n">0.4488</td><td class="n">0.4618</td><td class="n">0.6069</td><td class="n">28.6</td></tr>
+      <tr><td class="name">v4nr <span class="what">Stance-locked, repeats dropped. Worst result recorded.</span></td><td class="n">0.4436</td><td class="n">0.4630</td><td class="n">0.6281</td><td class="n">35.2</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Sweep B — after switching to qwen3-vl</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Dataset</th><th>test AUC</th><th>test bAcc</th><th>best val</th><th>peak epoch</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="name">v5q <span class="what">First debate corpus a GNN could partly learn from.</span></td><td class="n">0.6370</td><td class="n">0.5926</td><td class="n">0.7607</td><td class="n">38.6</td></tr>
+      <tr><td class="name">v2 <span class="what">Re-run for comparison; +0.010 vs Sweep A on identical data — that gap is pure seed noise.</span></td><td class="n">0.6130</td><td class="n">0.5828</td><td class="n">0.6976</td><td class="n">8.4</td></tr>
+      <tr><td class="name">v5 <span class="what">Re-run; +0.026 vs Sweep A.</span></td><td class="n">0.5754</td><td class="n">0.5482</td><td class="n">0.5569</td><td class="n">19.6</td></tr>
+      <tr><td class="name">v3 <span class="what">Re-run; −0.009 vs Sweep A.</span></td><td class="n">0.5551</td><td class="n">0.5278</td><td class="n">0.6878</td><td class="n">34.6</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Sweep C — the KG ablation through a GNN</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Dataset</th><th>test AUC</th><th>test bAcc</th><th>best val</th><th>peak epoch</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="name">v5qret <span class="what">KG in the debate prompt, retrieval-built graphs. Best GraphSAGE result ever recorded here.</span></td><td class="n">0.6501</td><td class="n">0.5925</td><td class="n">0.7250</td><td class="n">5.6</td></tr>
+      <tr><td class="name">v5q <span class="what">Same debates, citation-built graphs.</span></td><td class="n">0.6493</td><td class="n">0.5979</td><td class="n">0.7693</td><td class="n">39.0</td></tr>
+      <tr><td class="name">v5qnokg <span class="what">KG-free control. +0.028 below the KG arm — the same direction as mal_share, but ~1.2 seed-deviations, so suggestive rather than proven.</span></td><td class="n">0.6222</td><td class="n">0.5699</td><td class="n">0.7298</td><td class="n">11.8</td></tr>
+      <tr><td class="name">v2 <span class="what">Reference point again.</span></td><td class="n">0.6096</td><td class="n">0.5794</td><td class="n">0.6984</td><td class="n">7.0</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Sweep D — with probe measurements attached to claim nodes</h3>
+  <div class="scroll">
+  <table>
+    <caption>Testing whether giving the GNN real measured values instead of text embeddings rescues it. It did not.</caption>
+    <thead><tr><th>Dataset</th><th>test AUC</th><th>test bAcc</th><th>best val</th><th>peak epoch</th></tr></thead>
+    <tbody>
+      <tr><td class="name">v2 <span class="what">Measurements attached — scored <em>lower</em> than plain v2 in Sweeps A–C.</span></td><td class="n">0.5843</td><td class="n">0.5632</td><td class="n">0.7038</td><td class="n">12.2</td></tr>
+      <tr><td class="name">v5m <span class="what">v5 plus measurements.</span></td><td class="n">0.5780</td><td class="n">0.5505</td><td class="n">0.5459</td><td class="n">12.4</td></tr>
+      <tr><td class="name">v5nrm <span class="what">v5nr plus measurements.</span></td><td class="n">0.5163</td><td class="n">0.5075</td><td class="n">0.6511</td><td class="n">28.8</td></tr>
+      <tr><td class="name">v4m <span class="what">v4 plus measurements.</span></td><td class="n">0.4815</td><td class="n">0.4813</td><td class="n">0.7051</td><td class="n">33.0</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Non-graph and hybrid references, same split</h3>
+  <div class="scroll">
+  <table>
+    <caption>bAcc here uses a threshold chosen on validation, then applied to test.</caption>
+    <thead><tr><th>Model</th><th>test AUC</th><th>bAcc @ val threshold</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="name">probe-vector MLP
+        <span class="what">A small network on the 17 probe answers, with no graph at all. It beat every GraphSAGE configuration ever run in this project.</span></td>
+        <td class="n">0.6985</td><td class="n">0.6305</td></tr>
+      <tr><td class="name">v2 hybrid <span class="what">Graph embeddings concatenated with the probe vector.</span></td><td class="n">0.6772</td><td class="n">0.6323</td></tr>
+      <tr><td class="name">v2 GraphSAGE <span class="what">Graph only, for direct comparison with the hybrid above.</span></td><td class="n">0.6037</td><td class="n">0.5654</td></tr>
+      <tr><td class="name">v3 GraphSAGE + KG triple text <span class="what">Claims plus retrieved triples as nodes.</span></td><td class="n">0.5543</td><td class="n">0.5336</td></tr>
+      <tr><td class="name">v3 GraphSAGE, claims only <span class="what">Triple nodes removed.</span></td><td class="n">0.5519</td><td class="n">0.5237</td></tr>
+      <tr><td class="name">v3 text-mean <span class="what">Average of claim text embeddings, edges ignored entirely. Chance level — the v3 debate carried nothing.</span></td><td class="n">0.5127</td><td class="n">0.5079</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">07</span>Linear graph readout — 19 automatic features</h2>
+  <p class="lede">Instead of a network, compute graph-level statistics directly (stance by round / agent / challenge state, disagreement rate, retrieval similarity, KG polarity, learned triple weights) and fit logistic regression. Three selection protocols tried.</p>
+  <div class="scroll">
+  <table>
+    <caption><em>selection AUC</em> is what the method scored on the data used to choose it. Nothing beat the raw ratio.</caption>
+    <thead><tr><th>Readout</th><th>selection AUC</th><th>test AUC</th><th>test bAcc</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="name">mal_share alone
+        <span class="what">One unweighted ratio, zero fitted parameters. The thing to beat.</span></td>
+        <td class="n flat">—</td><td class="n">0.7128</td><td class="n">0.6610</td></tr>
+      <tr><td class="name">greedy selection on val
+        <span class="what">Features added one at a time, judged on the 78 validation graphs. Reached 0.8028 on val and 0.6819 on test — a textbook demonstration that 78 graphs overfit the selection itself.</span></td>
+        <td class="n">0.8028</td><td class="n">0.6819</td><td class="n">0.6454</td></tr>
+      <tr><td class="name">greedy selection by 5-fold CV
+        <span class="what">Same search judged by cross-validation over 624 graphs — the methodologically correct version. Still below the raw ratio.</span></td>
+        <td class="n">0.6876</td><td class="n">0.6756</td><td class="n">0.6253</td></tr>
+      <tr><td class="name">all 19 features, fixed penalty
+        <span class="what">No selection at all. Worst of the four — the useful feature is diluted by 18 noisy ones.</span></td>
+        <td class="n flat">—</td><td class="n">0.6433</td><td class="n">0.5990</td></tr>
+      <tr><td class="name">CV-selected, KG-free control
+        <span class="what">Same protocol on the control corpus. Below the KG arm, consistent with every other comparison.</span></td>
+        <td class="n">0.6941</td><td class="n">0.6612</td><td class="n">0.6084</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">08</span>ThothGNN Stage 4 — full ablation</h2>
+  <p class="lede">The purpose-built architecture: AGREE and DISAGREE as separate relations, KG triples as nodes, and a class score anchored on <code>mal_share</code> so the model <em>starts</em> at the baseline. γ measures how far it moves away — γ=0 means the graph added nothing.</p>
+  <div class="scroll">
+  <table>
+    <caption>v5q corpus, 5 seeds. Each row flips exactly one component against FULL. Δ is that row minus FULL, so positive means removing the component <em>helped</em>.</caption>
+    <thead><tr><th>Config</th><th>test AUC</th><th>test bAcc</th><th>γ</th><th>Δ vs FULL</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="name">BASE
+        <span class="what">γ frozen at 0: the graph is switched off and only <code>mal_share</code> speaks. Beats every learned configuration below.</span></td>
+        <td class="n">0.7128 ±.000</td><td class="n">0.6610 ±.000</td><td class="n">+0.000</td><td class="n pos">+0.0090</td></tr>
+      <tr><td class="name">BALANCE
+        <span class="what">Adds "enemy of my enemy" edges from social-network theory — two DISAGREE hops treated as support.</span></td>
+        <td class="n">0.7112 ±.018</td><td class="n">0.6461 ±.025</td><td class="n">−0.153</td><td class="n pos">+0.0074</td></tr>
+      <tr><td class="name">NO-XLAYER
+        <span class="what">Cross-layer fusion removed. The plan called this component mandatory and predicted the largest drop; removing it <em>improved</em> the model.</span></td>
+        <td class="n">0.7101 ±.005</td><td class="n">0.6435 ±.022</td><td class="n">−0.079</td><td class="n pos">+0.0063</td></tr>
+      <tr><td class="name">FUSE-GATE
+        <span class="what">Gated rather than concatenated fusion of the support and refute channels.</span></td>
+        <td class="n">0.7091 ±.009</td><td class="n">0.6409 ±.023</td><td class="n">+0.006</td><td class="n pos">+0.0053</td></tr>
+      <tr><td class="name">NO-KG-NODES
+        <span class="what">KG triple nodes deleted from the graph. No loss — the KG's value is in the prompt, not the topology.</span></td>
+        <td class="n">0.7087 ±.012</td><td class="n">0.6412 ±.028</td><td class="n">−0.038</td><td class="n pos">+0.0049</td></tr>
+      <tr><td class="name">EDGE-FIXED
+        <span class="what">Learned edge strengths replaced by a constant 1.0. Better than learning them, so the edge network should be deleted.</span></td>
+        <td class="n">0.7080 ±.010</td><td class="n">0.6526 ±.025</td><td class="n">+0.033</td><td class="n pos">+0.0042</td></tr>
+      <tr><td class="name">FULL
+        <span class="what">Every component enabled — the proposed model.</span></td>
+        <td class="n">0.7038 ±.013</td><td class="n">0.6437 ±.018</td><td class="n">−0.188</td><td class="n flat">—</td></tr>
+      <tr><td class="name">NO-NEXT
+        <span class="what">Continuity edges linking an agent's consecutive turns removed.</span></td>
+        <td class="n">0.7025 ±.016</td><td class="n">0.6395 ±.025</td><td class="n">−0.167</td><td class="n neg">−0.0013</td></tr>
+      <tr><td class="name">NO-SIGN
+        <span class="what">AGREE and DISAGREE forced to share one weight matrix, discarding polarity. Largest single-component drop — the one piece that earns its parameters.</span></td>
+        <td class="n">0.6982 ±.007</td><td class="n">0.6207 ±.012</td><td class="n">−0.197</td><td class="n neg">−0.0056</td></tr>
+      <tr><td class="name">UNIFORM-ATT
+        <span class="what">Learned attention replaced by equal weight on every claim. Costs only 0.0075 — so the attention mechanism, the headline claim of the design, buys almost nothing.</span></td>
+        <td class="n">0.6963 ±.012</td><td class="n">0.6313 ±.017</td><td class="n">−0.226</td><td class="n neg">−0.0075</td></tr>
+      <tr><td class="name">NO-ANCHOR
+        <span class="what">The anchor switched off entirely (β=0, γ=1): a pure graph model. Collapses to the GraphSAGE band, exactly as the plan predicted. This is what makes the anchoring argument empirical rather than asserted.</span></td>
+        <td class="n neg">0.6067 ±.031</td><td class="n">0.5556 ±.031</td><td class="n">+1.000</td><td class="n neg">−0.0971</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">09</span>ThothGNN across every corpus</h2>
+  <div class="scroll">
+  <table>
+    <caption>5 seeds each. BASE = anchor only; FULL = anchor plus the whole graph network. Δ is FULL − BASE, i.e. what the network contributed.</caption>
+    <thead><tr><th>Corpus</th><th>BASE AUC</th><th>BASE bAcc</th><th>FULL AUC</th><th>FULL bAcc</th><th>Δ</th><th>GraphSAGE</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td class="name">v5q <span class="what">Strongest anchor — and the network makes it worse.</span></td><td class="n">0.7128</td><td class="n">0.6610</td><td class="n">0.7038</td><td class="n">0.6437</td><td class="n neg">−0.0090</td><td class="n">0.6493</td></tr>
+      <tr><td class="name">v5q_r1 <span class="what">Independent repeat of the v5q debate, generated overnight.</span></td><td class="n">0.6835</td><td class="n">0.6385</td><td class="n">0.6838</td><td class="n">0.6419</td><td class="n pos">+0.0003</td><td class="n flat">—</td></tr>
+      <tr><td class="name">v5 <span class="what">medgemma open-stance.</span></td><td class="n">0.6257</td><td class="n">0.5188</td><td class="n">0.6299</td><td class="n">0.5239</td><td class="n pos">+0.0042</td><td class="n">0.5495</td></tr>
+      <tr><td class="name">v4 <span class="what">Stance-locked.</span></td><td class="n">0.5684</td><td class="n">0.5414</td><td class="n">0.5486</td><td class="n">0.5529</td><td class="n neg">−0.0198</td><td class="n">0.4778</td></tr>
+      <tr><td class="name">v3 <span class="what">KG-free medgemma debate.</span></td><td class="n">0.5539</td><td class="n">0.5445</td><td class="n">0.5376</td><td class="n">0.5035</td><td class="n neg">−0.0163</td><td class="n">0.5638</td></tr>
+      <tr><td class="name">v5qnokg <span class="what">The only corpus where the network gains meaningfully — because its anchor is <em>below chance</em>, so the graph is the only thing left.</span></td><td class="n">0.4740</td><td class="n">0.4931</td><td class="n">0.5245</td><td class="n">0.5234</td><td class="n pos">+0.0505</td><td class="n">0.6222</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>The better the anchor, the less the graph adds.</strong> Two gains, three losses, all smaller than the seed spread.</p>
+</section>
+
+<section>
+  <h2><span class="num">10</span>Ensemble scaling — where the gain came from</h2>
+  <p class="lede">Run the whole debate again with different random seeds and a different finding order, then pool the claims. Run-to-run correlation of <code>mal_share</code> is only <strong>0.308</strong>, so a single debate is largely noise around a weak signal.</p>
+  <div class="scroll">
+  <table>
+    <caption>BASE = pooled <code>mal_share</code>, no learning. FULL and UNIFORM-ATT are the GNN on the same merged graphs.</caption>
+    <thead><tr><th>Runs</th><th>train</th><th>val</th><th>TEST</th><th>test bAcc</th><th>FULL</th><th>UNIFORM-ATT</th></tr></thead>
+    <tbody>
+      <tr><td class="name">1 run <span class="what">The original single debate.</span></td><td class="n">0.6476</td><td class="n">0.6871</td><td class="n">0.7128</td><td class="n">0.6610</td><td class="n">0.7038 ±.013</td><td class="n">0.6963 ±.012</td></tr>
+      <tr><td class="name">2 runs <span class="what">Claims from two debates in one graph, sharing triple nodes.</span></td><td class="n">0.7110</td><td class="n">0.6988</td><td class="n">0.7427</td><td class="n">0.6717</td><td class="n">0.7462 ±.011</td><td class="n">0.7449 ±.014</td></tr>
+      <tr class="hi"><td class="name">3 runs <span class="what">Highest test figure recorded — but see the note below.</span></td><td class="n">0.7305</td><td class="n">0.7937</td><td class="n">0.7694</td><td class="n">0.6673</td><td class="n">0.7650 ±.007</td><td class="n">0.7658 ±.008</td></tr>
+      <tr><td class="name">4 runs <span class="what">Train keeps improving; test drops back.</span></td><td class="n">0.7453</td><td class="n">0.7832</td><td class="n">0.7506</td><td class="n">0.6566</td><td class="n">0.7530 ±.004</td><td class="n">0.7478 ±.004</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note">
+    <div class="vh">How to read this</div>
+    <p>Train improves monotonically at every step and is measured on 546 graphs — that is the real effect. Test peaked at 3 runs and fell back at 4, so <strong>0.7694 is the optimistic edge and ≈0.75 is the estimate.</strong></p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">11</span>Evidence-weighted readout — the best result</h2>
+  <p class="lede">Weight each claim by how much its type of statement actually predicts the label, with the weights estimated on the training split only. Three grouping schemes were tried; <strong>validation selects <code>verdict+round</code> at every ensemble size</strong>, so that single variant is reported throughout — no picking per row.</p>
+  <div class="scroll">
+  <table>
+    <caption>Weighted column is always the val-selected <code>verdict+round</code> variant. bAcc thresholds fitted on train+val, applied unchanged to test.</caption>
+    <thead><tr><th>Runs</th><th>mal_share AUC</th><th>weighted AUC</th><th>Δ AUC</th><th>mal_share bAcc</th><th>weighted bAcc</th><th>Δ bAcc</th></tr></thead>
+    <tbody>
+      <tr><td class="name">1 run</td><td class="n">0.7128</td><td class="n">0.6935</td><td class="n neg">−0.0193</td><td class="n">0.6610</td><td class="n">0.6742</td><td class="n pos">+0.0132</td></tr>
+      <tr><td class="name">2 runs</td><td class="n">0.7427</td><td class="n">0.7425</td><td class="n flat">−0.0002</td><td class="n">0.6717</td><td class="n">0.6830</td><td class="n pos">+0.0113</td></tr>
+      <tr><td class="name">3 runs</td><td class="n">0.7694</td><td class="n">0.7736</td><td class="n pos">+0.0042</td><td class="n">0.6673</td><td class="n">0.6711</td><td class="n pos">+0.0038</td></tr>
+      <tr class="hi"><td class="name">4 runs</td><td class="n">0.7506</td><td class="n">0.7556</td><td class="n pos">+0.0050</td><td class="n">0.6566</td><td class="n">0.6930</td><td class="n pos">+0.0364</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Weighting improves <strong>balanced accuracy at every ensemble size</strong>, and AUC only once there are three or more runs. <strong>0.6930 bAcc is the best of the project.</strong> It costs six fitted numbers and no network.</p>
+
+  <h3>The learned weights, and why they matter</h3>
+  <pre>stance=MAL   AGREE +0.660   DISAGREE −0.042   OPEN +0.215
+stance=BEN   AGREE −0.676   DISAGREE −0.008   OPEN −0.374
+
+claim-level precision, v5q:
+  verdict AGREE     P(mal|MAL) 0.408   P(ben|BEN) 0.836   lift +0.176
+  verdict DISAGREE  P(mal|MAL) 0.263   P(ben|BEN) 0.735   lift −0.070
+  KG-free control:  AGREE lift only +0.066</pre>
+  <p><strong>Rebuttal claims carry essentially zero evidence</strong> — both DISAGREE weights sit at ~0.00. Only opening claims and genuine agreements predict the image, so two of the three debate rounds are noise for classification. Since the graph holds 10.4 DISAGREE edges against 1.5 AGREE per graph, its topology is built almost entirely from the uninformative relation — which explains the GNN result completely.</p>
+</section>
+
+<section>
+  <h2><span class="num">12</span>Interpretability — measured, and it fails</h2>
+  <div class="scroll">
+  <table>
+    <caption>Faithfulness: delete the claim the model attended to most, re-score, and see how far the prediction moves compared with deleting a random claim.</caption>
+    <thead><tr><th>Measurement</th><th>Value</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Drop top-attention claim, mean shift
+        <span class="what">Average absolute change in predicted probability. Compared against 0.0160 for a random claim.</span></td>
+        <td class="n">0.0232</td><td class="flat">1.45× random</td></tr>
+      <tr><td class="name">Top beats random, per graph
+        <span class="what">How often the top-attention claim actually mattered more than a random one. Below 50% means the mean above is carried by a few outliers.</span></td>
+        <td class="n neg">47%</td><td class="neg">below chance</td></tr>
+      <tr><td class="name">Attention mass on top 10 triples
+        <span class="what">Of 139 knowledge-graph triples receiving any attention, how much lands on just ten.</span></td>
+        <td class="n neg">61%</td><td class="neg">concentrated</td></tr>
+      <tr><td class="name">Mean position of top claim
+        <span class="what">Where in the debate the top-attention claim sits, normalised 0–1. 0.5 would mean no positional preference.</span></td>
+        <td class="n neg">0.345</td><td class="neg">favours early claims</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>The interpretability claim does not hold.</strong> The 1.45× mean looks supportive until the per-graph rate is checked.</p>
+</section>
+
+<section>
+  <h2><span class="num">13</span>Standing — best per mode</h2>
+  <div class="scroll">
+  <table>
+    <caption>All on the 156-image test split, honest thresholds only.</caption>
+    <thead><tr><th>Method</th><th>test AUC</th><th>test bAcc</th></tr></thead>
+    <tbody>
+      <tr><td class="name">ResNet-18 supervised <span class="what">A plain CNN. Not comparable — no KG, no debate, no interpretability — but the honest ceiling.</span></td><td class="n flat">0.9442</td><td class="n flat">0.8672</td></tr>
+      <tr class="hi"><td class="name">4-run ensemble + evidence weights <span class="what">Best result of the project on balanced accuracy.</span></td><td class="n">0.7556</td><td class="n">0.6930</td></tr>
+      <tr><td class="name">3-run ensemble, mal_share <span class="what">Highest AUC recorded, but the peak of a non-monotone curve.</span></td><td class="n">0.7694</td><td class="n">0.6673</td></tr>
+      <tr><td class="name">2-run ensemble, ThothGNN FULL <span class="what">Best the purpose-built network ever managed relative to its own anchor.</span></td><td class="n">0.7462</td><td class="n">0.6574</td></tr>
+      <tr><td class="name">1-run mal_share <span class="what">The result standing before last night.</span></td><td class="n">0.7128</td><td class="n">0.6610</td></tr>
+      <tr><td class="name">qwen3-vl zero-shot <span class="what">The backbone with nothing added.</span></td><td class="n">0.7030</td><td class="n">0.5702</td></tr>
+      <tr><td class="name">probe-vector MLP <span class="what">No graph, no debate — KG only chooses the questions.</span></td><td class="n">0.6985</td><td class="n">0.6305</td></tr>
+      <tr><td class="name">medgemma + KG feature probes <span class="what">Same idea on the weaker model.</span></td><td class="n">0.6685</td><td class="n">0.5614</td></tr>
+      <tr><td class="name">GraphSAGE, best ever <span class="what">Standard GNN, best of four sweeps.</span></td><td class="n">0.6501</td><td class="n">0.5925</td></tr>
+      <tr><td class="name">ThothGNN NO-ANCHOR <span class="what">The purpose-built network with the anchor removed — graph structure alone.</span></td><td class="n">0.6067</td><td class="n">0.5556</td></tr>
+      <tr><td class="name">medgemma zero-shot <span class="what">Original backbone.</span></td><td class="n">0.6013</td><td class="n">0.5927</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<hr>
+<footer>
+  <div class="col">
+    <p><strong>Corrections applied 17 Aug.</strong> The evidence-weighted table previously mixed variants — best AUC taken from one grouping scheme and best bAcc from another, which is selection on test. It now reports the single variant validation selects (<code>verdict+round</code>) at every ensemble size. The 4-run figures were also recomputed after the final 18 debates of run 3 landed; the headline moved from 0.7563 to <strong>0.7556</strong> and balanced accuracy is unchanged at 0.6930.</p>
+    <p>Every figure recomputed from raw result files. AUC uses tie-corrected ranking; an earlier uncorrected version understated <code>retrieval_v2</code> by 0.18.</p>
+  </div>
+</footer>
+</div>
+
+</body></html>
