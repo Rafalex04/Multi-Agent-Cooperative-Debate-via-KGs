@@ -1,0 +1,57 @@
+{
+ "blocks": [
+  {
+   "label": "BiomedCLIP contrastive",
+   "params": 16,
+   "indomain": 0.8745,
+   "external": 0.7027,
+   "gap": 0.17180000000000006,
+   "source": "21_biomedclip/hybrid.py"
+  },
+  {
+   "label": "hybrid, scorer per finding",
+   "params": 14,
+   "indomain": 0.8241,
+   "external": 0.7202,
+   "gap": 0.1039000000000001,
+   "source": "21_biomedclip/hybrid.py"
+  },
+  {
+   "label": "VLM both phrasings pooled",
+   "params": 32,
+   "indomain": 0.8133,
+   "external": 0.7325,
+   "gap": 0.08079999999999998,
+   "source": "20_perception/phrasing_arms.py"
+  },
+  {
+   "label": "VLM negated phrasing",
+   "params": 16,
+   "indomain": 0.8089,
+   "external": 0.7171,
+   "gap": 0.09179999999999999,
+   "source": "20_perception/phrasing_arms.py"
+  },
+  {
+   "label": "VLM verification phrasing",
+   "params": 16,
+   "indomain": 0.7822,
+   "external": 0.7456,
+   "gap": 0.036599999999999966,
+   "source": "20_perception/phrasing_arms.py"
+  },
+  {
+   "label": "VLM verification, KG rule",
+   "params": 0,
+   "indomain": 0.7467,
+   "external": 0.7499,
+   "gap": -0.0031999999999999806,
+   "source": "20_perception/phrasing_arms.py"
+  }
+ ],
+ "spearman_indomain_external": -0.8285714285714287,
+ "pearson_indomain_gap": 0.9939121823515721,
+ "slope": 1.393130197949794,
+ "intercept": -1.0457605868328521,
+ "spearman_params_gap": -0.028571428571428574
+}
