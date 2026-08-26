@@ -1,0 +1,139 @@
+{
+ "perception": {
+  "irregular_shape": {
+   "auc": 0.3352040816326531,
+   "sign": -1.0,
+   "n_pos": 140,
+   "n": 252
+  },
+  "posterior_shadowing_with_solid_irregular_mass": {
+   "auc": 0.745748987854251,
+   "sign": 1.0,
+   "n_pos": 57,
+   "n": 252
+  },
+  "spiculated": {
+   "auc": 0.7109450671094507,
+   "sign": 1.0,
+   "n_pos": 33,
+   "n": 252
+  },
+  "spiculated_or_irregular_mass": {
+   "auc": 0.7769132653061225,
+   "sign": 1.0,
+   "n_pos": 140,
+   "n": 252
+  },
+  "anechoic_content": {
+   "auc": 0.6447257383966245,
+   "sign": 1.0,
+   "n_pos": 15,
+   "n": 252
+  },
+  "circumscribed_margin": {
+   "auc": 0.7374801650269756,
+   "sign": 1.0,
+   "n_pos": 115,
+   "n": 252
+  },
+  "clustered_microcysts": {
+   "auc": 0.6201433421350434,
+   "sign": 1.0,
+   "n_pos": 11,
+   "n": 252
+  },
+  "echogenic_pseudocapsule": {
+   "auc": 0.3541301338255653,
+   "sign": -1.0,
+   "n_pos": 55,
+   "n": 252
+  },
+  "hyperechoic_mass": {
+   "auc": 0.741655235482396,
+   "sign": 1.0,
+   "n_pos": 9,
+   "n": 252
+  },
+  "oval_shape": {
+   "auc": 0.27448979591836736,
+   "sign": -1.0,
+   "n_pos": 112,
+   "n": 252
+  },
+  "thin_uniform_pseudocapsule": {
+   "auc": 0.3208121827411167,
+   "sign": -1.0,
+   "n_pos": 55,
+   "n": 252
+  },
+  "echogenic_rind": {
+   "auc": 0.4705122288878634,
+   "sign": -1.0,
+   "n_pos": 55,
+   "n": 252
+  },
+  "microcalcifications_in_hypoechoic_mass": {
+   "auc": 0.6752422907488986,
+   "sign": 1.0,
+   "n_pos": 25,
+   "n": 252
+  }
+ },
+ "inverted": [
+  "irregular_shape",
+  "echogenic_pseudocapsule",
+  "oval_shape",
+  "thin_uniform_pseudocapsule",
+  "echogenic_rind"
+ ],
+ "wording_spread": [
+  {
+   "group": [
+    "irregular_shape",
+    "spiculated_or_irregular_mass",
+    "oval_shape (complement)"
+   ],
+   "spread": 0.4417091836734694
+  },
+  {
+   "group": [
+    "echogenic_pseudocapsule",
+    "thin_uniform_pseudocapsule",
+    "echogenic_rind"
+   ],
+   "spread": 0.1497000461467467
+  }
+ ],
+ "busbra": {
+  "baseline": {
+   "n": 1875,
+   "auc": 0.6623995031675666,
+   "bacc": 0.6124720012057021,
+   "n_cases": 1064,
+   "auc_case": 0.6919254507459786,
+   "bacc_case": 0.6465066174207448
+  },
+  "corrected": {
+   "n": 1875,
+   "auc": 0.6859782557855513,
+   "bacc": 0.6368329011168337,
+   "n_cases": 1064,
+   "auc_case": 0.7167590027700831,
+   "bacc_case": 0.6529701446598953
+  },
+  "P_corrected_better": 0.953
+ },
+ "breastmnist": {
+  "baseline": {
+   "n": 156,
+   "auc": 0.7270258980785297,
+   "bacc": 0.6791979949874687
+  },
+  "corrected": {
+   "n": 156,
+   "auc": 0.6865079365079365,
+   "bacc": 0.6466165413533835
+  },
+  "P_corrected_better": 0.11125
+ }
+}

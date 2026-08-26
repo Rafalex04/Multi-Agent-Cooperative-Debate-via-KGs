@@ -13,7 +13,7 @@ BUS-BRA. Case-level aggregation is the primary view, as in E1.
 """
 from __future__ import annotations
 
-import json, sys
+import argparse, json, sys
 from pathlib import Path
 
 import numpy as np
@@ -65,7 +65,23 @@ def bm_lesion(ents):
     return tab
 
 
+# The five probes that anti-correlate with the radiologist annotation of the
+# descriptor they name (experiments/20_perception, measured on BrEaST).
+# PREDICTION before running: dropping them should help here LESS than it helps
+# the zero-parameter KG-signed sum (+0.0304), because this readout fits its own
+# weights and can already learn a negative coefficient for an inverted probe.
+# If dropping helps just as much here, that prediction is wrong and the probes
+# are carrying noise rather than reversed signal.
+INVERTED = ("irregular_shape", "echogenic_pseudocapsule", "oval_shape",
+            "thin_uniform_pseudocapsule", "echogenic_rind")
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--drop-inverted", action="store_true")
+    ap.add_argument("--out", default="external_lesion.json")
+    args = ap.parse_args()
+
     F = json.loads((_EXT / "frozen_models.json").read_text())
     names = F["findings"]
     L = lesion_table()
@@ -125,6 +141,17 @@ def main():
     y_ext = (z["labels"][:, 0] == 0).astype(int)[common]
     cases = z["cases"][common]
     XeF = np.array([fprobes[i].T.reshape(-1) for i in common])
+    if args.drop_inverted:
+        # the finding block is [phrasing][finding], so a dropped finding is one
+        # column per phrasing
+        nf = len(names)
+        cols = [b * nf + names.index(f) for b in range(XeF.shape[1] // nf)
+                for f in INVERTED]
+        kept = [c for c in range(XeF.shape[1]) if c not in set(cols)]
+        XeF = XeF[:, kept]
+        Xfa = {s: Xfa[s][:, kept] for s in SP}
+        print(f"perception repair ON: dropped {len(cols)} finding columns "
+              f"({len(INVERTED)} findings x {XeF.shape[1] // (nf - len(INVERTED))} phrasings)")
     XeL = np.array([bus_les[i] for i in common])
 
     print("\nEXPLORATORY -- not a registered endpoint\n")
@@ -138,8 +165,8 @@ def main():
           f"{res['findings + lesions']['ext_case'] - res['findings only']['ext_case']:+.4f}"
           f"   P(better) {p:.3f}")
     res["P_combined_better"] = p
-    (_HERE / "results/external_lesion.json").write_text(json.dumps(res, indent=1, default=float))
-    print("\nwrote results/external_lesion.json")
+    (_HERE / "results" / args.out).write_text(json.dumps(res, indent=1, default=float))
+    print(f"\nwrote results/{args.out}")
 
 
 if __name__ == "__main__":

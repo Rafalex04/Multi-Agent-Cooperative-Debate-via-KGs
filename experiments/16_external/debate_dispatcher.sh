@@ -8,7 +8,10 @@ REPO=/homes/rm2125/Multi-Agent-Cooperative-Debate-via-KGs
 LOCK=$REPO/experiments/16_external/logs/claims
 MAXSHARD=${1:-24}          # 24/36 of 1875 ~= 1250 samples
 mkdir -p $LOCK
-NODES="10 13 21 23 24 26 27 11 12"
+# Nodes are a parameter now: /data is node-local and was wiped on
+# 21/26/27, so a node with no model store must not be handed a shard --
+# it would claim the lock and then fail, silently losing that shard.
+NODES=${NODES:-"10 13 21 23 24 26 27 11 12"}
 while true; do
   claimed=$(ls $LOCK 2>/dev/null | wc -l)
   [ "$claimed" -ge "$MAXSHARD" ] && { echo "$(date +%H:%M) all $MAXSHARD shards claimed"; break; }

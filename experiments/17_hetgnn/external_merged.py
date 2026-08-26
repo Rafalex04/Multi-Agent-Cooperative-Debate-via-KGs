@@ -20,10 +20,20 @@ The arms are the ones that decide something rather than the ones that flatter:
     GNN + real KG      message passing on the ontology
     GNN + shuffled KG  same density, rewired -- isolates ontology from graph-ness
     GNN + no graph     isolates message passing from capacity
+
+PERCEPTION REPAIR (--drop-inverted). Five of the sixteen probes anti-correlate
+with the radiologist annotation of the descriptor they name, measured on BrEaST
+(experiments/20_perception). Those five are then multiplied by a fixed KG stance,
+so they are subtracted where they should be added. `--drop-inverted` weights them
+zero -- in the probe channels, in the prior channel and in the adjacency signs --
+which is the conservative repair: it claims the questions are broken, not that
+they are backwards. The five are chosen on a DIFFERENT dataset against a
+DIFFERENT label (descriptor agreement, not malignancy), so nothing about BUS-BRA
+enters the choice.
 """
 from __future__ import annotations
 
-import glob, json, sys
+import argparse, glob, json, sys
 from pathlib import Path
 
 import numpy as np
@@ -58,10 +68,34 @@ def load_debates(names):
     return out
 
 
+INVERTED = ("irregular_shape", "echogenic_pseudocapsule", "oval_shape",
+            "thin_uniform_pseudocapsule", "echogenic_rind")
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--drop-inverted", action="store_true")
+    ap.add_argument("--contestation", action="store_true",
+                    help="add the per-finding disagreement channel")
+    ap.add_argument("--phrasings", default="both", choices=("both", "p2", "p3"),
+                    help="which probe phrasing arms feed the finding nodes. "
+                         "The negated arm P2 scores 0.4882 against the radiologist "
+                         "descriptors on BrEaST -- chance -- and 0.4452 on BUS-BRA "
+                         "malignancy through the KG rule, so `both` is averaging a "
+                         "good channel against an anti-predictive one.")
+    ap.add_argument("--out", default="external_merged.json")
+    args = ap.parse_args()
+
     findings = kg_findings()
     names = [f for f, _ in findings]
     prior = np.array([s for _, s in findings], float)
+    keep = np.ones(len(names))
+    if args.drop_inverted:
+        for f in INVERTED:
+            keep[names.index(f)] = 0.0
+        prior = prior * keep
+        print(f"perception repair ON: dropping {int((keep==0).sum())} inverted probes "
+              f"-> {list(INVERTED)}")
 
     deb = load_debates(names)
     probes = load_probes(names, ("busbra_p2", "busbra_p3"), _EXT)
@@ -82,14 +116,36 @@ def main():
 
     F = len(names)
     n = len(common)
-    X = np.zeros((n, F, 5))          # probe P2, probe P3, argument mass, net stance, prior
+    # channels: probe P2, probe P3, argument mass, net stance, prior [, contestation]
+    #
+    # Net stance conflates "three claims, all malignant" with "five malignant and
+    # two benign": both sum to +3. Whether the two agents DISAGREED about finding
+    # f is a per-finding quantity that no probe can express and that the flat
+    # vector currently throws away. Contestation is its binary entropy, which is
+    # 0 when a finding is uncontested however much mass it carries, and maximal
+    # when the mass splits evenly.
+    npr = 2 if args.phrasings == "both" else 1
+    nch = (5 if npr == 2 else 4) + (1 if args.contestation else 0)
+    PMASS, PSTANCE, PPRIOR = npr, npr + 1, npr + 2
+    PCONT = npr + 3
+    X = np.zeros((n, F, nch))
     for k, i in enumerate(common):
         Xc, Acc, Acf, mask, _ = deb[i]
-        X[k, :, 0:2] = probes[i]
-        X[k, :, 2] = (mask[:, None] * Acf).sum(0)
-        X[k, :, 3] = ((mask * Xc[:, 0])[:, None] * Acf).sum(0)
-        X[k, :, 4] = prior
-    mu = X.reshape(-1, 5).mean(0); sd = X.reshape(-1, 5).std(0)
+        pr = probes[i] if args.phrasings == "both" else \
+            probes[i][:, 0:1] if args.phrasings == "p2" else probes[i][:, 1:2]
+        X[k, :, 0:npr] = pr * keep[:, None]
+        X[k, :, PMASS] = (mask[:, None] * Acf).sum(0)
+        X[k, :, PSTANCE] = ((mask * Xc[:, 0])[:, None] * Acf).sum(0)
+        X[k, :, PPRIOR] = prior
+        if args.contestation:
+            npos = ((mask * (Xc[:, 0] > 0))[:, None] * Acf).sum(0)
+            nneg = ((mask * (Xc[:, 0] < 0))[:, None] * Acf).sum(0)
+            tot = npos + nneg
+            q = np.divide(npos, tot, out=np.zeros(F), where=tot > 0)
+            with np.errstate(divide="ignore", invalid="ignore"):
+                h = -(q * np.log2(q) + (1 - q) * np.log2(1 - q))
+            X[k, :, PCONT] = np.where((tot > 0) & (q > 0) & (q < 1), h, 0.0)
+    mu = X.reshape(-1, nch).mean(0); sd = X.reshape(-1, nch).std(0)
     Z = (X - mu) / np.where(sd < 1e-9, 1, sd)
 
     Ap, An = kg_operators(names, prior)
@@ -104,12 +160,21 @@ def main():
     arms = {"GNN+KG": (Ap, An), "GNN+nograph": (Zero, Zero)}
     for s in range(5):
         arms[f"shuf{s}"] = shuf[s]
-    oof = {k: np.zeros(n) for k in list(arms) + ["probes only", "probes + debate"]}
+    labs = ["probes only", "probes + debate"]
+    if args.contestation:
+        labs += ["probes + contestation", "probes + debate + cont"]
+    oof = {k: np.zeros(n) for k in list(arms) + labs}
 
     for te in folds:
         tr = ~te
         # flat arms, with and without the debate columns
-        for lab, cols in (("probes only", [0, 1, 4]), ("probes + debate", [0, 1, 2, 3, 4])):
+        pc = list(range(npr))
+        flat = [("probes only", pc + [PPRIOR]),
+                ("probes + debate", pc + [PMASS, PSTANCE, PPRIOR])]
+        if args.contestation:
+            flat.append(("probes + contestation", pc + [PPRIOR, PCONT]))
+            flat.append(("probes + debate + cont", pc + [PMASS, PSTANCE, PPRIOR, PCONT]))
+        for lab, cols in flat:
             A = Z[:, :, cols].reshape(n, -1)
             w, b = fit_rank(A[tr], y[tr], 0.3)
             oof[lab][te] = A[te] @ w + b
@@ -120,7 +185,7 @@ def main():
     print(f"\nn={n} images, {len(u)} cases, malignant {y.mean():.3f}")
     print(f"{'arm':22s} {'image AUC':>10s} {'case AUC':>10s}")
     res = {"n": n, "n_cases": int(len(u))}
-    for lab in ("probes only", "probes + debate", "GNN+nograph", "GNN+KG"):
+    for lab in labs + ["GNN+nograph", "GNN+KG"]:
         ai, ac = auc(y, oof[lab]), auc(y_case, to_case(oof[lab]))
         res[lab] = {"image": ai, "case": ac}
         print(f"{lab:22s} {ai:10.4f} {ac:10.4f}")
@@ -143,9 +208,9 @@ def main():
                 "kg_delta": d_kg, "P_kg": p_kg})
     print("\n  -> debate: " + ("HELPS" if p_deb >= 0.95 else "no effect at P>=0.95"))
     print("  -> KG topology: " + ("HELPS" if p_kg >= 0.95 else "no effect at P>=0.95"))
-    (_HERE.parent / "results/external_merged.json").write_text(
+    (_HERE.parent / "results" / args.out).write_text(
         json.dumps(res, indent=1, default=float))
-    print("\nwrote results/external_merged.json")
+    print(f"\nwrote results/{args.out}")
 
 
 if __name__ == "__main__":

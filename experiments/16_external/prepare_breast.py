@@ -15,7 +15,7 @@ the dataset paper describes.
 """
 from __future__ import annotations
 
-import io, json, zipfile
+import argparse, io, json, zipfile
 from pathlib import Path
 
 import numpy as np
@@ -76,7 +76,7 @@ def _window(size, box, pad):
     return max(0, l), max(0, t), min(W, r), min(H, b)
 
 
-def main(size=224):
+def main(size=224, pad=PAD, tag='pad2'):
     z = zipfile.ZipFile(_ZIP)
     df = pd.read_excel(_XLS)
     df = df[df["Classification"].isin(["benign", "malignant"])].reset_index(drop=True)
@@ -95,7 +95,7 @@ def main(size=224):
         if len(xs) == 0:
             continue
         box = (int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max()))
-        im = im.crop(_window(im.size, box, PAD)).resize((size, size), Image.BICUBIC)
+        im = im.crop(_window(im.size, box, pad)).resize((size, size), Image.BICUBIC)
         imgs.append(np.asarray(im, dtype=np.uint8))
         labels.append(MALIGNANT if r["Classification"] == "malignant" else BENIGN)
         keep.append(r["Image_filename"])
@@ -120,7 +120,7 @@ def main(size=224):
         gt[feat] = np.where(na, v.astype(float), np.nan)
         cov[feat] = int(na.sum())
 
-    out = _ROOT / "data/external/breast_pad2_224.npz"
+    out = _ROOT / f"data/external/breast_{tag}_{size}.npz"
     np.savez_compressed(
         out, imgs=imgs, labels=labels, ids=np.array(keep),
         birads=np.array([str(x) for x in D["BIRADS"]]),
@@ -133,11 +133,20 @@ def main(size=224):
     for k in gt:
         v = gt[k]
         print(f"  {k:46s} {int(np.nansum(v)):4d} / {cov[k]:4d}")
-    (_HERE / "results/breast_prep.json").write_text(json.dumps(
+    (_HERE / f"results/breast_prep_{tag}.json").write_text(json.dumps(
         {"n": len(imgs), "n_malignant": n_mal,
          "descriptor_positives": {k: int(np.nansum(gt[k])) for k in gt},
          "descriptor_annotated": cov}, indent=1))
 
 
 if __name__ == "__main__":
-    main()
+    # The registered framing is pad=2.0. The alternatives exist because the
+    # per-finding perception audit found five probes anti-correlated with the
+    # descriptor they name, and framing is the first thing to rule out: at 1.25
+    # the lesion nearly fills the frame, at 3.0 it sits in context. Same images,
+    # same probes, same ground truth -- only the window changes.
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--pad", type=float, default=PAD)
+    ap.add_argument("--tag", default=None)
+    a = ap.parse_args()
+    main(pad=a.pad, tag=a.tag or f"pad{str(a.pad).replace('.','')}")
