@@ -1,0 +1,23 @@
+n=1251 images, 726 cases
+
+ frac  train cases       KG   shuffled      gap
+ 0.10           58   0.7281     0.7029  +0.0252
+ 0.20          116   0.7501     0.7375  +0.0126
+ 0.35          203   0.7583     0.7543  +0.0040
+ 0.50          290   0.7714     0.7642  +0.0071
+ 0.70          406   0.7848     0.7653  +0.0195
+ 0.85          493   0.7816     0.7713  +0.0103
+ 1.00          580   0.7882     0.7761  +0.0122
+
+convergence on one fold (train vs held-out AUC by epoch)
+  epoch  100  train 0.6746  held-out 0.7853
+  epoch  200  train 0.7461  held-out 0.8133
+  epoch  300  train 0.7685  held-out 0.8427
+  epoch  400  train 0.7734  held-out 0.8433
+  epoch  500  train 0.7785  held-out 0.8389
+  epoch  600  train 0.7791  held-out 0.8372
+  epoch  700  train 0.7795  held-out 0.8373
+  epoch  800  train 0.7793  held-out 0.8370
+
+gap at smallest n +0.0252  ->  at full n +0.0122
+-> gap is FLAT in data: not a sample-size problem
