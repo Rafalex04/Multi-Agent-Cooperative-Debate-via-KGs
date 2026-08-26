@@ -196,3 +196,58 @@ The ontology's stance mapping, given perfect inputs and fitting nothing, reaches
 0.8515. So the inference rule is sound and the remaining gap is split almost
 exactly evenly between seeing and reasoning — and the perception half is
 concentrated in a handful of invertible probes.
+
+---
+
+# Round 4 — the KG-topology endpoint, decided
+
+Round 3 left one endpoint open. The merged architecture's ontology beat a weight-
+and density-matched rewiring by +0.0140 at a subject-level bootstrap of
+**P = 0.939**, against a pre-registered bar of 0.95, on the 726 cases that had
+debates at the time. `learning_curve.py` put the effect at a flat
++0.0130 ± 0.0067 and estimated ~820 cases would clear the bar. 338 cases were
+undebated, so the experiment was run rather than argued about.
+
+The corpus is now complete: **1875 debates / 1064 cases**, validated for
+unparseable files, zero-claim records and empty-text records (0 of each, mean
+19.5 claims per debate). Four configurations, identical protocol, 5-fold folds
+split on case:
+
+| arm | GNN+KG | shuffled KG | Δ | **P(better)** |
+|---|---|---|---|---|
+| both phrasings | 0.8035 | 0.7916 ± 0.0054 | +0.0119 | **0.873** |
+| both + contestation | 0.7963 | 0.7900 ± 0.0060 | +0.0063 | 0.543 |
+| P3 only | 0.7729 | 0.7677 ± 0.0031 | +0.0052 | 0.585 |
+| P3 + contestation | 0.7614 | 0.7630 ± 0.0069 | −0.0016 | 0.094 |
+
+**The endpoint FAILS, and it fails in the informative direction.** More data did
+not move it toward the bar; it moved away. 726 cases → P = 0.939. 1064 cases →
+P = 0.873. An effect that is real and merely underpowered rises with n. This one
+fell, which is what an effect that is not there does.
+
+This is what the pre-registration was written for. The bar was set before the
+data existed, the extra cases were collected specifically to test it, and the
+answer is no. No arm is reported as the headline that was not registered as one.
+
+## The debate channel, on the complete corpus
+
+| arm | probes only | + debate | Δ | P(better) |
+|---|---|---|---|---|
+| both phrasings | 0.7909 | 0.7845 | −0.0064 | 0.075 |
+| P3 only | 0.7594 | 0.7437 | −0.0157 | **0.035** |
+
+Still harmful, and *more* harmful once the probe channel is cleaned up — a
+degraded probe channel was giving the debate features something to compensate
+for. Contestation does not change this: probes + contestation is 0.7890 against
+0.7909, and probes + debate + contestation is worse than probes + debate.
+
+## A protocol distinction that matters for reading these numbers
+
+`external_merged.py` fits its readout on BUS-BRA folds and tests on held-out
+BUS-BRA cases. It is a **within-dataset cross-validation**, not a transfer test.
+`freeze_models.py` / `phrasing_arms.py` freeze on BreastMNIST and never refit,
+and those are the transfer numbers. The two protocols rank the probe arms in
+opposite orders — pooled wins within BUS-BRA (0.7909 vs 0.7594), P3 wins on
+transfer (0.7499 vs 0.6919 zero-parameter) — and that reversal is itself the
+subject of `22_transfer/gap_law.py`. Neither number should be quoted as the
+other.
