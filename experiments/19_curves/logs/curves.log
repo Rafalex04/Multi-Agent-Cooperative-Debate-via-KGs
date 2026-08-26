@@ -1,0 +1,20 @@
+protocol: 437 fit / 109 held-out  (malignant 0.270 / 0.266)
+
+probe logistic, cross-entropy ...
+probe logistic, ranking loss ...
+S5 KG-Laplacian calibration ...
+findings + lesions logistic ...
+ThothGNN v3 (merged) ...
+ThothGNN v2 (ThothKG, anchored) ...
+ResNet-18 read from log (10 points)
+
+==================================================================
+Probe logistic · cross-entropy               train 0.8397  held-out 0.8164  (best 0.8181)
+Probe logistic · ranking loss                train 0.8487  held-out 0.8086  (best 0.8297)
+S5 · KG-Laplacian calibration                train 0.8483  held-out 0.8022  (best 0.8155)
+Findings + lesions · logistic                train 0.9308  held-out 0.8358  (best 0.8366)
+ThothGNN v3 · merged KG + debate             train 0.8352  held-out 0.8237  (best 0.8366)
+ThothGNN v2 · anchored, attention readout    train 0.7428  held-out 0.7793  (best 0.7793)
+ResNet-18 · supervised baseline              train   n/a   held-out 0.9657  (best 0.9799)
+
+wrote results/train_curves.json  (7 models)
