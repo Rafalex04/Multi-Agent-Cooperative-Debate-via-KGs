@@ -14,7 +14,7 @@ bAcc thresholds are swept on train+val and applied unchanged.
 """
 from __future__ import annotations
 
-import json, sys
+import argparse, json, sys
 from pathlib import Path
 
 import numpy as np
@@ -26,6 +26,7 @@ sys.path.insert(0, str(_HERE.parents[1] / "15_kggnn"))
 from claims import auc, bacc                                          # noqa: E402
 from gates import L2S, fit_ce, fit_rank                               # noqa: E402
 from hetgraph import SPLITS, build, kg_operators                      # noqa: E402
+import thothgnn3                                                       # noqa: E402
 from thothgnn3 import check_grad, fit, forward, node_tensor, probe_block  # noqa: E402
 
 
@@ -79,6 +80,13 @@ def report(name, sc, Y, res):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--phrasings", default="both", choices=("both", "p2", "p3"))
+    ap.add_argument("--out", default="thothgnn3.json")
+    a = ap.parse_args()
+    thothgnn3.PHRASE_COLS = {"both": (0, 1), "p2": (0,), "p3": (1,)}[a.phrasings]
+    print(f"probe phrasing arms in the node tensor: {a.phrasings}")
+
     w = check_grad()
     print(f"gradient check {w:.3e}  {'PASS' if w < 1e-6 else 'FAIL'}\n")
 
@@ -142,14 +150,15 @@ def main():
     print(f"  {'-> KG minus shuffled':26s} {g_test - np.mean(sh):+.4f}"
           f"  ({(g_test - np.mean(sh)) / (np.std(sh) + 1e-9):.2f} sd)")
 
+    npc = len(thothgnn3.PHRASE_COLS)
     Znd = {s: Z[s].copy() for s in SPLITS}
     for s in SPLITS:
-        Znd[s][:, :, 2:4] = 0.0
+        Znd[s][:, :, npc:npc + 2] = 0.0
     report("GNN no-debate channel", evaluate(Znd, Y, Ap, An, prior, l2g, kg), Y, res)
 
     res["selected"] = {"l2": l2g, "kdim": kg, "cv": cvg}
     res["anchor"] = {"test": a_test, "bacc": a_bacc, "l2": l2f, "loss": nmf}
-    (_HERE.parent / "results/thothgnn3.json").write_text(json.dumps(res, indent=1, default=float))
+    (_HERE.parent / "results" / a.out).write_text(json.dumps(res, indent=1, default=float))
     print(f"\nGNN - anchor: {g_test - a_test:+.4f} AUC, {g_bacc - a_bacc:+.4f} bAcc")
 
 

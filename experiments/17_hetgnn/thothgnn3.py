@@ -75,22 +75,28 @@ def probe_block(names):
     return out
 
 
+# Which probe phrasing arms become node channels. The negated arm agrees with the
+# radiologist's own descriptor at 0.4882 -- chance -- and transfers at 0.4452
+# through the KG rule, so treating it as a second "view" averages a good channel
+# against an anti-predictive one. Set by the runner; (0, 1) reproduces every
+# number published before 2026-08-26.
+PHRASE_COLS = (0, 1)
+
+
 def node_tensor(g, names, prior, probes, split):
-    """n x F x 5 : [probe_P2, probe_P3, argument mass, net stance, prior]."""
+    """n x F x (P+3) : [probe arms..., argument mass, net stance, prior]."""
     F = len(names)
     n = len(g["y"])
-    X = np.zeros((n, F, 5))
+    npc = len(PHRASE_COLS)
+    X = np.zeros((n, F, npc + 3))
     mass = np.einsum("nc,ncf->nf", g["mask"], g["Acf"])
     net = np.einsum("nc,ncf->nf", g["mask"] * g["Xc"][:, :, 0], g["Acf"])
     for i, sid in enumerate(g["ids"]):
         p = probes.get((split, int(sid)))
-        if p is not None:
-            X[i, :, 0:2] = p
-        else:
-            X[i, :, 0:2] = 0.5
-    X[:, :, 2] = mass
-    X[:, :, 3] = net
-    X[:, :, 4] = prior[None, :]
+        X[i, :, 0:npc] = p[:, PHRASE_COLS] if p is not None else 0.5
+    X[:, :, npc] = mass
+    X[:, :, npc + 1] = net
+    X[:, :, npc + 2] = prior[None, :]
     return X
 
 

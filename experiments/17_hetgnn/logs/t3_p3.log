@@ -1,0 +1,25 @@
+probe phrasing arms in the node tensor: p3
+gradient check 1.403e-10  PASS
+
+nodes 16  features 4  n=[546, 78, 156]
+
+=== anchor: flat linear readout (cv 0.7732, rank, l2=0.03) ===
+  linear flat                train 0.8424  val 0.8663  TEST 0.7621  bAcc 0.7400
+
+=== ThothGNN v3: message passing on the KG ===
+  cv l2=0.03  k=2  0.7673
+  cv l2=0.03  k=4  0.7568
+  cv l2=0.1   k=2  0.7623
+  cv l2=0.1   k=4  0.7331
+  cv l2=0.3   k=2  0.7462
+  cv l2=0.3   k=4  0.7380
+  -> selected l2=0.03, k=2 (cv 0.7673)
+  GNN (real KG)              train 0.8065  val 0.8805  TEST 0.7713  bAcc 0.7187
+
+=== controls ===
+  GNN no-graph (A=0)         train 0.7909  val 0.8321  TEST 0.7759  bAcc 0.7444
+  GNN shuffled-KG (5 draws)  TEST 0.7757 +- 0.0223   [0.7368, 0.7982]
+  -> KG minus shuffled       -0.0044  (-0.20 sd)
+  GNN no-debate channel      train 0.8077  val 0.8805  TEST 0.7703  bAcc 0.7581
+
+GNN - anchor: +0.0092 AUC, -0.0213 bAcc
