@@ -79,6 +79,7 @@ INVERTED = ("irregular_shape", "echogenic_pseudocapsule", "oval_shape",
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--drop-inverted", action="store_true")
+    ap.add_argument("--phrasings", default="both", choices=("both", "p2", "p3"))
     ap.add_argument("--out", default="external_lesion.json")
     args = ap.parse_args()
 
@@ -141,6 +142,15 @@ def main():
     y_ext = (z["labels"][:, 0] == 0).astype(int)[common]
     cases = z["cases"][common]
     XeF = np.array([fprobes[i].T.reshape(-1) for i in common])
+    if args.phrasings != "both":
+        # column blocks are [P2 negated | P3 verification]; the negated arm agrees
+        # with the radiologist at 0.4882 -- chance -- so it is an arm, not a view
+        nf = len(names)
+        b = 0 if args.phrasings == "p2" else 1
+        cols = list(range(b * nf, (b + 1) * nf))
+        XeF = XeF[:, cols]
+        Xfa = {s: Xfa[s][:, cols] for s in SP}
+        print(f"phrasing arm: {args.phrasings} only ({len(cols)} finding columns)")
     if args.drop_inverted:
         # the finding block is [phrasing][finding], so a dropped finding is one
         # column per phrasing
