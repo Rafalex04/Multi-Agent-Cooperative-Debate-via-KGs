@@ -1,0 +1,25 @@
+complete corpus: 1870 images / 1064 cases
+
+=== 1. what gating on the opening split would save ===
+  agents open SPLIT        830 / 1870  (44.4%)
+  agents open AGREED      1040 / 1870  (55.6%)
+  post-opening claims on agreed samples :  12378 (55.5% of all argument produced)
+  attack/endorse edges on agreed samples:  12378 (55.5% of all edges)
+  mean claims  split 19.5  vs agreed 19.5
+  mean edges   split 11.9  vs agreed 11.9
+
+=== 2. when the two agents open in agreement, are they right? ===
+  accuracy of the agreed opening call   0.6096  (majority-class baseline on that subset 0.6750)
+  accuracy on the SPLIT subset, agent_1 0.5096   agent_2 0.4904
+  malignant prevalence  agreed 0.325   split 0.323
+
+=== 3. on the contested cases, does the argument resolve them? ===
+  SPLIT  n= 830   opening-pool AUC 0.5616   final-round AUC 0.5289   all-claims AUC 0.5640
+  AGREED n=1040   opening-pool AUC 0.6265   final-round AUC 0.5019   all-claims AUC 0.6227
+
+=== 4. end to end, 5-fold on cases ===
+  probes only                                  0.8080
+  + debate score, every sample debated         0.8080   P vs probes 0.327
+  + debate score, ONLY where the agents split  0.8079   P vs probes 0.298   P vs full 0.346
+
+wrote results/debate_when_split.json

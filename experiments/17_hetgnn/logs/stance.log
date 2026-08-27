@@ -1,0 +1,37 @@
+complete corpus: 1875 images / 1064 cases
+
+=== CHECK 1: net stance under the repaired KG signs ===
+channel                     KG as written    drop 5    flip 5
+net stance                         0.4873    0.5451    0.5711
+argument mass                      0.6208    0.6240    0.5898
+probe P3                           0.7499    0.7141    0.5984
+
+  oracle over all 2^16 sign vectors, fitted on the scored labels:
+    net stance       best 0.6361   worst 0.3639   KG-as-written sits at the 40.6th pct
+    argument mass    best 0.6567   worst 0.3433   KG-as-written sits at the 99.4th pct
+
+=== CHECK 2: is argument mass a noisier probe? ===
+finding                                         rho(mass, p3)  AUC mass   AUC p3
+architectural_distortion                               0.2249    0.4972   0.5964
+irregular_shape                                        0.1473    0.4937   0.6528
+non_parallel_orientation                               0.0590    0.5271   0.6874
+posterior_shadowing_with_solid_irregular_mass          0.3068    0.6016   0.7151
+spiculated                                             0.2187    0.5440   0.5924
+spiculated_or_irregular_mass                           0.2000    0.5344   0.6389
+anechoic_content                                       0.1112    0.4518   0.4744
+circumscribed_margin                                   0.1057    0.4444   0.3042
+clustered_microcysts                                   0.0699    0.5001   0.5477
+echogenic_pseudocapsule                                0.1571    0.4602   0.4011
+hyperechoic_mass                                       0.1353    0.4913   0.4386
+oval_shape                                             0.1248    0.4431   0.3246
+parallel_orientation                                   0.0616    0.4952   0.4587
+thin_uniform_pseudocapsule                             0.1720    0.4714   0.2984
+echogenic_rind                                         0.1658    0.4850   0.4269
+microcalcifications_in_hypoechoic_mass                 0.1633    0.5049   0.5315
+MEAN |rho|                                             0.1515
+
+  probe P3 alone                  0.7499
+  argument mass alone             0.6208
+  both, weights fitted on the scored cases   0.7504   (+0.0005 over the probe)
+
+wrote results/stance_signs.json
