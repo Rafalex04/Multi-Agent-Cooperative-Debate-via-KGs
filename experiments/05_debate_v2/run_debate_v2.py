@@ -288,8 +288,12 @@ def parse_claims(text: str, expert_id: str, round_idx: int,
     return claims
 
 
-def debate(b64: str, ev: list[dict], client: Client, rounds: int = 3,
+def debate(b64: str, ev: list[dict], clients, rounds: int = 3,
            temperature: float = 0.4) -> list[dict]:
+    # `clients` maps role -> Client. Passing a bare Client keeps the old
+    # homogeneous behaviour byte-for-byte, so pre-existing runs still reproduce.
+    if not isinstance(clients, dict):
+        clients = {"expert_a": clients, "expert_b": clients}
     valid = {e["feature"] for e in ev}
     toks = {f: _feature_tokens(f) for f in valid}
     counter = [0]
@@ -302,6 +306,7 @@ def debate(b64: str, ev: list[dict], client: Client, rounds: int = 3,
     for r in range(rounds):
         for role in ("expert_a", "expert_b"):
             other = "expert_b" if role == "expert_a" else "expert_a"
+            client = clients[role]
             prompt = (opening_prompt(role, ev) if r == 0 else
                       rebuttal_prompt(role, ev, by_expert[other], by_expert[role]))
             try:
@@ -325,6 +330,8 @@ def debate(b64: str, ev: list[dict], client: Client, rounds: int = 3,
                 fresh.append(c)
             by_expert[role] += fresh
             all_claims += fresh
+    for _c in all_claims:
+        _c["model"] = clients[_c["expert_id"]].model
     return all_claims
 
 
@@ -453,6 +460,10 @@ def main():
     p.add_argument("--temperature", type=float, default=0.4,
                    help="debate sampling temperature; probes stay greedy")
     p.add_argument("--url",        default="http://localhost:11434/api/chat")
+    p.add_argument("--model-b",    default=None,
+                   help="model for expert_b. Default: same as --model.")
+    p.add_argument("--url-b",      default=None,
+                   help="endpoint for expert_b; defaults to --url.")
     p.add_argument("--out-dir",    required=True)
     p.add_argument("--kg-root",
         default=str(_HERE.parents[2] / "breastMnist"))
@@ -476,7 +487,13 @@ def main():
     out_dir = Path(args.out_dir) / args.split / "graphs"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    client = Client(args.url, args.model)
+    model_b = args.model_b or args.model
+    clients = {"expert_a": Client(args.url, args.model),
+               "expert_b": Client(args.url_b or args.url, model_b)}
+    logger.info("agents: expert_a=%s  expert_b=%s  [%s]", args.model, model_b,
+                "HETEROGENEOUS" if (model_b != args.model
+                                    or args.url_b not in (None, args.url))
+                else "homogeneous")
     logger.info("debate v2 | split=%s shard=%d/%d | %d samples | %d probes | %d rounds",
                 args.split, args.shard, args.num_shards, len(idxs), len(probes), args.rounds)
 
@@ -491,7 +508,7 @@ def main():
 
         ts = time.time()
         ev = measure(b64, probes, client, workers=args.workers)
-        claims = debate(b64, ev, client, rounds=args.rounds,
+        claims = debate(b64, ev, clients, rounds=args.rounds,
                         temperature=args.temperature)
         g = build_graph(sid, gold, claims, ev, triples, args.rounds)
         # Write-then-rename: sweeper workers may race on the same sample once

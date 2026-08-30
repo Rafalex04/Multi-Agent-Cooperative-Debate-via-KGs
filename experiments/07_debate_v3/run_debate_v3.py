@@ -203,7 +203,11 @@ def _dedupe(claim: dict, seen: set[str]) -> bool:
     return False
 
 
-def debate(b64: str, client: Client, rounds: int, temperature: float) -> list[dict]:
+def debate(b64: str, clients, rounds: int, temperature: float) -> list[dict]:
+    # `clients` maps role -> Client. Passing a bare Client keeps the old
+    # homogeneous behaviour byte-for-byte, so pre-existing runs still reproduce.
+    if not isinstance(clients, dict):
+        clients = {"expert_a": clients, "expert_b": clients}
     counter = [0]
     by_expert: dict[str, list[dict]] = {"expert_a": [], "expert_b": []}
     seen: set[str] = set()
@@ -211,6 +215,7 @@ def debate(b64: str, client: Client, rounds: int, temperature: float) -> list[di
     for r in range(rounds):
         for role in ("expert_a", "expert_b"):
             other = "expert_b" if role == "expert_a" else "expert_a"
+            client = clients[role]
             prompt = (opening_prompt(role) if r == 0 else
                       rebuttal_prompt(role, by_expert[other], by_expert[role]))
             try:
@@ -228,6 +233,8 @@ def debate(b64: str, client: Client, rounds: int, temperature: float) -> list[di
                 fresh.append(c)
             by_expert[role] += fresh
             out += fresh
+    for _c in out:
+        _c["model"] = clients[_c["expert_id"]].model
     return out
 
 
@@ -243,6 +250,10 @@ def main():
     p.add_argument("--num-shards", type=int, default=1)
     p.add_argument("--reverse",    action="store_true")
     p.add_argument("--url",        default="http://localhost:11434/api/chat")
+    p.add_argument("--model-b",    default=None,
+                   help="model for expert_b. Default: same as --model.")
+    p.add_argument("--url-b",      default=None,
+                   help="endpoint for expert_b; defaults to --url.")
     p.add_argument("--out-dir",    required=True)
     p.add_argument("--kg-root",
         default=str(_HERE.parents[2] / "breastMnist"))
@@ -259,7 +270,13 @@ def main():
 
     out_dir = Path(args.out_dir) / args.split
     out_dir.mkdir(parents=True, exist_ok=True)
-    client = Client(args.url, args.model)
+    model_b = args.model_b or args.model
+    clients = {"expert_a": Client(args.url, args.model),
+               "expert_b": Client(args.url_b or args.url, model_b)}
+    logger.info("agents: expert_a=%s  expert_b=%s  [%s]", args.model, model_b,
+                "HETEROGENEOUS" if (model_b != args.model
+                                    or args.url_b not in (None, args.url))
+                else "homogeneous")
     logger.info("debate v3 (no KG) | split=%s shard=%d/%d | %d samples | %d rounds",
                 args.split, args.shard, args.num_shards, len(idxs), args.rounds)
 
@@ -271,7 +288,7 @@ def main():
             continue
         gold = _LABEL_MAP[int(labels[idx][0])]
         ts = time.time()
-        claims = debate(_b64(imgs[idx], args.image_size), client,
+        claims = debate(_b64(imgs[idx], args.image_size), clients,
                         args.rounds, args.temperature)
         tmp = dest.with_suffix(f".{args.shard}.tmp")
         tmp.write_text(json.dumps({

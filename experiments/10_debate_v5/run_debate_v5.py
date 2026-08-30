@@ -308,7 +308,11 @@ def _mark_repeat(claim, seen):
     return len(_norm(original).split()) < 3
 
 
-def debate(b64, client, kits, tag2feats, rounds, temperature, no_kg=False, run_id=0):
+def debate(b64, clients, kits, tag2feats, rounds, temperature, no_kg=False, run_id=0):
+    # `clients` maps agent -> Client. Passing a bare Client keeps the old
+    # homogeneous behaviour byte-for-byte, so pre-existing runs still reproduce.
+    if not isinstance(clients, dict):
+        clients = {"agent_1": clients, "agent_2": clients}
     counter = [0]
     by_agent = {"agent_1": [], "agent_2": []}
     seen = {_norm(d) for k in kits.values() for _, _, d in k}
@@ -318,6 +322,7 @@ def debate(b64, client, kits, tag2feats, rounds, temperature, no_kg=False, run_i
         for agent in ("agent_1", "agent_2"):
             other = "agent_2" if agent == "agent_1" else "agent_1"
             kit, tag2feat = kits[agent], tag2feats[agent]
+            client = clients[agent]
             # Only the three most recent opponent claims are answerable; showing
             # fourteen made the model reply to every one and copy each verbatim.
             recent = by_agent[other][-3:]
@@ -335,6 +340,8 @@ def debate(b64, client, kits, tag2feats, rounds, temperature, no_kg=False, run_i
                                              max_claims=4 if r == 0 else 3,
                                              no_kg=no_kg)
                      if not _mark_repeat(c, seen)]
+            for c in fresh:
+                c["model"] = client.model
             by_agent[agent] += fresh
             out += fresh
     return out
@@ -356,6 +363,12 @@ def main():
     p.add_argument("--run-id",     type=int, default=0,
                    help="independent repeat: reseeds sampling and finding order")
     p.add_argument("--url",        default="http://localhost:11434/api/chat")
+    p.add_argument("--model-b",    default=None,
+                   help="model for agent_2. Default: same as --model (homogeneous, "
+                        "the original v5 behaviour).")
+    p.add_argument("--url-b",      default=None,
+                   help="endpoint for agent_2; defaults to --url. Point it at a "
+                        "different node so neither model is swapped off the GPU.")
     p.add_argument("--out-dir",    required=True)
     p.add_argument("--kg-root",    default=str(_HERE.parents[2] / "breastMnist"))
     p.add_argument("--npz", default=None,
@@ -386,9 +399,14 @@ def main():
 
     out_dir = Path(args.out_dir) / args.split
     out_dir.mkdir(parents=True, exist_ok=True)
-    client = Client(args.url, args.model)
+    model_b = args.model_b or args.model
+    clients = {"agent_1": Client(args.url, args.model),
+               "agent_2": Client(args.url_b or args.url, model_b)}
+    hetero = (model_b != args.model) or (args.url_b not in (None, args.url))
     logger.info("debate v5 (open stance) | split=%s shard=%d/%d | %d samples",
                 args.split, args.shard, args.num_shards, len(idxs))
+    logger.info("agents: agent_1=%s  agent_2=%s  [%s]", args.model, model_b,
+                "HETEROGENEOUS" if hetero else "homogeneous")
 
     t0 = time.time()
     width = max(3, len(str(len(imgs) - 1)))
@@ -401,7 +419,7 @@ def main():
         ts = time.time()
         k1, t1 = shuffled(findings, sid, 2 * args.run_id)
         k2, t2 = shuffled(findings, sid, 2 * args.run_id + 1)
-        claims = debate(_b64(imgs[idx], args.image_size), client,
+        claims = debate(_b64(imgs[idx], args.image_size), clients,
                         {"agent_1": k1, "agent_2": k2},
                         {"agent_1": t1, "agent_2": t2},
                         args.rounds, args.temperature, no_kg=args.no_kg,
@@ -409,6 +427,7 @@ def main():
         tmp = dest.with_suffix(f".{args.shard}.tmp")
         tmp.write_text(json.dumps({
             "sample_id": sid, "gold_label": gold, "rounds_used": args.rounds,
+            "models": {"agent_1": args.model, "agent_2": model_b},
             "claims": claims,
         }, indent=1))
         tmp.replace(dest)
