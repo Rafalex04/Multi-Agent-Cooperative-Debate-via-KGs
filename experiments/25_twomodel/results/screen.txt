@@ -1,0 +1,17 @@
+models with data: ['qwen3vl', 'gemma3', 'medgemma', 'minicpm']
+common images: 245  malignant 65
+
+model                        AUC    bAcc   mean p      sd  bar>=0.60
+minicpm-v:8b              0.7986  0.6923   0.8680  0.0429  PASS
+qwen3-vl:8b-instruct      0.7682  0.6609   0.5959  0.1812  INCUMBENT
+gemma3:12b                0.7303  0.6818   0.7253  0.2494  PASS
+medgemma:4b               0.5974  0.5771   0.9958  0.0011  FAIL
+
+per-finding probe correlation with qwen3-vl:8b-instruct (Spearman, mean over findings)
+  minicpm-v:8b             +0.4548
+  gemma3:12b               +0.3113
+  medgemma:4b              -0.0113
+
+DECISION
+  clears the bar: minicpm-v:8b, gemma3:12b
+  PARTNER = minicpm-v:8b  (AUC 0.7986, corr +0.4548)
