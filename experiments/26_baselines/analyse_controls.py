@@ -16,8 +16,10 @@ from pathlib import Path
 import numpy as np
 
 _HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(_HERE))
 sys.path.insert(0, str(_HERE.parents[0] / "16_external"))
 from analyse_e1 import auc, bacc, paired_bootstrap        # noqa: E402
+from corpus_io import load_corpus                        # noqa: E402
 
 D = _HERE.parents[1] / "breastMnist/data/breast"
 
@@ -29,8 +31,7 @@ def mal_share(labels):
 
 def load_draws(split):
     recs = []
-    for f in sorted(glob.glob(str(D / "controls_b1" / split / "*.json"))):
-        d = json.loads(Path(f).read_text())
+    for d in load_corpus(D / "controls_b1").get(split, []):
         recs.append((d["sample_id"],
                      1.0 if d["gold_label"] == "MALIGNANT" else 0.0,
                      [mal_share([c.get("label") for c in dr]) for dr in d["draws"]]))
@@ -42,8 +43,7 @@ def b1_scores(split, corpus="catfish_b1"):
     base, full = {}, {}
     b1 = json.loads((_HERE / "results/b1.json").read_text())
     tone, tau = b1["frozen"]["tone"], b1["frozen"]["tau_conf"]
-    for f in sorted(glob.glob(str(D / corpus / split / "*.json"))):
-        d = json.loads(Path(f).read_text())
+    for d in load_corpus(D / corpus).get(split, []):
         sid = d["sample_id"]
         base[sid] = mal_share([c.get("label") for c in d["base_claims"]])
         br = d["branches"][tone]

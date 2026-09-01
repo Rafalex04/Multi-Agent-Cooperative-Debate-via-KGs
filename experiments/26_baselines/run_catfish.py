@@ -27,9 +27,11 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
 _HERE = Path(__file__).resolve()
+sys.path.insert(0, str(_HERE.parent))
 sys.path.insert(0, str(_HERE.parents[1] / "10_debate_v5"))
 sys.path.insert(0, str(_HERE.parents[1] / "03_kg_grounded_vlm"))
 
+from corpus_io import append, done_indices                      # noqa: E402
 from run_debate_v5 import (                                      # noqa: E402
     Client, _LABEL_MAP, _b64, _mark_repeat, _norm, all_findings,
     opening_prompt, parse_claims, rebuttal_prompt, shuffled,
@@ -285,6 +287,7 @@ def main():
     p.add_argument("--kg-root", default=str(_HERE.parents[2] / "breastMnist"))
     p.add_argument("--npz", default=None)
     p.add_argument("--probe-tag", default="probep3")
+    p.add_argument("--probe-dir", default=None)
     args = p.parse_args()
 
     import numpy as np
@@ -296,8 +299,8 @@ def main():
 
     # probe confidence per image -> the trigger's ambiguity term
     conf = {}
-    pd = _HERE.parents[1] / "15_kggnn/results"
-    for f in sorted(pd.glob(f"{args.probe_tag}_{args.split}_*.jsonl")):
+    pd = Path(args.probe_dir) if args.probe_dir else _HERE.parents[1] / "15_kggnn/results"
+    for f in sorted(pd.glob(f"{args.probe_tag}_{args.split}_*.jsonl")) or sorted(pd.glob(f"{args.probe_tag}_*.jsonl")):
         for ln in f.read_text(errors="replace").splitlines():
             if not ln.strip():
                 continue
@@ -312,8 +315,9 @@ def main():
     imgs, labels = z["imgs"], z["labels"]
     idxs = [i for i in range(len(imgs)) if i % args.num_shards == args.shard]
 
-    out_dir = Path(args.out_dir) / args.split
+    out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    done = done_indices(out_dir, args.split, args.shard)
     cl = Client(args.url, args.model)
     clients = {"agent_1": cl, "agent_2": cl, "catfish": cl, "moderator": cl}
     logger.info("B1 catfish | split=%s shard=%d/%d | %d samples | asymmetry=%s",
@@ -324,8 +328,7 @@ def main():
     width = max(3, len(str(len(imgs) - 1)))
     for k, idx in enumerate(idxs, 1):
         sid = f"{idx:0{width}d}"
-        dest = out_dir / f"debate_{sid}.json"
-        if dest.exists():
+        if idx in done:
             continue
         b64 = _b64(imgs[idx], args.image_size)
         k1, t1 = shuffled(findings, sid, 2 * args.run_id)
@@ -334,13 +337,11 @@ def main():
             b64, clients, {"agent_1": k1, "agent_2": k2},
             {"agent_1": t1, "agent_2": t2}, args.temperature, args.run_id,
             conf.get(idx), catfish_sees_image=args.catfish_sees_image)
-        tmp = dest.with_suffix(f".{args.shard}.tmp")
-        tmp.write_text(json.dumps({
+        append(out_dir, args.split, args.shard, {
             "sample_id": sid, "gold_label": _LABEL_MAP[int(labels[idx][0])],
             "model": args.model, "asymmetry": not args.catfish_sees_image,
             "trigger": trig, "base_claims": base, "branches": branches,
-        }, indent=1))
-        tmp.replace(dest)
+        })
         nb = len(base)
         nc = len(branches["collaborative"]["catfish"])
         logger.info("  [%3d/%3d] %s %-9s | base %2d | catfish %d | silent=%s | %.0fs",

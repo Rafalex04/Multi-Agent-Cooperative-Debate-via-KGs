@@ -13,21 +13,18 @@ from pathlib import Path
 import numpy as np
 
 _HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(_HERE))
 sys.path.insert(0, str(_HERE.parents[0] / "16_external"))
 from analyse_e1 import auc, bacc, paired_bootstrap        # noqa: E402
+from corpus_io import load_corpus                        # noqa: E402
 
 SPLITS = ("train", "val", "test")
 TONES = ("collaborative", "adversarial")
 
 
 def load(root):
-    """split -> list of per-sample records."""
-    out = {s: [] for s in SPLITS}
-    for sp in SPLITS:
-        for f in sorted(glob.glob(str(Path(root) / sp / "*.json"))):
-            d = json.loads(Path(f).read_text())
-            out[sp].append(d)
-    return out
+    """split -> list of per-sample records (jsonl or legacy per-image json)."""
+    return load_corpus(root)
 
 
 def mal_share(labels):

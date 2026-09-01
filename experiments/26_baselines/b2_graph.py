@@ -26,8 +26,10 @@ from pathlib import Path
 import numpy as np
 
 _HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(_HERE))
 sys.path.insert(0, str(_HERE.parents[0] / "14_kgtensor"))
 from claims import kg_findings                                   # noqa: E402
+from corpus_io import load_corpus                                # noqa: E402
 
 SPLITS = ("train", "val", "test")
 AGENTS = ("a0", "a1", "a2", "a3", "a4", "a5")
@@ -54,10 +56,10 @@ def build(corpus, tau_transfer, phrasings=("probeneg", "probep3")):
     findings = kg_findings()
     names = [f for f, _ in findings]
     graphs = []
+    corpus_by_split = load_corpus(corpus)
     for sp in SPLITS:
         pr = [load_probe_split(t, sp, names) for t in phrasings]
-        for f in sorted(glob.glob(str(Path(corpus) / sp / "*.json"))):
-            d = json.loads(Path(f).read_text())
+        for d in corpus_by_split.get(sp, []):
             i = int(d["sample_id"])
             if not all(i in p for p in pr):
                 continue

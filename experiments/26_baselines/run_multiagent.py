@@ -28,9 +28,11 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
 _HERE = Path(__file__).resolve()
+sys.path.insert(0, str(_HERE.parent))
 sys.path.insert(0, str(_HERE.parents[1] / "10_debate_v5"))
 sys.path.insert(0, str(_HERE.parents[1] / "03_kg_grounded_vlm"))
 
+from corpus_io import append, done_indices                      # noqa: E402
 from run_debate_v5 import (                                      # noqa: E402
     Client, _LABEL_MAP, _b64, _mark_repeat, _norm, all_findings,
     opening_prompt, parse_claims, rebuttal_prompt, shuffled,
@@ -111,6 +113,7 @@ def main():
     p.add_argument("--num-shards", type=int, default=1)
     p.add_argument("--out-dir", required=True)
     p.add_argument("--kg-root", default=str(_HERE.parents[2] / "breastMnist"))
+    p.add_argument("--npz", default=None)
     args = p.parse_args()
 
     import numpy as np
@@ -125,12 +128,14 @@ def main():
     AGENTS = [("a0", qc), ("a1", qc), ("a2", qc),
               ("a3", gc), ("a4", gc), ("a5", gc)]
 
-    z = np.load(root / f"data/breast/images_224/{args.split}.npz")
+    z = np.load(Path(args.npz) if args.npz
+                else root / f"data/breast/images_224/{args.split}.npz")
     imgs, labels = z["imgs"], z["labels"]
     idxs = [i for i in range(len(imgs)) if i % args.num_shards == args.shard]
 
-    out_dir = Path(args.out_dir) / args.split
+    out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    done = done_indices(out_dir, args.split, args.shard)
     logger.info("6-agent | split=%s shard=%d/%d | %d samples | qwen=%s gemma=%s",
                 args.split, args.shard, args.num_shards, len(idxs),
                 args.qwen_url.split("//")[-1].split(":")[0],
@@ -140,8 +145,7 @@ def main():
     width = max(3, len(str(len(imgs) - 1)))
     for k, idx in enumerate(idxs, 1):
         sid = f"{idx:0{width}d}"
-        dest = out_dir / f"debate_{sid}.json"
-        if dest.exists():
+        if idx in done:
             continue
         b64 = _b64(imgs[idx], args.image_size)
         kits, t2f = {}, {}
@@ -182,13 +186,11 @@ def main():
                 s, cf = None, None
             stances[a] = {"stance": s, "conf": cf, "model": cl.model}
 
-        tmp = dest.with_suffix(f".{args.shard}.tmp")
-        tmp.write_text(json.dumps({
+        append(out_dir, args.split, args.shard, {
             "sample_id": sid, "gold_label": _LABEL_MAP[int(labels[idx][0])],
             "agents": {a: cl.model for a, cl in AGENTS},
             "stances": stances, "claims": claims,
-        }, indent=1))
-        tmp.replace(dest)
+        })
         ok = sum(1 for v in stances.values() if v["stance"])
         logger.info("  [%3d/%3d] %s %-9s | %2d claims | stances %d/6 | %.0fs",
                     k, len(idxs), sid, _LABEL_MAP[int(labels[idx][0])],
