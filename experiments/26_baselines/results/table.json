@@ -1,0 +1,152 @@
+{
+ "ResNet-18 supervised (ceiling, not comparable)": {
+  "agents": "-",
+  "params": 11170000,
+  "perception_calls": 0,
+  "reasoning_calls": 0,
+  "auc": 0.9442,
+  "auc_sd": null,
+  "bacc": 0.8672,
+  "ext_auc": null
+ },
+ "0-parameter KG-signed sum (P3)": {
+  "agents": "-",
+  "params": 0,
+  "perception_calls": 16,
+  "reasoning_calls": 0,
+  "auc": 0.7467,
+  "auc_sd": null,
+  "bacc": 0.6466,
+  "ext_auc": null
+ },
+ "probe-64 flat readout (P2+P3)": {
+  "agents": "-",
+  "params": 64,
+  "perception_calls": 32,
+  "reasoning_calls": 0,
+  "auc": 0.8104,
+  "auc_sd": null,
+  "bacc": 0.7381,
+  "ext_auc": null
+ },
+ "ThothGNN v3 (GNN + real KG)": {
+  "agents": "2",
+  "params": 59,
+  "perception_calls": 32,
+  "reasoning_calls": 6,
+  "auc": 0.8032581453634086,
+  "auc_sd": null,
+  "bacc": 0.7431077694235588,
+  "ext_auc": null
+ },
+ "ThothGNN v3, no graph (A=0)": {
+  "agents": "2",
+  "params": 59,
+  "perception_calls": 32,
+  "reasoning_calls": 6,
+  "auc": 0.7951127819548872,
+  "auc_sd": null,
+  "bacc": 0.7706766917293233,
+  "ext_auc": null
+ },
+ "B2 GraphGeo (ours impl, no KG)": {
+  "agents": "6",
+  "params": 10737,
+  "perception_calls": 32,
+  "reasoning_calls": 24,
+  "auc": 0.8101921470342524,
+  "auc_sd": 0.018548153330442914,
+  "bacc": 0.7117794486215538,
+  "ext_auc": null
+ },
+ "B2 GraphGeo + our anchor": {
+  "agents": "6",
+  "params": 10738,
+  "perception_calls": 32,
+  "reasoning_calls": 24,
+  "auc": 0.8147451963241437,
+  "auc_sd": 0.015600818743146531,
+  "bacc": 0.744360902255639,
+  "ext_auc": null
+ },
+ "B2 no-relation (one shared W)": {
+  "agents": "6",
+  "params": 6001,
+  "perception_calls": 32,
+  "reasoning_calls": 24,
+  "auc": 0.8111111111111111,
+  "auc_sd": 0.030183366199186774,
+  "bacc": 0.744360902255639,
+  "ext_auc": null
+ },
+ "B1 Catfish Agent (ours impl)": {
+  "agents": "2+1",
+  "params": 0,
+  "perception_calls": 16,
+  "reasoning_calls": 9,
+  "auc": 0.6498538011695907,
+  "auc_sd": null,
+  "bacc": 0.6215538847117794,
+  "ext_auc": null
+ },
+ "B1 no-catfish (= our open-stance protocol)": {
+  "agents": "2",
+  "params": 0,
+  "perception_calls": 16,
+  "reasoning_calls": 4,
+  "auc": 0.6844193817878028,
+  "auc_sd": null,
+  "bacc": 0.6234335839598998,
+  "ext_auc": null
+ },
+ "B1 catfish sees image (asymmetry removed)": {
+  "agents": "2+1",
+  "params": 0,
+  "perception_calls": 16,
+  "reasoning_calls": 9,
+  "auc": 0.7105263157894737,
+  "auc_sd": null,
+  "bacc": 0.6522556390977443,
+  "ext_auc": null
+ },
+ "our protocol, 6 agents": {
+  "agents": "6",
+  "params": 0,
+  "perception_calls": 0,
+  "reasoning_calls": 24,
+  "auc": 0.6974728487886382,
+  "auc_sd": null,
+  "bacc": 0.6453634085213034,
+  "ext_auc": null
+ },
+ "self-consistency N=5 (control)": {
+  "agents": "1",
+  "params": 0,
+  "perception_calls": 0,
+  "reasoning_calls": 5,
+  "auc": 0.7495822890559732,
+  "auc_sd": null,
+  "bacc": 0.6409774436090225,
+  "ext_auc": null
+ },
+ "independent ensemble N=2 (control)": {
+  "agents": "2",
+  "params": 0,
+  "perception_calls": 0,
+  "reasoning_calls": 2,
+  "auc": 0.7162698412698413,
+  "auc_sd": null,
+  "bacc": 0.6804511278195489,
+  "ext_auc": null
+ },
+ "single draw N=1 (control)": {
+  "agents": "1",
+  "params": 0,
+  "perception_calls": 0,
+  "reasoning_calls": 1,
+  "auc": 0.6759607351712615,
+  "auc_sd": null,
+  "bacc": 0.6416040100250626,
+  "ext_auc": null
+ }
+}
