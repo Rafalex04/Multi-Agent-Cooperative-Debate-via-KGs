@@ -177,3 +177,44 @@ B2-anchored; ResNet-18 supervised (ceiling, not comparable).
 
 Both baselines are reported whatever they score, including if either beats us.
 No baseline is tuned past its pre-registered configuration to make it lose.
+
+---
+
+# ERRATA
+
+Appended after the pre-registration was committed. Each entry is dated and
+states what changed and why. Nothing above this line has been edited.
+
+## 2026-09-01 - B2 cannot match ThothGNN v3's capacity budget
+
+The spec asks for "two layers, hidden 32, dropout 0.5, DropEdge 0.2, weight
+decay 5e-4" AND for the "same capacity budget as ThothGNN v3 so capacity is not
+the confound". Those two requirements are incompatible and the architecture
+specification wins, because changing it would stop the implementation being
+GraphGeo.
+
+Measured on the built model:
+
+    ThothGNN v3      59 parameters
+    B2 GraphGeo  10,737 parameters      182x more
+
+Consequence for interpretation, stated before the test evaluation. The confound
+now runs in ONE direction only. If B2 UNDERPERFORMS, capacity cannot explain it
+- B2 has vastly more. If B2 OUTPERFORMS, capacity is a live alternative
+explanation and the result must be reported with that caveat rather than as
+evidence for agent-level graph structure.
+
+Given the pre-registered prediction that B2-full lands in 0.60-0.66, well under
+the probe-only readout at 0.8034, the likely outcome is the first case, which
+makes the negative result stronger rather than weaker.
+
+## 2026-09-01 - verdict conditioning in the 6-agent corpus
+
+The per-agent overall verdict was originally asked as a bare question at
+temperature 0. That returns an identical first-token distribution for every
+agent sharing a model, so the three qwen slots collapsed to one graph node and
+the three gemma slots to another (a0/a1/a2 returned byte-identical confidence
+0.9689668170301162). r_conflict could never fire and B2 would have been a null
+by construction. The verdict is now conditioned on each agent's own claims.
+After the fix, 92.9% of images carry both stances and r_conflict averages 14.19
+edges per graph.
