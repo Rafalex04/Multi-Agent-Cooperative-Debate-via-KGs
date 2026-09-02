@@ -116,7 +116,8 @@ def main():
     # ---------------- B2 ----------------
     from b2_graph import build
     from b2_train import train_eval
-    g = build(a.b2_corpus, 0.01, phrasings=tags)
+    g = build(a.b2_corpus, 0.01, phrasings=tags, splits=("all",),
+              probes=probes)
     print(f"B2 graphs: {len(g)}")
     if len(g) > 200:
         gi = [int(x["sid"]) for x in g]

@@ -38,9 +38,10 @@ _ROOT = _HERE.parents[1] / "breastMnist/data/breast"
 REL = ("agree", "conflict", "transfer")
 
 
-def load_probe_split(tag, split, names):
+def load_probe_split(tag, split, names, probe_dir=None):
     out = {}
-    for f in sorted(_PROBES.glob(f"{tag}_{split}_*.jsonl")):
+    d = Path(probe_dir) if probe_dir else _PROBES
+    for f in sorted(d.glob(f"{tag}_{split}_*.jsonl")) or sorted(d.glob(f"{tag}_*.jsonl")):
         for ln in f.read_text(errors="replace").splitlines():
             if not ln.strip():
                 continue
@@ -51,14 +52,19 @@ def load_probe_split(tag, split, names):
     return out
 
 
-def build(corpus, tau_transfer, phrasings=("probeneg", "probep3")):
+def build(corpus, tau_transfer, phrasings=("probeneg", "probep3"),
+          splits=SPLITS, probe_dir=None, probes=None):
     """-> list of dicts: {x (6,P), edges {rel: (src,dst) arrays}, y, split, sid}"""
     findings = kg_findings()
     names = [f for f, _ in findings]
     graphs = []
-    corpus_by_split = load_corpus(corpus)
-    for sp in SPLITS:
-        pr = [load_probe_split(t, sp, names) for t in phrasings]
+    corpus_by_split = load_corpus(corpus, splits=splits)
+    for sp in splits:
+        # BUS-BRA probes are keyed by a single "all" split and live elsewhere,
+        # so callers may pass a prebuilt {index: (F, len(phrasings))} map.
+        pr = ([{i: m[:, k] for i, m in probes.items()} for k in range(len(phrasings))]
+              if probes is not None
+              else [load_probe_split(t, sp, names, probe_dir) for t in phrasings])
         for d in corpus_by_split.get(sp, []):
             i = int(d["sample_id"])
             if not all(i in p for p in pr):
