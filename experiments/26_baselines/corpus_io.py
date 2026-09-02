@@ -21,11 +21,15 @@ def jsonl_paths(out_dir, split):
     return sorted(Path(out_dir).glob(f"{split}_*.jsonl"))
 
 
-def done_indices(out_dir, split, shard):
-    """Indices already written for this shard, for resume-by-index."""
-    p = Path(out_dir) / f"{split}_{shard}.jsonl"
+def done_indices(out_dir, split, shard=None):
+    """Every index already written for this split, by ANY shard.
+
+    Scanning only this shard's own file means a shard that gets re-split across
+    freed nodes redoes work another file already holds. Scanning all of them
+    makes redistribution free, which is what the straggler rebalance needs.
+    """
     done = set()
-    if p.exists():
+    for p in jsonl_paths(out_dir, split):
         for ln in p.read_text(errors="replace").splitlines():
             if ln.strip():
                 try:
