@@ -54,12 +54,21 @@ from thothgnn3 import fit, forward                                       # noqa:
 
 _DEB = _HERE.parents[2] / "breastMnist/data/breast/debates_busbra/all"
 _EXT = _HERE.parents[1] / "16_external/results"
+_MASKRES = _HERE.parents[1] / "23_masktest/results"
+
+# The mask arm differs from auto in the IMAGE only: same backbone, same rounds,
+# same protocol. Corpus, probe tags and npz must switch together or the gold
+# cross-check below fires.
+ARMS = {"auto": ("debates_busbra", ("busbra_p2", "busbra_p3"), _EXT,
+                 "busbra_pad2_224.npz"),
+        "mask": ("debates_busbra_mask", ("bring_p2", "bring_p3"), _MASKRES,
+                 "busbra_bring_224.npz")}
 
 
-def load_debates(names):
+def load_debates(names, deb_dir=None):
     """index -> (claim features, signed claim->claim, claim->finding, mask)."""
     out = {}
-    for f in sorted(glob.glob(str(_DEB / "*.json"))):
+    for f in sorted(glob.glob(str((deb_dir or _DEB) / "*.json"))):
         try:
             X, Acc, Acf, mask, y, sid = load_sample(f, names)
         except Exception:
@@ -83,6 +92,7 @@ def main():
                          "descriptors on BrEaST -- chance -- and 0.4452 on BUS-BRA "
                          "malignancy through the KG rule, so `both` is averaging a "
                          "good channel against an anti-predictive one.")
+    ap.add_argument("--arm", default="auto", choices=tuple(ARMS))
     ap.add_argument("--out", default="external_merged.json")
     args = ap.parse_args()
 
@@ -97,14 +107,17 @@ def main():
         print(f"perception repair ON: dropping {int((keep==0).sum())} inverted probes "
               f"-> {list(INVERTED)}")
 
-    deb = load_debates(names)
-    probes = load_probes(names, ("busbra_p2", "busbra_p3"), _EXT)
+    _dname, _tags, _pdir, _npz = ARMS[args.arm]
+    _debdir = _HERE.parents[2] / "breastMnist/data/breast" / _dname / "all"
+    print(f"arm={args.arm}  debates={_dname}  probes={_tags}  npz={_npz}")
+    deb = load_debates(names, _debdir)
+    probes = load_probes(names, _tags, _pdir)
     common = sorted(set(deb) & set(probes))
     print(f"BUS-BRA debates {len(deb)}  probes {len(probes)}  BOTH {len(common)}")
     if len(common) < 200:
         print("not enough debates yet"); return
 
-    z = np.load(_HERE.parents[2] / "data/external/busbra_pad2_224.npz")
+    z = np.load(_HERE.parents[2] / "data/external" / _npz)
     y = (z["labels"][:, 0] == 0).astype(float)[common]
     cases = z["cases"][common]
     # cross-check the debate's own gold against the npz, since a silent mismatch
@@ -208,6 +221,12 @@ def main():
                 "kg_delta": d_kg, "P_kg": p_kg})
     print("\n  -> debate: " + ("HELPS" if p_deb >= 0.95 else "no effect at P>=0.95"))
     print("  -> KG topology: " + ("HELPS" if p_kg >= 0.95 else "no effect at P>=0.95"))
+    # case-level score vectors, so the cross-method paired bootstraps can be run
+    # against the baselines without refitting anything.
+    np.savez(str((_HERE.parent / "results" / args.out).with_suffix(".scores.npz")),
+             y_case=y_case, cases=u,
+             **{lab.replace(" ", "_"): to_case(oof[lab])
+                for lab in labs + ["GNN+nograph", "GNN+KG"]})
     (_HERE.parent / "results" / args.out).write_text(
         json.dumps(res, indent=1, default=float))
     print(f"\nwrote results/{args.out}")

@@ -30,6 +30,7 @@ ROWS = [
     ("B1 Catfish Agent (ours impl)",                   "2+1", 16, 9, "b1"),
     ("B1 no-catfish (= our open-stance protocol)",     "2", 16, 4, "b1"),
     ("B1 catfish sees image (asymmetry removed)",      "2+1", 16, 9, "b1"),
+    ("probes + debate (2-agent v5, ours)",             "2", 32, 6, "ext-only"),
     ("our protocol, 6 agents",                         "6", 0, 24, "ours6"),
     ("self-consistency N=5 (control)",                 "1", 0, 5, "ctl"),
     ("independent ensemble N=2 (control)",             "2", 0, 2, "ctl"),
@@ -66,17 +67,51 @@ def jload(p):
     return json.loads(p.read_text()) if p.exists() else None
 
 
+def jneed(p):
+    """External files are the whole point of the last two columns; a missing one
+    must fail loudly. The previous version read a filename that never existed and
+    silently printed 'pending' in every external cell."""
+    p = Path(p)
+    if not p.exists():
+        sys.exit(f"missing required results file: {p}")
+    return json.loads(p.read_text())
+
+
+# our own rows draw their external AUC from the em_* merged runs, at PATIENT
+# level, on the identical 1875 images / 1064 patients the baselines use.
+EXT_OURS = {
+    "probe-64 flat readout (P2+P3)":     "probes only",
+    "probes + debate (2-agent v5, ours)": "probes + debate",
+    "ThothGNN v3 (GNN + real KG)":       "GNN+KG",
+    "ThothGNN v3, no graph (A=0)":       "GNN+nograph",
+}
+
+
 def main():
     b1, b2 = jload(RES / "b1.json"), jload(RES / "b2.json")
     ctl, ours6 = jload(RES / "controls.json"), jload(RES / "ours_6agent.json")
     thoth = jload(_HERE.parents[0] / "17_hetgnn/results/thothgnn3.json")
-    ext = jload(RES / "external.json") or {}
+    ext_a = jneed(RES / "external_auto.json")
+    ext_m = jneed(RES / "external_mask.json")
+    HET = _HERE.parents[0] / "17_hetgnn/results"
+    our_a = jneed(HET / "em_full_both.json")
+    our_m = jneed(HET / "em_mask_both.json")
+
+    def extval(lab, base, ours):
+        """patient-level external AUC, whichever source owns this row"""
+        if lab in EXT_OURS:
+            r = ours.get(EXT_OURS[lab])
+            return (r or {}).get("case"), None
+        r = base.get(lab)
+        if not r:
+            return None, None
+        return r.get("auc_case"), r.get("auc_case_sd")
 
     print("BreastMNIST test (n=156). Baselines are OUR IMPLEMENTATIONS; no")
     print("released code from either paper was used. Agent counts differ and")
     print("are stated. Ceiling row is not comparable.\n")
     hdr = (f"{'method':46s} {'ag':>4s} {'prm':>6s} {'perc':>5s} {'reas':>5s} "
-           f"{'AUC':>15s} {'bAcc':>7s} {'ext AUC':>8s}")
+           f"{'AUC':>15s} {'bAcc':>7s} {'extAUTO':>8s} {'extMASK':>8s}")
     print(hdr); print("-" * len(hdr))
     out = {}; sd = {}
     for lab, ag, perc, reas, src in ROWS:
@@ -102,20 +137,27 @@ def main():
             r = ours6.get("mal_share over all claims"); a, b, prm = (r["auc"], r["bacc"], 0) if r else (None,)*3
         elif src == "resnet":
             a, b, prm = 0.9442, 0.8672, 11_170_000
-        e = ext.get(lab, {}).get("auc")
+        ea, ea_sd = extval(lab, ext_a, our_a)
+        em, em_sd = extval(lab, ext_m, our_m)
         out[lab] = {"agents": ag, "params": prm, "perception_calls": perc,
                     "reasoning_calls": reas, "auc": a, "auc_sd": sd.get(lab),
-                    "bacc": b, "ext_auc": e}
+                    "bacc": b, "ext_auc_auto": ea, "ext_auc_auto_sd": ea_sd,
+                    "ext_auc_mask": em, "ext_auc_mask_sd": em_sd}
         pf = (f"{a:.4f}+-{sd[lab]:.3f}" if lab in sd
               else (f"{a:8.4f}" if a is not None else f"{'-':>8s}"))
         bf = f"{b:7.4f}" if b is not None else f"{'-':>7s}"
-        ef = f"{e:8.4f}" if e is not None else f"{'pending':>8s}"
+        eaf = f"{ea:8.4f}" if ea is not None else f"{'-':>8s}"
+        emf = f"{em:8.4f}" if em is not None else f"{'-':>8s}"
         pr = f"{prm:6}" if isinstance(prm, str) else f"{prm:6d}"
-        print(f"{lab:46s} {ag:>4s} {pr} {perc:5d} {reas:5d} {pf:>15s} {bf} {ef}")
+        print(f"{lab:46s} {ag:>4s} {pr} {perc:5d} {reas:5d} {pf:>15s} {bf} "
+              f"{eaf} {emf}")
     (RES / "table.json").write_text(json.dumps(out, indent=1))
     print(f"\n-> {RES/'table.json'}")
     print("\nag = agents.  prm = fitted parameters.  perc/reas = VLM calls per image,")
     print("split into perception (probes) and reasoning (debate turns + verdicts).")
+    print("AUC column = BreastMNIST test (n=156). extAUTO/extMASK = BUS-BRA external,")
+    print("PATIENT level, n=1875 images / 1064 patients, identical set for every row.")
+    print("mask = 2.0x crop + maskring; auto = no segmentation.")
 
 
 if __name__ == "__main__":

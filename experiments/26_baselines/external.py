@@ -85,6 +85,7 @@ def main():
     print(f"arm={a.arm}  npz={npz}  probes measured in both phrasings: {len(probes)}")
 
     res = {}
+    SCORES = {}      # case-level score vectors, for the paired bootstraps
     # ---------------- B1 ----------------
     b1 = load_corpus(a.b1_corpus, splits=("all",))["all"]
     print(f"B1 corpus: {len(b1)} records")
@@ -107,6 +108,9 @@ def main():
                                               and t["mean_conf"] < tau)
             s.append(full if fired else base)
         s = np.array(s); sc = to_case(s, cs, u)
+        SCORES["B1 Catfish Agent (ours impl)"] = sc
+        SCORES["_y_case"] = yc
+        SCORES["_cases"] = u
         res["B1 Catfish Agent (ours impl)"] = {
             "n_img": len(idx), "n_case": int(len(u)),
             "auc": float(auc(y, s)), "auc_case": float(auc(yc, sc)),
@@ -115,7 +119,7 @@ def main():
 
     # ---------------- B2 ----------------
     from b2_graph import build
-    from b2_train import train_eval
+    from b2_train import train_eval, SEEDS
     g = build(a.b2_corpus, 0.01, phrasings=tags, splits=("all",),
               probes=probes)
     print(f"B2 graphs: {len(g)}")
@@ -123,21 +127,48 @@ def main():
         gi = [int(x["sid"]) for x in g]
         y = y_all[gi]; cs = cases_all[gi]; u = np.unique(cs)
         yc = np.array([y[cs == c][0] for c in u])
+        # The spec fixes 5 seeds and asks for mean +- sd. Averaging the seeds'
+        # predictions first (an ensemble) reports a model nobody trained and runs
+        # optimistic; per-seed AUCs are kept as the headline and the ensemble is
+        # recorded beside them. Training on CPU is not bit-reproducible, so the
+        # sd across seeds is also the honest precision of a single number here.
         for lab, kw in (("B2 GraphGeo (ours impl, no KG)", {}),
                         ("B2 GraphGeo + our anchor", dict(anchored=True))):
-            oof = np.zeros(len(g))
-            for te in case_folds(cs, k=5, seed=0):
-                tr = ~te
-                oof[te] = np.mean([train_eval([x for x, m in zip(g, tr) if m],
-                                              [x for x, m in zip(g, te) if m],
-                                              sd, epochs=a.epochs, **kw)
-                                   for sd in (0, 1, 2)], axis=0)
+            per_seed = []
+            for sd in SEEDS:
+                oof_s = np.zeros(len(g))
+                for te in case_folds(cs, k=5, seed=0):
+                    tr = ~te
+                    oof_s[te] = train_eval([x for x, m in zip(g, tr) if m],
+                                           [x for x, m in zip(g, te) if m],
+                                           sd, epochs=a.epochs, **kw)
+                per_seed.append(oof_s)
+            P = np.stack(per_seed)
+            aucs = [float(auc(y, o)) for o in P]
+            caucs, baccs = [], []
+            for o in P:
+                s_c = to_case(o, cs, u)
+                caucs.append(float(auc(yc, s_c)))
+                baccs.append(float(bacc(yc, s_c, float(np.median(s_c)))))
+            oof = P.mean(0)
             sc = to_case(oof, cs, u)
-            res[lab] = {"n_img": len(g), "n_case": int(len(u)),
-                        "auc": float(auc(y, oof)), "auc_case": float(auc(yc, sc)),
-                        "bacc_case": float(bacc(yc, sc, float(np.median(sc))))}
-            print(f"  {lab:32s} image {auc(y,oof):.4f}   patient {auc(yc,sc):.4f}")
+            SCORES[lab] = sc
+            SCORES["_y_case_b2"] = yc
+            SCORES["_cases_b2"] = u
+            res[lab] = {"n_img": len(g), "n_case": int(len(u)), "seeds": list(SEEDS),
+                        "auc": float(np.mean(aucs)), "auc_sd": float(np.std(aucs)),
+                        "auc_case": float(np.mean(caucs)),
+                        "auc_case_sd": float(np.std(caucs)),
+                        "bacc_case": float(np.mean(baccs)),
+                        "bacc_case_sd": float(np.std(baccs)),
+                        "auc_ens": float(auc(y, oof)),
+                        "auc_case_ens": float(auc(yc, sc))}
+            print(f"  {lab:32s} image {np.mean(aucs):.4f}+-{np.std(aucs):.4f}   "
+                  f"patient {np.mean(caucs):.4f}+-{np.std(caucs):.4f}   "
+                  f"(ens {auc(yc,sc):.4f})")
 
+    np.savez(str(Path(a.out).with_suffix(".scores.npz")),
+             **{k: np.asarray(v) for k, v in SCORES.items()})
     Path(a.out).write_text(json.dumps(res, indent=1))
     print(f"-> {a.out}")
 
