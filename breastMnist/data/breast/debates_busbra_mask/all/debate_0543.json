@@ -1,0 +1,199 @@
+{
+ "sample_id": "0543",
+ "gold_label": "BENIGN",
+ "rounds_used": 3,
+ "models": {
+  "agent_1": "qwen3-vl:8b-instruct",
+  "agent_2": "qwen3-vl:8b-instruct"
+ },
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "the margin is smooth and well-defined without spiculation.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "circumscribed_margin"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c2",
+   "text": "the internal content is uniformly dark, suggesting fluid.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "anechoic_content"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c3",
+   "text": "a thin bright rim encircles the mass, consistent with a simple cyst.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "echogenic_pseudocapsule"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c4",
+   "text": "the mass is oval with a smooth, rounded contour.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "oval_shape"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c5",
+   "text": "the mass is oval with smooth contour.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "oval_shape"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c6",
+   "text": "a thin bright echogenic rim surrounds the mass.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "echogenic_pseudocapsule"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c7",
+   "text": "the boundary is smooth and sharply defined.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "circumscribed_margin"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c8",
+   "text": "a dark band lies directly behind the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c9",
+   "text": "no posterior acoustic shadowing is present; the dark band behind is likely an artifact or shadow from adjacent structures, not a solid mass feature.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c8"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c10",
+   "text": "posterior acoustic shadowing is present \u2014 a dark band directly behind the mass, consistent with a solid mass, not an artifact.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c9"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c11",
+   "text": "no posterior acoustic shadowing is present; the dark band is an artifact from adjacent structures, not a feature of a solid mass.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c10"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c12",
+   "text": "posterior acoustic shadowing is present \u2014 a dark band directly behind the mass, consistent with a solid mass, not an artifact.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [
+    "posterior_shadowing_with_solid_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c11"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true,
+   "model": "qwen3-vl:8b-instruct"
+  }
+ ]
+}

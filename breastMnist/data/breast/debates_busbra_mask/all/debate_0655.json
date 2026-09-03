@@ -1,0 +1,320 @@
+{
+ "sample_id": "0655",
+ "gold_label": "MALIGNANT",
+ "rounds_used": 3,
+ "models": {
+  "agent_1": "qwen3-vl:8b-instruct",
+  "agent_2": "qwen3-vl:8b-instruct"
+ },
+ "claims": [
+  {
+   "node_id": "c1",
+   "text": "the mass has a smooth, continuous contour without irregularities.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "irregular_shape"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c2",
+   "text": "a thick, irregular bright halo surrounds the mass.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "echogenic_rind"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c3",
+   "text": "the margin is circumscribed with no spiculations or distortions.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 0,
+   "cited_features": [
+    "circumscribed_margin"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c4",
+   "text": "the shape is irregular with jagged borders.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "irregular_shape"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c5",
+   "text": "the mass has spiculated margins radiating outward.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c6",
+   "text": "the mass is oriented non-parallel, taller than wide.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "non_parallel_orientation"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c7",
+   "text": "a thin bright echogenic rim surrounds the mass.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 0,
+   "cited_features": [
+    "echogenic_pseudocapsule"
+   ],
+   "addressed_ids": [],
+   "stance_verdict": null,
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c8",
+   "text": "the margin is smooth and continuous, no spiculations visible.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [
+    "spiculated_or_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c5"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c9",
+   "text": "the mass is indeed taller than wide, non-parallel orientation.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [
+    "non_parallel_orientation"
+   ],
+   "addressed_ids": [
+    "c6"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c10",
+   "text": "the rim is thin and uniform, consistent with benign findings.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 1,
+   "cited_features": [
+    "echogenic_pseudocapsule"
+   ],
+   "addressed_ids": [
+    "c7"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c11",
+   "text": "spiculated margins are clearly visible radiating from the mass edge.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [
+    "spiculated"
+   ],
+   "addressed_ids": [
+    "c8"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c12",
+   "text": "the mass is indeed non-parallel, taller than wide.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [
+    "non_parallel_orientation"
+   ],
+   "addressed_ids": [
+    "c9"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": true,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c13",
+   "text": "the mass contains tiny anechoic cysts with thin septations, not a uniform thin rim.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 1,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [
+    "c10"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c14",
+   "text": "the margin is smooth and continuous, no spiculations visible.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [
+    "spiculated_or_irregular_mass"
+   ],
+   "addressed_ids": [
+    "c11"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c15",
+   "text": "the mass is indeed taller than wide, non-parallel orientation.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [
+    "non_parallel_orientation"
+   ],
+   "addressed_ids": [
+    "c12"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": true,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c16",
+   "text": "the mass does not show tiny anechoic cysts with thin septations; it has a uniform thin rim.",
+   "label": "BENIGN",
+   "label_explicit": true,
+   "expert_id": "agent_1",
+   "round_idx": 2,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [
+    "c13"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c17",
+   "text": "the margin is irregular and jagged, not smooth or continuous.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [
+    "irregular_shape"
+   ],
+   "addressed_ids": [
+    "c14"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": false,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c18",
+   "text": "the mass is indeed non-parallel, oriented taller than wide.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [
+    "non_parallel_orientation"
+   ],
+   "addressed_ids": [
+    "c15"
+   ],
+   "stance_verdict": "AGREE",
+   "is_repeat": true,
+   "model": "qwen3-vl:8b-instruct"
+  },
+  {
+   "node_id": "c19",
+   "text": "the mass contains tiny anechoic cysts with thin septations, not a uniform thin rim.",
+   "label": "MALIGNANT",
+   "label_explicit": true,
+   "expert_id": "agent_2",
+   "round_idx": 2,
+   "cited_features": [
+    "clustered_microcysts"
+   ],
+   "addressed_ids": [
+    "c16"
+   ],
+   "stance_verdict": "DISAGREE",
+   "is_repeat": true,
+   "model": "qwen3-vl:8b-instruct"
+  }
+ ]
+}
