@@ -1,0 +1,114 @@
+# DermaMNIST / dermoscopy relation roles. Same contract as
+# retinaMnist/conf/ontology_derma.yaml and breastMnist/conf/kg_schema.yaml: this
+# file is the ONLY place ontology vocabulary lives.
+#
+# THE KEY DIFFERENCE FROM RETINA. ICDR is an ORDINAL severity ladder, so five
+# grades gave four cut points and heads A and C both applied. DermaMNIST is SEVEN
+# NOMINAL lesion classes -- melanoma is not "more" than dermatofibroma -- so the
+# cut-point decomposition is meaningless here and the head must be multinomial.
+# That is option B from the head analysis, and `nominal.py` implements it.
+
+task: multiclass
+classes:                    # DermaMNIST label order, 0..6
+  - akiec
+  - bcc
+  - bkl
+  - df
+  - mel
+  - nv
+  - vasc
+class_names:
+  akiec: actinic keratoses and intraepithelial carcinoma
+  bcc: basal cell carcinoma
+  bkl: benign keratosis-like lesions
+  df: dermatofibroma
+  mel: melanoma
+  nv: melanocytic nevi
+  vasc: vascular lesions
+
+# entity -> DermaMNIST label. 17 triples cover all seven classes.
+class_relation: maps_to_dermamnist_class
+
+# A finding SUPPORTS a lesion entity, which in turn maps to a class. This is the
+# two-hop replacement for ICDR's direct finding->level relation.
+finding_relations:
+  - establishes_lesion_class
+  - present_in_malignant
+  - present_in_benign
+  - melanoma_specific
+  - benign_pattern_of
+
+# Relations that qualify rather than assign; kept for the record.
+qualifier_relations:
+  - also_present_in
+  - distinguishes
+  - exception_to_level
+  - not_defined_by
+
+# The seven-level Table 4 ladder. NOT a severity scale -- the source's own
+# vocabulary_notes warn that c_005 is tagged additive_score "for schema
+# conformance only; the ladder is not additive". Used for adjacency, never as a
+# label.
+level_relation: criterion_for_level
+
+# --- adjacency ---------------------------------------------------------------
+# Dermoscopy has 53 appearance triples, unlike ICDR's 18 (5 of them placeholders),
+# so the breast-style appearance-mediated construction may actually work here.
+# Both are built and compared, as on retina.
+adjacency_relations:
+  lesion:     [establishes_lesion_class, present_in_malignant, present_in_benign]
+  taxonomy:   [is_a, subtype_of, variant_of, component_of]
+  criterion:  [requires_criterion, criterion_for_level]
+  location:   [located_in, often_located_in]
+  confusion:  [confused_with, distinguishes, differential_for, also_present_in]
+adjacency_mediators: [lesion, taxonomy, criterion, confusion]
+
+appearance_relations: [dermoscopic_appearance_includes]
+appearance_placeholder: no_stated_morphology
+
+# --- observability -----------------------------------------------------------
+# DermaMNIST is a single dermoscopic image. A finding the source says needs
+# another modality cannot be probed from one.
+visibility_relation: visible_only_with
+unavailable_modalities:
+  - histopathology
+  - reflectance_confocal_microscopy
+  - immersion_contact_dermoscopy_only
+exclusion_relations: [not_defined_by]
+
+location_relations: [located_in]
+excluded_locations: []
+
+# --- probe-description hygiene -----------------------------------------------
+# Same rule as retina: a probe question describes what the grader SEES, never
+# what it means. Sentences naming a diagnosis or the checklist score would hand
+# the VLM the answer.
+description_leak_terms:
+  - melanoma
+  - malignant
+  - benign
+  - nevus
+  - nevi
+  - carcinoma
+  - keratosis
+  - dermatofibroma
+  - vascular lesion
+  - angioma
+  - diagnosis
+  - diagnostic
+  - three-point
+  - checklist
+  - score
+  - level
+  - criterion
+  - criteria
+  - table
+  - specificity
+  - sensitivity
+  - suspicious
+  - placeholder
+  - not defined
+  - no appearance
+  - this entry
+
+min_findings: 8

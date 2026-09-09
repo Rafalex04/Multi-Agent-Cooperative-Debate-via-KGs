@@ -1,0 +1,136 @@
+{
+ "config": {
+  "n_findings": 55,
+  "kg": {
+   "n_findings": 55,
+   "n_edges": 162,
+   "n_pairs": 1485,
+   "n_mediators": 80,
+   "isolated": [
+    "diffuse_reticular",
+    "dotted_vessels_over_tan_background",
+    "globular_pattern",
+    "homogeneous_pattern",
+    "patchy_reticular",
+    "peripheral_globules_starburst",
+    "peripheral_reticular_with_central_globules",
+    "peripheral_reticular_with_central_hyperpigmentation",
+    "peripheral_reticular_with_central_hypopigmentation",
+    "strawberry_pattern",
+    "two_components_pattern"
+   ],
+   "mediators": [
+    "lesion",
+    "taxonomy",
+    "criterion",
+    "confusion"
+   ]
+  },
+  "n_class": 7,
+  "has_debate": false,
+  "tag": "derma_p3",
+  "n": {
+   "train": 7007,
+   "val": 1003,
+   "test": 2005
+  }
+ },
+ "cv": [
+  {
+   "l2": 0.03,
+   "kdim": 2,
+   "macro_recall": 0.5189043104005806
+  },
+  {
+   "l2": 0.03,
+   "kdim": 4,
+   "macro_recall": 0.5497597490514546
+  },
+  {
+   "l2": 0.1,
+   "kdim": 2,
+   "macro_recall": 0.5372487386305203
+  },
+  {
+   "l2": 0.1,
+   "kdim": 4,
+   "macro_recall": 0.5501347437447738
+  },
+  {
+   "l2": 0.3,
+   "kdim": 2,
+   "macro_recall": 0.46821104862058593
+  },
+  {
+   "l2": 0.3,
+   "kdim": 4,
+   "macro_recall": 0.5032197314041218
+  }
+ ],
+ "selected": {
+  "l2": 0.1,
+  "kdim": 4,
+  "cv_macro_recall": 0.5501347437447738
+ },
+ "GNN (real KG)": {
+  "accuracy": 0.5970074812967581,
+  "macro_recall": 0.5917053882989143,
+  "macro_f1": 0.4251564629706874,
+  "macro_ovr_auc": 0.8914958507001282,
+  "per_class_auc": [
+   0.9059262037601388,
+   0.9172919665553888,
+   0.8374331550802139,
+   0.9268196376080375,
+   0.7625130226027087,
+   0.8943435936138289,
+   0.9961433756805808
+  ],
+  "per_class_recall": [
+   0.4393939393939394,
+   0.5339805825242718,
+   0.4636363636363636,
+   0.5217391304347826,
+   0.5515695067264574,
+   0.6316181953765846,
+   1.0
+  ]
+ },
+ "no-graph (A=0)": {
+  "accuracy": 0.5955112219451372,
+  "macro_recall": 0.5879340837652458,
+  "macro_f1": 0.42197528263494644,
+  "macro_ovr_auc": 0.8924616172577119,
+  "per_class_auc": [
+   0.9070123618860081,
+   0.9167764131777485,
+   0.8382378405907818,
+   0.9262273505023472,
+   0.7686908949988173,
+   0.8941605347564756,
+   0.9961259248918051
+  ],
+  "per_class_recall": [
+   0.4393939393939394,
+   0.5242718446601942,
+   0.44545454545454544,
+   0.5217391304347826,
+   0.5515695067264574,
+   0.6331096196868009,
+   1.0
+  ]
+ },
+ "shuffled-KG": {
+  "mean": 0.5913928183684906,
+  "sd": 0.005067167423836997,
+  "draws": [
+   0.60128351283097,
+   0.5875174959293582,
+   0.5881471443809909,
+   0.5907718261141647,
+   0.5892441125869688
+  ],
+  "delta": 0.00031256993042372283,
+  "z": 0.061685337049123275
+ }
+}

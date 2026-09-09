@@ -1,0 +1,375 @@
+{
+ "entities": [
+  {
+   "term": "no_apparent_retinopathy",
+   "definition": "ICDR severity level 0. Defined verbatim as 'No abnormalities' observable on dilated ophthalmoscopy. Assigned only when no retinal lesion of any type is identified; there is no count threshold to fall below.",
+   "source": "Table 1, No apparent DR row",
+   "id": "d_001"
+  },
+  {
+   "term": "mild_npdr",
+   "definition": "ICDR severity level 1. Defined verbatim as 'Microaneurysms only'. Microaneurysms must be present and must be the sole abnormality; the presence of any other lesion type (dot or blot haemorrhage, hard exudate, cotton wool spot, IRMA, venous beading) moves the eye to at least moderate NPDR. No minimum microaneurysm count is specified.",
+   "source": "Table 1, Mild nonproliferative DR row",
+   "id": "d_002"
+  },
+  {
+   "term": "moderate_npdr",
+   "definition": "ICDR severity level 2. Defined verbatim as 'Microaneurysms and other signs (e.g., dot and blot hemorrhages, hard exudates, cotton wool spots), but less than severe nonproliferative DR'. The lower bound is positive (more than microaneurysms alone); the upper bound is purely negative (failing to meet any of the three severe NPDR criteria). The lesion list is exemplary, not exhaustive, so a lesion type absent from the list does not by itself exclude this level.",
+   "source": "Table 1, Moderate nonproliferative DR row",
+   "id": "d_003"
+  },
+  {
+   "term": "severe_npdr",
+   "definition": "ICDR severity level 3. Defined verbatim as 'Moderate nonproliferative DR with any of the following: Intraretinal hemorrhages (>=20 in each quadrant); Definite venous beading (in 2 quadrants); Intraretinal microvascular abnormalities (in 1 quadrant); and no signs of proliferative retinopathy'. The three quantitative criteria are independently sufficient (the 4-2-1 disjunction); the moderate NPDR base state and the absence of proliferative signs are conjuncts that must both hold.",
+   "source": "Table 1, Severe nonproliferative DR row",
+   "id": "d_004"
+  },
+  {
+   "term": "proliferative_dr",
+   "definition": "ICDR severity level 4. Defined verbatim as 'Severe nonproliferative DR and 1 or more of the following: Neovascularization; Vitreous/preretinal hemorrhage'. Either sign is independently sufficient once the severe NPDR base state holds. No extent, quadrant or location threshold is attached to neovascularisation.",
+   "source": "Table 1, Proliferative DR row",
+   "id": "d_005"
+  },
+  {
+   "term": "no_dme",
+   "definition": "DME axis level 0. Verbatim: 'No retinal thickening or hard exudates in the macula'.",
+   "source": "Table 1, DME sub-table",
+   "id": "d_006"
+  },
+  {
+   "term": "noncentral_involved_dme",
+   "definition": "DME axis level 1. Verbatim: 'Retinal thickening in the macula that does not involve the central subfield zone that is 1mm in diameter'.",
+   "source": "Table 1, DME sub-table",
+   "id": "d_007"
+  },
+  {
+   "term": "central_involved_dme",
+   "definition": "DME axis level 2. Verbatim: 'Retinal thickening in the macula that does involve the central subfield zone that is 1mm in diameter'.",
+   "source": "Table 1, DME sub-table",
+   "id": "d_008"
+  },
+  {
+   "term": "microaneurysm",
+   "definition": "Isolated, spherical, red dots of varying size on the fundus. The source attributes them either to an abortive attempt to form a new vessel or to weakness of the capillary vessel wall through loss of normal structural integrity. Easiest seen on fluorescein angiography, meaning colour fundus photography under-detects them.",
+   "source": "Annex Table 1, Microaneurysms row",
+   "id": "d_009"
+  },
+  {
+   "term": "dot_hemorrhage",
+   "definition": "Intraretinal haemorrhage lying superficially in the retina and similar in appearance to a microaneurysm, differing only in varying size; the source states the two cannot always be differentiated. Often merged with microaneurysms under the combined grading term H/Ma.",
+   "source": "Annex Table 1, Dot hemorrhages row",
+   "id": "d_010"
+  },
+  {
+   "term": "blot_hemorrhage",
+   "definition": "Intraretinal haemorrhage formed where clusters of capillaries occlude. Situated in the outer plexiform layer, deeper than dot and flame haemorrhages. The source provides no colour, margin or size description for fundus photography.",
+   "source": "Annex Table 1, Blot hemorrhages row",
+   "id": "d_011"
+  },
+  {
+   "term": "flame_hemorrhage",
+   "definition": "Retinal haemorrhage lying superficially in the retina, mentioned by the source only in passing alongside cotton wool spot formation in the context of arteriolar occlusion affecting the horizontal nerve fibre layer. No morphological description and no ICDR severity level are given in this source.",
+   "source": "Annex Table 1, Blot hemorrhages row and Macular changes row",
+   "confidence": "low",
+   "id": "d_012"
+  },
+  {
+   "term": "intraretinal_hemorrhage",
+   "definition": "Superordinate class covering dot and blot haemorrhages. This is the entity counted by the first severe NPDR criterion, at a threshold of 20 or more in each quadrant.",
+   "source": "Table 1, Severe nonproliferative DR row; Annex Table 1",
+   "id": "d_013"
+  },
+  {
+   "term": "h_ma",
+   "definition": "Composite grading class combining dot haemorrhages and microaneurysms, used because the two cannot reliably be separated on fundus imaging.",
+   "source": "Annex Table 1, Dot hemorrhages row, assessment considerations",
+   "id": "d_014"
+  },
+  {
+   "term": "hard_exudate",
+   "definition": "Named by the ICDR table as one of the signs qualifying an eye for moderate NPDR, and by the DME sub-table footnote as a sign of current or previous macular oedema. NOT DEFINED IN THIS SOURCE: the PDF contains no description of the fundus appearance of hard exudates and no drusen differential. This entry is a placeholder.",
+   "source": "Table 1, Moderate nonproliferative DR row; Table 1, DME sub-table footnote",
+   "confidence": "low",
+   "id": "d_015"
+  },
+  {
+   "term": "cotton_wool_spot",
+   "definition": "Lesion representing the swollen ends of interrupted axons where a build-up of axoplasmic flow occurs at the edge of a retinal infarct. Explicitly not exclusive to diabetic retinopathy; also seen in hypertension and HIV/AIDS. The source states cotton wool spots do not in themselves appear to increase the risk of new vessel formation. NOT DEFINED IN THIS SOURCE: colour, margin and size on fundus photography.",
+   "source": "Annex Table 1, Cotton wool spots row",
+   "id": "d_016"
+  },
+  {
+   "term": "irma",
+   "definition": "Intraretinal microvascular abnormality. Dilated capillary remnants following extensive closure of the capillary network between arteriole and venule. Occur within areas of capillary occlusion, in contrast to NVE which occur along the border of such areas. Easiest seen on fluorescein angiography, so under-detected on colour fundus photography. Present in one quadrant, IRMA is sufficient for severe NPDR.",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row; Annex Table 2, NVE row",
+   "id": "d_017"
+  },
+  {
+   "term": "venous_beading",
+   "definition": "Focus of venous endothelial cell proliferation that has failed to develop into a new vessel, listed as a feature associated with IRMA. Definite beading in two quadrants is sufficient for severe NPDR. NOT DEFINED IN THIS SOURCE: the calibre-variation appearance a grader identifies on a photograph.",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row; Table 1, Severe nonproliferative DR row",
+   "confidence": "low",
+   "id": "d_018"
+  },
+  {
+   "term": "venous_loop",
+   "definition": "Venous abnormality associated with IRMA, thought by the source to develop due to small vessel occlusion and the opening of an alternative circulation. Not an ICDR criterion; the source assigns it no severity level. NOT DEFINED IN THIS SOURCE: fundus appearance.",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row",
+   "confidence": "low",
+   "id": "d_019"
+  },
+  {
+   "term": "venous_reduplication",
+   "definition": "Rare venous abnormality listed among the features associated with IRMA. No appearance and no severity level given.",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row",
+   "confidence": "low",
+   "id": "d_020"
+  },
+  {
+   "term": "retinal_pallor",
+   "definition": "Feature listed as associated with IRMA. No further description or severity assignment in the source.",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row",
+   "confidence": "low",
+   "id": "d_021"
+  },
+  {
+   "term": "white_vessels",
+   "definition": "Feature listed as associated with IRMA. No further description or severity assignment in the source.",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row",
+   "confidence": "low",
+   "id": "d_022"
+  },
+  {
+   "term": "neovascularization",
+   "definition": "New vessel formation. Superordinate class covering NVD, NVE, NVI, NVA and anterior hyaloid neovascularisation. Presence of neovascularisation on an eye already meeting severe NPDR criteria establishes proliferative DR.",
+   "source": "Table 1, Proliferative DR row; Annex Table 2",
+   "id": "d_023"
+  },
+  {
+   "term": "nvd",
+   "definition": "New vessels at the disc. Vessels usually arising from the venous circulation on the disc or within one disc diameter of it. Distinguished from fine normal small retinal vessels by looping back to the disc, sometimes forming a chaotic net within the loop, with the top of the loop of wider diameter than its base.",
+   "source": "Annex Table 2, New vessels at the disc row",
+   "id": "d_024"
+  },
+  {
+   "term": "nve",
+   "definition": "New vessels elsewhere. New vessels usually occurring along the border between healthy retina and areas of capillary occlusion. Must not be confused with IRMA, which occur within areas of capillary occlusion rather than at their margin.",
+   "source": "Annex Table 2, New vessels elsewhere row",
+   "id": "d_025"
+  },
+  {
+   "term": "nvi",
+   "definition": "New vessel formation on the iris. Uncommon; represents potentially more advanced ischaemic change. Not assessable on a posterior-pole fundus photograph.",
+   "source": "Annex Table 2, Other sites of new vessels row",
+   "id": "d_026"
+  },
+  {
+   "term": "nva",
+   "definition": "New vessels in the anterior chamber angle, excluded by gonioscopy. Not assessable on a fundus photograph.",
+   "source": "Annex Table 2, Other sites of new vessels row",
+   "id": "d_027"
+  },
+  {
+   "term": "anterior_hyaloid_neovascularization",
+   "definition": "New vessel formation on the anterior hyaloid surface, occurring rarely after vitrectomy when insufficient laser has been applied to the peripheral retina.",
+   "source": "Annex Table 2, Other sites of new vessels row",
+   "confidence": "low",
+   "id": "d_028"
+  },
+  {
+   "term": "fine_normal_retinal_vessel",
+   "definition": "Normal small retinal vessel, the principal mimic of NVD. Always tapers to an end and does not loop back to the disc. This is the key negative feature for resisting over-grading to proliferative DR.",
+   "source": "Annex Table 2, New vessels at the disc row, assessment considerations",
+   "id": "d_029"
+  },
+  {
+   "term": "fibrous_proliferation",
+   "definition": "Glial cell platform on which new vessels grow in proliferative retinopathy. The source describes it as a feature of PDR but does not list it among the ICDR criteria that establish the level.",
+   "source": "Annex Table 2, Fibrous proliferation row",
+   "id": "d_030"
+  },
+  {
+   "term": "vitreous_hemorrhage",
+   "definition": "Named by the ICDR table, paired with preretinal haemorrhage, as sufficient (given a severe NPDR base) to establish proliferative DR. NOT DEFINED IN THIS SOURCE: no appearance description is given anywhere in the PDF.",
+   "source": "Table 1, Proliferative DR row",
+   "confidence": "low",
+   "id": "d_031"
+  },
+  {
+   "term": "preretinal_hemorrhage",
+   "definition": "Named by the ICDR table, paired with vitreous haemorrhage, as sufficient (given a severe NPDR base) to establish proliferative DR. NOT DEFINED IN THIS SOURCE: no appearance description is given anywhere in the PDF.",
+   "source": "Table 1, Proliferative DR row",
+   "confidence": "low",
+   "id": "d_032"
+  },
+  {
+   "term": "macular_edema",
+   "definition": "Thickening of the retina caused by accumulation of exudative fluid from a damaged outer blood-retina barrier (extracellular oedema) or by hypoxia causing fluid to accumulate within individual retinal cells (intracellular oedema). May be focal or diffuse. Assessed on the DME axis, not the DR severity axis.",
+   "source": "Annex Table 1, Macular changes row; Table 1, DME sub-table",
+   "id": "d_033"
+  },
+  {
+   "term": "retinal_thickening",
+   "definition": "The defining finding of DME. Requires three-dimensional assessment, best performed by dilated examination using slit-lamp biomicroscopy and/or stereo fundus photography, and is therefore not directly assessable from a single monoscopic colour fundus photograph.",
+   "source": "Table 1, DME sub-table footnote",
+   "id": "d_034"
+  },
+  {
+   "term": "intraretinal_exudate",
+   "definition": "Exudate within the retina; its presence permits macular oedema to be inferred when stereoscopic assessment is unavailable.",
+   "source": "Annex Table 1, Macular changes row, assessment considerations",
+   "id": "d_035"
+  },
+  {
+   "term": "central_subfield_zone",
+   "definition": "Central zone of the macula, 1 mm in diameter, whose involvement or non-involvement by retinal thickening separates central-involved from noncentral-involved DME.",
+   "source": "Table 1, DME sub-table",
+   "id": "d_036"
+  },
+  {
+   "term": "diabetic_papillopathy",
+   "definition": "Occasional optic disc swelling seen in diabetic patients, in which vision is usually not significantly impaired. Not a component of any ICDR severity level.",
+   "source": "Annex Table 1, Optic disc changes row",
+   "id": "d_037"
+  },
+  {
+   "term": "hypertensive_retinopathy",
+   "definition": "Non-diabetic retinopathy given by the source as a condition in which cotton wool spots also occur. Cited here only as a differential; the PDF contains no description of its other features.",
+   "source": "Annex Table 1, Cotton wool spots row, assessment considerations",
+   "id": "d_038"
+  },
+  {
+   "term": "hiv_aids_retinopathy",
+   "definition": "Non-diabetic retinopathy given by the source as a condition in which cotton wool spots also occur.",
+   "source": "Annex Table 1, Cotton wool spots row, assessment considerations",
+   "id": "d_039"
+  },
+  {
+   "term": "quadrant",
+   "definition": "The spatial counting unit for all three severe NPDR criteria: haemorrhages are counted per quadrant, and beading and IRMA are scored by the number of quadrants involved. NOT DEFINED IN THIS SOURCE: the PDF nowhere states how quadrants are bounded, whether they are centred on the macula or the disc, or what field of view is assumed. By convention they are the four sectors of the fundus divided by the horizontal and vertical meridians, but that convention is imported knowledge and is not supported by this PDF.",
+   "source": "Table 1, Severe nonproliferative DR row",
+   "confidence": "low",
+   "id": "d_040"
+  },
+  {
+   "term": "disc_diameter",
+   "definition": "Size unit equal to the diameter of the optic disc, used in this source only to delimit the zone within which new vessels count as NVD rather than NVE. No metric equivalent is given.",
+   "source": "Annex Table 2, New vessels at the disc row",
+   "id": "d_041"
+  },
+  {
+   "term": "areas_of_capillary_occlusion",
+   "definition": "Regions of non-perfused retina. Their interior is where IRMA arise; their border is where NVE arise. Position relative to this zone is the stated discriminator between the two.",
+   "source": "Annex Table 2, New vessels elsewhere row",
+   "id": "d_042"
+  }
+ ],
+ "relations": [
+  {
+   "term": "establishes_level",
+   "definition": "Presence of the subject finding, at the stated qualifier and spatial threshold, is sufficient on its own to assign the object severity level.",
+   "notes": "Use requires_criterion to point to the compound criterion holding the quantitative thresholds. Sufficiency is conditional on any conjuncts recorded in that criterion (for severe NPDR, the moderate base state and the absence of proliferative signs)."
+  },
+  {
+   "term": "compatible_with_level",
+   "definition": "The subject may be present at the object level without either establishing it or ruling it out. Carries no evidential weight for assigning that level."
+  },
+  {
+   "term": "excludes_level",
+   "definition": "Presence of the subject rules the object level out. Used both for lesions that violate the exclusionary 'only' in the mild NPDR definition and for proliferative signs that disqualify severe NPDR."
+  },
+  {
+   "term": "minimum_level_for_presence",
+   "definition": "The lowest ICDR level at which the subject lesion can occur. Distinct from establishes_level: a lesion may be able to appear at a level without being sufficient to assign it."
+  },
+  {
+   "term": "pathognomonic_for_level",
+   "definition": "The subject occurs only at the object level and its presence is diagnostic of it, independent of any count or extent threshold."
+  },
+  {
+   "term": "distinguishes_level_from",
+   "definition": "The subject is the discriminating feature between the two levels in the object list. The object is a two-element list ordered lower level first."
+  },
+  {
+   "term": "defining_finding_of",
+   "definition": "The subject is the finding that the object level is defined by in the ICDR table, quoted verbatim in the notes field."
+  },
+  {
+   "term": "negatively_defined_as",
+   "definition": "The object states what the subject level is NOT, rather than what it is. Applies to moderate NPDR, whose upper bound is 'less than severe nonproliferative DR', and to mild NPDR, whose 'only' excludes all non-microaneurysm lesions."
+  },
+  {
+   "term": "requires_criterion",
+   "definition": "Links a severity level to the id of a compound criterion object holding its quantitative thresholds, spatial units and combination logic."
+  },
+  {
+   "term": "fundus_appearance_includes",
+   "definition": "The object is a visual attribute of the subject lesion as seen on a colour fundus photograph: colour, size, shape, margin or distribution.",
+   "notes": "The object value no_stated_morphology is used where the source names a lesion as a grading feature but supplies no visual description. These are gaps to be filled from another source, not assertions."
+  },
+  {
+   "term": "located_in",
+   "definition": "Anatomical location or retinal layer in which the subject is found, asserted without qualification by the source."
+  },
+  {
+   "term": "often_located_in",
+   "definition": "Typical but not invariable location, corresponding to source wording such as 'usually arise from' or 'usually occur along'."
+  },
+  {
+   "term": "counted_per",
+   "definition": "The spatial unit over which the subject is enumerated or scored when applying a severity criterion."
+  },
+  {
+   "term": "mimics",
+   "definition": "The subject condition produces a fundus appearance that can be mistaken for the object finding. Subject is the non-diabetic condition, object is the lesion."
+  },
+  {
+   "term": "differential_for",
+   "definition": "The subject should be considered as an alternative explanation when the object is observed or suspected. Directional: subject is the alternative, object is the initial reading.",
+   "notes": "Where the subject is a lesion and the object is a disease (as in cotton_wool_spot differential_for hypertensive_retinopathy), read it as: observing the subject raises the object as a competing diagnosis for the retinopathy as a whole."
+  },
+  {
+   "term": "confused_with",
+   "definition": "Symmetric relation recording that two findings are reported by the source as difficult to distinguish on imaging. Both directions are asserted separately where the source supports it."
+  },
+  {
+   "term": "specificity_for_dr",
+   "definition": "How exclusive the subject finding is to diabetic retinopathy, valued high, medium or low. Low values are the primary evidence against over-grading."
+  },
+  {
+   "term": "visible_on",
+   "definition": "Imaging modality or examination technique on which the subject is best or only assessable.",
+   "notes": "Where the modality is not colour fundus photography, the triple's notes record the resulting detection bias for a photograph-based grader."
+  },
+  {
+   "term": "is_a",
+   "definition": "Taxonomic subsumption: the subject is an instance of the object class."
+  },
+  {
+   "term": "component_of",
+   "definition": "The subject is a constituent part of the object, structurally (glial platform of fibrous proliferation) or definitionally (moderate NPDR as the base state of severe NPDR)."
+  },
+  {
+   "term": "subtype_of",
+   "definition": "Declared in the controlled vocabulary but unused in Document 1: the source's lesion hierarchy is flat enough that is_a covers every case."
+  },
+  {
+   "term": "associated_with",
+   "definition": "NEW RELATION, not in the supplied controlled vocabulary. The subject is listed by the source as a feature occurring alongside the object, with no stated causal, taxonomic or part-whole relationship and no severity implication.",
+   "notes": "Introduced for Annex Table 1's 'Associated features include' list under IRMA, which is_a, component_of and co-occurrence-free relations all misrepresent."
+  },
+  {
+   "term": "indicates",
+   "definition": "NEW RELATION, not in the supplied controlled vocabulary. Presence of the subject is stated by the source to be a sign from which the object may be inferred, without the subject being a part or subtype of the object.",
+   "notes": "Introduced for two DME statements: hard exudates as a sign of current or previous macular oedema, and macular oedema being inferable from intraretinal exudate. Note the temporal looseness of 'or previous' \u2014 the inference is not time-locked."
+  },
+  {
+   "term": "progression_risk_to_pdr",
+   "definition": "Declared in the controlled vocabulary but unused: this source states no progression risks, intervals or citing studies."
+  },
+  {
+   "term": "imaging_artifact_of",
+   "definition": "Declared in the controlled vocabulary but unused: this source describes no imaging artefacts."
+  }
+ ]
+}

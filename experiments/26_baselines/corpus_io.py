@@ -65,8 +65,21 @@ def load_corpus(root, splits=SPLITS):
                     recs.append(json.loads(Path(f).read_text()))
                 except Exception:
                     pass
-        recs.sort(key=lambda r: int(r["sample_id"]))
-        out[sp] = recs
+        # Deduplicate by sample_id, keeping the first occurrence. Two jobs on the
+        # same shard both read done_indices at startup, before either has written,
+        # and then reprocess the same images -- that happened on the retina B1
+        # corpus (236 extra records). Sorting alone left them in, and every caller
+        # here counts records, so a duplicate silently double-weights a sample.
+        # Verified a no-op on all existing corpora (breast and retina) at the time
+        # this was added.
+        seen, uniq = set(), []
+        for r in recs:
+            sid = r.get("sample_id")
+            if sid in seen:
+                continue
+            seen.add(sid); uniq.append(r)
+        uniq.sort(key=lambda r: int(r["sample_id"]))
+        out[sp] = uniq
     return out
 
 

@@ -21,7 +21,7 @@ _OOM_RETRY_DELAY_S = 600
 _OOM_MAX_RETRIES = 72
 
 # TODO(ollama_client): make this configurable via cfg instead of an env var.
-_OLLAMA_RESTART_SCRIPT = os.environ.get("OLLAMA_RESTART_SCRIPT", "/data/rm2125/start_ollama.sh")
+_OLLAMA_RESTART_SCRIPT = os.environ.get("OLLAMA_RESTART_SCRIPT")
 
 
 class OllamaClient(LLMClient):
@@ -115,7 +115,8 @@ class OllamaClient(LLMClient):
                     "OllamaClient: request failed (attempt %d/%d): %s — restarting Ollama",
                     attempt + 1, len(_RETRY_DELAYS_S) + 1, exc,
                 )
-                subprocess.run(["bash", _OLLAMA_RESTART_SCRIPT], check=False)
+                if _OLLAMA_RESTART_SCRIPT:
+                    subprocess.run(["bash", _OLLAMA_RESTART_SCRIPT], check=False)
                 continue
             if response.status_code >= 500:
                 logger.warning(

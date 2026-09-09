@@ -1,0 +1,1357 @@
+{
+ "triples": [
+  {
+   "id": "t_001",
+   "subject": "no_abnormalities",
+   "relation": "defining_finding_of",
+   "object": "no_apparent_retinopathy",
+   "axis": "dr",
+   "source": "Table 1, No apparent DR row",
+   "notes": "Verbatim: 'No abnormalities'. Level 0 is defined by total absence, not by a threshold."
+  },
+  {
+   "id": "t_002",
+   "subject": "no_apparent_retinopathy",
+   "relation": "requires_criterion",
+   "object": "c_009",
+   "axis": "dr",
+   "source": "Table 1, No apparent DR row"
+  },
+  {
+   "id": "t_003",
+   "subject": "microaneurysm",
+   "relation": "defining_finding_of",
+   "object": "mild_npdr",
+   "axis": "dr",
+   "source": "Table 1, Mild nonproliferative DR row",
+   "notes": "Verbatim: 'Microaneurysms only'."
+  },
+  {
+   "id": "t_004",
+   "subject": "mild_npdr",
+   "relation": "requires_criterion",
+   "object": "c_007",
+   "axis": "dr",
+   "source": "Table 1, Mild nonproliferative DR row"
+  },
+  {
+   "id": "t_005",
+   "subject": "microaneurysm",
+   "relation": "establishes_level",
+   "object": "mild_npdr",
+   "specificity": "high",
+   "requires_criterion": "c_007",
+   "axis": "dr",
+   "source": "Table 1, Mild nonproliferative DR row",
+   "notes": "Sufficient only when microaneurysms are the sole abnormality present."
+  },
+  {
+   "id": "t_006",
+   "subject": "microaneurysm",
+   "relation": "minimum_level_for_presence",
+   "object": "mild_npdr",
+   "axis": "dr",
+   "source": "Table 1, Mild nonproliferative DR row"
+  },
+  {
+   "id": "t_007",
+   "subject": "mild_npdr",
+   "relation": "negatively_defined_as",
+   "object": "no_lesion_type_other_than_microaneurysm",
+   "axis": "dr",
+   "source": "Table 1, Mild nonproliferative DR row",
+   "notes": "The exclusionary force of 'only' is what separates mild from moderate."
+  },
+  {
+   "id": "t_008",
+   "subject": "mild_npdr",
+   "relation": "distinguishes_level_from",
+   "object": [
+    "no_apparent_retinopathy",
+    "moderate_npdr"
+   ],
+   "axis": "dr",
+   "source": "Table 1, rows 1-3",
+   "notes": "Lower boundary: any microaneurysm at all. Upper boundary: any non-microaneurysm lesion."
+  },
+  {
+   "id": "t_009",
+   "subject": "dot_hemorrhage",
+   "relation": "excludes_level",
+   "object": "mild_npdr",
+   "axis": "dr",
+   "source": "Table 1, Mild and Moderate nonproliferative DR rows",
+   "notes": "Derived from 'Microaneurysms only' plus the moderate row's example list."
+  },
+  {
+   "id": "t_010",
+   "subject": "blot_hemorrhage",
+   "relation": "excludes_level",
+   "object": "mild_npdr",
+   "axis": "dr",
+   "source": "Table 1, Mild and Moderate nonproliferative DR rows"
+  },
+  {
+   "id": "t_011",
+   "subject": "hard_exudate",
+   "relation": "excludes_level",
+   "object": "mild_npdr",
+   "axis": "dr",
+   "source": "Table 1, Mild and Moderate nonproliferative DR rows"
+  },
+  {
+   "id": "t_012",
+   "subject": "cotton_wool_spot",
+   "relation": "excludes_level",
+   "object": "mild_npdr",
+   "axis": "dr",
+   "source": "Table 1, Mild and Moderate nonproliferative DR rows"
+  },
+  {
+   "id": "t_013",
+   "subject": "irma",
+   "relation": "excludes_level",
+   "object": "mild_npdr",
+   "axis": "dr",
+   "source": "Table 1, Mild and Severe nonproliferative DR rows"
+  },
+  {
+   "id": "t_014",
+   "subject": "venous_beading",
+   "relation": "excludes_level",
+   "object": "mild_npdr",
+   "axis": "dr",
+   "source": "Table 1, Mild and Severe nonproliferative DR rows"
+  },
+  {
+   "id": "t_015",
+   "subject": "moderate_npdr",
+   "relation": "requires_criterion",
+   "object": "c_008",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row"
+  },
+  {
+   "id": "t_016",
+   "subject": "moderate_npdr",
+   "relation": "negatively_defined_as",
+   "object": "more_than_microaneurysms_but_less_than_severe_npdr",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row",
+   "notes": "Verbatim upper bound: 'but less than severe nonproliferative DR'. Moderate has no positive upper criterion of its own; it is everything between the mild definition and the severe criteria. This is the boundary most likely to be mis-reasoned."
+  },
+  {
+   "id": "t_017",
+   "subject": "moderate_npdr",
+   "relation": "distinguishes_level_from",
+   "object": [
+    "mild_npdr",
+    "severe_npdr"
+   ],
+   "axis": "dr",
+   "source": "Table 1, rows 2-4"
+  },
+  {
+   "id": "t_018",
+   "subject": "dot_and_blot_hemorrhage",
+   "relation": "establishes_level",
+   "object": "moderate_npdr",
+   "specificity": "medium",
+   "requires_criterion": "c_008",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row",
+   "notes": "Listed as an example ('e.g.'), so establishing force holds only when severe criteria are not met."
+  },
+  {
+   "id": "t_019",
+   "subject": "hard_exudate",
+   "relation": "establishes_level",
+   "object": "moderate_npdr",
+   "specificity": "medium",
+   "requires_criterion": "c_008",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row"
+  },
+  {
+   "id": "t_020",
+   "subject": "cotton_wool_spot",
+   "relation": "establishes_level",
+   "object": "moderate_npdr",
+   "specificity": "low",
+   "requires_criterion": "c_008",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row",
+   "notes": "Low specificity: Annex Table 1 states cotton wool spots are not exclusive to DR."
+  },
+  {
+   "id": "t_021",
+   "subject": "microaneurysm",
+   "relation": "compatible_with_level",
+   "object": "moderate_npdr",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row",
+   "notes": "Moderate requires microaneurysms plus other signs, so microaneurysms remain present."
+  },
+  {
+   "id": "t_022",
+   "subject": "dot_hemorrhage",
+   "relation": "minimum_level_for_presence",
+   "object": "moderate_npdr",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row"
+  },
+  {
+   "id": "t_023",
+   "subject": "blot_hemorrhage",
+   "relation": "minimum_level_for_presence",
+   "object": "moderate_npdr",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row"
+  },
+  {
+   "id": "t_024",
+   "subject": "hard_exudate",
+   "relation": "minimum_level_for_presence",
+   "object": "moderate_npdr",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row"
+  },
+  {
+   "id": "t_025",
+   "subject": "cotton_wool_spot",
+   "relation": "minimum_level_for_presence",
+   "object": "moderate_npdr",
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row"
+  },
+  {
+   "id": "t_026",
+   "subject": "severe_npdr",
+   "relation": "requires_criterion",
+   "object": "c_004",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, stem"
+  },
+  {
+   "id": "t_027",
+   "subject": "severe_npdr",
+   "relation": "requires_criterion",
+   "object": "c_001",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 1"
+  },
+  {
+   "id": "t_028",
+   "subject": "severe_npdr",
+   "relation": "requires_criterion",
+   "object": "c_002",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 2"
+  },
+  {
+   "id": "t_029",
+   "subject": "severe_npdr",
+   "relation": "requires_criterion",
+   "object": "c_003",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 3"
+  },
+  {
+   "id": "t_030",
+   "subject": "severe_npdr",
+   "relation": "requires_criterion",
+   "object": "c_005",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 4"
+  },
+  {
+   "id": "t_031",
+   "subject": "intraretinal_hemorrhage",
+   "relation": "establishes_level",
+   "object": "severe_npdr",
+   "specificity": "high",
+   "requires_criterion": "c_001",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 1",
+   "notes": "Only at >=20 in each quadrant. Fewer haemorrhages, or the threshold met in some quadrants but not all, leaves the eye at moderate NPDR."
+  },
+  {
+   "id": "t_032",
+   "subject": "venous_beading",
+   "relation": "establishes_level",
+   "object": "severe_npdr",
+   "specificity": "high",
+   "requires_criterion": "c_002",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 2",
+   "notes": "Only when definite and present in 2 quadrants; isolated beading in one quadrant does not qualify."
+  },
+  {
+   "id": "t_033",
+   "subject": "irma",
+   "relation": "establishes_level",
+   "object": "severe_npdr",
+   "specificity": "high",
+   "requires_criterion": "c_003",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 3",
+   "notes": "Threshold is a single quadrant."
+  },
+  {
+   "id": "t_034",
+   "subject": "moderate_npdr",
+   "relation": "component_of",
+   "object": "severe_npdr",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, stem",
+   "notes": "Severe NPDR is defined as moderate NPDR plus a criterion, so all moderate findings are implied present."
+  },
+  {
+   "id": "t_035",
+   "subject": "severe_npdr",
+   "relation": "distinguishes_level_from",
+   "object": [
+    "moderate_npdr",
+    "proliferative_dr"
+   ],
+   "axis": "dr",
+   "source": "Table 1, rows 4-5",
+   "notes": "Lower boundary: one of the three quantitative criteria met. Upper boundary: absence of neovascularisation and of vitreous/preretinal haemorrhage."
+  },
+  {
+   "id": "t_036",
+   "subject": "intraretinal_hemorrhage",
+   "relation": "counted_per",
+   "object": "quadrant",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 1"
+  },
+  {
+   "id": "t_037",
+   "subject": "venous_beading",
+   "relation": "counted_per",
+   "object": "quadrant",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 2"
+  },
+  {
+   "id": "t_038",
+   "subject": "irma",
+   "relation": "counted_per",
+   "object": "quadrant",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 3"
+  },
+  {
+   "id": "t_039",
+   "subject": "venous_beading",
+   "relation": "minimum_level_for_presence",
+   "object": "moderate_npdr",
+   "axis": "dr",
+   "source": "Table 1, Moderate and Severe nonproliferative DR rows",
+   "confidence": "low",
+   "notes": "Inferred, not stated: definite beading confined to one quadrant fails c_002 but is more than microaneurysms, so it falls into the negatively defined moderate band. The table never lists beading as a moderate sign."
+  },
+  {
+   "id": "t_040",
+   "subject": "irma",
+   "relation": "minimum_level_for_presence",
+   "object": "severe_npdr",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 3",
+   "confidence": "low",
+   "notes": "Follows from the one-quadrant threshold: any IRMA occupies at least one quadrant. Contrast with venous beading, whose two-quadrant threshold leaves room for a sub-severe presentation. The 'e.g.' in the moderate row leaves a residual possibility that IRMA was intended to be gradeable as moderate."
+  },
+  {
+   "id": "t_041",
+   "subject": "neovascularization",
+   "relation": "excludes_level",
+   "object": "severe_npdr",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 4",
+   "notes": "Verbatim: 'and no signs of proliferative retinopathy'."
+  },
+  {
+   "id": "t_042",
+   "subject": "vitreous_hemorrhage",
+   "relation": "excludes_level",
+   "object": "severe_npdr",
+   "axis": "dr",
+   "source": "Table 1, Severe and Proliferative DR rows"
+  },
+  {
+   "id": "t_043",
+   "subject": "preretinal_hemorrhage",
+   "relation": "excludes_level",
+   "object": "severe_npdr",
+   "axis": "dr",
+   "source": "Table 1, Severe and Proliferative DR rows"
+  },
+  {
+   "id": "t_044",
+   "subject": "proliferative_dr",
+   "relation": "requires_criterion",
+   "object": "c_006",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row"
+  },
+  {
+   "id": "t_045",
+   "subject": "severe_npdr",
+   "relation": "component_of",
+   "object": "proliferative_dr",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row, stem",
+   "notes": "Verbatim: 'Severe nonproliferative DR and 1 or more of the following'."
+  },
+  {
+   "id": "t_046",
+   "subject": "neovascularization",
+   "relation": "establishes_level",
+   "object": "proliferative_dr",
+   "specificity": "high",
+   "requires_criterion": "c_006",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row, bullet 1"
+  },
+  {
+   "id": "t_047",
+   "subject": "neovascularization",
+   "relation": "pathognomonic_for_level",
+   "object": "proliferative_dr",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row, bullet 1",
+   "notes": "No extent, location or quadrant threshold is given; any neovascularisation suffices."
+  },
+  {
+   "id": "t_048",
+   "subject": "vitreous_hemorrhage",
+   "relation": "establishes_level",
+   "object": "proliferative_dr",
+   "specificity": "high",
+   "requires_criterion": "c_006",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row, bullet 2"
+  },
+  {
+   "id": "t_049",
+   "subject": "preretinal_hemorrhage",
+   "relation": "establishes_level",
+   "object": "proliferative_dr",
+   "specificity": "high",
+   "requires_criterion": "c_006",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row, bullet 2",
+   "notes": "The table pairs the two as 'Vitreous/preretinal hemorrhage'; either alone is sufficient."
+  },
+  {
+   "id": "t_050",
+   "subject": "neovascularization",
+   "relation": "minimum_level_for_presence",
+   "object": "proliferative_dr",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row"
+  },
+  {
+   "id": "t_051",
+   "subject": "vitreous_hemorrhage",
+   "relation": "minimum_level_for_presence",
+   "object": "proliferative_dr",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row"
+  },
+  {
+   "id": "t_052",
+   "subject": "preretinal_hemorrhage",
+   "relation": "minimum_level_for_presence",
+   "object": "proliferative_dr",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row"
+  },
+  {
+   "id": "t_053",
+   "subject": "neovascularization",
+   "relation": "distinguishes_level_from",
+   "object": [
+    "severe_npdr",
+    "proliferative_dr"
+   ],
+   "axis": "dr",
+   "source": "Table 1, rows 4-5",
+   "notes": "The sole positive discriminator at the top boundary, alongside vitreous/preretinal haemorrhage."
+  },
+  {
+   "id": "t_054",
+   "subject": "intraretinal_hemorrhage",
+   "relation": "distinguishes_level_from",
+   "object": [
+    "moderate_npdr",
+    "severe_npdr"
+   ],
+   "axis": "dr",
+   "requires_criterion": "c_001",
+   "source": "Table 1, rows 3-4",
+   "notes": "Discriminates by count and quadrant coverage, not by presence."
+  },
+  {
+   "id": "t_055",
+   "subject": "irma",
+   "relation": "distinguishes_level_from",
+   "object": [
+    "moderate_npdr",
+    "severe_npdr"
+   ],
+   "axis": "dr",
+   "requires_criterion": "c_003",
+   "source": "Table 1, rows 3-4"
+  },
+  {
+   "id": "t_056",
+   "subject": "venous_beading",
+   "relation": "distinguishes_level_from",
+   "object": [
+    "moderate_npdr",
+    "severe_npdr"
+   ],
+   "axis": "dr",
+   "requires_criterion": "c_002",
+   "source": "Table 1, rows 3-4"
+  },
+  {
+   "id": "t_057",
+   "subject": "nvd",
+   "relation": "is_a",
+   "object": "neovascularization",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row"
+  },
+  {
+   "id": "t_058",
+   "subject": "nve",
+   "relation": "is_a",
+   "object": "neovascularization",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels elsewhere row"
+  },
+  {
+   "id": "t_059",
+   "subject": "nvi",
+   "relation": "is_a",
+   "object": "neovascularization",
+   "axis": "dr",
+   "source": "Annex Table 2, Other sites of new vessels row"
+  },
+  {
+   "id": "t_060",
+   "subject": "nva",
+   "relation": "is_a",
+   "object": "neovascularization",
+   "axis": "dr",
+   "source": "Annex Table 2, Other sites of new vessels row"
+  },
+  {
+   "id": "t_061",
+   "subject": "anterior_hyaloid_neovascularization",
+   "relation": "is_a",
+   "object": "neovascularization",
+   "axis": "dr",
+   "source": "Annex Table 2, Other sites of new vessels row"
+  },
+  {
+   "id": "t_062",
+   "subject": "neovascularization",
+   "relation": "is_a",
+   "object": "proliferative_lesion",
+   "axis": "dr",
+   "source": "Annex Table 2, table title"
+  },
+  {
+   "id": "t_063",
+   "subject": "nvd",
+   "relation": "located_in",
+   "object": "optic_disc",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row",
+   "notes": "Verbatim: 'New vessels at the discs usually arise from the venous circulation on the disc or within 1 disc diameter of the disc'."
+  },
+  {
+   "id": "t_064",
+   "subject": "nvd",
+   "relation": "often_located_in",
+   "object": "within_one_disc_diameter_of_disc",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row",
+   "notes": "The 1 disc diameter radius is the spatial definition separating NVD from NVE."
+  },
+  {
+   "id": "t_065",
+   "subject": "nvd",
+   "relation": "fundus_appearance_includes",
+   "object": "vessel_looping_back_to_disc",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row, assessment considerations",
+   "notes": "Verbatim: 'NVD always loop back'."
+  },
+  {
+   "id": "t_066",
+   "subject": "nvd",
+   "relation": "fundus_appearance_includes",
+   "object": "chaotic_net_within_loop",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row, assessment considerations"
+  },
+  {
+   "id": "t_067",
+   "subject": "nvd",
+   "relation": "fundus_appearance_includes",
+   "object": "loop_top_of_wider_diameter_than_base",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row, assessment considerations"
+  },
+  {
+   "id": "t_068",
+   "subject": "nvd",
+   "relation": "confused_with",
+   "object": "fine_normal_retinal_vessel",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row, assessment considerations",
+   "notes": "Primary over-grading risk at the severe-to-PDR boundary."
+  },
+  {
+   "id": "t_069",
+   "subject": "fine_normal_retinal_vessel",
+   "relation": "differential_for",
+   "object": "nvd",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row, assessment considerations"
+  },
+  {
+   "id": "t_070",
+   "subject": "fine_normal_retinal_vessel",
+   "relation": "fundus_appearance_includes",
+   "object": "tapering_to_an_end",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row, assessment considerations",
+   "notes": "Verbatim: 'the latter always taper to an end'. Discriminating feature against NVD."
+  },
+  {
+   "id": "t_071",
+   "subject": "fine_normal_retinal_vessel",
+   "relation": "fundus_appearance_includes",
+   "object": "does_not_loop_back_to_disc",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row, assessment considerations"
+  },
+  {
+   "id": "t_072",
+   "subject": "nvd",
+   "relation": "establishes_level",
+   "object": "proliferative_dr",
+   "specificity": "high",
+   "requires_criterion": "c_006",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row; Annex Table 2"
+  },
+  {
+   "id": "t_073",
+   "subject": "nve",
+   "relation": "establishes_level",
+   "object": "proliferative_dr",
+   "specificity": "high",
+   "requires_criterion": "c_006",
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row; Annex Table 2"
+  },
+  {
+   "id": "t_074",
+   "subject": "nve",
+   "relation": "often_located_in",
+   "object": "border_between_healthy_retina_and_areas_of_capillary_occlusion",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels elsewhere row"
+  },
+  {
+   "id": "t_075",
+   "subject": "nve",
+   "relation": "confused_with",
+   "object": "irma",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels elsewhere row, assessment considerations",
+   "notes": "The single highest-yield discrimination in the graph: confusing IRMA for NVE moves the grade from 3 to 4."
+  },
+  {
+   "id": "t_076",
+   "subject": "irma",
+   "relation": "differential_for",
+   "object": "nve",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels elsewhere row, assessment considerations"
+  },
+  {
+   "id": "t_077",
+   "subject": "irma",
+   "relation": "located_in",
+   "object": "areas_of_capillary_occlusion",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels elsewhere row, assessment considerations",
+   "notes": "Verbatim: IRMA 'occur within areas of capillary occlusion', whereas NVE occur along the border of such areas. Position relative to the non-perfused zone is the discriminator."
+  },
+  {
+   "id": "t_078",
+   "subject": "nvi",
+   "relation": "located_in",
+   "object": "iris",
+   "axis": "dr",
+   "source": "Annex Table 2, Other sites of new vessels row",
+   "notes": "Uncommon; represents potentially more advanced ischaemic changes. Not visible on a posterior-pole colour fundus photograph."
+  },
+  {
+   "id": "t_079",
+   "subject": "nva",
+   "relation": "located_in",
+   "object": "anterior_chamber_angle",
+   "axis": "dr",
+   "source": "Annex Table 2, Other sites of new vessels row"
+  },
+  {
+   "id": "t_080",
+   "subject": "nva",
+   "relation": "visible_on",
+   "object": "gonioscopy",
+   "axis": "dr",
+   "source": "Annex Table 2, Other sites of new vessels row, assessment considerations",
+   "notes": "Not assessable from a fundus photograph."
+  },
+  {
+   "id": "t_081",
+   "subject": "anterior_hyaloid_neovascularization",
+   "relation": "located_in",
+   "object": "anterior_hyaloid_surface",
+   "axis": "dr",
+   "source": "Annex Table 2, Other sites of new vessels row",
+   "confidence": "low",
+   "notes": "Described as rare and occurring postvitrectomy; of little relevance to grading an unoperated fundus photograph."
+  },
+  {
+   "id": "t_082",
+   "subject": "fibrous_proliferation",
+   "relation": "is_a",
+   "object": "proliferative_lesion",
+   "axis": "dr",
+   "source": "Annex Table 2, Fibrous proliferation row"
+  },
+  {
+   "id": "t_083",
+   "subject": "fibrous_proliferation",
+   "relation": "compatible_with_level",
+   "object": "proliferative_dr",
+   "axis": "dr",
+   "source": "Annex Table 2, Fibrous proliferation row",
+   "notes": "Verbatim: 'In proliferative retinopathy, new vessels grow on a platform of glial cells'. The source describes it as a feature of PDR but does not state it is independently sufficient to grade PDR; ICDR Table 1 lists only neovascularisation and vitreous/preretinal haemorrhage."
+  },
+  {
+   "id": "t_084",
+   "subject": "glial_cell_platform",
+   "relation": "component_of",
+   "object": "fibrous_proliferation",
+   "axis": "dr",
+   "source": "Annex Table 2, Fibrous proliferation row"
+  },
+  {
+   "id": "t_085",
+   "subject": "neovascularization",
+   "relation": "often_located_in",
+   "object": "glial_cell_platform",
+   "axis": "dr",
+   "source": "Annex Table 2, Fibrous proliferation row"
+  },
+  {
+   "id": "t_086",
+   "subject": "microaneurysm",
+   "relation": "is_a",
+   "object": "vascular_lesion",
+   "axis": "dr",
+   "source": "Annex Table 1, Microaneurysms row"
+  },
+  {
+   "id": "t_087",
+   "subject": "microaneurysm",
+   "relation": "fundus_appearance_includes",
+   "object": "red_colour",
+   "axis": "dr",
+   "source": "Annex Table 1, Microaneurysms row",
+   "notes": "Verbatim: 'Isolated, spherical, red dots of varying size'."
+  },
+  {
+   "id": "t_088",
+   "subject": "microaneurysm",
+   "relation": "fundus_appearance_includes",
+   "object": "spherical_shape",
+   "axis": "dr",
+   "source": "Annex Table 1, Microaneurysms row"
+  },
+  {
+   "id": "t_089",
+   "subject": "microaneurysm",
+   "relation": "fundus_appearance_includes",
+   "object": "dot_morphology",
+   "axis": "dr",
+   "source": "Annex Table 1, Microaneurysms row"
+  },
+  {
+   "id": "t_090",
+   "subject": "microaneurysm",
+   "relation": "fundus_appearance_includes",
+   "object": "isolated_distribution",
+   "axis": "dr",
+   "source": "Annex Table 1, Microaneurysms row"
+  },
+  {
+   "id": "t_091",
+   "subject": "microaneurysm",
+   "relation": "fundus_appearance_includes",
+   "object": "varying_size",
+   "axis": "dr",
+   "source": "Annex Table 1, Microaneurysms row",
+   "notes": "No absolute size range given in the source."
+  },
+  {
+   "id": "t_092",
+   "subject": "microaneurysm",
+   "relation": "visible_on",
+   "object": "fluorescein_angiography",
+   "axis": "dr",
+   "source": "Annex Table 1, Microaneurysms row, assessment considerations",
+   "notes": "Verbatim: 'easiest seen on fluorescein angiography'. Implication for colour fundus photograph grading: microaneurysm counts are systematically under-detected on CFP, which biases towards under-grading at the 0-to-1 boundary."
+  },
+  {
+   "id": "t_093",
+   "subject": "microaneurysm",
+   "relation": "confused_with",
+   "object": "dot_hemorrhage",
+   "axis": "dr",
+   "source": "Annex Table 1, Dot hemorrhages row"
+  },
+  {
+   "id": "t_094",
+   "subject": "dot_hemorrhage",
+   "relation": "confused_with",
+   "object": "microaneurysm",
+   "axis": "dr",
+   "source": "Annex Table 1, Dot hemorrhages row",
+   "notes": "Verbatim: 'Dot hemorrhages cannot always be differentiated from microaneurysms as they are similar in appearance but with varying size'. This ambiguity sits exactly on the mild-versus-moderate boundary, since microaneurysms alone are level 1 and dot haemorrhages push to level 2."
+  },
+  {
+   "id": "t_095",
+   "subject": "h_ma",
+   "relation": "is_a",
+   "object": "composite_lesion_class",
+   "axis": "dr",
+   "source": "Annex Table 1, Dot hemorrhages row, assessment considerations",
+   "notes": "Verbatim: 'The term dot hemorrhage/microaneurysm (H/Ma) is often used'. Grading practice frequently merges the two rather than resolving them."
+  },
+  {
+   "id": "t_096",
+   "subject": "dot_hemorrhage",
+   "relation": "component_of",
+   "object": "h_ma",
+   "axis": "dr",
+   "source": "Annex Table 1, Dot hemorrhages row, assessment considerations"
+  },
+  {
+   "id": "t_097",
+   "subject": "microaneurysm",
+   "relation": "component_of",
+   "object": "h_ma",
+   "axis": "dr",
+   "source": "Annex Table 1, Dot hemorrhages row, assessment considerations"
+  },
+  {
+   "id": "t_098",
+   "subject": "dot_hemorrhage",
+   "relation": "is_a",
+   "object": "intraretinal_hemorrhage",
+   "axis": "dr",
+   "source": "Annex Table 1, Dot and Blot hemorrhages rows"
+  },
+  {
+   "id": "t_099",
+   "subject": "blot_hemorrhage",
+   "relation": "is_a",
+   "object": "intraretinal_hemorrhage",
+   "axis": "dr",
+   "source": "Annex Table 1, Blot hemorrhages row",
+   "notes": "Verbatim: 'formation of intraretinal blot hemorrhages'."
+  },
+  {
+   "id": "t_100",
+   "subject": "flame_hemorrhage",
+   "relation": "is_a",
+   "object": "retinal_hemorrhage",
+   "axis": "dr",
+   "source": "Annex Table 1, Blot hemorrhages row, assessment considerations",
+   "confidence": "low",
+   "notes": "The source mentions flame haemorrhages only in passing; it gives no morphological description and no severity level. Do not infer one."
+  },
+  {
+   "id": "t_101",
+   "subject": "dot_hemorrhage",
+   "relation": "located_in",
+   "object": "superficial_retina",
+   "axis": "dr",
+   "source": "Annex Table 1, Blot hemorrhages row, assessment considerations",
+   "notes": "Verbatim: dot and flame haemorrhages 'lie more superficially in the retina'."
+  },
+  {
+   "id": "t_102",
+   "subject": "flame_hemorrhage",
+   "relation": "located_in",
+   "object": "superficial_retina",
+   "axis": "dr",
+   "source": "Annex Table 1, Blot hemorrhages row, assessment considerations"
+  },
+  {
+   "id": "t_103",
+   "subject": "blot_hemorrhage",
+   "relation": "located_in",
+   "object": "outer_plexiform_layer",
+   "axis": "dr",
+   "source": "Annex Table 1, Blot hemorrhages row, assessment considerations",
+   "confidence": "low",
+   "notes": "Layer localisation is stated as an angiographic observation and is not directly assessable on a colour fundus photograph. Retained because depth explains the darker, deeper appearance of blot versus dot haemorrhage."
+  },
+  {
+   "id": "t_104",
+   "subject": "blot_hemorrhage",
+   "relation": "fundus_appearance_includes",
+   "object": "no_stated_morphology",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Annex Table 1, Blot hemorrhages row",
+   "notes": "The source describes only the mechanism ('formed where clusters of capillaries occlude'), not colour, margin or size. Appearance must come from another source before this node is usable for visual grounding."
+  },
+  {
+   "id": "t_105",
+   "subject": "flame_hemorrhage",
+   "relation": "often_located_in",
+   "object": "nerve_fiber_layer",
+   "axis": "dr",
+   "source": "Annex Table 1, Macular changes row",
+   "confidence": "low",
+   "notes": "Derived from the statement that arteriolar occlusion 'frequently affects the horizontal nerve fiber layer of the retina' in the context of flame haemorrhage and cotton wool spot formation. Indirect."
+  },
+  {
+   "id": "t_106",
+   "subject": "cotton_wool_spot",
+   "relation": "is_a",
+   "object": "nerve_fiber_layer_lesion",
+   "axis": "dr",
+   "source": "Annex Table 1, Cotton wool spots row",
+   "notes": "Verbatim: 'the swollen ends of interrupted axons where build-up of axoplasmic flow occurs at the edge of the infarct'."
+  },
+  {
+   "id": "t_107",
+   "subject": "cotton_wool_spot",
+   "relation": "fundus_appearance_includes",
+   "object": "no_stated_morphology",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Annex Table 1, Cotton wool spots row",
+   "notes": "The source gives the histological substrate but no colour, margin or size on fundus photography. The standard white, fluffy, indistinct-margined description is NOT present in this PDF and has not been imported."
+  },
+  {
+   "id": "t_108",
+   "subject": "cotton_wool_spot",
+   "relation": "specificity_for_dr",
+   "object": "low",
+   "axis": "dr",
+   "source": "Annex Table 1, Cotton wool spots row, assessment considerations",
+   "notes": "Verbatim: 'These features are not exclusive to DR'."
+  },
+  {
+   "id": "t_109",
+   "subject": "cotton_wool_spot",
+   "relation": "differential_for",
+   "object": "hypertensive_retinopathy",
+   "axis": "dr",
+   "source": "Annex Table 1, Cotton wool spots row, assessment considerations",
+   "notes": "Strong anti-over-grading evidence: cotton wool spots alone do not establish that the retinopathy is diabetic."
+  },
+  {
+   "id": "t_110",
+   "subject": "cotton_wool_spot",
+   "relation": "differential_for",
+   "object": "hiv_aids_retinopathy",
+   "axis": "dr",
+   "source": "Annex Table 1, Cotton wool spots row, assessment considerations"
+  },
+  {
+   "id": "t_111",
+   "subject": "hypertensive_retinopathy",
+   "relation": "mimics",
+   "object": "cotton_wool_spot",
+   "axis": "dr",
+   "source": "Annex Table 1, Cotton wool spots row, assessment considerations"
+  },
+  {
+   "id": "t_112",
+   "subject": "hiv_aids_retinopathy",
+   "relation": "mimics",
+   "object": "cotton_wool_spot",
+   "axis": "dr",
+   "source": "Annex Table 1, Cotton wool spots row, assessment considerations"
+  },
+  {
+   "id": "t_113",
+   "subject": "cotton_wool_spot",
+   "relation": "compatible_with_level",
+   "object": "severe_npdr",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row; Annex Table 1",
+   "notes": "Present as part of the moderate base state, but cotton wool spots are not one of the three severe criteria and do not on their own raise the grade above moderate."
+  },
+  {
+   "id": "t_114",
+   "subject": "cotton_wool_spot",
+   "relation": "excludes_level",
+   "object": "no_apparent_retinopathy",
+   "axis": "dr",
+   "source": "Table 1, No apparent DR row"
+  },
+  {
+   "id": "t_115",
+   "subject": "irma",
+   "relation": "is_a",
+   "object": "vascular_lesion",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row"
+  },
+  {
+   "id": "t_116",
+   "subject": "irma",
+   "relation": "fundus_appearance_includes",
+   "object": "dilated_capillary_remnant",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row",
+   "notes": "Verbatim: 'dilated capillary remnants following extensive closure of capillary network between arteriole and venule'."
+  },
+  {
+   "id": "t_117",
+   "subject": "irma",
+   "relation": "located_in",
+   "object": "capillary_bed_between_arteriole_and_venule",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row"
+  },
+  {
+   "id": "t_118",
+   "subject": "irma",
+   "relation": "visible_on",
+   "object": "fluorescein_angiography",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, assessment considerations",
+   "notes": "Verbatim: 'easiest seen on fluorescein angiography'. On a colour fundus photograph IRMA is under-detected, which biases towards under-grading at the moderate-to-severe boundary."
+  },
+  {
+   "id": "t_119",
+   "subject": "venous_beading",
+   "relation": "associated_with",
+   "object": "irma",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features"
+  },
+  {
+   "id": "t_120",
+   "subject": "venous_reduplication",
+   "relation": "associated_with",
+   "object": "irma",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features",
+   "notes": "Described as rare."
+  },
+  {
+   "id": "t_121",
+   "subject": "venous_loop",
+   "relation": "associated_with",
+   "object": "irma",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features"
+  },
+  {
+   "id": "t_122",
+   "subject": "retinal_pallor",
+   "relation": "associated_with",
+   "object": "irma",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features"
+  },
+  {
+   "id": "t_123",
+   "subject": "white_vessels",
+   "relation": "associated_with",
+   "object": "irma",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features"
+  },
+  {
+   "id": "t_124",
+   "subject": "venous_beading",
+   "relation": "is_a",
+   "object": "venous_abnormality",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features"
+  },
+  {
+   "id": "t_125",
+   "subject": "venous_loop",
+   "relation": "is_a",
+   "object": "venous_abnormality",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features"
+  },
+  {
+   "id": "t_126",
+   "subject": "venous_reduplication",
+   "relation": "is_a",
+   "object": "venous_abnormality",
+   "axis": "dr",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features"
+  },
+  {
+   "id": "t_127",
+   "subject": "venous_beading",
+   "relation": "fundus_appearance_includes",
+   "object": "no_stated_morphology",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features",
+   "notes": "The source defines beading only mechanistically as 'foci of venous endothelial cell proliferation that have failed to develop into new vessels'. The sausage-like calibre variation that a grader actually looks for is NOT described anywhere in this PDF."
+  },
+  {
+   "id": "t_128",
+   "subject": "venous_loop",
+   "relation": "fundus_appearance_includes",
+   "object": "no_stated_morphology",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Annex Table 1, Intraretinal microvascular anomalies row, associated features",
+   "notes": "Source gives only the mechanism: 'thought to develop due to small vessel occlusion and opening of alternative circulation'."
+  },
+  {
+   "id": "t_129",
+   "subject": "venous_loop",
+   "relation": "compatible_with_level",
+   "object": "severe_npdr",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Annex Table 1; Table 1",
+   "notes": "Venous loops are not an ICDR criterion. No level is assigned by the source; this triple records only that they co-occur with the IRMA/beading picture."
+  },
+  {
+   "id": "t_130",
+   "subject": "venous_reduplication",
+   "relation": "compatible_with_level",
+   "object": "severe_npdr",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Annex Table 1",
+   "notes": "Not an ICDR criterion; no level assigned by the source."
+  },
+  {
+   "id": "t_131",
+   "subject": "retinal_pallor",
+   "relation": "specificity_for_dr",
+   "object": "low",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Annex Table 1",
+   "notes": "Listed as an associated feature only; the source assigns it no severity level and gives no differential."
+  },
+  {
+   "id": "t_132",
+   "subject": "white_vessels",
+   "relation": "specificity_for_dr",
+   "object": "low",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Annex Table 1",
+   "notes": "As above."
+  },
+  {
+   "id": "t_133",
+   "subject": "diabetic_papillopathy",
+   "relation": "fundus_appearance_includes",
+   "object": "swollen_optic_disc",
+   "axis": "dr",
+   "source": "Annex Table 1, Optic disc changes row",
+   "notes": "Verbatim: 'Occasionally swollen optic discs may be seen (diabetic papillopathy) in diabetic patients'."
+  },
+  {
+   "id": "t_134",
+   "subject": "diabetic_papillopathy",
+   "relation": "located_in",
+   "object": "optic_disc",
+   "axis": "dr",
+   "source": "Annex Table 1, Optic disc changes row"
+  },
+  {
+   "id": "t_135",
+   "subject": "diabetic_papillopathy",
+   "relation": "excludes_level",
+   "object": "no_apparent_retinopathy",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Annex Table 1, Optic disc changes row",
+   "notes": "Weak. Disc swelling is an abnormality, but ICDR Table 1 does not list optic disc changes at any level, so it plays no part in assigning grades 1 to 4. Flagged low so a reasoner does not treat it as a grading feature."
+  },
+  {
+   "id": "t_136",
+   "subject": "macular_edema",
+   "relation": "is_a",
+   "object": "macular_change",
+   "axis": "dme",
+   "source": "Annex Table 1, Macular changes in nonproliferative retinopathy row"
+  },
+  {
+   "id": "t_137",
+   "subject": "retinal_thickening",
+   "relation": "component_of",
+   "object": "macular_edema",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table footnote",
+   "notes": "Verbatim: 'DME is defined as retinal thickening'."
+  },
+  {
+   "id": "t_138",
+   "subject": "macular_edema",
+   "relation": "fundus_appearance_includes",
+   "object": "retinal_thickening",
+   "axis": "dme",
+   "source": "Annex Table 1, Macular changes row",
+   "notes": "Verbatim: 'Thickening of retina takes place due to accumulation of exudative fluid'. May be focal or diffuse."
+  },
+  {
+   "id": "t_139",
+   "subject": "macular_edema",
+   "relation": "visible_on",
+   "object": "stereoscopic_fundus_photography",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table footnote; Annex Table 1, Macular changes row, assessment considerations",
+   "notes": "Critical constraint for any system grading single 2D colour fundus photographs: the source states DME 'requires a three-dimensional assessment that is best performed by a dilated examination using slit-lamp biomicroscopy and/or stereo fundus photography'. Retinal thickening is therefore not directly assessable from a monoscopic image."
+  },
+  {
+   "id": "t_140",
+   "subject": "macular_edema",
+   "relation": "visible_on",
+   "object": "slit_lamp_biomicroscopy",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table footnote"
+  },
+  {
+   "id": "t_141",
+   "subject": "hard_exudate",
+   "relation": "indicates",
+   "object": "macular_edema",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table footnote",
+   "notes": "Verbatim: 'Hard exudates are a sign of current or previous macular edema'. On a monoscopic photograph, exudate is the practical proxy for thickening; 'previous' means the inference is not time-locked."
+  },
+  {
+   "id": "t_142",
+   "subject": "intraretinal_exudate",
+   "relation": "indicates",
+   "object": "macular_edema",
+   "axis": "dme",
+   "source": "Annex Table 1, Macular changes row, assessment considerations",
+   "notes": "Verbatim: macular oedema can be 'inferred by the presence of intraretinal exudate'."
+  },
+  {
+   "id": "t_143",
+   "subject": "hard_exudate",
+   "relation": "often_located_in",
+   "object": "macula",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table, No DME row"
+  },
+  {
+   "id": "t_144",
+   "subject": "hard_exudate",
+   "relation": "fundus_appearance_includes",
+   "object": "no_stated_morphology",
+   "axis": "dr",
+   "confidence": "low",
+   "source": "Table 1, Moderate nonproliferative DR row",
+   "notes": "Hard exudates are named as a grading feature in the ICDR table but this PDF contains no article defining them. No colour, margin, size or distribution is available, and no drusen differential is present anywhere in the source. This is the largest single gap for visual grounding."
+  },
+  {
+   "id": "t_145",
+   "subject": "no_dme",
+   "relation": "requires_criterion",
+   "object": "c_010",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table, No DME row"
+  },
+  {
+   "id": "t_146",
+   "subject": "noncentral_involved_dme",
+   "relation": "requires_criterion",
+   "object": "c_011",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table, Noncentral-involved DME row"
+  },
+  {
+   "id": "t_147",
+   "subject": "central_involved_dme",
+   "relation": "requires_criterion",
+   "object": "c_012",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table, Central-involved DME row"
+  },
+  {
+   "id": "t_148",
+   "subject": "central_subfield_zone",
+   "relation": "located_in",
+   "object": "macula",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table",
+   "notes": "Defined by the table as being 1mm in diameter."
+  },
+  {
+   "id": "t_149",
+   "subject": "retinal_thickening",
+   "relation": "counted_per",
+   "object": "macula",
+   "axis": "dme",
+   "source": "Table 1, DME sub-table",
+   "notes": "DME is assessed by macular location, not by quadrant, unlike the DR severity criteria."
+  },
+  {
+   "id": "t_150",
+   "subject": "macular_edema",
+   "relation": "compatible_with_level",
+   "object": "all_icdr_dr_levels",
+   "axis": "dme",
+   "source": "Table 1, both sub-tables",
+   "notes": "DME is tabulated as an independent axis. No DME finding appears in any of the five DR severity rows, so DME never raises or lowers the DR grade. A grading system must not promote a level on the basis of macular thickening or exudate location."
+  },
+  {
+   "id": "t_151",
+   "subject": "quadrant",
+   "relation": "is_a",
+   "object": "spatial_unit",
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row",
+   "confidence": "low",
+   "notes": "The term is used as the counting unit for all three severe NPDR criteria but is never defined in this PDF. Centring, boundaries and the field of view assumed are all unstated."
+  },
+  {
+   "id": "t_152",
+   "subject": "disc_diameter",
+   "relation": "is_a",
+   "object": "size_unit",
+   "axis": "dr",
+   "source": "Annex Table 2, New vessels at the disc row",
+   "notes": "Used to delimit the NVD zone ('within 1 disc diameter of the disc'). The PDF gives no metric equivalent."
+  }
+ ]
+}

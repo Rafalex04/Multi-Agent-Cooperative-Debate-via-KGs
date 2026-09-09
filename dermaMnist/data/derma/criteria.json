@@ -1,0 +1,243 @@
+{
+ "criteria": [
+  {
+   "id": "c_001",
+   "name": "three_point_checklist",
+   "applies_to": "pigmented_skin_lesions",
+   "screens_for": [
+    "melanoma",
+    "pigmented_basal_cell_carcinoma"
+   ],
+   "components": [
+    {
+     "feature": "dermoscopic_asymmetry",
+     "points": 1,
+     "verbatim": "Asymmetry in distribution of dermoscopic color and/or structures in one or two perpendicular axes."
+    },
+    {
+     "feature": "atypical_pigment_network",
+     "points": 1,
+     "verbatim": "Irregular or atypical pigment network consisting of thick lines and irregular holes."
+    },
+    {
+     "feature": "blue_white_structures_checklist_criterion",
+     "points": 1,
+     "verbatim": "Blue-white veil and/or white scar-like depigmentation and/or blue pepper-like granules."
+    }
+   ],
+   "positive_threshold": 2,
+   "combination_logic": "additive_score",
+   "verdict_if_positive": "suspicious_for_pigmented_skin_cancer",
+   "known_limitation": "Figure 8 lesions C and D each scored 2 and were diagnosed as basal cell carcinoma, not melanoma. A positive score therefore does not discriminate mel from bcc. Lesion C additionally had a clinically symmetric oval contour while being dermoscopically asymmetric.",
+   "source": "p446 col 2; Figure 8, p449",
+   "verbatim": "A total score of 2 or 3 is considered positive"
+  },
+  {
+   "id": "c_002",
+   "name": "pattern_analysis_melanoma_conjunction",
+   "applies_to": "melanocytic_lesions",
+   "screens_for": [
+    "melanoma"
+   ],
+   "components": [
+    {
+     "feature": "deviation_from_benign_nevus_pattern",
+     "required": true,
+     "notes": "Deviation from one of the nine Figure 3 benign patterns."
+    },
+    {
+     "feature": "at_least_one_melanoma_specific_structure",
+     "required": true,
+     "notes": "At least one of the ten Table 5 structures."
+    }
+   ],
+   "combination_logic": "required_conjunct",
+   "verdict_if_positive": "suspicious_for_melanoma",
+   "known_limitation": "Table 5 footnote: any of the melanoma-specific structures can also be seen in Spitz nevi, so the conjunction can fire on a Spitz nevus.",
+   "source": "p447 col 2",
+   "verbatim": "Any melanocytic lesion that deviates from one of these benign patterns, while also revealing at least one of the 10 melanoma-specific structures, should be biopsied to rule out melanoma."
+  },
+  {
+   "id": "c_003",
+   "name": "melanoma_specific_structure_presence",
+   "applies_to": "melanocytic_lesions",
+   "screens_for": [
+    "melanoma"
+   ],
+   "components": [
+    {
+     "feature": "atypical_pigment_network"
+    },
+    {
+     "feature": "negative_pigment_network"
+    },
+    {
+     "feature": "streaks"
+    },
+    {
+     "feature": "off_centered_blotch"
+    },
+    {
+     "feature": "atypical_dots_or_globules"
+    },
+    {
+     "feature": "regression_structures"
+    },
+    {
+     "feature": "blue_white_veil"
+    },
+    {
+     "feature": "atypical_vascular_structures"
+    },
+    {
+     "feature": "crystalline_structures"
+    },
+    {
+     "feature": "peripheral_brown_structureless_areas"
+    }
+   ],
+   "positive_threshold": 1,
+   "combination_logic": "sufficient_alone",
+   "verdict_if_positive": "melanoma_specific_structure_present",
+   "known_limitation": "Table 5 footnote: any of these structures can also be seen in Spitz nevi.",
+   "source": "p443 col 2; Table 5, p447",
+   "verbatim": "melanomas reveal at least one of the 10 melanoma-specific structures provided in Table 5"
+  },
+  {
+   "id": "c_004",
+   "name": "vascular_evidence_weighting_rule",
+   "applies_to": "all_skin_lesions",
+   "screens_for": [],
+   "components": [
+    {
+     "feature": "lesion_is_amelanotic_or_hypomelanotic",
+     "notes": "Vessel morphology and distribution are the only diagnostic clue."
+    },
+    {
+     "feature": "lesion_is_pigmented",
+     "notes": "Vascular structures provide secondary clues only."
+    }
+   ],
+   "combination_logic": "required_conjunct",
+   "verdict_if_positive": "weight_of_vascular_evidence_determined_by_lesion_pigmentation",
+   "source": "p444 col 2",
+   "verbatim": "In most amelanotic and hypomelanotic lesions, the only clue to the diagnosis depends on evaluating the blood vessel morphology and distribution, whereas in pigmented lesions (as previously mentioned), the analysis of vascular structures provides secondary clues to the diagnosis.",
+   "notes": "Reasoning rule rather than a scoring system: it sets how much weight an agent should place on level 5 and level 6 evidence for a given image."
+  },
+  {
+   "id": "c_005",
+   "name": "two_step_algorithm_step_1",
+   "applies_to": "all_skin_lesions",
+   "screens_for": [
+    "melanocytic_lesion",
+    "basal_cell_carcinoma",
+    "seborrheic_keratosis",
+    "hemangioma",
+    "dermatofibroma"
+   ],
+   "components": [
+    {
+     "feature": "level_1_criteria",
+     "verdict": "melanocytic_lesion"
+    },
+    {
+     "feature": "level_2_criteria",
+     "verdict": "basal_cell_carcinoma"
+    },
+    {
+     "feature": "level_3_criteria",
+     "verdict": "seborrheic_keratosis"
+    },
+    {
+     "feature": "level_4_criteria",
+     "verdict": "hemangioma_or_angiokeratoma"
+    },
+    {
+     "feature": "level_5_criteria",
+     "verdict": "nonmelanocytic_tumor"
+    },
+    {
+     "feature": "level_6_criteria",
+     "verdict": "melanocytic_tumor"
+    },
+    {
+     "feature": "level_7_criteria",
+     "verdict": "structureless_lesion"
+    }
+   ],
+   "combination_logic": "additive_score",
+   "verdict_if_positive": "melanocytic_or_nonmelanocytic_assignment",
+   "known_limitation": "Basal cell carcinoma and melanoma can manifest overlapping features leading to some BCCs being classified as melanocytic and some melanomas as nonmelanocytic. Dermatofibroma displays a pigment network despite being nonmelanocytic.",
+   "source": "Table 4, p444; p444 col 2; p446 col 1; Figure 7, p449",
+   "verbatim": "The first step of the algorithm is based on a seven-level criterion ladder",
+   "notes": "combination_logic is set to additive_score only because the vocabulary offers no term for an ordered ladder evaluated top-down; the ladder is not additive. Flagged as a vocabulary gap in Document 2."
+  }
+ ],
+ "gaps": [
+  {
+   "dermamnist_class": "bkl",
+   "covered_entities": [
+    "seborrheic_keratosis",
+    "irritated_seborrheic_keratosis"
+   ],
+   "missing_entities": [
+    "solar_lentigo",
+    "lichen_planus_like_keratosis"
+   ],
+   "issue": "Source covers only one of the three entities merged into this label.",
+   "conflict": "Lichen-planus-like keratosis is defined clinically by regression structures and peppering, which Table 5 lists as melanoma-specific (t_119, t_120, t_122). Without an explicit exception the graph will push these lesions toward mel. The document contains no such exception."
+  },
+  {
+   "dermamnist_class": "akiec",
+   "covered_entities": [
+    "actinic_keratosis",
+    "bowenoid_actinic_keratosis",
+    "bowen_disease_squamous_cell_carcinoma"
+   ],
+   "missing_entities": [],
+   "issue": "Both entities appear only in the appendix vascular tables (pp D-E) and never in the Table 4 seven-level ladder. The class therefore has no step-1 route: an akiec lesion cannot be placed on the ladder at all, and only two evidence edges exist for it in the whole graph (strawberry pattern, glomerular vessels), both vascular and both dependent on the amelanotic weighting rule c_004.",
+   "conflict": "The source gives no benign/malignant status for actinic keratosis. It is precancerous, and the document does not say so. Any agent reasoning from this graph alone has no basis for placing actinic keratosis on the benign/malignant axis, and Figure 7's terminal verdicts (nevus / suspect / malignant) offer no slot for it. Do not patch this from outside knowledge."
+  },
+  {
+   "dermamnist_class": "vasc",
+   "covered_entities": [
+    "cherry_hemangioma",
+    "hemangioma",
+    "angiokeratoma"
+   ],
+   "missing_entities": [
+    "pyogenic_granuloma",
+    "hemorrhage"
+   ],
+   "issue": "Source covers cherry hemangioma and angiokeratoma but says nothing about pyogenic granuloma or hemorrhage, which HAM10000 also merges into vasc.",
+   "conflict": "Level 4 evidence is entirely lacunae-based. A hemorrhage or pyogenic granuloma showing no lacunae has no positive route to vasc in this graph and will fall through to level 7 (structureless) or be argued toward mel via milky-red globules (t_263)."
+  },
+  {
+   "dermamnist_class": "df",
+   "covered_entities": [
+    "dermatofibroma"
+   ],
+   "missing_entities": [],
+   "issue": "Dermatofibroma appears only in the Table 4 footnote * and in the Figure 7 branch list. It has exactly two positive evidence edges in the whole document (peripheral delicate pigment network, central scar-like area), and its only ladder relationship is an exception rather than a level of its own.",
+   "conflict": "The one additional clue the source offers for dermatofibroma is palpation-based (a firm lesion that dimples inward), which is not recoverable from an image and was excluded per instruction. df is therefore the thinnest-supported class in the graph after akiec."
+  },
+  {
+   "dermamnist_class": "nv",
+   "covered_entities": [
+    "melanocytic_nevus",
+    "spitz_nevus",
+    "blue_nevus",
+    "clark_nevus",
+    "dermal_nevus",
+    "congenital_melanocytic_nevus",
+    "intradermal_nevus",
+    "atypical_nevus",
+    "common_acquired_melanocytic_nevus"
+   ],
+   "missing_entities": [],
+   "issue": "The nine benign patterns of Figure 3 are the only positive evidence base for nv, and the source supplies names without definitions (definition_absent_in_source: true on t_140 through t_148). A vision model cannot be told what 'patchy reticular' or 'two components' means from this document.",
+   "conflict": "Reported, not filled: no definitions were invented for these patterns."
+  }
+ ],
+ "source_document": "Marghoob AA, Usatine RP, Jaimes N. Dermoscopy for the Family Physician. Am Fam Physician. 2013;88(7):441-450, including Online Appendix pp A-F."
+}

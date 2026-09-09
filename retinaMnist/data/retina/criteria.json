@@ -1,0 +1,236 @@
+{
+ "criteria": [
+  {
+   "id": "c_009",
+   "establishes_level": "no_apparent_retinopathy",
+   "lesion": null,
+   "qualifier": "absence_of_all_abnormalities",
+   "spatial_unit": null,
+   "quadrant_count_min": null,
+   "lesion_count_threshold": 0,
+   "combination_logic": "required_conjunct",
+   "sibling_criteria": [],
+   "axis": "dr",
+   "source": "Table 1, No apparent DR row",
+   "verbatim": "No abnormalities"
+  },
+  {
+   "id": "c_007",
+   "establishes_level": "mild_npdr",
+   "lesion": "microaneurysm",
+   "qualifier": "sole_abnormality_present",
+   "spatial_unit": null,
+   "quadrant_count_min": null,
+   "lesion_count_threshold": null,
+   "combination_logic": "required_conjunct",
+   "sibling_criteria": [],
+   "axis": "dr",
+   "source": "Table 1, Mild nonproliferative DR row",
+   "verbatim": "Microaneurysms only",
+   "notes": "The word 'only' is exclusionary: any additional lesion type disqualifies mild NPDR. No count threshold is given for microaneurysms at any level."
+  },
+  {
+   "id": "c_008",
+   "establishes_level": "moderate_npdr",
+   "lesion": "microaneurysm_plus_other_signs",
+   "qualifier": "more_than_microaneurysms_and_less_than_severe_npdr",
+   "spatial_unit": null,
+   "quadrant_count_min": null,
+   "lesion_count_threshold": null,
+   "combination_logic": "required_conjunct",
+   "sibling_criteria": [],
+   "axis": "dr",
+   "source": "Table 1, Moderate nonproliferative DR row",
+   "verbatim": "Microaneurysms and other signs (e.g., dot and blot hemorrhages, hard exudates, cotton wool spots), but less than severe nonproliferative DR",
+   "notes": "Negatively defined at its upper bound. The lesion list is introduced by 'e.g.' and is therefore non-exhaustive, which is the main source of ambiguity in this level."
+  },
+  {
+   "id": "c_004",
+   "establishes_level": "severe_npdr",
+   "lesion": null,
+   "qualifier": "moderate_npdr_present_as_base",
+   "spatial_unit": null,
+   "quadrant_count_min": null,
+   "lesion_count_threshold": null,
+   "combination_logic": "required_conjunct",
+   "sibling_criteria": [
+    "c_001",
+    "c_002",
+    "c_003",
+    "c_005"
+   ],
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, stem",
+   "verbatim": "Moderate nonproliferative DR with any of the following:"
+  },
+  {
+   "id": "c_001",
+   "establishes_level": "severe_npdr",
+   "lesion": "intraretinal_hemorrhage",
+   "qualifier": null,
+   "spatial_unit": "quadrant",
+   "quadrant_count_min": 4,
+   "lesion_count_threshold": 20,
+   "count_comparator": ">=",
+   "combination_logic": "sufficient_alone",
+   "sibling_criteria": [
+    "c_002",
+    "c_003"
+   ],
+   "conjunct_with": [
+    "c_004",
+    "c_005"
+   ],
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 1",
+   "verbatim": "Intraretinal hemorrhages (>=20 in each quadrant)",
+   "notes": "'each quadrant' implies all four quadrants must independently meet the threshold. The comparator here is >=20; the commonly cited ICDR variant is 'more than 20 ... in each of 4 quadrants', i.e. >20. Off-by-one matters at exactly 20."
+  },
+  {
+   "id": "c_002",
+   "establishes_level": "severe_npdr",
+   "lesion": "venous_beading",
+   "qualifier": "definite",
+   "spatial_unit": "quadrant",
+   "quadrant_count_min": 2,
+   "lesion_count_threshold": null,
+   "combination_logic": "sufficient_alone",
+   "sibling_criteria": [
+    "c_001",
+    "c_003"
+   ],
+   "conjunct_with": [
+    "c_004",
+    "c_005"
+   ],
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 2",
+   "verbatim": "Definite venous beading (in 2 quadrants)",
+   "notes": "The qualifier 'definite' is load-bearing: equivocal beading does not qualify. This table states 'in 2 quadrants'; the commonly cited ICDR variant is '2 or more quadrants'. Beading confined to one quadrant does not establish severe NPDR."
+  },
+  {
+   "id": "c_003",
+   "establishes_level": "severe_npdr",
+   "lesion": "irma",
+   "qualifier": null,
+   "spatial_unit": "quadrant",
+   "quadrant_count_min": 1,
+   "lesion_count_threshold": null,
+   "combination_logic": "sufficient_alone",
+   "sibling_criteria": [
+    "c_001",
+    "c_002"
+   ],
+   "conjunct_with": [
+    "c_004",
+    "c_005"
+   ],
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 3",
+   "verbatim": "Intraretinal microvascular abnormalities (in 1 quadrant)",
+   "notes": "Threshold is one quadrant, so any confidently identified IRMA reaches severe NPDR. The commonly cited ICDR variant adds the qualifier 'prominent'; this table does not. Absence of that qualifier makes this the criterion most likely to cause over-grading."
+  },
+  {
+   "id": "c_005",
+   "establishes_level": "severe_npdr",
+   "lesion": "proliferative_retinopathy_signs",
+   "qualifier": "must_be_absent",
+   "spatial_unit": null,
+   "quadrant_count_min": null,
+   "lesion_count_threshold": null,
+   "combination_logic": "required_conjunct",
+   "sibling_criteria": [
+    "c_004"
+   ],
+   "axis": "dr",
+   "source": "Table 1, Severe nonproliferative DR row, bullet 4",
+   "verbatim": "and no signs of proliferative retinopathy",
+   "notes": "Printed as a bullet under 'any of the following' but functions as a conjunct exclusion; see extraction_notes.structural_ambiguity."
+  },
+  {
+   "id": "c_006",
+   "establishes_level": "proliferative_dr",
+   "lesion": "neovascularization_or_vitreous_preretinal_hemorrhage",
+   "qualifier": null,
+   "spatial_unit": null,
+   "quadrant_count_min": null,
+   "lesion_count_threshold": 1,
+   "count_comparator": ">=",
+   "combination_logic": "sufficient_alone",
+   "sibling_criteria": [],
+   "conjunct_with": [],
+   "axis": "dr",
+   "source": "Table 1, Proliferative DR row",
+   "verbatim": "Severe nonproliferative DR and 1 or more of the following: Neovascularization; Vitreous/preretinal hemorrhage",
+   "notes": "Stem requires severe NPDR as the base state, then either sign is independently sufficient. No quadrant or extent threshold is specified for neovascularisation."
+  },
+  {
+   "id": "c_010",
+   "establishes_level": "no_dme",
+   "lesion": "retinal_thickening_or_hard_exudate",
+   "qualifier": "must_be_absent",
+   "spatial_unit": "macula",
+   "quadrant_count_min": null,
+   "lesion_count_threshold": 0,
+   "combination_logic": "required_conjunct",
+   "sibling_criteria": [
+    "c_011",
+    "c_012"
+   ],
+   "axis": "dme",
+   "source": "Table 1, DME sub-table, No DME row",
+   "verbatim": "No retinal thickening or hard exudates in the macula"
+  },
+  {
+   "id": "c_011",
+   "establishes_level": "noncentral_involved_dme",
+   "lesion": "retinal_thickening",
+   "qualifier": "does_not_involve_central_subfield_zone",
+   "spatial_unit": "macula",
+   "quadrant_count_min": null,
+   "lesion_count_threshold": null,
+   "combination_logic": "sufficient_alone",
+   "sibling_criteria": [
+    "c_010",
+    "c_012"
+   ],
+   "axis": "dme",
+   "source": "Table 1, DME sub-table, Noncentral-involved DME row",
+   "verbatim": "Retinal thickening in the macula that does not involve the central subfield zone that is 1mm in diameter"
+  },
+  {
+   "id": "c_012",
+   "establishes_level": "central_involved_dme",
+   "lesion": "retinal_thickening",
+   "qualifier": "involves_central_subfield_zone",
+   "spatial_unit": "macula",
+   "quadrant_count_min": null,
+   "lesion_count_threshold": null,
+   "combination_logic": "sufficient_alone",
+   "sibling_criteria": [
+    "c_010",
+    "c_011"
+   ],
+   "axis": "dme",
+   "source": "Table 1, DME sub-table, Central-involved DME row",
+   "verbatim": "Retinal thickening in the macula that does involve the central subfield zone that is 1mm in diameter"
+  }
+ ],
+ "extraction_notes": {
+  "source_inventory": [
+   "Table 1: International Classification of Diabetic Retinopathy and Diabetic Macular Edema (ICDR severity scale + DME scale)",
+   "Annex Table 1: Features of Diabetic Retinopathy (adapted from RCOphth DR Guidelines, December 2012)",
+   "Annex Table 2: Features of Proliferative Diabetic Retinopathy (adapted from RCOphth DR Guidelines, December 2012)",
+   "A MedMNIST dataset-summary table (no clinical content; ignored)"
+  ],
+  "absent_from_source_but_requested": [
+   "ETDRS / modified Airlie House severity definitions",
+   "Standalone lesion articles for hard exudate, flame haemorrhage, venous loop, preretinal haemorrhage, vitreous haemorrhage, fibrovascular proliferation, tractional retinal detachment",
+   "Differential/mimic content for retinal vein occlusion, radiation retinopathy, ocular ischaemic syndrome, drusen-vs-hard-exudate",
+   "Any definition of 'quadrant' or of quadrant centring on the macula",
+   "Any progression-risk figures, so no progression_risk_to_pdr triples are emitted"
+  ],
+  "known_threshold_discrepancy": "The ICDR table in this PDF states 'Intraretinal hemorrhages (>=20 in each quadrant)', 'Definite venous beading (in 2 quadrants)' and 'Intraretinal microvascular abnormalities (in 1 quadrant)'. The widely reproduced ICDR wording is 'more than 20 intraretinal hemorrhages in each of 4 quadrants', 'definite venous beading in 2+ quadrants' and 'prominent IRMA in 1+ quadrant'. Per instruction, the table as supplied is treated as authoritative and the variant is recorded in notes.",
+  "structural_ambiguity": "The severe NPDR row lists 'and no signs of proliferative retinopathy' as a fourth bullet under 'any of the following'. Read literally this makes it a disjunct, which is incoherent. It is encoded here as a required conjunct (c_005), consistent with the standard reading."
+ }
+}

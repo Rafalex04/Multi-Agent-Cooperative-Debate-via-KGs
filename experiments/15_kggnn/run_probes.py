@@ -48,16 +48,27 @@ _LABEL = {0: "MALIGNANT", 1: "BENIGN"}
 #
 # `invert` says whether a "yes" means the finding is ABSENT, so every arm is
 # stored as p(present) and the arms are directly poolable.
-_HEAD = """\
-You are an experienced radiologist examining a breast ultrasound image.
-"""
+# The modality and the noun the question is asked about are the ONLY ontology
+# vocabulary in these templates. Holding them in a lexicon lets the same 2x2
+# factorial serve another dataset without touching the templates -- and the
+# breast defaults below render the four prompts byte-for-byte as they were when
+# every published probe file in this project was generated. `--lexicon` swaps
+# them; `tests/test_probe_lexicon.py` pins the breast rendering.
+LEXICON = {
+    "head": "You are an experienced radiologist examining a breast ultrasound image.\n",
+    "subject": "the mass in this image",
+    "subject_cap": "The mass",
+    "peer": "radiologist",
+}
+
+_HEAD = "{head}"
 
 _PHRASINGS = {
     # direct observation, positive polarity
     1: (_HEAD + """
 Look at the image and answer one question about what you can actually see.
 
-Does the mass in this image show {desc}?
+Does {subject} show {desc}?
 
 Answer with one word, yes or no.""", False),
 
@@ -65,15 +76,15 @@ Answer with one word, yes or no.""", False),
     2: (_HEAD + """
 Look at the image and answer one question about what you can actually see.
 
-Is the mass in this image FREE of {desc}?
+Is {subject} FREE of {desc}?
 
 Answer with one word, yes or no.""", True),
 
     # verification framing, positive polarity
     3: (_HEAD + """
-Another radiologist has reviewed this image and reports:
+Another {peer} has reviewed this image and reports:
 
-    "The mass shows {desc}."
+    "{subject_cap} shows {desc}."
 
 Examine the image yourself. Do you agree with that report?
 
@@ -81,9 +92,9 @@ Answer with one word, yes or no.""", False),
 
     # verification framing, negative polarity
     4: (_HEAD + """
-Another radiologist has reviewed this image and reports:
+Another {peer} has reviewed this image and reports:
 
-    "The mass does not show {desc}."
+    "{subject_cap} does not show {desc}."
 
 Examine the image yourself. Do you agree with that report?
 
@@ -151,6 +162,14 @@ def main():
                    help="external image archive; overrides the BreastMNIST split path. "
                         "Same keys (imgs, labels) and the same MALIGNANT=0/BENIGN=1 "
                         "convention, so a frozen model transfers without a sign flip.")
+    p.add_argument("--lexicon", default=None,
+                   help="JSON with head/subject/subject_cap; defaults to the breast lexicon")
+    p.add_argument("--findings", default=None,
+                   help="JSON list of [feature, description, tag]; overrides the "
+                        "BI-RADS findings derived from --root's knowledge graph")
+    p.add_argument("--label-map", default=None,
+                   help="JSON {int: str}; omit to write the raw integer label "
+                        "(RetinaMNIST grades are 0..4, not a two-name space)")
     p.add_argument("--out-dir", default=None,
                    help="where to write the jsonl; defaults to this experiment's results/")
     args = p.parse_args()
@@ -159,10 +178,27 @@ def main():
     from run_debate_v5 import all_findings
 
     root = Path(args.root)
-    triples = json.loads((root / "data/breast/knowledge_graph.json").read_text())["triples"]
-    schema = json.loads((root / "data/breast/schema.json").read_text())
-    findings = all_findings(triples, schema)          # (feature, description, side)
+    lex = dict(LEXICON)
+    if args.lexicon:
+        lex.update(json.loads(Path(args.lexicon).read_text()))
+    if args.findings:
+        findings = [tuple(x) for x in json.loads(Path(args.findings).read_text())]
+    else:
+        triples = json.loads((root / "data/breast/knowledge_graph.json").read_text())["triples"]
+        schema = json.loads((root / "data/breast/schema.json").read_text())
+        findings = all_findings(triples, schema)      # (feature, description, side)
     logger.info("probing %d findings", len(findings))
+
+    if args.label_map:
+        _m = {int(k): v for k, v in json.loads(Path(args.label_map).read_text()).items()}
+        def lmap(i):
+            return _m[i]
+    elif args.findings:
+        def lmap(i):                      # a new ontology: keep the label as published
+            return i
+    else:
+        def lmap(i):
+            return _LABEL[i]
 
     z = np.load(Path(args.npz) if args.npz
                 else root / f"data/breast/images_224/{args.split}.npz")
@@ -173,9 +209,16 @@ def main():
     out_root = Path(args.out_dir) if args.out_dir else RESULTS
     out_root.mkdir(parents=True, exist_ok=True)
     out_path = out_root / f"{args.tag}_{args.split}_{'-'.join(map(str, want))}.jsonl"
+    # Scan EVERY shard file for this tag+split, not just this shard's own file.
+    # Reading one file means a shard re-issued under a different --num-shards
+    # redoes work another file already holds; corpus_io.done_indices scans all
+    # files for exactly this reason. Probe duplicates are harmless downstream
+    # (probe_block keys on (split, index) and overwrites) but they cost GPU time,
+    # and a raw line count then misreports coverage -- see the operational
+    # lesson in the sourcebook about unique-index counting.
     done = set()
-    if out_path.exists():
-        for ln in out_path.read_text().splitlines():
+    for f in sorted(out_root.glob(f"{args.tag}_{args.split}_*.jsonl")):
+        for ln in f.read_text(errors="replace").splitlines():
             if ln.strip():
                 try:
                     done.add(json.loads(ln)["index"])
@@ -197,7 +240,7 @@ def main():
             tmpl, invert = _PHRASINGS[args.phrasing]
             for feat, desc, _side in findings:
                 try:
-                    v = p_yes(cl.call(tmpl.format(desc=desc), b64))
+                    v = p_yes(cl.call(tmpl.format(desc=desc, **lex), b64))
                     # every arm is stored as p(finding PRESENT) so they pool directly
                     vals[feat] = None if v is None else (1.0 - v if invert else v)
                 except Exception as e:
@@ -219,7 +262,7 @@ def main():
                 continue
             dead = 0
             fh.write(json.dumps({"index": idx, "phrasing": args.phrasing,
-                                 "gold": _LABEL[int(labels[idx][0])],
+                                 "gold": lmap(int(labels[idx][0])),
                                  "p_yes": vals,
                                  "time_s": round(time.time() - ts, 1)}) + "\n")
             fh.flush()

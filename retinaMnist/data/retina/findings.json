@@ -1,0 +1,186 @@
+{
+ "findings": [
+  {
+   "feature": "microaneurysm",
+   "description": "red colour, spherical shape, dot morphology, isolated distribution, varying size",
+   "description_source": "appearance_triples",
+   "level": 1,
+   "level_name": "mild_npdr",
+   "level_relation": "defining_finding_of",
+   "level_triple": "t_003",
+   "prior": -0.2
+  },
+  {
+   "feature": "blot_hemorrhage",
+   "description": "Intraretinal haemorrhage formed where clusters of capillaries occlude. Situated in the outer plexiform layer, deeper than dot and flame haemorrhages.",
+   "description_source": "definition",
+   "level": 2,
+   "level_name": "moderate_npdr",
+   "level_relation": "minimum_level_for_presence",
+   "level_triple": "t_023",
+   "prior": 0.2
+  },
+  {
+   "feature": "cotton_wool_spot",
+   "description": "Lesion representing the swollen ends of interrupted axons where a build-up of axoplasmic flow occurs at the edge of a retinal infarct.",
+   "description_source": "definition",
+   "level": 2,
+   "level_name": "moderate_npdr",
+   "level_relation": "establishes_level",
+   "level_triple": "t_020",
+   "prior": 0.2
+  },
+  {
+   "feature": "dot_hemorrhage",
+   "description": "dot hemorrhage",
+   "description_source": "term_name",
+   "level": 2,
+   "level_name": "moderate_npdr",
+   "level_relation": "minimum_level_for_presence",
+   "level_triple": "t_022",
+   "prior": 0.2
+  },
+  {
+   "feature": "hard_exudate",
+   "description": "hard exudate",
+   "description_source": "term_name",
+   "level": 2,
+   "level_name": "moderate_npdr",
+   "level_relation": "establishes_level",
+   "level_triple": "t_019",
+   "prior": 0.2
+  },
+  {
+   "feature": "intraretinal_hemorrhage",
+   "description": "Superordinate class covering dot and blot haemorrhages.",
+   "description_source": "definition",
+   "level": 3,
+   "level_name": "severe_npdr",
+   "level_relation": "establishes_level",
+   "level_triple": "t_031",
+   "prior": 0.6
+  },
+  {
+   "feature": "irma",
+   "description": "dilated capillary remnant",
+   "description_source": "appearance_triples",
+   "level": 3,
+   "level_name": "severe_npdr",
+   "level_relation": "establishes_level",
+   "level_triple": "t_033",
+   "prior": 0.6
+  },
+  {
+   "feature": "venous_beading",
+   "description": "Focus of venous endothelial cell proliferation that has failed to develop into a new vessel, listed as a feature associated with IRMA.",
+   "description_source": "definition",
+   "level": 3,
+   "level_name": "severe_npdr",
+   "level_relation": "establishes_level",
+   "level_triple": "t_032",
+   "prior": 0.6
+  },
+  {
+   "feature": "venous_loop",
+   "description": "venous loop",
+   "description_source": "term_name",
+   "level": 3,
+   "level_name": "severe_npdr",
+   "level_relation": "compatible_with_level",
+   "level_triple": "t_129",
+   "prior": 0.6
+  },
+  {
+   "feature": "venous_reduplication",
+   "description": "Rare venous abnormality listed among the features associated with IRMA.",
+   "description_source": "definition",
+   "level": 3,
+   "level_name": "severe_npdr",
+   "level_relation": "compatible_with_level",
+   "level_triple": "t_130",
+   "prior": 0.6
+  },
+  {
+   "feature": "fibrous_proliferation",
+   "description": "fibrous proliferation",
+   "description_source": "term_name",
+   "level": 4,
+   "level_name": "proliferative_dr",
+   "level_relation": "compatible_with_level",
+   "level_triple": "t_083",
+   "prior": 1.0
+  },
+  {
+   "feature": "neovascularization",
+   "description": "New vessel formation. Superordinate class covering NVD, NVE, NVI, NVA and anterior hyaloid neovascularisation.",
+   "description_source": "definition",
+   "level": 4,
+   "level_name": "proliferative_dr",
+   "level_relation": "pathognomonic_for_level",
+   "level_triple": "t_047",
+   "prior": 1.0
+  },
+  {
+   "feature": "nvd",
+   "description": "vessel looping back to disc, chaotic net within loop, loop top of wider diameter than base",
+   "description_source": "appearance_triples",
+   "level": 4,
+   "level_name": "proliferative_dr",
+   "level_relation": "establishes_level",
+   "level_triple": "t_072",
+   "prior": 1.0
+  },
+  {
+   "feature": "nve",
+   "description": "New vessels elsewhere. New vessels usually occurring along the border between healthy retina and areas of capillary occlusion.",
+   "description_source": "definition",
+   "level": 4,
+   "level_name": "proliferative_dr",
+   "level_relation": "establishes_level",
+   "level_triple": "t_073",
+   "prior": 1.0
+  },
+  {
+   "feature": "preretinal_hemorrhage",
+   "description": "preretinal hemorrhage",
+   "description_source": "term_name",
+   "level": 4,
+   "level_name": "proliferative_dr",
+   "level_relation": "establishes_level",
+   "level_triple": "t_049",
+   "prior": 1.0
+  },
+  {
+   "feature": "vitreous_hemorrhage",
+   "description": "vitreous hemorrhage",
+   "description_source": "term_name",
+   "level": 4,
+   "level_name": "proliferative_dr",
+   "level_relation": "establishes_level",
+   "level_triple": "t_048",
+   "prior": 1.0
+  }
+ ],
+ "dropped": [
+  {
+   "feature": "no_abnormalities",
+   "level": 0,
+   "reason": "not a defined entity"
+  },
+  {
+   "feature": "dot_and_blot_hemorrhage",
+   "level": 2,
+   "reason": "not a defined entity"
+  }
+ ],
+ "levels": [
+  "no_apparent_retinopathy",
+  "mild_npdr",
+  "moderate_npdr",
+  "severe_npdr",
+  "proliferative_dr"
+ ],
+ "axis": "dr",
+ "prior_centre": 1.5,
+ "prior_scale": 2.5
+}

@@ -1,0 +1,128 @@
+# ICDR relation roles. Same contract as breastMnist/conf/kg_schema.yaml: this
+# file is the ONLY place ontology vocabulary lives, so swapping ICDR for another
+# ordinal grading scheme is a change here, not in Python.
+# All names match case-insensitively against the KG's `relation` field.
+
+# The severity ladder. Order IS the ordinal scale: index 0..4 becomes the label.
+# `axis: dr` triples only -- the 14 `dme` triples describe a second, orthogonal
+# axis that RetinaMNIST does not label, so they are loaded but never scored.
+axis: dr
+levels:
+  - no_apparent_retinopathy
+  - mild_npdr
+  - moderate_npdr
+  - severe_npdr
+  - proliferative_dr
+
+# Relations whose SUBJECT is a finding and whose OBJECT is a severity level.
+# Listed most-specific first: the first one that fires sets the finding's level.
+# This replaces the breast `_POLARITY` table, which mapped 7 relations to +-1.
+# Here the target is an ordinal position, not a sign.
+level_relations:
+  - pathognomonic_for_level
+  - defining_finding_of
+  - establishes_level
+  - minimum_level_for_presence
+  - compatible_with_level
+
+# Presence rules the level assignment out rather than in. Kept for the record;
+# not used to assign a level.
+exclusion_relations:
+  - excludes_level
+  - negatively_defined_as
+  - distinguishes_level_from
+
+# Structural relations that mediate finding-to-finding adjacency. This is the
+# ICDR replacement for the breast lesion-mediated construction: two findings are
+# adjacent when they share a mediator, Adamic-Adar weighted.
+adjacency_relations:
+  criterion: [requires_criterion]
+  taxonomy: [is_a, subtype_of, component_of]
+  location: [located_in, often_located_in]
+  association: [associated_with, confused_with, differential_for]
+  # `level` is DELIBERATELY not a default mediator. Joining two findings because
+  # they establish the same severity is label homophily, not clinical structure,
+  # and A+/A- is already derived from the level prior -- including it here would
+  # double-count it. kg_graph.py records the same failure on breast, where 1-hop
+  # neighbours connected 94 of 120 pairs but only through `suggests_malignancy`.
+  # Available as an arm, off by default.
+  level: [establishes_level, minimum_level_for_presence, compatible_with_level]
+
+adjacency_mediators: [criterion, taxonomy, location, association]
+
+# The breast-identical construction, kept as a control arm. ICDR has only 18
+# appearance triples and 5 of them are the placeholder below, so this is
+# EXPECTED to give a sparse graph -- that is the point of running it.
+appearance_relations: [fundus_appearance_includes]
+appearance_placeholder: no_stated_morphology
+
+# --- observability ------------------------------------------------------------
+# RetinaMNIST is a single monoscopic colour fundus photograph. A finding the
+# ontology says needs another modality cannot be probed from one, so it is
+# dropped. Derived from the KG, NOT a hand-written list: this is the ICDR
+# analogue of the breast `_NOT_VISIBLE` table, which was 11 literal names.
+visibility_relation: visible_on
+unavailable_modalities:          # no colour fundus photograph shows these
+  - gonioscopy                   # anterior chamber angle
+  - slit_lamp_biomicroscopy      # needs 3D
+  - stereoscopic_fundus_photography
+# fluorescein_angiography is deliberately NOT here: it makes microaneurysms and
+# IRMA easier to see, but both are visible on colour fundus photography and
+# microaneurysm is the defining lesion of mild NPDR. Dropping it would remove
+# the entire grade-1 criterion.
+
+location_relations: [located_in]
+excluded_locations:              # outside the fundus field entirely
+  - iris
+  - anterior_chamber_angle
+  - anterior_hyaloid_surface
+
+# Entities that are differentials/mimics of DR rather than DR findings.
+non_dr_marker_relations: [mimics]
+
+# --- prior --------------------------------------------------------------------
+# prior_f = (level_f - centre) / scale. Centre 1.5 puts the sign boundary exactly
+# at the referable-DR threshold (grade >= 2), which is the primary arm, and keeps
+# every finding off zero so the A+/A- split never degenerates.
+prior_centre: 1.5
+prior_scale: 2.5
+
+min_findings: 6
+
+# --- probe-description hygiene ------------------------------------------------
+# A probe question must describe what the grader SEES, never what it means. The
+# ICDR definitions are written for a grading manual, so 8 of 17 lead with the
+# severity level the lesion establishes ("sufficient for severe NPDR"), which
+# would hand the VLM the answer. Sentences containing any of these are dropped
+# from the description; a finding left with nothing falls back to its appearance
+# triples and then to its bare name. This is the ICDR analogue of the breast
+# Stage-A rule that observation must be stance-free.
+description_leak_terms:
+  - npdr
+  - icdr
+  - pdr
+  - dme
+  - severity
+  - severe
+  - moderate
+  - mild
+  - proliferative
+  - retinopathy
+  - sufficient
+  - establish
+  - qualifying
+  - criterion
+  - criteria
+  - grade
+  - grading
+  - level
+  - table
+  - source
+  # meta-sentences: the ontology is explicit where the PDF describes no
+  # appearance at all, and those disclaimers are not probe text either.
+  - placeholder
+  - not defined
+  - no appearance
+  - no description
+  - no further
+  - this entry

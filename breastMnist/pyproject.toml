@@ -32,6 +32,11 @@ dependencies = [
     "medmnist>=2.2",
     "pillow>=10.0",
     "scikit-learn>=1.3",
+    # PyYAML: read by every ordinal/nominal ontology config (retinaMnist,
+    # dermaMnist, shared/) -- kg_adjacency.py, transfer_matrix.py, run_judge.py.
+    "pyyaml>=6.0",
+    # figures/make_learning_curves.py only.
+    "matplotlib>=3.8",
 ]
 
 [project.optional-dependencies]
